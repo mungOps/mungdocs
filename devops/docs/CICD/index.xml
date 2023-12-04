@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CI/CD 배포 입문 on Mung Book</title>
+    <link>http://0.0.0.0/devops/docs/CICD/</link>
+    <description>Recent content in CI/CD 배포 입문 on Mung Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>devops</language><atom:link href="http://0.0.0.0/devops/docs/CICD/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. 학습목표</title>
+      <link>http://0.0.0.0/devops/docs/CICD/with-toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://0.0.0.0/devops/docs/CICD/with-toc/</guid>
+      <description> 학습목표 # 클라우드 서비스를 활용하기 위한 기본 지식 학습
+클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
+클라우드 서비스 내 프로젝트 배포를 간편화
+클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
+클라우드 서비스에 배포 자동화
+클라우드 서비스 무중단 배포
+정적 IP 할당을 위한 NLB 활용
+최종목표
+스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 </description>
+    </item>
+    
+  </channel>
+</rss>

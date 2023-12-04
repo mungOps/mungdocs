@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Example Site on Mung Book</title>
+    <link>http://0.0.0.0/programing/docs/example/</link>
+    <description>Recent content in Example Site on Mung Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>programing</language><atom:link href="http://0.0.0.0/programing/docs/example/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

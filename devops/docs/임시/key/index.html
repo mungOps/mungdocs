@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="암호화의 기술과 역사 # 암호화의 역사 # 시대 기간 특징 종류 고대 고대 - 19세기 말 수동 암호 사용 (단순, 문자 대입하여 암호화) Scytale, Caesar, Vigenere, Beaufort 등 근대 1900 - 1940년대 기계 암호 사용 (복잡한 기계를 이용하여 암호화) Enigma, M-209 등 현대 1950년대 - 현재 샤뇬의 &ldquo;암호학의 수학적 배경&rdquo; 발표 이후 시작, 컴퓨터 암호 사용 (컴퓨터 연산을 이용하여 암호화) DES, SEED, Rijindael, RSA, ECC, KCDSA 등 고대에는 외교, 군사 등의 한정적인 분야의 사용되었으나, 현대에는 인터넷, 전자상거래 등이 발달하면서 전반적인 분야의 대한 보안(암호화)의 기능이 중요시 되기 시작했다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="암호화" />
+<meta property="og:description" content="암호화의 기술과 역사 # 암호화의 역사 # 시대 기간 특징 종류 고대 고대 - 19세기 말 수동 암호 사용 (단순, 문자 대입하여 암호화) Scytale, Caesar, Vigenere, Beaufort 등 근대 1900 - 1940년대 기계 암호 사용 (복잡한 기계를 이용하여 암호화) Enigma, M-209 등 현대 1950년대 - 현재 샤뇬의 &ldquo;암호학의 수학적 배경&rdquo; 발표 이후 시작, 컴퓨터 암호 사용 (컴퓨터 연산을 이용하여 암호화) DES, SEED, Rijindael, RSA, ECC, KCDSA 등 고대에는 외교, 군사 등의 한정적인 분야의 사용되었으나, 현대에는 인터넷, 전자상거래 등이 발달하면서 전반적인 분야의 대한 보안(암호화)의 기능이 중요시 되기 시작했다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://0.0.0.0/devops/docs/%EC%9E%84%EC%8B%9C/key/" /><meta property="article:section" content="docs" />
+
+
+<title>암호화 | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.923ab93bb9d9a940ecaeb9a0a70a81be5a34b3d5674d675f8dec965463bcfe9b.js" integrity="sha256-kjq5O7nZqUDsrrmgpwqBvlo0s9VnTWdfjeyWVGO8/ps=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/devops/"><img src="/svg/book.svg" class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://0.0.0.0/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/programing/"> Programing </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/database/"> Database </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/" class="">CI/CD 배포 입문</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/default/" class="">Default</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/default/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ec36ec3492308dbc4bfcaa14eb72fa33" class="toggle"  />
+    <label for="section-ec36ec3492308dbc4bfcaa14eb72fa33" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/with-toc/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c2a060bafb7c779a0c8e675f9068e94" class="toggle" checked />
+    <label for="section-7c2a060bafb7c779a0c8e675f9068e94" class="flex justify-between">
+      <a role="button" class="">임시</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/key/" class="active">암호화</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>암호화</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#암호화의-기술과-역사"><strong>암호화의 기술과 역사</strong></a>
+      <ul>
+        <li><a href="#암호화의-역사"><strong>암호화의 역사</strong></a></li>
+        <li><a href="#현대-암호화-기술"><strong>현대 암호화 기술</strong></a>
+          <ul>
+            <li><a href="#1-대칭키-암호화-기술-비밀키"><strong>1. 대칭키 암호화 기술 (비밀키)</strong></a></li>
+            <li><a href="#2-비대칭-암호화-기술-공개키"><strong>2. 비대칭 암호화 기술 (공개키)</strong></a></li>
+            <li><a href="#3-pki-public-key-infrastructure-공개키기반구조"><strong>3. PKI (Public Key Infrastructure, 공개키기반구조)</strong></a></li>
+            <li><a href="#4-ssltls"><strong>4. SSL/TLS</strong></a></li>
+            <li><a href="#5-실습"><strong>5. 실습</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="암호화의-기술과-역사">
+  <strong>암호화의 기술과 역사</strong>
+  <a class="anchor" href="#%ec%95%94%ed%98%b8%ed%99%94%ec%9d%98-%ea%b8%b0%ec%88%a0%ea%b3%bc-%ec%97%ad%ec%82%ac">#</a>
+</h1>
+<hr>
+<h2 id="암호화의-역사">
+  <strong>암호화의 역사</strong>
+  <a class="anchor" href="#%ec%95%94%ed%98%b8%ed%99%94%ec%9d%98-%ec%97%ad%ec%82%ac">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>시대</th>
+<th>기간</th>
+<th>특징</th>
+<th>종류</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>고대</td>
+<td>고대 - 19세기 말</td>
+<td>수동 암호 사용 (단순, 문자 대입하여 암호화)</td>
+<td>Scytale, Caesar, Vigenere, Beaufort 등</td>
+</tr>
+<tr>
+<td>근대</td>
+<td>1900 - 1940년대</td>
+<td>기계 암호 사용 (복잡한 기계를 이용하여 암호화)</td>
+<td>Enigma, M-209 등</td>
+</tr>
+<tr>
+<td>현대</td>
+<td>1950년대 - 현재</td>
+<td>샤뇬의 &ldquo;암호학의 수학적 배경&rdquo; 발표 이후 시작, 컴퓨터 암호 사용 (컴퓨터 연산을 이용하여 암호화)</td>
+<td>DES, SEED, Rijindael, RSA, ECC, KCDSA 등</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>고대에는 외교, 군사 등의 한정적인 분야의 사용되었으나, 현대에는 인터넷, 전자상거래 등이 발달하면서 전반적인 분야의 대한 보안(암호화)의 기능이 중요시 되기 시작했다.</li>
+</ul>
+<br>
+<br>
+<br>
+<h2 id="현대-암호화-기술">
+  <strong>현대 암호화 기술</strong>
+  <a class="anchor" href="#%ed%98%84%eb%8c%80-%ec%95%94%ed%98%b8%ed%99%94-%ea%b8%b0%ec%88%a0">#</a>
+</h2>
+<hr>
+<br>
+<h3 id="1-대칭키-암호화-기술-비밀키">
+  <strong>1. 대칭키 암호화 기술 (비밀키)</strong>
+  <a class="anchor" href="#1-%eb%8c%80%ec%b9%ad%ed%82%a4-%ec%95%94%ed%98%b8%ed%99%94-%ea%b8%b0%ec%88%a0-%eb%b9%84%eb%b0%80%ed%82%a4">#</a>
+</h3>
+<br>
+<p>
+  <img src="/images/etc/key.png" alt="" /></p>
+<ul>
+<li>송신자와 수신자간의 데이터가 오갈 때, 암호화 및 복호화를 동일한 Key로 진행하는 방식</li>
+<li>즉, 송신자 A가 수신자 B에게 특정 파일을 Q라는 Key를 사용하여 암호화해서 보내면, B는 A가 사용했던 Q라는 key를 사용하여 복호화해야만 받은 파일의 확인이 가능하다.</li>
+<li>대칭키 암호화는 블록, 스트링 암호를 사용하며, 특징은 아래와 같다.
+<ul>
+<li>블록암호(DES): Data Encryption Standard의 약자로 1976년 미국가표준국(NIST) 주도하에 설계된 암호화 방식이다. 63비트 단위의 블록 길이로 암호화한다. 블록 중 키의 길이는 58비트 나머지 8비트는 패리티 체크에 사용</li>
+<li>블록암호(AES): DES의 해독 방법이 나오면서 DES를 대체하기 위하여 채택된 방식이다. Advanced Encryption Standard의 약자로 1997년부터 진행하여, 2001년 존 대먼과 빈센트 라이언이 개발한 Rijndael의 알고리즘을 기반하여 만들어졌다. 128비트로 DES보다 더 큰 단위의 블록 길이로 암호화한다. 128비트뿐만 아니라 192비트, 256비트 길이로 암호화 가능</li>
+<li>스트링암호: 데이터 스트림(흐름)을 순차적으로 처리해가는 암호 알고리즘으로 데이터가 발생하는 즉시 암호화하여 보내는 방식, 1비트, 8비트, 또는 32 비트 등의 단위로 암호화와 복호화를 진행</li>
+</ul>
+</li>
+</ul>
+<br>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>블록암호</th>
+<th>스트링암호</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>장점</td>
+<td>암호 복잡성이 높고, 기밀성이 높고, 해시 함수를 사용하여 암호화한다.</td>
+<td>암호화 속도가 빠르며, 비트 단위로 암호화하기 때문에 다음 한 비트의 에러 발생이 다음 비트에 영향을 주지 않는다.</td>
+</tr>
+<tr>
+<td>단점</td>
+<td>암호화 속도가 느리며, 블록 내부의 한 비트의 에러 발생이 다른 비트에 쉽게 에러 전달된다.</td>
+<td>암호화의 확산이 낮기 때문에 암호의 복잡성이 떨어지며, 비트 단위로 암호화가 진행되기 때문에 비트 사이에 삽입 변경 쉬워, 삽입공격에 취약하다</td>
+</tr>
+<tr>
+<td>종류</td>
+<td>DES, IDES, SEED, RC5, AES</td>
+<td>LFSR(Shift Register), MUX generator</td>
+</tr>
+<tr>
+<td>암호화 단위</td>
+<td>블록</td>
+<td>비트</td>
+</tr>
+<tr>
+<td>주요대상</td>
+<td>일반 데이터 전송, 저장</td>
+<td>음성, 오디오/비디오 스트리밍</td>
+</tr>
+<tr>
+<td>실시간</td>
+<td>부적합</td>
+<td>적합</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<br>
+<h3 id="2-비대칭-암호화-기술-공개키">
+  <strong>2. 비대칭 암호화 기술 (공개키)</strong>
+  <a class="anchor" href="#2-%eb%b9%84%eb%8c%80%ec%b9%ad-%ec%95%94%ed%98%b8%ed%99%94-%ea%b8%b0%ec%88%a0-%ea%b3%b5%ea%b0%9c%ed%82%a4">#</a>
+</h3>
+<br>
+<p>
+  <img src="/images/etc/PKI.png" alt="" /></p>
+<ul>
+<li>암호화를 위한 키와, 복호화를 위한 키가 다른 암호화 방식을 말한다. RSA(Rivest, Shamir, Adleman), ECC(Elliptic Curve Cryptosystem), NTRU, XTR 등이 존재한다.</li>
+<li>비대칭 암호화 기술은 Public, Private Key 기술을 활용하며, 송신자 A가 수신자 B에게 파일을 보낸다면, 먼저 수신자 B의 Public Key를 사용하여 암호화 시킨 후 발송하면, 이 파일은 Private Key가 있는 B만이 복호화하여 파일을 열 수 있는 구조이다.</li>
+</ul>
+<br>
+<br>
+<br>
+<h3 id="3-pki-public-key-infrastructure-공개키기반구조">
+  <strong>3. PKI (Public Key Infrastructure, 공개키기반구조)</strong>
+  <a class="anchor" href="#3-pki-public-key-infrastructure-%ea%b3%b5%ea%b0%9c%ed%82%a4%ea%b8%b0%eb%b0%98%ea%b5%ac%ec%a1%b0">#</a>
+</h3>
+<br>
+<ul>
+<li>PKI는 위에서 언급한 공개키 암호화와 전자서명을 사용할 수 있게 구조를 제시해 둔 것이다.</li>
+<li>기존 공개키 방식은 해커 C가 A가 B에게 암호화 통신 중간에 끼어들어, B가 A에게 다시 파일을 보낼 때, 자신의 공공키를 제시하는 식의 문제가 생기기 시작했고, 이를 예방하기 위해 PKI라는 개념을 등장시켰다.</li>
+<li>PKI는 공개키 기반 구조를 가지기 위해 비대칭키 암호화 방식에서 CA라는 개념을 등장 시킨다.</li>
+<li>PKI 구성요소는 아래와 같다.
+<ol>
+<li>인증기관(CA, Certificate Authority): 사용자의 인증서 발급 및 관리 Ex) 한국정보인증(KICA), 금융결제원(yesSign), 한국진흥정보원(Sigate) 등</li>
+<li>등록기관(RA, Registration Authority): 신원확인, 고객 데이터 유지 등 인증기관의 입증을 대행하는 등록기관. Ex) 은행, 증권사</li>
+<li>디렉토리(Directory): 인증서 및 인증서 취소목록 등 PKI와 관련된 정보를 저장 및 검색하는 장소</li>
+<li>인증서(Certificate): 공개키나 공개키의 정보를 포함하는 인증서 Ex) X.509 인증서</li>
+</ol>
+</li>
+</ul>
+<br>
+<br>
+<h3 id="4-ssltls">
+  <strong>4. SSL/TLS</strong>
+  <a class="anchor" href="#4-ssltls">#</a>
+</h3>
+<br>
+<ul>
+<li>SSL/TLS는 프로토콜로 PKI가 제공하는 공개 키 인프라와 디지털 인증서를 사용해서 Browser와 server 간 통신. 즉 Website 트랜잭션에 보안 및 무결성을 제공하는 기술이다.
+<ul>
+<li>SSL (Secure Socket Layer): Browser와 Server가 서로 통신할 때 보안 및 무결성을 제공하는 프로토콜</li>
+<li>TLS (Transport Layer Security): SSL과 마찬가지로 Browser와 Server가 서로 통신할 때 보안 및 무결성을 제공하는 프로토콜</li>
+</ul>
+</li>
+<li>즉 SSL과 TLS는 동일한 목적을 수행하는 프로토콜이지만 차이점이라면 TLS 프로토콜은 SSL 프로토콜의 업데이트된 상위 버전이라는 것으로, SSL이 표준화 되면서 이름이 TLS로 변경되었다.</li>
+</ul>
+<br>
+<br>
+<h4 id="4-1-tls-통신과정-handshake과정">
+  4-1. TLS 통신과정 (Handshake과정)
+  <a class="anchor" href="#4-1-tls-%ed%86%b5%ec%8b%a0%ea%b3%bc%ec%a0%95-handshake%ea%b3%bc%ec%a0%95">#</a>
+</h4>
+<ol>
+<li>클라이언트에서 서버로 접속한다. (https://URL)</li>
+<li>클라이언트는 랜덤데이터를 만들어 서버에 보낸다.</li>
+<li>클라이언트에서 사용 가능한 암호화방식들을 서버에 보낸다.</li>
+<li>서버 -&gt; 클라이언트</li>
+<li>서버 또한 랜덤데이터를 만들어 클라이언트에 보낸다.</li>
+<li>클라이언트가 보낸 암호화방식들 중에 사용할 방식을 선정하여 클라이언트에 보낸다.</li>
+<li>SSL 인증서도 같이 보낸다. (SSL 인증서에는 사이트의 Public Key, CA, 도메인 정보등이 존재)</li>
+</ol>
+<br>
+<p>
+  <img src="/images/etc/pki001.png" alt="" /></p>
+<p>
+  <img src="/images/etc/pki002.png" alt="" /></p>
+<p>
+  <img src="/images/etc/pki003.png" alt="" /></p>
+<br>
+<br>
+<h3 id="5-실습">
+  <strong>5. 실습</strong>
+  <a class="anchor" href="#5-%ec%8b%a4%ec%8a%b5">#</a>
+</h3>
+<br>
+<pre tabindex="0"><code>$ brew install mkcert
+# 인증을 위한 패키지 설치
+
+$ mkcert -install
+# localhost 인증된 발급기관 추가(localhost용 ca)
+
+$ mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1
+# localhost, 127.0.0.1(IPv4), ::1(IPv6)에서 사용할 수 있는 인증서 생성
+</code></pre><ul>
+<li>cert.pem, key.pem이라는 파일이 생성</li>
+<li>cert.pem 파일의 경우 공개키와 인증기관의 서명을 포함하고 있는 인증서이며, key.pem의 경우 개인 키</li>
+</ul>
+<br>
+<pre tabindex="0"><code># https.js 파일 생성 후 확인
+const https = require(&#39;https&#39;);
+const fs = require(&#39;fs&#39;);
+
+https
+  .createServer(
+    {
+      key: fs.readFileSync(&#39;./key.pem&#39;, &#39;utf-8&#39;),
+      cert: fs.readFileSync(&#39;./cert.pem&#39;, &#39;utf-8&#39;),
+    },
+    function (req, res) {
+      res.write(&#39;Congrats! You made https server now :)&#39;);
+      res.end();
+    }
+  )
+  .listen(443);
+
+
+$ sudo node https.js
+
+$ curl localhost:443
+Congrats! You made https server now :)
+</code></pre><ul>
+<li>https:localhost:443 으로 접속하여도 자물쇠 아이콘을 확인할 수 있음</li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<hr>
+<ol>
+<li>Reference
+<ol>
+<li>
+  <a href="https://m.blog.naver.com/taeheon714/222278059898">https://m.blog.naver.com/taeheon714/222278059898</a></li>
+<li>
+  <a href="https://byoungsoo.github.io/etc/2022/06/08/pki.html">https://byoungsoo.github.io/etc/2022/06/08/pki.html</a></li>
+<li>
+  <a href="https://swingswing.tistory.com/155">https://swingswing.tistory.com/155</a></li>
+</ol>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#암호화의-기술과-역사"><strong>암호화의 기술과 역사</strong></a>
+      <ul>
+        <li><a href="#암호화의-역사"><strong>암호화의 역사</strong></a></li>
+        <li><a href="#현대-암호화-기술"><strong>현대 암호화 기술</strong></a>
+          <ul>
+            <li><a href="#1-대칭키-암호화-기술-비밀키"><strong>1. 대칭키 암호화 기술 (비밀키)</strong></a></li>
+            <li><a href="#2-비대칭-암호화-기술-공개키"><strong>2. 비대칭 암호화 기술 (공개키)</strong></a></li>
+            <li><a href="#3-pki-public-key-infrastructure-공개키기반구조"><strong>3. PKI (Public Key Infrastructure, 공개키기반구조)</strong></a></li>
+            <li><a href="#4-ssltls"><strong>4. SSL/TLS</strong></a></li>
+            <li><a href="#5-실습"><strong>5. 실습</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

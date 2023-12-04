@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content=" 학습목표 # 클라우드 서비스를 활용하기 위한 기본 지식 학습
+클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
+클라우드 서비스 내 프로젝트 배포를 간편화
+클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
+클라우드 서비스에 배포 자동화
+클라우드 서비스 무중단 배포
+정적 IP 할당을 위한 NLB 활용
+최종목표
+스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="1. 학습목표" />
+<meta property="og:description" content=" 학습목표 # 클라우드 서비스를 활용하기 위한 기본 지식 학습
+클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
+클라우드 서비스 내 프로젝트 배포를 간편화
+클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
+클라우드 서비스에 배포 자동화
+클라우드 서비스 무중단 배포
+정적 IP 할당을 위한 NLB 활용
+최종목표
+스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://0.0.0.0/devops/docs/CICD/with-toc/" /><meta property="article:section" content="docs" />
+
+
+<title>1. 학습목표 | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.923ab93bb9d9a940ecaeb9a0a70a81be5a34b3d5674d675f8dec965463bcfe9b.js" integrity="sha256-kjq5O7nZqUDsrrmgpwqBvlo0s9VnTWdfjeyWVGO8/ps=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/devops/"><img src="/svg/book.svg" class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://0.0.0.0/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/programing/"> Programing </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://0.0.0.0/database/"> Database </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/" class="">CI/CD 배포 입문</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/with-toc/" class="active">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/default/" class="">Default</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/default/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ec36ec3492308dbc4bfcaa14eb72fa33" class="toggle"  />
+    <label for="section-ec36ec3492308dbc4bfcaa14eb72fa33" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/with-toc/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c2a060bafb7c779a0c8e675f9068e94" class="toggle"  />
+    <label for="section-7c2a060bafb7c779a0c8e675f9068e94" class="flex justify-between">
+      <a role="button" class="">임시</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>1. 학습목표</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#학습목표">학습목표</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="학습목표">
+  학습목표
+  <a class="anchor" href="#%ed%95%99%ec%8a%b5%eb%aa%a9%ed%91%9c">#</a>
+</h1>
+<hr>
+<ol>
+<li>
+<p>클라우드 서비스를 활용하기 위한 기본 지식 학습</p>
+</li>
+<li>
+<p>클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축</p>
+</li>
+<li>
+<p>클라우드 서비스 내 프로젝트 배포를 간편화</p>
+</li>
+<li>
+<p>클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )</p>
+</li>
+<li>
+<p>클라우드 서비스에 배포 자동화</p>
+</li>
+<li>
+<p>클라우드 서비스 무중단 배포</p>
+</li>
+<li>
+<p>정적 IP 할당을 위한 NLB 활용</p>
+</li>
+<li>
+<p>최종목표</p>
+<ul>
+<li>스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포</li>
+</ul>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#학습목표">학습목표</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

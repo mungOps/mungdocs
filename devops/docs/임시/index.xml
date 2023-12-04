@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>임시 on Mung Book</title>
+    <link>http://0.0.0.0/devops/docs/%EC%9E%84%EC%8B%9C/</link>
+    <description>Recent content in 임시 on Mung Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>devops</language><atom:link href="http://0.0.0.0/devops/docs/%EC%9E%84%EC%8B%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>암호화</title>
+      <link>http://0.0.0.0/devops/docs/%EC%9E%84%EC%8B%9C/key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://0.0.0.0/devops/docs/%EC%9E%84%EC%8B%9C/key/</guid>
+      <description>암호화의 기술과 역사 # 암호화의 역사 # 시대 기간 특징 종류 고대 고대 - 19세기 말 수동 암호 사용 (단순, 문자 대입하여 암호화) Scytale, Caesar, Vigenere, Beaufort 등 근대 1900 - 1940년대 기계 암호 사용 (복잡한 기계를 이용하여 암호화) Enigma, M-209 등 현대 1950년대 - 현재 샤뇬의 &amp;ldquo;암호학의 수학적 배경&amp;rdquo; 발표 이후 시작, 컴퓨터 암호 사용 (컴퓨터 연산을 이용하여 암호화) DES, SEED, Rijindael, RSA, ECC, KCDSA 등 고대에는 외교, 군사 등의 한정적인 분야의 사용되었으나, 현대에는 인터넷, 전자상거래 등이 발달하면서 전반적인 분야의 대한 보안(암호화)의 기능이 중요시 되기 시작했다.</description>
+    </item>
+    
+  </channel>
+</rss>
