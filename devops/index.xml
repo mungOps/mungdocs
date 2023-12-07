@@ -8,10 +8,22 @@
     <language>devops</language><atom:link href="http://0.0.0.0/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0. Git이란?</title>
-      <link>http://0.0.0.0/devops/docs/Git/with-toc/</link>
+      <link>http://0.0.0.0/devops/docs/CICD/git00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://0.0.0.0/devops/docs/Git/with-toc/</guid>
+      <guid>http://0.0.0.0/devops/docs/CICD/git00/</guid>
+      <description>GIT # Git이란? # 깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)
+컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.
+DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.
+GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
+    </item>
+    
+    <item>
+      <title>0. Git이란?</title>
+      <link>http://0.0.0.0/devops/docs/Git/git00/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://0.0.0.0/devops/docs/Git/git00/</guid>
       <description>GIT # Git이란? # 깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)
 컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.
 DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.
@@ -33,16 +45,6 @@ GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서
 정적 IP 할당을 위한 NLB 활용
 최종목표
 스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 </description>
-    </item>
-    
-    <item>
-      <title>With ToC</title>
-      <link>http://0.0.0.0/devops/docs/CICD/default/with-toc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://0.0.0.0/devops/docs/CICD/default/with-toc/</guid>
-      <description>Caput vino delphine in tamen vias # Cognita laeva illo fracta # Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.
-Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit Natus quaerere # Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
     </item>
     
     <item>

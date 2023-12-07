@@ -2,7 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://0.0.0.0/devops/docs/Git/with-toc/</loc>
+    <loc>http://0.0.0.0/devops/docs/CICD/git00/</loc>
+  </url><url>
+    <loc>http://0.0.0.0/devops/docs/Git/git00/</loc>
   </url><url>
     <loc>http://0.0.0.0/devops/docs/CICD/with-toc/</loc>
   </url><url>
@@ -10,13 +12,9 @@
   </url><url>
     <loc>http://0.0.0.0/devops/docs/Git/</loc>
   </url><url>
-    <loc>http://0.0.0.0/devops/docs/CICD/default/with-toc/</loc>
-  </url><url>
     <loc>http://0.0.0.0/devops/docs/CICD/table-of-contents/with-toc/</loc>
   </url><url>
     <loc>http://0.0.0.0/devops/docs/%EC%9E%84%EC%8B%9C/key/</loc>
-  </url><url>
-    <loc>http://0.0.0.0/devops/docs/CICD/default/</loc>
   </url><url>
     <loc>http://0.0.0.0/devops/docs/CICD/table-of-contents/</loc>
   </url><url>
