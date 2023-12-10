@@ -2,37 +2,37 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>http://0.0.0.0/main/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/main/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://0.0.0.0/programing/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/programing/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://0.0.0.0/system/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/system/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://0.0.0.0/network/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/network/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://0.0.0.0/cloud/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/cloud/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://0.0.0.0/database/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/database/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://0.0.0.0/devops/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/devops/sitemap.xml</loc>
     
   </sitemap>
   
