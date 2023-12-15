@@ -51,6 +51,11 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="system"
+                href="http://mungdocs.kro.kr/system/docs/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="devops"
                 href="http://mungdocs.kro.kr/devops/docs/"
                 />

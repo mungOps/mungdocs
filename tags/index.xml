@@ -5,6 +5,7 @@
     <link>http://mungdocs.kro.kr/tags/</link>
     <description>Recent content in Tags on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>main</language><atom:link href="http://mungdocs.kro.kr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>main</language>
+    <atom:link href="http://mungdocs.kro.kr/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

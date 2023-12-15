@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="main" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.118.2">
+	<meta name="generator" content="Hugo 0.121.1">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" 공사중 # ">
+<meta name="description" content="공사중#">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Introduction_Main" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://mungdocs.kro.kr/" />
+
 <title>Introduction_Main | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
   <link rel="alternate" hreflang="programing" href="http://mungdocs.kro.kr/programing/" title="Introduction">
-  <link rel="alternate" hreflang="system" href="http://mungdocs.kro.kr/system/" title="Mung Book">
+  <link rel="alternate" hreflang="system" href="http://mungdocs.kro.kr/system/" title="Introduction">
   <link rel="alternate" hreflang="network" href="http://mungdocs.kro.kr/network/" title="Mung Book">
   <link rel="alternate" hreflang="cloud" href="http://mungdocs.kro.kr/cloud/" title="Mung Book">
   <link rel="alternate" hreflang="database" href="http://mungdocs.kro.kr/database/" title="Mung Book">
@@ -218,7 +219,26 @@ https://github.com/alex-shpak/hugo-book
       
   
   <div class="book-comments">
-
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
   
  
@@ -244,7 +264,8 @@ https://github.com/alex-shpak/hugo-book
     
   </main>
 
-  
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
 </body>
 </html>
 

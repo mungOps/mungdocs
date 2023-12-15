@@ -5,6 +5,7 @@
     <link>http://mungdocs.kro.kr/programing/docs/shortcodes/</link>
     <description>Recent content on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>programing</language><atom:link href="http://mungdocs.kro.kr/programing/docs/shortcodes/index.xml" rel="self" type="application/rss+xml" />
+    <language>programing</language>
+    <atom:link href="http://mungdocs.kro.kr/programing/docs/shortcodes/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

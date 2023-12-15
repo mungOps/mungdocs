@@ -2,6 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/DHCP/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Hardware/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/HTTPS/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/ISCSI/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/Linux/</loc>
+    <lastmod>2023-12-13T21:34:02+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/Linux00/</loc>
+    <lastmod>2023-12-13T21:34:02+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/NFS/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/SMB/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Hardware/CPU/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Hardware/DISK/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Hardware/board/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Hardware/NIC/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Hardware/Memory/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Hardware/RC/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/DNS/</loc>
+    <lastmod>2023-12-13T20:53:06+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/Linux/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
+  </url><url>
     <loc>http://mungdocs.kro.kr/system/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -39,7 +87,31 @@
                 href="http://mungdocs.kro.kr/system/categories/"
                 />
   </url><url>
+    <loc>http://mungdocs.kro.kr/system/docs/</loc>
+    <lastmod>2023-12-13T21:34:02+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="main"
+                href="http://mungdocs.kro.kr/docs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="programing"
+                href="http://mungdocs.kro.kr/programing/docs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="devops"
+                href="http://mungdocs.kro.kr/devops/docs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="system"
+                href="http://mungdocs.kro.kr/system/docs/"
+                />
+  </url><url>
     <loc>http://mungdocs.kro.kr/system/</loc>
+    <lastmod>2023-12-12T18:04:40+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="programing"

@@ -5,6 +5,7 @@
     <link>http://mungdocs.kro.kr/docs/check/</link>
     <description>Recent content in Please select on the index on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>main</language><atom:link href="http://mungdocs.kro.kr/docs/check/index.xml" rel="self" type="application/rss+xml" />
+    <language>main</language>
+    <atom:link href="http://mungdocs.kro.kr/docs/check/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
