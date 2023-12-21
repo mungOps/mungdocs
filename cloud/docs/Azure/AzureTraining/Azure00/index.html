@@ -1,0 +1,3382 @@
+<!DOCTYPE html>
+<html lang="cloud" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Az-900 : CloudComputing##클라우드 컴퓨팅##클라우드 컴퓨팅은 스토리지 공간이나 CPU 주기와 같은 리소스를 다른 회사의 컴퓨터에 대여하는 서비스이며 사용한 만큼의 요금만을 지불합니다.
+클라우드 공급 기업은 작업을 싱행하는 데 필요한 실제 하드웨어와 이 하드웨어를 최신 상태로 유지할 책임이 존재하며, 제공되는 컴퓨팅 서비스는 클라우드 공급자에 따라 달라지며, 일반적으로는 하단의 항목이 기본적으로 포함됩니다.
+#Compute power : 리눅스 서버나 웹 프로그램
+Storage : 저장 및 데이터베이스 역할
+Networking : 클라우드 제공사와 우리 회사의 사이의 안전한 연결">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Az-900 : CloudComputing" />
+<meta property="og:description" content="Az-900 : CloudComputing##클라우드 컴퓨팅##클라우드 컴퓨팅은 스토리지 공간이나 CPU 주기와 같은 리소스를 다른 회사의 컴퓨터에 대여하는 서비스이며 사용한 만큼의 요금만을 지불합니다.
+클라우드 공급 기업은 작업을 싱행하는 데 필요한 실제 하드웨어와 이 하드웨어를 최신 상태로 유지할 책임이 존재하며, 제공되는 컴퓨팅 서비스는 클라우드 공급자에 따라 달라지며, 일반적으로는 하단의 항목이 기본적으로 포함됩니다.
+#Compute power : 리눅스 서버나 웹 프로그램
+Storage : 저장 및 데이터베이스 역할
+Networking : 클라우드 제공사와 우리 회사의 사이의 안전한 연결" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/Azure/AzureTraining/Azure00/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2023-12-17T19:51:40+09:00" />
+
+<title>Az-900 : CloudComputing | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/cloud.search.min.e7d4ada8ab56cec131125ce564ab3359c701fd818d8ffbf4217d9fb1edf9a464.js" integrity="sha256-59StqKtWzsExElzlZKszWccB/YGNj/v0IX2fse35pGQ=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> Cloud
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Amazon Web Services</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-559739c10f554f33601ed16477a2a1bf" class="toggle"  />
+    <label for="section-559739c10f554f33601ed16477a2a1bf" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/" class="">AWS docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01214a43abe8217e4c31de26b69292b5" class="toggle"  />
+    <label for="section-01214a43abe8217e4c31de26b69292b5" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS%EB%9E%80/" class="">CloudComputing과 AWS</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320d3c2720542aa55c4c13bf4cf3944" class="toggle"  />
+    <label for="section-9320d3c2720542aa55c4c13bf4cf3944" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Computing/" class="">AWS Computing</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-687a5febe39299bf42a7f85877b9ae78" class="toggle"  />
+    <label for="section-687a5febe39299bf42a7f85877b9ae78" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Database/" class="">AWS Database</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3e9a856552b65c7cf2f94e7e9c8debe1" class="toggle"  />
+    <label for="section-3e9a856552b65c7cf2f94e7e9c8debe1" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Storage/" class="">AWS Storage</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb55c18d3622bc3e157902b5c3e80ab4" class="toggle"  />
+    <label for="section-eb55c18d3622bc3e157902b5c3e80ab4" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Network/" class="">AWS Network</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7828bef039f47afe761031f9f53dd372" class="toggle"  />
+    <label for="section-7828bef039f47afe761031f9f53dd372" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Migrate/" class="">AWS Migrate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5275748c5176f455992ccc16d91dab4f" class="toggle"  />
+    <label for="section-5275748c5176f455992ccc16d91dab4f" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Developer/" class="">AWS Developer</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d53f0d1594292910ed9a9197c4a4eb84" class="toggle"  />
+    <label for="section-d53f0d1594292910ed9a9197c4a4eb84" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Management/" class="">AWS Management</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e1956338f3b1917320dfaaf78c79fe4e" class="toggle"  />
+    <label for="section-e1956338f3b1917320dfaaf78c79fe4e" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Security/" class="">AWS Security</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e8ce18580cb61bc02dfdbad16e573703" class="toggle"  />
+    <label for="section-e8ce18580cb61bc02dfdbad16e573703" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AmazonWebService/AWS_Analysis/" class="">AWS Analysis</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aaf0c0f91cf79e707d750d3399578720" class="toggle"  />
+    <label for="section-aaf0c0f91cf79e707d750d3399578720" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/" class="">AWS Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34ff7a2d1c1132b8504c6f4e6a015f3b" class="toggle"  />
+    <label for="section-34ff7a2d1c1132b8504c6f4e6a015f3b" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/Start/" class="">AWS 시작하기</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-62db6ace5a8d9160add1cec57af1f390" class="toggle"  />
+    <label for="section-62db6ace5a8d9160add1cec57af1f390" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/IAM/" class="">AWS 사용자 계정 생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92936973728a32fff0609d14fc4623f" class="toggle"  />
+    <label for="section-d92936973728a32fff0609d14fc4623f" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/Cli/" class="">AWS CLI 활용</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1d474a464b70097646e91eea74d70ad5" class="toggle"  />
+    <label for="section-1d474a464b70097646e91eea74d70ad5" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/VPC/" class="">AWS 사용자 정의 VPC 생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d76d7cc323ae039c1b0f0a8bbb75dd8b" class="toggle"  />
+    <label for="section-d76d7cc323ae039c1b0f0a8bbb75dd8b" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/EC2/" class="">AWS EC2 생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5b0208072f17b2ad73c771bae4b9b14f" class="toggle"  />
+    <label for="section-5b0208072f17b2ad73c771bae4b9b14f" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/AMI/" class="">AWS AMI 생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-378a734dfe4ff63eb5bc3f1d69b36626" class="toggle"  />
+    <label for="section-378a734dfe4ff63eb5bc3f1d69b36626" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/EIP/" class="">AWS Elastic IP 할당</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27facc7c949755ae81fcd8d51a323966" class="toggle"  />
+    <label for="section-27facc7c949755ae81fcd8d51a323966" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/ELB/" class="">AWS ELB ( 2 Tier ) 생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-53dd89a6941007271039c624b455ad12" class="toggle"  />
+    <label for="section-53dd89a6941007271039c624b455ad12" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/AS/" class="">AWS AutoScaling</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8d31b17e4c1709dbbfefa52cd9553658" class="toggle"  />
+    <label for="section-8d31b17e4c1709dbbfefa52cd9553658" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/RDS/" class="">AWS RDS 생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c6fe286f3eaf6aaeb3ae6d49ef47ce6" class="toggle"  />
+    <label for="section-0c6fe286f3eaf6aaeb3ae6d49ef47ce6" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/3Tier/" class="">AWS 3Tier 구현</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4eed6e58a9cdb647e622986cc6f5845" class="toggle"  />
+    <label for="section-f4eed6e58a9cdb647e622986cc6f5845" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/S3/" class="">AWS S3 생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-14f06e2990e3289b99e7ff77817a00eb" class="toggle"  />
+    <label for="section-14f06e2990e3289b99e7ff77817a00eb" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/OwnCloud/" class="">AWS OwnCloud</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c1f89151b39397845d8f9d9699b61aff" class="toggle"  />
+    <label for="section-c1f89151b39397845d8f9d9699b61aff" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/CloudFormation/" class="">AWS CloudFormation</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-953395ef1cedfe312d27b98e93952d01" class="toggle"  />
+    <label for="section-953395ef1cedfe312d27b98e93952d01" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/NoServer/" class="">AWS 서버리스 사이트 구축</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5c227fcd1ae915a41ae4e4b4610e8d8d" class="toggle"  />
+    <label for="section-5c227fcd1ae915a41ae4e4b4610e8d8d" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/EBS/" class="">정리 중</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-af571bbbcb8eb4db068e46f6c1d212aa" class="toggle"  />
+    <label for="section-af571bbbcb8eb4db068e46f6c1d212aa" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/Cognito/" class="">AWS Cognito</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-66f6f2b37ecc79219a4e9d47ea8e4561" class="toggle"  />
+    <label for="section-66f6f2b37ecc79219a4e9d47ea8e4561" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/EC2Site/" class="">EC2 동적 사이트 구축</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-768658eee1293f83068a6b207ff96c54" class="toggle"  />
+    <label for="section-768658eee1293f83068a6b207ff96c54" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/ElasticBeanstalk/" class="">Elastic Beanstalk 사이트 구축</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0580b159571ac957954766b55c157773" class="toggle"  />
+    <label for="section-0580b159571ac957954766b55c157773" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/SES/" class="">AWS SES 메일 시스템 구축</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d038291309973e62c7b96fa61d4e3be3" class="toggle"  />
+    <label for="section-d038291309973e62c7b96fa61d4e3be3" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/AWS-Lambda-Crawling/" class="">AWS Lambda Crawling</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-53615f6aa0d8800e7bfe60663d8bd180" class="toggle"  />
+    <label for="section-53615f6aa0d8800e7bfe60663d8bd180" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSTraining/Game/" class="">EC2 끄투온라인 서버 구축</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f3fb864385111e956f94b2475a5e6a7" class="toggle"  />
+    <label for="section-7f3fb864385111e956f94b2475a5e6a7" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/" class="">AWS SAA 시험정리</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-060344b66e26cb0a5d4aba9f3ff39bea" class="toggle"  />
+    <label for="section-060344b66e26cb0a5d4aba9f3ff39bea" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-1/" class="">1장 AWS의 핵심 서비스</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-92010054b47d1673f2b76ac20f614049" class="toggle"  />
+    <label for="section-92010054b47d1673f2b76ac20f614049" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-2/" class="">2장 EC2와 EBS</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-32a1bfa2b573d79877958382e69b7141" class="toggle"  />
+    <label for="section-32a1bfa2b573d79877958382e69b7141" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-3/" class="">3장 S3와 Glacier</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bea4fd258fc97d2689ca370348188c48" class="toggle"  />
+    <label for="section-bea4fd258fc97d2689ca370348188c48" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-4/" class="">4장 VPC</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4f508fe2c26aa2081903911bf955f7a" class="toggle"  />
+    <label for="section-f4f508fe2c26aa2081903911bf955f7a" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-5/" class="">5장 데이터베이스</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7fb27fc0df8d2bc7c5627fb3eb5e7b77" class="toggle"  />
+    <label for="section-7fb27fc0df8d2bc7c5627fb3eb5e7b77" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-6/" class="">6장 인증과 권한</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-809eb9caeda3cc6945d6c6110ae0f704" class="toggle"  />
+    <label for="section-809eb9caeda3cc6945d6c6110ae0f704" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-15/" class="">15장 기출문제 정리</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b81d1feb51c6a90859d57e3f9a38f106" class="toggle"  />
+    <label for="section-b81d1feb51c6a90859d57e3f9a38f106" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-16/" class="">16장 기출문제(kr)</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cc0bc9fa6c33f67f704969ec918ba91f" class="toggle"  />
+    <label for="section-cc0bc9fa6c33f67f704969ec918ba91f" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA_all/" class="">aws SAA 총정리</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b0b79b646dc6dd20f5972c31b88da7d" class="toggle"  />
+    <label for="section-8b0b79b646dc6dd20f5972c31b88da7d" class="flex justify-between">
+      <a href="/cloud/docs/AWS/AWSSAA/SAA-17/" class="">SAA02-기출</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Microsoft Azure</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-927c873cfee05f2a43a22ba79adf98ad" class="toggle"  />
+    <label for="section-927c873cfee05f2a43a22ba79adf98ad" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/" class="">Azure docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d8e23e367846867ff2dd70b87d195601" class="toggle"  />
+    <label for="section-d8e23e367846867ff2dd70b87d195601" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure00/" class="">Azure Computing</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-72d9a856f74bc924d152a389b48d6a19" class="toggle"  />
+    <label for="section-72d9a856f74bc924d152a389b48d6a19" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure01/" class="">Azure Networking</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cf504011209bb894334c2d19b98e8e58" class="toggle"  />
+    <label for="section-cf504011209bb894334c2d19b98e8e58" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure02/" class="">Azure Mobile</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0cfad8112204738f1bddec2c244fcce6" class="toggle"  />
+    <label for="section-0cfad8112204738f1bddec2c244fcce6" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure10/" class="">Azure DataBase</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b8bac4f72dae1af470f8102f9a62f42" class="toggle"  />
+    <label for="section-8b8bac4f72dae1af470f8102f9a62f42" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure03/" class="">Azure Storage</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6cb11a4dafe0563b101bbf88b49f0293" class="toggle"  />
+    <label for="section-6cb11a4dafe0563b101bbf88b49f0293" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure04/" class="">Azure Web</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bc84b7a3c76111da03515dee13fbd3b1" class="toggle"  />
+    <label for="section-bc84b7a3c76111da03515dee13fbd3b1" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure05/" class="">Azure IoT</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-25d82e77d5c1efd075d9ad17104f5e90" class="toggle"  />
+    <label for="section-25d82e77d5c1efd075d9ad17104f5e90" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure06/" class="">Azure BigData</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0fd470d70174c43576e566967b7f9df3" class="toggle"  />
+    <label for="section-0fd470d70174c43576e566967b7f9df3" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure07/" class="">Azure AI</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b58853f52218823b034387b52bc49082" class="toggle"  />
+    <label for="section-b58853f52218823b034387b52bc49082" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure08/" class="">Azure DevOps</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-60279e6b8459cc67a52eb04d4c5a2217" class="toggle"  />
+    <label for="section-60279e6b8459cc67a52eb04d4c5a2217" class="flex justify-between">
+      <a href="/cloud/docs/Azure/MicrosoftAzure/Azure09/" class="">Azure HybridCloud</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d4ef60b12d064cf75e493d7efcc46321" class="toggle" checked />
+    <label for="section-d4ef60b12d064cf75e493d7efcc46321" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/" class="">Azure Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1fd6528ffd1fc1d3344a25fdbcf18a2d" class="toggle"  />
+    <label for="section-1fd6528ffd1fc1d3344a25fdbcf18a2d" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/Base/" class="">Azure </a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fb4fedd992f23cc083356953f59f4db8" class="toggle" checked />
+    <label for="section-fb4fedd992f23cc083356953f59f4db8" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/Azure00/" class="active">Az-900 : CloudComputing</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9cc7b2d5bb25a781a6d8349d712a0b29" class="toggle"  />
+    <label for="section-9cc7b2d5bb25a781a6d8349d712a0b29" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/Azure01/" class="">Az-900 : Region</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6d916aae1c4dfca72a5050400cd042e4" class="toggle"  />
+    <label for="section-6d916aae1c4dfca72a5050400cd042e4" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/Azure02/" class="">Az-900 : 관리옵션</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-89414bef906c9593c53b956e8e67255c" class="toggle"  />
+    <label for="section-89414bef906c9593c53b956e8e67255c" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/Azure12/" class="">Az-900 : 서비스</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-07bd101f0a78b4c8bddb47d9b3d5b2d8" class="toggle"  />
+    <label for="section-07bd101f0a78b4c8bddb47d9b3d5b2d8" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/az-900/" class="">Az-900 : 문제풀이</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-60acdac28114b86ad11fe4ed069c2a30" class="toggle"  />
+    <label for="section-60acdac28114b86ad11fe4ed069c2a30" class="flex justify-between">
+      <a href="/cloud/docs/Azure/AzureTraining/Base-copy-3/" class="">Azure 학생 계정생성</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>OPENSTACK</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-958818d82297c125835ffde4bc55ce36" class="toggle"  />
+    <label for="section-958818d82297c125835ffde4bc55ce36" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf3c7b654183e66cf657f2533957a235" class="toggle"  />
+    <label for="section-bf3c7b654183e66cf657f2533957a235" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c707c76d90b265fd4e34a33dc6e4e38e" class="toggle"  />
+    <label for="section-c707c76d90b265fd4e34a33dc6e4e38e" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-596f378b815aadd2f643dd06ff99495f" class="toggle"  />
+    <label for="section-596f378b815aadd2f643dd06ff99495f" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-335cc590d8d43983777985158915fb52" class="toggle"  />
+    <label for="section-335cc590d8d43983777985158915fb52" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a5cdd6e0dd32312f09aec1ccbacc2139" class="toggle"  />
+    <label for="section-a5cdd6e0dd32312f09aec1ccbacc2139" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd110a79a855af3c9def4603ad39e3b9" class="toggle"  />
+    <label for="section-cd110a79a855af3c9def4603ad39e3b9" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/cloud/docs/OpenStack/OpenStack/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-490115262e5408a36541008da48eb814" class="toggle"  />
+    <label for="section-490115262e5408a36541008da48eb814" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b71c39f638b95d6b88fb393ce0fa8aeb" class="toggle"  />
+    <label for="section-b71c39f638b95d6b88fb393ce0fa8aeb" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c4c96efccee29af70612e10bc74a333" class="toggle"  />
+    <label for="section-1c4c96efccee29af70612e10bc74a333" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-783af3d838e0ea844e44b8160a400c47" class="toggle"  />
+    <label for="section-783af3d838e0ea844e44b8160a400c47" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Trove/" class="">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b9222e989624a87db91d23bdf1d9b624" class="toggle"  />
+    <label for="section-b9222e989624a87db91d23bdf1d9b624" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3ed54991be35d45a47672de565c35876" class="toggle"  />
+    <label for="section-3ed54991be35d45a47672de565c35876" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ec44f321410e89e9aecc570b92e9c32d" class="toggle"  />
+    <label for="section-ec44f321410e89e9aecc570b92e9c32d" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStack/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ebc5d39ec3bd06fb22aedf07de32827" class="toggle"  />
+    <label for="section-7ebc5d39ec3bd06fb22aedf07de32827" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-46af6b678c7449bcc761d94e2b3f3da2" class="toggle"  />
+    <label for="section-46af6b678c7449bcc761d94e2b3f3da2" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-546828ebedbe31963e52101a20e88444" class="toggle"  />
+    <label for="section-546828ebedbe31963e52101a20e88444" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e1f352b3c29c4c0710842f009f129e5d" class="toggle"  />
+    <label for="section-e1f352b3c29c4c0710842f009f129e5d" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aed37743504c29532fa95922377fa059" class="toggle"  />
+    <label for="section-aed37743504c29532fa95922377fa059" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-acc37f7cb47c321fb28500c14089b56d" class="toggle"  />
+    <label for="section-acc37f7cb47c321fb28500c14089b56d" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4723eeea8514c90f09de769e8baf407" class="toggle"  />
+    <label for="section-b4723eeea8514c90f09de769e8baf407" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/" class="">OpenStack Ussuri : Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4c05c25994d3d04bae3ca787656e3aa0" class="toggle"  />
+    <label for="section-4c05c25994d3d04bae3ca787656e3aa0" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51fdaed4f40563928519119929f3547f" class="toggle"  />
+    <label for="section-51fdaed4f40563928519119929f3547f" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-334a3d59b5963ccb5051a66840f39fb8" class="toggle"  />
+    <label for="section-334a3d59b5963ccb5051a66840f39fb8" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" class="">OpenStack Ussuri : Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-162b6e1dd902e66ff54ba4b09e1ff60e" class="toggle"  />
+    <label for="section-162b6e1dd902e66ff54ba4b09e1ff60e" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-366ca67a71486e1337afd93037c8629f" class="toggle"  />
+    <label for="section-366ca67a71486e1337afd93037c8629f" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb593c6c61669faead03929e24820e89" class="toggle"  />
+    <label for="section-bb593c6c61669faead03929e24820e89" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-11/" class="">OpenStack Ussuri : Gnocch</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e5b0baf34e44eb0dfd94ddd9b60436c5" class="toggle"  />
+    <label for="section-e5b0baf34e44eb0dfd94ddd9b60436c5" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/" class="">OpenStack Ussuri : Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-07d092c6ebe226424c6a09f964f2e535" class="toggle"  />
+    <label for="section-07d092c6ebe226424c6a09f964f2e535" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dda8376df3a6b4ed39284324c8ed470" class="toggle"  />
+    <label for="section-8dda8376df3a6b4ed39284324c8ed470" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b91bf583628c5a4132d559d82b7dca34" class="toggle"  />
+    <label for="section-b91bf583628c5a4132d559d82b7dca34" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-15/" class="">OpenStack Ussuri : Rally</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd2973a1ee6b63eb7238ae7555089d8f" class="toggle"  />
+    <label for="section-cd2973a1ee6b63eb7238ae7555089d8f" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/" class="">OpenStack Ussuri : Manila</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-acbdb812b6498c963b7d1394a041cdd0" class="toggle"  />
+    <label for="section-acbdb812b6498c963b7d1394a041cdd0" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/Devstack/" class="">DevStack</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-59471b8b1646a9c95a4acb3d4a4b1fd5" class="toggle"  />
+    <label for="section-59471b8b1646a9c95a4acb3d4a4b1fd5" class="flex justify-between">
+      <a href="/cloud/docs/OpenStack/OpenStackTraining/Packstack/" class="">Packstack</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Az-900 : CloudComputing</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#az-900--cloudcomputing"><strong>Az-900 : CloudComputing</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li><a href="#클라우드-컴퓨팅"><strong>클라우드 컴퓨팅</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#클라우드-컴퓨팅-서비스"><strong>클라우드 컴퓨팅 서비스</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#컴퓨팅-기능"><strong>컴퓨팅 기능</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+    <li><a href="#heading-11"></a></li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a></li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#스토리지"><strong>스토리지</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a></li>
+    <li><a href="#heading-17"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#왜-클라우드-서비스인가-클라우드-컴퓨팅의-혜택"><strong>왜 클라우드 서비스인가? (클라우드 컴퓨팅의 혜택)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-18"></a></li>
+    <li><a href="#heading-19"></a></li>
+    <li><a href="#heading-20"></a></li>
+    <li><a href="#heading-21"></a></li>
+    <li><a href="#heading-22"></a></li>
+    <li><a href="#heading-23"></a></li>
+    <li><a href="#heading-24"></a></li>
+    <li><a href="#heading-25"></a></li>
+    <li><a href="#heading-26"></a></li>
+    <li><a href="#heading-27"></a></li>
+    <li><a href="#heading-28"></a></li>
+    <li><a href="#heading-29"></a></li>
+    <li><a href="#heading-30"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#클라우드-컴퓨팅의-주요-개념-및-용어"><strong>클라우드 컴퓨팅의 주요 개념 및 용어</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-31"></a></li>
+    <li><a href="#heading-32"></a></li>
+    <li><a href="#heading-33"></a></li>
+    <li><a href="#heading-34"></a></li>
+    <li><a href="#heading-35"></a></li>
+    <li><a href="#heading-36"></a></li>
+    <li><a href="#heading-37"></a></li>
+    <li><a href="#heading-38"></a></li>
+    <li><a href="#heading-39"></a></li>
+    <li><a href="#heading-40"></a></li>
+    <li><a href="#heading-41"></a></li>
+    <li><a href="#heading-42"></a></li>
+    <li><a href="#heading-43"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#규모의-경제"><strong>규모의 경제</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-44"></a></li>
+    <li><a href="#heading-45"></a></li>
+    <li><a href="#heading-46"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#capex-vs-opex"><strong>CapEx vs OpEx</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-47"></a></li>
+    <li><a href="#heading-48"></a></li>
+    <li><a href="#heading-49"></a></li>
+    <li><a href="#heading-50"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#클라우드의-소비-기반-모델"><strong>클라우드의 소비 기반 모델</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-51"></a></li>
+    <li><a href="#heading-52"></a></li>
+    <li><a href="#heading-53"></a>
+      <ul>
+        <li><a href="#클라우드-서비스의-종류"><strong>클라우드 서비스의 종류</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-54"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#퍼블릭-클라우드"><strong>퍼블릭 클라우드</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-55"></a></li>
+    <li><a href="#heading-56"></a></li>
+    <li><a href="#heading-57"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#프라이빗-클라우드"><strong>프라이빗 클라우드</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-58"></a></li>
+    <li><a href="#heading-59"></a></li>
+    <li><a href="#heading-60"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#하이브리드-클라우드"><strong>하이브리드 클라우드</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-61"></a></li>
+    <li><a href="#heading-62"></a></li>
+    <li><a href="#heading-63"></a>
+      <ul>
+        <li><a href="#클라우드-서비스의-유형"><strong>클라우드 서비스의 유형</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-64"></a></li>
+    <li><a href="#heading-65"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#공동-관리-책임의-범위"><strong>공동 관리 책임의 범위</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-66"></a></li>
+    <li><a href="#heading-67"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#on-premises"><strong>On Premises</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-68"></a></li>
+    <li><a href="#heading-69"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#infrastructure-as-a-server-iaas"><strong>Infrastructure as a Server (IaaS)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-70"></a></li>
+    <li><a href="#heading-71"></a></li>
+    <li><a href="#heading-72"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#platform-as-a-server-paas"><strong>Platform as a Server (PaaS)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-73"></a></li>
+    <li><a href="#heading-74"></a></li>
+    <li><a href="#heading-75"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#software-as-a-server-saas"><strong>Software as a Server (SaaS)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-76"></a></li>
+    <li><a href="#heading-77"></a></li>
+    <li><a href="#heading-78"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#각-클라우드-유형의-특징"><strong>각 클라우드 유형의 특징</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-79"></a></li>
+    <li><a href="#heading-80"></a></li>
+    <li><a href="#heading-81"></a></li>
+    <li><a href="#heading-82"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="az-900--cloudcomputing">
+  <strong>Az-900 : CloudComputing</strong>
+  <a class="anchor" href="#az-900--cloudcomputing">#</a>
+</h2>
+<hr>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<h2 id="클라우드-컴퓨팅">
+  <strong>클라우드 컴퓨팅</strong>
+  <a class="anchor" href="#%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%bb%b4%ed%93%a8%ed%8c%85">#</a>
+</h2>
+<h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>클라우드 컴퓨팅은 스토리지 공간이나 CPU 주기와 같은 리소스를 다른 회사의 컴퓨터에 대여하는 서비스이며 사용한 만큼의 요금만을 지불합니다.</strong></p>
+</li>
+<li>
+<p><strong>클라우드 공급 기업은 작업을 싱행하는 데 필요한 실제 하드웨어와 이 하드웨어를 최신 상태로 유지할 책임이 존재하며, 제공되는 컴퓨팅 서비스는 클라우드 공급자에 따라 달라지며, 일반적으로는 하단의 항목이 기본적으로 포함됩니다.</strong></p>
+</li>
+</ul>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>Compute power : 리눅스 서버나 웹 프로그램</strong></p>
+</li>
+<li>
+<p><strong>Storage : 저장 및 데이터베이스 역할</strong></p>
+</li>
+<li>
+<p><strong>Networking : 클라우드 제공사와 우리 회사의 사이의 안전한 연결</strong></p>
+</li>
+<li>
+<p><strong>Analytics : 이치 혹은 성능 데이터를 시각화</strong></p>
+</li>
+</ul>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<h3 id="클라우드-컴퓨팅-서비스">
+  <strong>클라우드 컴퓨팅 서비스</strong>
+  <a class="anchor" href="#%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%bb%b4%ed%93%a8%ed%8c%85-%ec%84%9c%eb%b9%84%ec%8a%a4">#</a>
+</h3>
+<h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<ul>
+<li><strong>클라우드 컴퓨팅의 목적은 소규모 신생 기업이든 대기업이든 상관없이 비즈니스를 보다 쉽고 효율적으로 운영할 수 있도록 만드는 것으로, 이러한 요구를 충족시키기 위해 클라우드 컴퓨팅 공급자는 광범위한 서비스를 제공합니다.</strong></li>
+</ul>
+<h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<h3 id="컴퓨팅-기능">
+  <strong>컴퓨팅 기능</strong>
+  <a class="anchor" href="#%ec%bb%b4%ed%93%a8%ed%8c%85-%ea%b8%b0%eb%8a%a5">#</a>
+</h3>
+<h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>이메일을 보내거나, 인터넷에서 예약을 하거나, 온라인으로 지불을 하거나, 심지어 Microsoft 학습 모듈을 사용할 때도 각 요청을 처리하고 응답을 반환하는 클아우드 기반 서버와 상호작용하게 되며, 기본적으로 인터넷을 구성하는 다양한 클라우드 공급 기업이 제공하는 컴퓨팅 서비스를 사용합니다.</strong></p>
+</li>
+<li>
+<p><strong>클라우드 컴퓨팅을 사용하여 솔루션을 빌드하는 경우 리소스 및 요구 사항에 따라 작업을 수행하는 방법을 선택할 수 있습니다.</strong></p>
+</li>
+<li>
+<p><strong>여기에서 컴퓨팅 기능의 종류에는 기본적으로 VM, 컨테이너, 서버리스 컴퓨팅으로 분리할 수 있습니다.</strong></p>
+<h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>VM</strong></p>
+<ul>
+<li><strong>VM은 클라우드 기업의 물리적 서버에서 가상 머신을 생성하여 해당 서버를 직접 사용하여 생성하는 서비스입니다.</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-10">
+  
+  <a class="anchor" href="#heading-10">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>컨테이너</strong></p>
+<ul>
+<li>
+<p><strong>컨테이너는 애플리케이션에 일관적이고 격리된 실행 환경을 제공하며, 게스트 운영체제가 필요하지 않은 점에서는 VM과 흡사하지만, 대신 애플리케이션과 몯느 해당 종속성이 컨테이너에 패키지된 다음, 표준 런타임 환경이 앱을 실행하는 데 사용됩니다.</strong></p>
+</li>
+<li>
+<p><strong>기본적으로 VM과의 가장 큰 차이는 운영체제의 유무에 대한 차이입니다.</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-11">
+  
+  <a class="anchor" href="#heading-11">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>서버리스 컴퓨팅</strong></p>
+<ul>
+<li>
+<p><strong>서버리스 컴퓨팅은 서버를 생성, 구성, 유지관리하지 않고 애플리케이션 코드를 실행하는 것이 가능합니다.</strong></p>
+</li>
+<li>
+<p><strong>서버리스 컴퓨팅의 핵심개념은 애플리케이션이 일부 작업에 의해 트리거될 때 실행되는 별도의 기능으로 분리된다는 점이며, 이는 자동화 작업에 이상적입니다.</strong></p>
+</li>
+<li>
+<p><strong>서버리스 모델은 기본적으로 사용하는 처리 시간에 대해서만 페이를 지불한다는 점에서 VM과 컨테이너와 성격이 다릅니다.</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-12">
+  
+  <a class="anchor" href="#heading-12">#</a>
+</h1>
+<ul>
+<li><strong>컴퓨팅 서비스 비교 다이어그램</strong></li>
+</ul>
+<p>
+  <img src="/images/Azure/Azure/Azure100.png" alt="" /></p>
+<h1 id="heading-13">
+  
+  <a class="anchor" href="#heading-13">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-14">
+  
+  <a class="anchor" href="#heading-14">#</a>
+</h1>
+<h3 id="스토리지">
+  <strong>스토리지</strong>
+  <a class="anchor" href="#%ec%8a%a4%ed%86%a0%eb%a6%ac%ec%a7%80">#</a>
+</h3>
+<h1 id="heading-15">
+  
+  <a class="anchor" href="#heading-15">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>대부분의 디바이스 및 애플리케이션은 데이터를 읽고 사용합니다. 이러한 모든 경우의 데이터는 데이터를 읽거나, 쓰여지며 이에 딸느 데이터이 유형 및 저장방식은 경우의 마다 다를 수 있습니다.</strong></p>
+</li>
+<li>
+<p><strong>일반적으로 클라우드 공급자는 이러한 모든 유형의 데이터를 처리할 수 있는 서비스를 제공하며, 클라우드 기반 데이터 스토리지는 사용자의 요구 사항에 맞게 확장할 수 있다는 장점이 있습니다.</strong></p>
+</li>
+<li>
+<p><strong>예를 들면 자동적으로 저장공간을 확장 및 줄일 수 있으며 백업 파일을 저장할 수도 있습니다.</strong></p>
+</li>
+</ul>
+<h1 id="heading-16">
+  
+  <a class="anchor" href="#heading-16">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-17">
+  
+  <a class="anchor" href="#heading-17">#</a>
+</h1>
+<h3 id="왜-클라우드-서비스인가-클라우드-컴퓨팅의-혜택">
+  <strong>왜 클라우드 서비스인가? (클라우드 컴퓨팅의 혜택)</strong>
+  <a class="anchor" href="#%ec%99%9c-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%b8%ea%b0%80-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%bb%b4%ed%93%a8%ed%8c%85%ec%9d%98-%ed%98%9c%ed%83%9d">#</a>
+</h3>
+<h1 id="heading-18">
+  
+  <a class="anchor" href="#heading-18">#</a>
+</h1>
+<ul>
+<li><strong>기본적으로 클라우드 서비스를 사용하는 것은 기존 비즈니스의 인프라 및 관리 비용을 점가하기 위해 사용하지만, 이는 순전히 선택사항입니다.</strong></li>
+<li><strong>하단은 클라우드 서비스를 사용하는 이점을 나타냅니다.</strong></li>
+</ul>
+<h1 id="heading-19">
+  
+  <a class="anchor" href="#heading-19">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-20">
+  
+  <a class="anchor" href="#heading-20">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>비용효과적</strong></p>
+<ul>
+<li>
+<p><strong>클라우드 컴퓨팅은 종량제 또는 사용량 기반 가격 책정 모델을 제공합니다.</strong></p>
+</li>
+<li>
+<p><strong>즉, 선불 인프라 비용이 없으며, 사용하지 않는 경우 비용이 청구되지 않아 비용을 절약할 수 있습니다.</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-21">
+  
+  <a class="anchor" href="#heading-21">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>확장가능</strong></p>
+<ul>
+<li>
+<p><strong>주말과 같은 특정 시간의 수요 또는 워크로드에 따라 사용되는 리소스와 서비스를 늘리거나 줄일 수 있습니다.</strong></p>
+</li>
+<li>
+<p><strong>클라우드 서비스는 수직적, 수평적 크기 조정을 둘다 지원하며 수직적 크기 조정은 Scale UP, 수평적 크기 조정은 Scale OUT이라 합니다.</strong></p>
+</li>
+<li>
+<p><strong>Scale UP은 한 서버에 리소스 추가시키는 것을 의미하며, Scale OUT은 서버를 여러 대 생성하여 트래픽을 분산시키는 것을 의미합니다.</strong></p>
+</li>
+<li>
+<p><strong>이와 같은 기능들을 자동적으로 수행됩니다.</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-22">
+  
+  <a class="anchor" href="#heading-22">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>탄력적</strong></p>
+<ul>
+<li><strong>수요 급증 또는 급감으로 인해 워크로드가 변경되면 클라우드 컴퓨팅 시스템은 자동으로 리소스를 추가하거나 제거하여 보정이 가능합니다.</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-23">
+  
+  <a class="anchor" href="#heading-23">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>최신상태</strong></p>
+<ul>
+<li><strong>클라우드를 사용하면 애플리케이션을 빌드하고 배포하는 중요한 작업에 집중할 수 있습니다. 클라우드를 사용하면 소프트웨어 패치, 하드웨어 설치, 업그레이드 및 기타 IT 관리 작업을 유지 관리해야하는 부담을 줄일 수 있습니다.</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-24">
+  
+  <a class="anchor" href="#heading-24">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>안정적</strong></p>
+<ul>
+<li><strong>클라우드는 컴퓨팅 공급자가 안정적으로 데이터를 유지할 수 있도록 백업, 재해 복구 및 데이터 복제 서비스를 제공하며, 장애가 발생하면 백업 구성 요소가 댓니 사용되며, 이를 내결함성이라 합니다.</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-25">
+  
+  <a class="anchor" href="#heading-25">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>전 세계 어디서든 사용가능</strong></p>
+<ul>
+<li><strong>클라우드 공급 기업은 전 세계의 다양한 지역에 완벽하게 증복된 데이터 센터를 갖추고 있으며, 이로 가능한 최적의 응답 시간을 제공할 수 있습니다.</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-26">
+  
+  <a class="anchor" href="#heading-26">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>안전함</strong></p>
+<ul>
+<li><strong>클라우드 공급자는 대부분의 조직에서 달성할 수 있는 것보다 더 낭느 보안을 제공할 수 있는 광범위한 정책, 기술, 제어 및 전문 기술을 제공합니다.</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-27">
+  
+  <a class="anchor" href="#heading-27">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>이를 온-프레미스의 환경과 비교해보면 하단의 장점들을 가지고 있습니다.</strong></p>
+<ul>
+<li>
+<p><strong>온-프레미스 환경은 고정비용이지만 퍼블릭 환경은 유동적으로 비용우위를 가질 수 있다.</strong></p>
+</li>
+<li>
+<p><strong>온-프레미스 환경에서는 테스트 서버의 세팅에 많은 시간이 걸리지만, 퍼블릭 환경에서는 빠른 시간 내에 세팅이 가능한 생산성의 우위를 가질 수 있다.</strong></p>
+</li>
+<li>
+<p><strong>이미 퍼블릭환경에서는 패키지로 플랫폼을 제공하기 때문에 직접 설치할 필요가 없어 진입장벽이 온-프레미스 환경에 비해서 낮다.</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-28">
+  
+  <a class="anchor" href="#heading-28">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>이와 같이 Azure는 여러 규정 준수 조건 및 요구 사항을 각 나라의 맞춰 설계되어있습니다.</strong></p>
+</li>
+<li>
+<p><strong>
+  <a href="https://docs.microsoft.com/ko-kr/learn/modules/principles-cloud-computing/3a-compliance">규정 준수 참조</a></strong></p>
+</li>
+</ul>
+<h1 id="heading-29">
+  
+  <a class="anchor" href="#heading-29">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-30">
+  
+  <a class="anchor" href="#heading-30">#</a>
+</h1>
+<h3 id="클라우드-컴퓨팅의-주요-개념-및-용어">
+  <strong>클라우드 컴퓨팅의 주요 개념 및 용어</strong>
+  <a class="anchor" href="#%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%bb%b4%ed%93%a8%ed%8c%85%ec%9d%98-%ec%a3%bc%ec%9a%94-%ea%b0%9c%eb%85%90-%eb%b0%8f-%ec%9a%a9%ec%96%b4">#</a>
+</h3>
+<h1 id="heading-31">
+  
+  <a class="anchor" href="#heading-31">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>위와 같이 클라우드 컴퓨팅의 가장 큰 특징은 탄력적이라는 면에 있으며, 과거 보안적인 문제도 점차 해결되어 가고 있습니다.</strong></p>
+</li>
+<li>
+<p><strong>하단의 개념들은 현재 클라우드 컴퓨팅의 핵심이 되는 개념들을 나열한 것입니다.</strong></p>
+<h1 id="heading-32">
+  
+  <a class="anchor" href="#heading-32">#</a>
+</h1>
+<ul>
+<li><strong>내결함성 (Fault tolerance) : 특정 문제가 발생시에 에러를 복구하는 정도</strong></li>
+</ul>
+<h1 id="heading-33">
+  
+  <a class="anchor" href="#heading-33">#</a>
+</h1>
+<ul>
+<li><strong>고 가용성 (High availability) : 문제가 발생시에도 적은 다운타임으로 서비스를 제공할 수 있는 개념</strong></li>
+</ul>
+<h1 id="heading-34">
+  
+  <a class="anchor" href="#heading-34">#</a>
+</h1>
+<ul>
+<li><strong>재해 복구 (Disaster recovery) : 물리적으로 자연재해의 영향을 미치지 않는 장소에 서비스에 영향을 주지 않도록 구성하는 개념</strong></li>
+</ul>
+<h1 id="heading-35">
+  
+  <a class="anchor" href="#heading-35">#</a>
+</h1>
+<ul>
+<li><strong>확장성 (Scalability) : 서비스의 추가 자원이 필요할 시 보다 쉽게 자원을 추가하여 서비스를 제공할 수 있는 개념</strong></li>
+</ul>
+<h1 id="heading-36">
+  
+  <a class="anchor" href="#heading-36">#</a>
+</h1>
+<ul>
+<li><strong>민첩성 (Agility) : 특정 서비스의 필요 자원에 따라 자원을 추가&amp; 감소를 빠른 속도로 이루는 개념</strong></li>
+</ul>
+<h1 id="heading-37">
+  
+  <a class="anchor" href="#heading-37">#</a>
+</h1>
+<ul>
+<li><strong>탄력성 (Elasticity) : 확장성과 비슷하다 할 수 있지만, 확장성과의 차이는 여유분의 자원이 남는 서비스의 자원을 수축하여 자원을 효율적으로 관리할 수 있는 개념</strong></li>
+</ul>
+<h1 id="heading-38">
+  
+  <a class="anchor" href="#heading-38">#</a>
+</h1>
+<ul>
+<li><strong>글로벌 지원(Global reach) : 해외의 데이터 센터들을 활용하여 해외의 서비스를 제공할 수 있다는 개념</strong></li>
+</ul>
+<h1 id="heading-39">
+  
+  <a class="anchor" href="#heading-39">#</a>
+</h1>
+<ul>
+<li><strong>응답 속도(Customer latency) : 해외의 여러 엔드 유저들에게도 적절한 리소스를 배치시켜 빠른 속도로 서비스를 제공해 줄 수 있는 개념</strong></li>
+</ul>
+<h1 id="heading-40">
+  
+  <a class="anchor" href="#heading-40">#</a>
+</h1>
+<ul>
+<li><strong>예측 비용(Predictive cost): 클라우드는 기본적으로 사용한 만큼의 과금할 수 있는 구조로 이루어져있어, 적절하게 비용의 에측이 가능하다는 개념</strong></li>
+</ul>
+<h1 id="heading-41">
+  
+  <a class="anchor" href="#heading-41">#</a>
+</h1>
+<ul>
+<li><strong>보안 (Security) : 각 나라의 지역적인 규제나 정책, 준수사항 등을 만족하도록 구현한다는 개념</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-42">
+  
+  <a class="anchor" href="#heading-42">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-43">
+  
+  <a class="anchor" href="#heading-43">#</a>
+</h1>
+<h3 id="규모의-경제">
+  <strong>규모의 경제</strong>
+  <a class="anchor" href="#%ea%b7%9c%eb%aa%a8%ec%9d%98-%ea%b2%bd%ec%a0%9c">#</a>
+</h3>
+<h1 id="heading-44">
+  
+  <a class="anchor" href="#heading-44">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>규모 경제의 개념은 작은 규모로 운영하는 것에 비해 큰 규모로 운용할 때 효율적으로 작업을 수행할 수 있는 능력을 제공하는 개념입니다.</strong></p>
+</li>
+<li>
+<p><strong>클라우드는 큰 규모로 진행하기에, 낮은 비용 대비 고효율의 제공이 가능하는 것이 가능합니다.</strong></p>
+</li>
+</ul>
+<h1 id="heading-45">
+  
+  <a class="anchor" href="#heading-45">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-46">
+  
+  <a class="anchor" href="#heading-46">#</a>
+</h1>
+<h3 id="capex-vs-opex">
+  <strong>CapEx vs OpEx</strong>
+  <a class="anchor" href="#capex-vs-opex">#</a>
+</h3>
+<h1 id="heading-47">
+  
+  <a class="anchor" href="#heading-47">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>자본 지출 : Capital Expenditure (CapEx)</strong></p>
+<ul>
+<li>
+<p><strong>물리적 인프라에 대한 지출을 선불로 지불</strong></p>
+</li>
+<li>
+<p><strong>시간이 지남에 따라 세금 계산서에서 비용을 공제</strong></p>
+</li>
+<li>
+<p><strong>높은 초기 비용, 투자 가치는 시간이 지남에 따라 감소</strong></p>
+</li>
+<li>
+<p><strong>기본적으로 일반적으로 CapEx 온-프레미스 데이터 센터에는 다음과 같은 비용이 포합됩니다.</strong></p>
+<ul>
+<li>
+<p><strong>서버 비용</strong></p>
+</li>
+<li>
+<p><strong>스토리지 비용</strong></p>
+</li>
+<li>
+<p><strong>네트워크 비용</strong></p>
+</li>
+<li>
+<p><strong>백업 및 보관 비용</strong></p>
+</li>
+<li>
+<p><strong>조직 연속성 및 재해 복구 비용</strong></p>
+</li>
+<li>
+<p><strong>데이터 센터 인프라 비용</strong></p>
+</li>
+<li>
+<p><strong>기술 인력</strong></p>
+</li>
+<li>
+<p><strong>OpEx 클라우드 컴퓨팅 비용</strong></p>
+</li>
+<li>
+<p><strong>임대 소프트에어 및 사용자 지정된 기능</strong></p>
+</li>
+<li>
+<p><strong>고정 하드웨어나 용량 대신 사용/ 수요에 따라 요금을 조정</strong></p>
+</li>
+<li>
+<p><strong>사용자 또는 조직 수준의 청구</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>이와 같이 CapEx는 시작 단계에서 비용을 계획하기 때문에, 제한된 예산으로 인해 프로젝트를 시작하기 전에 비용을 예측해야 하는 경우에 유용합니다.</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-48">
+  
+  <a class="anchor" href="#heading-48">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>운영 비용: Operational Expenditure (OpEx)</strong></p>
+</li>
+<li>
+<p><strong>수요의 따른 시간, 비용 그래프</strong>
+
+  <img src="/images/Azure/Azure/Azure101.png" alt="" /></p>
+<ul>
+<li>
+<p><strong>CapEx와 달리 초기 비용이 아닌, 필요에 따라 서비스 또는 제품에 지출되고 즉시 청구</strong></p>
+</li>
+<li>
+<p><strong>같은 해에 세금 계산서에서 비용을 제공</strong></p>
+</li>
+<li>
+<p><strong>선 결제 비용이 없고, 종량제 사용</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-49">
+  
+  <a class="anchor" href="#heading-49">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-50">
+  
+  <a class="anchor" href="#heading-50">#</a>
+</h1>
+<h3 id="클라우드의-소비-기반-모델">
+  <strong>클라우드의 소비 기반 모델</strong>
+  <a class="anchor" href="#%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c%ec%9d%98-%ec%86%8c%eb%b9%84-%ea%b8%b0%eb%b0%98-%eb%aa%a8%eb%8d%b8">#</a>
+</h3>
+<h1 id="heading-51">
+  
+  <a class="anchor" href="#heading-51">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>소비 기반 모델 : Consumption-based model</strong></p>
+<ul>
+<li>
+<p><strong>선 결제 비용이 존재하지 않음</strong></p>
+</li>
+<li>
+<p><strong>비용이 많은 드는 인프라를 구매하고 관리할 필요가 없음음</strong></p>
+</li>
+<li>
+<p><strong>필요할 시에만 사용하며, 필요하지 않으면 서비스를 중지할 수 있음</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-52">
+  
+  <a class="anchor" href="#heading-52">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-53">
+  
+  <a class="anchor" href="#heading-53">#</a>
+</h1>
+<h2 id="클라우드-서비스의-종류">
+  <strong>클라우드 서비스의 종류</strong>
+  <a class="anchor" href="#%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%a2%85%eb%a5%98">#</a>
+</h2>
+<h1 id="heading-54">
+  
+  <a class="anchor" href="#heading-54">#</a>
+</h1>
+<h3 id="퍼블릭-클라우드">
+  <strong>퍼블릭 클라우드</strong>
+  <a class="anchor" href="#%ed%8d%bc%eb%b8%94%eb%a6%ad-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">#</a>
+</h3>
+<h1 id="heading-55">
+  
+  <a class="anchor" href="#heading-55">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>클라우드 서비스 또는 호스팅 공급자가 소유</strong></p>
+</li>
+<li>
+<p><strong>여러 조직과 사용자에게 리소스와 서비스를 제공</strong></p>
+</li>
+<li>
+<p><strong>보안 네트워크 연결을 통해 접근 (일반적으로 인터넷으르 통해 접근)</strong></p>
+</li>
+<li>
+<p><strong>중요한 데이터 등의 대한 관리문제가 존재할 수 있음</strong></p>
+</li>
+<li>
+<p><strong>특징</strong></p>
+<ul>
+<li>
+<p><strong>CapEx 없음</strong></p>
+</li>
+<li>
+<p><strong>응용 프로그램에 빠르게 엑세스가 가능한 민첩성을 가질 수 있음</strong></p>
+</li>
+<li>
+<p><strong>클라우드 공급자가 일정 부분의 책임을 짐</strong></p>
+</li>
+<li>
+<p><strong>소비 기반 모델</strong></p>
+</li>
+<li>
+<p><strong>제한적인 요소로 인해클라이언트의 요구사항을 충족할 수 없는 경우가 발생할 수 있음</strong></p>
+</li>
+<li>
+<p><strong>완전 자유롭게 관리하는 것이 사실상 불가능</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-56">
+  
+  <a class="anchor" href="#heading-56">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-57">
+  
+  <a class="anchor" href="#heading-57">#</a>
+</h1>
+<h3 id="프라이빗-클라우드">
+  <strong>프라이빗 클라우드</strong>
+  <a class="anchor" href="#%ed%94%84%eb%9d%bc%ec%9d%b4%eb%b9%97-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">#</a>
+</h3>
+<h1 id="heading-58">
+  
+  <a class="anchor" href="#heading-58">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>클라우드 리소스를 사용하는 조직이 소유 및 운영을 관리</strong></p>
+</li>
+<li>
+<p><strong>조직은 자신들만의 데이터 센터에 클라우드 환경을 구축</strong></p>
+</li>
+<li>
+<p><strong>조직에게 본인들이 제공하는 서비스를 운영할 책이 존재</strong></p>
+</li>
+<li>
+<p><strong>특징</strong></p>
+<ul>
+<li>
+<p><strong>제어력</strong></p>
+</li>
+<li>
+<p><strong>보안</strong></p>
+</li>
+<li>
+<p><strong>초기의 CapEx 비용이 존재하며, 유지 관리를 위해 하드웨어를 추가구매할 경우가 발생</strong></p>
+</li>
+<li>
+<p><strong>추가구매로 인한 민첩성이 제한을 받음</strong></p>
+</li>
+<li>
+<p><strong>프라이빗 클라우드는 기본적으로 전문적인 IT 기술 및 전문 지식이 필요</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-59">
+  
+  <a class="anchor" href="#heading-59">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-60">
+  
+  <a class="anchor" href="#heading-60">#</a>
+</h1>
+<h3 id="하이브리드-클라우드">
+  <strong>하이브리드 클라우드</strong>
+  <a class="anchor" href="#%ed%95%98%ec%9d%b4%eb%b8%8c%eb%a6%ac%eb%93%9c-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">#</a>
+</h3>
+<h1 id="heading-61">
+  
+  <a class="anchor" href="#heading-61">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>공용 및 사설 클라우드를 결합하여 응용 프로그램이 가장 적합한 위치에서 실행되도록 하는 클라우드 서비스</strong></p>
+</li>
+<li>
+<p><strong>비용적인 측면에서는 높을 수 있음</strong></p>
+</li>
+<li>
+<p><strong>특징</strong></p>
+<ul>
+<li>
+<p><strong>유동성</strong></p>
+</li>
+<li>
+<p><strong>준수성</strong></p>
+</li>
+<li>
+<p><strong>설정 및 관리가 복잡해질 수 있으며 전문적인 인재가 필요</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-62">
+  
+  <a class="anchor" href="#heading-62">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-63">
+  
+  <a class="anchor" href="#heading-63">#</a>
+</h1>
+<h2 id="클라우드-서비스의-유형">
+  <strong>클라우드 서비스의 유형</strong>
+  <a class="anchor" href="#%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%9c%a0%ed%98%95">#</a>
+</h2>
+<h1 id="heading-64">
+  
+  <a class="anchor" href="#heading-64">#</a>
+</h1>
+<ul>
+<li><strong>공동 관리 책임 (Shared responsibility model)</strong></li>
+</ul>
+<h1 id="heading-65">
+  
+  <a class="anchor" href="#heading-65">#</a>
+</h1>
+<p> </p>
+<h3 id="공동-관리-책임의-범위">
+  <strong>공동 관리 책임의 범위</strong>
+  <a class="anchor" href="#%ea%b3%b5%eb%8f%99-%ea%b4%80%eb%a6%ac-%ec%b1%85%ec%9e%84%ec%9d%98-%eb%b2%94%ec%9c%84">#</a>
+</h3>
+<h1 id="heading-66">
+  
+  <a class="anchor" href="#heading-66">#</a>
+</h1>
+<p>
+  <img src="/images/Azure/Azure1.png" alt="" /></p>
+<h1 id="heading-67">
+  
+  <a class="anchor" href="#heading-67">#</a>
+</h1>
+<h3 id="on-premises">
+  <strong>On Premises</strong>
+  <a class="anchor" href="#on-premises">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>온-프레미스는 모든 책임을 사용자가 가짐</strong></p>
+</li>
+<li>
+<p><strong>이아스는 네트워킹, 스토리지, 컴퓨팅 외에는 모든 책임을 사용자가 가짐</strong></p>
+</li>
+<li>
+<p><strong>PaaS</strong></p>
+</li>
+<li>
+<p><strong>사스는 대부분 클라우드 벤더에서 책임을 지며 데이터와 접근권한만을 책임을 가짐</strong></p>
+</li>
+</ul>
+<h1 id="heading-68">
+  
+  <a class="anchor" href="#heading-68">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-69">
+  
+  <a class="anchor" href="#heading-69">#</a>
+</h1>
+<h3 id="infrastructure-as-a-server-iaas">
+  <strong>Infrastructure as a Server (IaaS)</strong>
+  <a class="anchor" href="#infrastructure-as-a-server-iaas">#</a>
+</h3>
+<h1 id="heading-70">
+  
+  <a class="anchor" href="#heading-70">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>가장 기본적인 클라우드 컴퓨텅 서비스의 범주 (흔히 우리가 아는 Vm)</strong></p>
+</li>
+<li>
+<p><strong>클라우드 공급자로부터 가상머신, 스토리지, 네트워크 및 운영 체제를 대여</strong></p>
+</li>
+<li>
+<p><strong>네트워크를 통해 프로비저닝 받는 서비스</strong></p>
+</li>
+</ul>
+<h1 id="heading-71">
+  
+  <a class="anchor" href="#heading-71">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-72">
+  
+  <a class="anchor" href="#heading-72">#</a>
+</h1>
+<h3 id="platform-as-a-server-paas">
+  <strong>Platform as a Server (PaaS)</strong>
+  <a class="anchor" href="#platform-as-a-server-paas">#</a>
+</h3>
+<h1 id="heading-73">
+  
+  <a class="anchor" href="#heading-73">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>소프트웨어 응용 프로그램을 개발, 테스트 미 배포하기 위한 환경을 제공하는 서비스</strong></p>
+</li>
+<li>
+<p><strong>기본적으로 개발환경과 비슷하며 인프라 관리에 신경쓰지 않고, 응용 프로그램을 신속하게 만들 수 있도록 제공하는 서비스</strong></p>
+</li>
+</ul>
+<h1 id="heading-74">
+  
+  <a class="anchor" href="#heading-74">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-75">
+  
+  <a class="anchor" href="#heading-75">#</a>
+</h1>
+<h3 id="software-as-a-server-saas">
+  <strong>Software as a Server (SaaS)</strong>
+  <a class="anchor" href="#software-as-a-server-saas">#</a>
+</h3>
+<h1 id="heading-76">
+  
+  <a class="anchor" href="#heading-76">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>최종 사용자를 위해 중앙에서 호스팅 되고 관리되는 소프트웨어</strong></p>
+</li>
+<li>
+<p><strong>인터넷을 통해 클라우드 기반 앱에 연결하여 사용</strong></p>
+</li>
+</ul>
+<h1 id="heading-77">
+  
+  <a class="anchor" href="#heading-77">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-78">
+  
+  <a class="anchor" href="#heading-78">#</a>
+</h1>
+<h3 id="각-클라우드-유형의-특징">
+  <strong>각 클라우드 유형의 특징</strong>
+  <a class="anchor" href="#%ea%b0%81-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c-%ec%9c%a0%ed%98%95%ec%9d%98-%ed%8a%b9%ec%a7%95">#</a>
+</h3>
+<h1 id="heading-79">
+  
+  <a class="anchor" href="#heading-79">#</a>
+</h1>
+<ul>
+<li>
+<p><strong>IaaS(유동성)</strong></p>
+<ul>
+<li>
+<p><strong>IaaS는 가장 유연한 클라우드 서비스</strong></p>
+</li>
+<li>
+<p><strong>애플리케이션을 실행하는 운영체제를 구성하고 관리할 수 있는 제어력을 가지고 있음</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-80">
+  
+  <a class="anchor" href="#heading-80">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>PaaS(생산성)</strong></p>
+<ul>
+<li>
+<p><strong>사용자는 응용 프로글매 개발에만 집중할 수 있음</strong></p>
+</li>
+<li>
+<p><strong>플랫폼 관리는 클라우드 공급자가 처리</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-81">
+  
+  <a class="anchor" href="#heading-81">#</a>
+</h1>
+<p> </p>
+<ul>
+<li>
+<p><strong>SaaS(종량제)</strong></p>
+<ul>
+<li><strong>사용자는 자신의 서비스에서 사용하는 소프트웨어에 대한 비용만 지불</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-82">
+  
+  <a class="anchor" href="#heading-82">#</a>
+</h1>
+<p> </p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>December 17, 2023</span>
+    </a>
+  </div>
+
+
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Cloud/docs/Azure/AzureTraining/Azure00.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#az-900--cloudcomputing"><strong>Az-900 : CloudComputing</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li><a href="#클라우드-컴퓨팅"><strong>클라우드 컴퓨팅</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#클라우드-컴퓨팅-서비스"><strong>클라우드 컴퓨팅 서비스</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#컴퓨팅-기능"><strong>컴퓨팅 기능</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+    <li><a href="#heading-11"></a></li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a></li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#스토리지"><strong>스토리지</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a></li>
+    <li><a href="#heading-17"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#왜-클라우드-서비스인가-클라우드-컴퓨팅의-혜택"><strong>왜 클라우드 서비스인가? (클라우드 컴퓨팅의 혜택)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-18"></a></li>
+    <li><a href="#heading-19"></a></li>
+    <li><a href="#heading-20"></a></li>
+    <li><a href="#heading-21"></a></li>
+    <li><a href="#heading-22"></a></li>
+    <li><a href="#heading-23"></a></li>
+    <li><a href="#heading-24"></a></li>
+    <li><a href="#heading-25"></a></li>
+    <li><a href="#heading-26"></a></li>
+    <li><a href="#heading-27"></a></li>
+    <li><a href="#heading-28"></a></li>
+    <li><a href="#heading-29"></a></li>
+    <li><a href="#heading-30"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#클라우드-컴퓨팅의-주요-개념-및-용어"><strong>클라우드 컴퓨팅의 주요 개념 및 용어</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-31"></a></li>
+    <li><a href="#heading-32"></a></li>
+    <li><a href="#heading-33"></a></li>
+    <li><a href="#heading-34"></a></li>
+    <li><a href="#heading-35"></a></li>
+    <li><a href="#heading-36"></a></li>
+    <li><a href="#heading-37"></a></li>
+    <li><a href="#heading-38"></a></li>
+    <li><a href="#heading-39"></a></li>
+    <li><a href="#heading-40"></a></li>
+    <li><a href="#heading-41"></a></li>
+    <li><a href="#heading-42"></a></li>
+    <li><a href="#heading-43"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#규모의-경제"><strong>규모의 경제</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-44"></a></li>
+    <li><a href="#heading-45"></a></li>
+    <li><a href="#heading-46"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#capex-vs-opex"><strong>CapEx vs OpEx</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-47"></a></li>
+    <li><a href="#heading-48"></a></li>
+    <li><a href="#heading-49"></a></li>
+    <li><a href="#heading-50"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#클라우드의-소비-기반-모델"><strong>클라우드의 소비 기반 모델</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-51"></a></li>
+    <li><a href="#heading-52"></a></li>
+    <li><a href="#heading-53"></a>
+      <ul>
+        <li><a href="#클라우드-서비스의-종류"><strong>클라우드 서비스의 종류</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-54"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#퍼블릭-클라우드"><strong>퍼블릭 클라우드</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-55"></a></li>
+    <li><a href="#heading-56"></a></li>
+    <li><a href="#heading-57"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#프라이빗-클라우드"><strong>프라이빗 클라우드</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-58"></a></li>
+    <li><a href="#heading-59"></a></li>
+    <li><a href="#heading-60"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#하이브리드-클라우드"><strong>하이브리드 클라우드</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-61"></a></li>
+    <li><a href="#heading-62"></a></li>
+    <li><a href="#heading-63"></a>
+      <ul>
+        <li><a href="#클라우드-서비스의-유형"><strong>클라우드 서비스의 유형</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-64"></a></li>
+    <li><a href="#heading-65"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#공동-관리-책임의-범위"><strong>공동 관리 책임의 범위</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-66"></a></li>
+    <li><a href="#heading-67"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#on-premises"><strong>On Premises</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-68"></a></li>
+    <li><a href="#heading-69"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#infrastructure-as-a-server-iaas"><strong>Infrastructure as a Server (IaaS)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-70"></a></li>
+    <li><a href="#heading-71"></a></li>
+    <li><a href="#heading-72"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#platform-as-a-server-paas"><strong>Platform as a Server (PaaS)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-73"></a></li>
+    <li><a href="#heading-74"></a></li>
+    <li><a href="#heading-75"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#software-as-a-server-saas"><strong>Software as a Server (SaaS)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-76"></a></li>
+    <li><a href="#heading-77"></a></li>
+    <li><a href="#heading-78"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#각-클라우드-유형의-특징"><strong>각 클라우드 유형의 특징</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-79"></a></li>
+    <li><a href="#heading-80"></a></li>
+    <li><a href="#heading-81"></a></li>
+    <li><a href="#heading-82"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

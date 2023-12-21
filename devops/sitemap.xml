@@ -47,8 +47,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/categories/"
+                hreflang="cloud"
+                href="http://mungdocs.kro.kr/cloud/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -62,13 +62,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="cloud"
-                href="http://mungdocs.kro.kr/cloud/categories/"
+                hreflang="database"
+                href="http://mungdocs.kro.kr/database/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="database"
-                href="http://mungdocs.kro.kr/database/categories/"
+                hreflang="programing"
+                href="http://mungdocs.kro.kr/programing/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -85,13 +85,18 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/docs/"
+                hreflang="cloud"
+                href="http://mungdocs.kro.kr/cloud/docs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="system"
                 href="http://mungdocs.kro.kr/system/docs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="programing"
+                href="http://mungdocs.kro.kr/programing/docs/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -103,13 +108,13 @@
     <lastmod>2023-11-27T21:32:06+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/"
+                hreflang="main"
+                href="http://mungdocs.kro.kr/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="main"
-                href="http://mungdocs.kro.kr/"
+                hreflang="cloud"
+                href="http://mungdocs.kro.kr/cloud/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -123,13 +128,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="cloud"
-                href="http://mungdocs.kro.kr/cloud/"
+                hreflang="database"
+                href="http://mungdocs.kro.kr/database/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="database"
-                href="http://mungdocs.kro.kr/database/"
+                hreflang="programing"
+                href="http://mungdocs.kro.kr/programing/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -145,8 +150,8 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/tags/"
+                hreflang="cloud"
+                href="http://mungdocs.kro.kr/cloud/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -160,13 +165,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="cloud"
-                href="http://mungdocs.kro.kr/cloud/tags/"
+                hreflang="database"
+                href="http://mungdocs.kro.kr/database/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="database"
-                href="http://mungdocs.kro.kr/database/tags/"
+                hreflang="programing"
+                href="http://mungdocs.kro.kr/programing/tags/"
                 />
     <xhtml:link
                 rel="alternate"

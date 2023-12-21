@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction_Main on Mung Book</title>
+    <title>Main on Mung Book</title>
     <link>http://mungdocs.kro.kr/</link>
-    <description>Recent content in Introduction_Main on Mung Book</description>
+    <description>Recent content in Main on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>main</language>
     <atom:link href="http://mungdocs.kro.kr/index.xml" rel="self" type="application/rss+xml" />
