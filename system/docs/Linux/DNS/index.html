@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DNS Server#DNS (Domain Name System)#DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다. www.mungdocs.kro.kr을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다. 위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다. 즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.">
+<meta name="description" content="DNS Server#DNS (Domain Name System)#DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.
+www.mungdocs.kro.kr을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.
+위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.
+즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="DNS Server" />
-<meta property="og:description" content="DNS Server#DNS (Domain Name System)#DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다. www.mungdocs.kro.kr을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다. 위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다. 즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다." />
+<meta property="og:description" content="DNS Server#DNS (Domain Name System)#DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.
+www.mungdocs.kro.kr을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.
+위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.
+즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/system/docs/Linux/DNS/" /><meta property="article:section" content="docs" />
 
@@ -18,7 +24,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/system.search.min.8900b1f87df4f864a36032c8ae2947c6d51e61371ac1424e5b5693963399a433.js" integrity="sha256-iQCx&#43;H30&#43;GSjYDLIrilHxtUeYTcawUJOW1aTljOZpDM=" crossorigin="anonymous"></script>
+  <script defer src="/system.search.min.b1342121e4feff32a933f615cf474be7f51328ce3cf545932d3a5457adf16c7d.js" integrity="sha256-sTQhIeT&#43;/zKpM/YVz0dL5/UTKM489UWTLTpUV63xbH0=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -408,33 +414,69 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p> </p>
 <ul>
-<li>DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.</li>
 <li>
-  <a href="https://www.mungdocs.kro.kr">www.mungdocs.kro.kr</a>을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.</li>
-<li>위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.</li>
-<li>즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.</li>
-</ul>
-<p>DNS Server</p>
-<p> </p>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<hr>
-<hr>
-<ol>
-<li>Reference
-<ol>
-<li>
-  <a href="https://www.cloudflare.com/ko-kr/learning/dns/what-is-a-dns-server/">https://www.cloudflare.com/ko-kr/learning/dns/what-is-a-dns-server/</a></li>
-<li>
-  <a href="https://gentlysallim.com/dns%EB%9E%80-%EB%AD%90%EA%B3%A0-%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%EB%9E%80-%EB%AD%94%EC%A7%80-%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">https://gentlysallim.com/dns%EB%9E%80-%EB%AD%90%EA%B3%A0-%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%EB%9E%80-%EB%AD%94%EC%A7%80-%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/</a></li>
-</ol>
+<p>DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.</p>
 </li>
-</ol>
-</article>
+<li>
+<p>
+  <a href="https://www.mungdocs.kro.kr">www.mungdocs.kro.kr</a>을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.</p>
+</li>
+<li>
+<p>위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.</p>
+</li>
+<li>
+<p>즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.</p>
+</li>
+</ul>
+<br>
+<br>
+서비스 | 도메인 주소 | IP 주소
+Daum | daum.net | 203.133.167.81
+Naver | naver.com | 223.130.200.104
+google | google.com | 142.250.207.14
+<br>
+```
+C:\Users\mung>ping mungdocs.kro.kr
+<p>Ping 
+  <a href="https://www.mungdocs.github.io">www.mungdocs.github.io</a> [185.199.108.153] 32바이트 데이터 사용:
+185.199.108.153의 응답: 바이트=32 시간=31ms TTL=52
+185.199.108.153의 응답: 바이트=32 시간=61ms TTL=52</p>
+<pre tabindex="0"><code>- 현재 블로그의 IP 주소는 210.130.195.200 인걸 확인할 수 있다.
+
+- 위와 같이 IP 주소를 브라우저에게 제공하면 해당 서버에서 홈페이지를 제공하는 식으로 동작하며, 이는 사람이 보기에는 불편하기 때문에, 전화번호부와 같이 접근하기 쉽게 만든 시스템이다.
+
+&lt;br&gt;
+&lt;br&gt;
+### 도메인 접속과정
+#
+1. 도메인 주소 www.mungdocs.kro.kr를 입력하면 도메인 주소를 가지고 있는 네임서버에 접속
+2. 네임서버에 접속한 해당 도메인과 연결된 IP정보(185.199.108.153)을 확인하고 IP를 사용자 PC에 전달
+3. 사용자 PC는 전달받은 서버의 IP주소로 접속
+4. 서버의 IP로 연결된 브라우저에 서버의 내용(홈페이지)를 출력
+
+
+
+
+DNS Server
+
+&amp;nbsp;
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+---
+
+---
+
+1. Reference
+   1. https://www.cloudflare.com/ko-kr/learning/dns/what-is-a-dns-server/
+   2. https://gentlysallim.com/dns%EB%9E%80-%EB%AD%90%EA%B3%A0-%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%EB%9E%80-%EB%AD%94%EC%A7%80-%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/
+</code></pre></article>
  
       
 
