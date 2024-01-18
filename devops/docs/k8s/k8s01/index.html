@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kubernetes Object#Kubernetes Object#쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
+어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="1. Kubernetes Object" />
+<meta property="og:description" content="Kubernetes Object#Kubernetes Object#쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
+어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/k8s/k8s01/" /><meta property="article:section" content="docs" />
+
+
+
+<title>1. Kubernetes Object | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.e477b9d9ec0913e1b9b82385d0cdcc92749293bc2c32667291daa5ee42e8d500.js" integrity="sha256-5He52ewJE&#43;G5uCOF0M3MknSSk7wsMmZykdql7kLo1QA=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/" class="">CI/CD 배포 입문</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ec36ec3492308dbc4bfcaa14eb72fa33" class="toggle"  />
+    <label for="section-ec36ec3492308dbc4bfcaa14eb72fa33" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d21464784c99358edd6d2b29e92ed6f" class="toggle" checked />
+    <label for="section-2d21464784c99358edd6d2b29e92ed6f" class="flex justify-between">
+      <a role="button" class="">Kubernetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/k8s/k8s/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/k8s/k8s00/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/k8s/k8s01/" class="active">1. Kubernetes Object</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c2a060bafb7c779a0c8e675f9068e94" class="toggle"  />
+    <label for="section-7c2a060bafb7c779a0c8e675f9068e94" class="flex justify-between">
+      <a role="button" class="">임시</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/CPU/" class="">What is CPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/DISK/" class="">What is Disk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/board/" class="">What is M/B</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/NIC/" class="">What is NIC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/Memory/" class="">What is RAM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/RC/" class="">What is RC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/%EC%9E%84%EC%8B%9C/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>1. Kubernetes Object</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-object">Kubernetes Object</a>
+      <ul>
+        <li><a href="#kubernetes-object-1">Kubernetes Object</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#오브젝트의-spec-status">오브젝트의 Spec, Status</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#오브젝트-기술하기">오브젝트 기술하기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a>
+      <ul>
+        <li><a href="#object-management">Object Management</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#명령형-커맨드">명령형 커맨드</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#명령형-오브젝트-구성">명령형 오브젝트 구성</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#선언형-오브젝트-구성">선언형 오브젝트 구성</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li><a href="#레이블과-셀렉터">레이블과 셀렉터</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#레이블">레이블</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-10"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#집합성-기준-요건">집합성 기준 요건</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-11"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#셀렉터">셀렉터</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="kubernetes-object">
+  Kubernetes Object
+  <a class="anchor" href="#kubernetes-object">#</a>
+</h1>
+<hr>
+<h2 id="kubernetes-object-1">
+  Kubernetes Object
+  <a class="anchor" href="#kubernetes-object-1">#</a>
+</h2>
+<ul>
+<li>
+<p>쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.</p>
+<ul>
+<li>어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무</li>
+<li>해당 어플리케이션의 사용가능 리소스</li>
+<li>해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책</li>
+</ul>
+</li>
+<li>
+<p>즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.</p>
+</li>
+</ul>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<h3 id="오브젝트의-spec-status">
+  오브젝트의 Spec, Status
+  <a class="anchor" href="#%ec%98%a4%eb%b8%8c%ec%a0%9d%ed%8a%b8%ec%9d%98-spec-status">#</a>
+</h3>
+<ul>
+<li>대부분의 쿠버네티스 오브젝트는 구성을 결정해주는 오브젝트 필드를 포함하게 되는 데, 이는 spec과 status다.</li>
+<li>spec은 해당 오브젝트를 생성할 때 리소스에 필요한 요청사항을 제공하여 설정한다.</li>
+<li>status는 쿠버네티스와 요소간 제공되고 업데이트된 오브젝트의 현재 상태를 의미한다.</li>
+</ul>
+<h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<h3 id="오브젝트-기술하기">
+  오브젝트 기술하기
+  <a class="anchor" href="#%ec%98%a4%eb%b8%8c%ec%a0%9d%ed%8a%b8-%ea%b8%b0%ec%88%a0%ed%95%98%ea%b8%b0">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx-deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">2</span> <span style="color:#75715e"># tells deployment to run 2 pods matching the template</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:1.14.2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><ul>
+<li>위는 .yaml 파일을 이용하여 디플로이먼트를 생ㅅ어하기 위한 방식으로 kubectl을 사용하여 쿠버네티스 API를 호출하여 반영시키는 방식이다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl apply -f deployment.yaml
+</span></span><span style="display:flex;"><span>deployment.apps/nginx-deployment created
+</span></span></code></pre></div><ul>
+<li>
+<p>위와 같이 생성하고자 하는 오브젝트에 대한 .yaml 파일 내에 해당 값을을 설정해줘야 한다.</p>
+<ul>
+<li>apiVersion: 해당 파일의 오브젝트를 사용하기 위한 쿠버네티스의 API 버전이 어떤 것인지</li>
+<li>kind: 어떤 종류의 오브젝트를 생성하려는 지</li>
+<li>metadata: 이름, 문자열, UID, namespace 등을 포함하여 오브젝트를 구분하게 해 줄 데이터</li>
+<li>spec: 오브젝트의 상태를 기술</li>
+</ul>
+</li>
+<li>
+<p>spec은 각 오브젝트마다 (kind)마다 다르기에 각자 다른 템플릿이 존재하고, 이는 요청에 따라 값이 달라지기 때문에 많은 경험을 필요로 한다.</p>
+</li>
+</ul>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<h2 id="object-management">
+  Object Management
+  <a class="anchor" href="#object-management">#</a>
+</h2>
+<hr>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<ul>
+<li>오브젝트를 관리하는 방법으로는 아래와 같이 명령형 커맨드, 명령형 오브젝트 구성, 선언형 오브젝트 구성으로 나뉘어져 있다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>관리기법</th>
+<th>대상</th>
+<th>권장 환경</th>
+<th>지원하는 작업자 수</th>
+<th>학습 난이도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>명령형 커맨드</td>
+<td>활성 오브젝트</td>
+<td>개발 환경</td>
+<td>1+</td>
+<td>낮음</td>
+</tr>
+<tr>
+<td>명령형 오브젝트 구성</td>
+<td>개별 파일</td>
+<td>프로덕션 환경</td>
+<td>1</td>
+<td>보통</td>
+</tr>
+<tr>
+<td>선언형 오브젝트 구성</td>
+<td>파일이 있는 디렉터리</td>
+<td>프로덕션 환경</td>
+<td>1+</td>
+<td>높음</td>
+</tr>
+</tbody>
+</table>
+<h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<h3 id="명령형-커맨드">
+  명령형 커맨드
+  <a class="anchor" href="#%eb%aa%85%eb%a0%b9%ed%98%95-%ec%bb%a4%eb%a7%a8%eb%93%9c">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubetl create deployment nginx --image nginx
+</span></span></code></pre></div><ul>
+<li>명령형 커맨드의 경우 클러스터 내 활성 오브젝트를 대상으로 직접 동작시키며, 사용자는 실행할 작업을 인수 또는 플래그로 kubectl 커맨드를 호출한다.</li>
+<li>이는 일회성 작업의 개념으로 추천하지 않는 방법이며, 직접적인 영향을 끼치고, 이전 구성에 대한 이력을 제공해주지 않아 문제가 발생시 대응이 어렵다.</li>
+</ul>
+<h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<h3 id="명령형-오브젝트-구성">
+  명령형 오브젝트 구성
+  <a class="anchor" href="#%eb%aa%85%eb%a0%b9%ed%98%95-%ec%98%a4%eb%b8%8c%ec%a0%9d%ed%8a%b8-%ea%b5%ac%ec%84%b1">#</a>
+</h3>
+<ul>
+<li>명령형 오브젝트 구성은 kubectl, 선택적 플래그, 파일이름을 사용하여 이미 정의된 파일을 통해 생성한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cat nginx.yaml
+</span></span><span style="display:flex;"><span>apiVersion: apps/v1
+</span></span><span style="display:flex;"><span>kind: Deployment
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  name: nginx-deployment
+</span></span><span style="display:flex;"><span>spec:
+</span></span><span style="display:flex;"><span>  selector:
+</span></span><span style="display:flex;"><span>    matchLabels:
+</span></span><span style="display:flex;"><span>      app: nginx
+</span></span><span style="display:flex;"><span>  replicas: <span style="color:#ae81ff">2</span> <span style="color:#75715e"># tells deployment to run 2 pods matching the template</span>
+</span></span><span style="display:flex;"><span>  template:
+</span></span><span style="display:flex;"><span>    metadata:
+</span></span><span style="display:flex;"><span>      labels:
+</span></span><span style="display:flex;"><span>        app: nginx
+</span></span><span style="display:flex;"><span>    spec:
+</span></span><span style="display:flex;"><span>      containers:
+</span></span><span style="display:flex;"><span>      - name: nginx
+</span></span><span style="display:flex;"><span>        image: nginx:1.14.2
+</span></span><span style="display:flex;"><span>        ports:
+</span></span><span style="display:flex;"><span>        - containerPort: <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl create -f nginx.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl delete -f nginx.yaml -f redis.yaml
+</span></span></code></pre></div><ul>
+<li>오브젝트를 파일로 관리함으로써, Git 과 같은 소스 컨트롤 시스템에 보관이 가능하다.</li>
+<li>관련 히스토리 및 감사의 추적이 보다 쉽고, 프로세스들과의 통합에 유용하다.</li>
+</ul>
+<h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<h3 id="선언형-오브젝트-구성">
+  선언형 오브젝트 구성
+  <a class="anchor" href="#%ec%84%a0%ec%96%b8%ed%98%95-%ec%98%a4%eb%b8%8c%ec%a0%9d%ed%8a%b8-%ea%b5%ac%ec%84%b1">#</a>
+</h3>
+<ul>
+<li>선언형 오브젝트는 명령형 오브젝트와 동일하게 오브젝트 구성 파일을 대상으로 작동시키지만, 선연형 오브젝트는 한 파일의 관련 오브젝트들이 명시되어 있는 반면, 선언형 오브젝트는 각 오브젝트 구성파일이 나뉘어져 있다는 점에 차이가 있다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl diff -f configs/
+</span></span><span style="display:flex;"><span>$ kubectl apply -f configs/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl diff -R -f configs/
+</span></span><span style="display:flex;"><span>$ kubectl apply -R -f configs/
+</span></span></code></pre></div><h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<hr>
+<h2 id="레이블과-셀렉터">
+  레이블과 셀렉터
+  <a class="anchor" href="#%eb%a0%88%ec%9d%b4%eb%b8%94%ea%b3%bc-%ec%85%80%eb%a0%89%ed%84%b0">#</a>
+</h2>
+<hr>
+<h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<h3 id="레이블">
+  레이블
+  <a class="anchor" href="#%eb%a0%88%ec%9d%b4%eb%b8%94">#</a>
+</h3>
+<ul>
+<li>레이블은 파드와 같은 오브젝트에 첨부된 키와 값의 쌍이며, 이는 오브젝트의 특성을 식별하는 데 사용되어 사용자에게는 중요하지만 코어 시스템에 직접적인 의미는 없다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#e6db74">&#34;metadata&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;labels&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;key1&#34;</span> : <span style="color:#e6db74">&#34;value1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;key2&#34;</span> : <span style="color:#e6db74">&#34;value2&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>레이블은 UI와 CLI에서 효율적인 쿼리를 사용하고 검색에 사용하기 적합하며, 식별되지 않는 정보는 어노테이션으로 기록해야 한다.</li>
+<li>레이블은 키와 값 쌍으로 이루어져 있으며, 유효한 레이블 키에는 슬래시(/)로 구분된다.</li>
+<li>접두사를 생략한 레이블은 개인용으로 간주하며, 시스템 컴포넌트(kube-scheduler, kube-controller-manager, kube-apiserver, kubectl) 또는 다른 타사의 자동화 구성요서의 접두사를 지정해야한다.</li>
+</ul>
+<p>kubernetes.io/ 와 k8s.io/ 접두사는 쿠버네티스의 핵심 컴포넌트로 에약되어 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">label-demo</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:1.14.2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><ul>
+<li>위는 environment: production, app: nginx 2개의 레이블이 있는 구성 파일이다.</li>
+<li>위처럼 이름과 UID와 다르게 레이블은 고유하지 않으며, 일반적으로 라벨과 비슷한 역할을 한다.</li>
+<li>사용자는 레이블 셀렉터를 통해 해당 오브젝트들을 식별할 수 있다.</li>
+</ul>
+<h1 id="heading-10">
+  
+  <a class="anchor" href="#heading-10">#</a>
+</h1>
+<h3 id="집합성-기준-요건">
+  집합성 기준 요건
+  <a class="anchor" href="#%ec%a7%91%ed%95%a9%ec%84%b1-%ea%b8%b0%ec%a4%80-%ec%9a%94%ea%b1%b4">#</a>
+</h3>
+<pre tabindex="0"><code>environment in (production, qa) # (enviromen:prodction), (environment:qa) 리소스를 선택한다. / =
+tier notin (frontend, backend) # (tier:frontend), (tier:backend) 리소스를 제외하고 선택한다.  / !=
+partition # partition을 포함한 모든 리소스를 선택한다.
+!partition # partition을 포함하지 않는 모든 리소스를 선택한다.
+</code></pre><ul>
+<li>집합성 기준은 위와 같이 in, notion, exists 의 3개 연산자를 지원한다.</li>
+</ul>
+<h1 id="heading-11">
+  
+  <a class="anchor" href="#heading-11">#</a>
+</h1>
+<h3 id="셀렉터">
+  셀렉터
+  <a class="anchor" href="#%ec%85%80%eb%a0%89%ed%84%b0">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">component</span>: <span style="color:#ae81ff">redis</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">matchExpressions</span>:
+</span></span><span style="display:flex;"><span>    - {<span style="color:#f92672">Key: tier, operator: In, Values</span>: [<span style="color:#ae81ff">cache]}</span>
+</span></span><span style="display:flex;"><span>    - {<span style="color:#f92672">key: environment, operator: NotIn, values</span>: [<span style="color:#ae81ff">dev]}</span>
+</span></span></code></pre></div><ul>
+<li>services에서 지정하는 파드 집합은 레이블 셀럭터로 정의한다.</li>
+<li>위와 동일하게 replicationcontrollers가 관리하는 파드의 오브젝트 구릅도 레이블 셀렉터로 정의한다.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/k8s/k8s01.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-object">Kubernetes Object</a>
+      <ul>
+        <li><a href="#kubernetes-object-1">Kubernetes Object</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#오브젝트의-spec-status">오브젝트의 Spec, Status</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#오브젝트-기술하기">오브젝트 기술하기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a>
+      <ul>
+        <li><a href="#object-management">Object Management</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#명령형-커맨드">명령형 커맨드</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#명령형-오브젝트-구성">명령형 오브젝트 구성</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#선언형-오브젝트-구성">선언형 오브젝트 구성</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li><a href="#레이블과-셀렉터">레이블과 셀렉터</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#레이블">레이블</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-10"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#집합성-기준-요건">집합성 기준 요건</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-11"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#셀렉터">셀렉터</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
