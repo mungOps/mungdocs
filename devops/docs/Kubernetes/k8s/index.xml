@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Mung Book</title>
+    <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/</link>
+    <description>Recent content in Kubernetes on Mung Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>0. Kubernetes</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/</guid>
+      <description>&#xD;Kubernetes&#xD;#&#xD;Kubernetes&#xD;#&#xD;#&#xD;</description>
+    </item>
+    <item>
+      <title>0. Kubernetes</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/</guid>
+      <description>Kubernetes&#xD;#&#xD;Kubernetes&#xD;#&#xD;#&#xD;kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. #&#xD;#&#xD;Kubernets가 대두되는 이유&#xD;#&#xD;#&#xD;위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.&#xA;전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.</description>
+    </item>
+    <item>
+      <title>1. Kubernetes Object</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</guid>
+      <description>Kubernetes Object&#xD;#&#xD;Kubernetes Object&#xD;#&#xD;쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.&#xA;어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.</description>
+    </item>
+  </channel>
+</rss>

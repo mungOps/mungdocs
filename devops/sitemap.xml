@@ -2,50 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://mungdocs.kro.kr/devops/docs/CICD/git00/</loc>
-    <lastmod>2023-12-07T22:08:38+09:00</lastmod>
+    <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Git/git00/</loc>
-    <lastmod>2023-12-07T22:08:38+09:00</lastmod>
+    <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/git00/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/k8s/k8s/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/Git/Git/git00/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/k8s/k8s00/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/k8s/k8s01/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/CICD/with-toc/</loc>
-    <lastmod>2023-11-27T21:32:06+09:00</lastmod>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</loc>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/with-toc/</loc>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/CICD/</loc>
     <lastmod>2023-11-27T21:32:06+09:00</lastmod>
   </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/</loc>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Docker/</loc>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/</loc>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker/</loc>
+  </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Git/</loc>
     <lastmod>2023-11-27T21:32:06+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/k8s/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/Git/Git/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/CPU/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/DISK/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/board/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/with-toc/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/NIC/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/key/</loc>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/Memory/</loc>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/RC/</loc>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/CICD/table-of-contents/with-toc/</loc>
-    <lastmod>2023-11-27T21:32:06+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/key/</loc>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/CICD/table-of-contents/</loc>
-    <lastmod>2023-11-27T21:32:06+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/%EC%9E%84%EC%8B%9C/</loc>
+    <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/</loc>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/categories/</loc>
     <xhtml:link
@@ -85,7 +80,7 @@
                 />
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/</loc>
-    <lastmod>2023-12-07T22:08:38+09:00</lastmod>
+    <lastmod>2023-11-27T21:32:06+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"

@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GIT#Git이란?#깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)
+컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.
+DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.
+GIT과 SVN의 차이#단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="0. Git이란?" />
+<meta property="og:description" content="GIT#Git이란?#깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)
+컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.
+DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.
+GIT과 SVN의 차이#단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/CICD/CICD/git00/" /><meta property="article:section" content="docs" />
+
+
+
+<title>0. Git이란? | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.17a2d550ee8500ecaad2b1ac34e9aee48c23fd6425c1ab6e53748641b84f3d28.js" integrity="sha256-F6LVUO6FAOyq0rGsNOmu5Iwj/WQlwatuU3SGQbhPPSg=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CI/CD</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle" checked />
+    <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
+      <a role="button" class="">CI/CD 배포 입문</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/git00/" class="active">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Docker</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle"  />
+    <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker00/" class="">0. Docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker/" class="">Docker</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Git</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle"  />
+    <label for="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Kubernetes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
+    <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
+      <a role="button" class="">Kubernetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s00/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s01/" class="">1. Kubernetes Object</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>0. Git이란?</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#git">GIT</a>
+      <ul>
+        <li><a href="#git이란">Git이란?</a></li>
+        <li><a href="#git과-svn의-차이">GIT과 SVN의 차이</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#git-status">GIT Status</a></li>
+          </ul>
+        </li>
+        <li><a href="#git-설정">Git 설정</a>
+          <ul>
+            <li><a href="#git-최초-설정">Git 최초 설정</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a>
+      <ul>
+        <li><a href="#git의-기초">Git의 기초</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+    <li><a href="#heading-11"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#파일무시하기">파일무시하기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-12"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#변경사항-확인하기">변경사항 확인하기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-13"></a></li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#회귀">회귀</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a></li>
+    <li><a href="#heading-17"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#리모트-저장소">리모트 저장소</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-18"></a></li>
+    <li><a href="#heading-19"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="git">
+  GIT
+  <a class="anchor" href="#git">#</a>
+</h1>
+<hr>
+<h2 id="git이란">
+  Git이란?
+  <a class="anchor" href="#git%ec%9d%b4%eb%9e%80">#</a>
+</h2>
+<ul>
+<li>
+<p>깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 <strong>분산 버전관리 시스템(Distributed Version Control Systems - DVCS)</strong></p>
+</li>
+<li>
+<p>컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 <strong>형상관리 도구</strong> 이다.</p>
+</li>
+<li>
+<p>DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.</p>
+</li>
+</ul>
+<p> </p>
+<h2 id="git과-svn의-차이">
+  GIT과 SVN의 차이
+  <a class="anchor" href="#git%ea%b3%bc-svn%ec%9d%98-%ec%b0%a8%ec%9d%b4">#</a>
+</h2>
+<p>단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</p>
+<table>
+<thead>
+<tr>
+<th>기능</th>
+<th>SVN</th>
+<th>GIT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>파일관리</td>
+<td>중앙서버 업로드</td>
+<td>로컬저장소 저장 후, 중앙서버 업로드</td>
+</tr>
+<tr>
+<td>형상관리</td>
+<td>동시 업로드 시 충돌가능</td>
+<td>Branch, Merge로 충돌가능성이 낮음</td>
+</tr>
+<tr>
+<td>작업관리</td>
+<td>모든 작업이 서버에서 진행</td>
+<td>작업은 로컬에서 진행 후, 업로드만 서버에 진행</td>
+</tr>
+<tr>
+<td>형상관리</td>
+<td>히스토리 관리 기능이 부족</td>
+<td>히스토리 관리가 용이하게 구현되어있음</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<ul>
+<li>
+<p>즉, Git과 SVN의 가장 큰 차이는 SVN은 서버단에서 작업을 수행하지만, GIT 로컬에서 자기만의 레포지터리를 생성 및, 분기를 이용한 효율적인 형상관리가 가능하다.</p>
+</li>
+<li>
+<p>대부분의 버전관리는 시간순으로 진행되나, GIT은 Branch를 통해 관리한다.</p>
+</li>
+<li>
+<p>Git은 대부분의 명령을 local에서 진행하기 때문에, 네트워크 등의 영향을 받지 않고, 무결성을 유지함에 보다 용이하다.</p>
+</li>
+</ul>
+<hr>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<p> </p>
+<h3 id="git-status">
+  GIT Status
+  <a class="anchor" href="#git-status">#</a>
+</h3>
+<ul>
+<li><strong>Git의 상태에는 크게 3가지</strong>가 있다.
+<ul>
+<li><strong>Committed</strong>란 데이터가 로컬 데이터베이스에 안전하게 저장됐다는 것을 의미</li>
+<li><strong>Modified</strong>는 수정한 파일을 아직 로컬 데이터베이스에 커밋하지 않은 상태</li>
+<li><strong>Staged</strong>란 현재 수정한 파일을 곧 커밋할 것이라고 표시한 상태</li>
+</ul>
+</li>
+</ul>
+<p>
+  <img src="/images/git/workingtree.png" alt="" /></p>
+<ul>
+<li>
+<p>위는 Git의 워킹 트리를 나타내며, Git 디렉토리는 Git이 프로젝트의 메타데이터와 객체 데이터베이스를 저장하는 곳을 의미한다.</p>
+</li>
+<li>
+<p>워킹트리는 프로젝트의 특정 버전을 Checkout한 것이며, Git 디렉토리는 현재 작업하는 디스크에 존재하고, 디렉토리 안에 압축된 데이터베이스에서 파일을 가져와 워킹 트리를 생성한다.</p>
+</li>
+<li>
+<p>Git에서 Staging Area는 Index라고도 하며, Staging Area는 단순한 파일로, commit할 파일들에 대한 정보를 저장한다.</p>
+</li>
+<li>
+<p>즉, Git의 기본적으로 Git의 구동동작은 아래와 같다.</p>
+<ol>
+<li>워킹트리에서 파일을 수정</li>
+<li>Staging Area에 파일을 Stage 해서 commit할 스냅샷을 만든다. 여기서 추가, 수정, 삭제 등의 작업이 가능하다.</li>
+<li>Staging Area에 있는 파일들을 commit해서 Git 디렉토리에 영구적인 스냅샷을 저장한다.</li>
+</ol>
+</li>
+<li>
+<p>결과적으로 Git 디렉토리에 있는 파일들은 Committed 된 상태이며, 파일을 수정하고 Staging Area에 추가했다면 Staged 된 상태라고 할 수 있다.</p>
+</li>
+<li>
+<p>여기서 Checkout 후, 수정했지만 Staging Area에 추가되지 않았다면 Modified된 상태이다.</p>
+</li>
+</ul>
+<h2 id="git-설정">
+  Git 설정
+  <a class="anchor" href="#git-%ec%84%a4%ec%a0%95">#</a>
+</h2>
+<hr>
+<h3 id="git-최초-설정">
+  Git 최초 설정
+  <a class="anchor" href="#git-%ec%b5%9c%ec%b4%88-%ec%84%a4%ec%a0%95">#</a>
+</h3>
+<ul>
+<li>
+<p>Git을 설치하고 나면 Git의 사용 환경을 적합하게 설정해주어야 한다.</p>
+</li>
+<li>
+<p>이는 <code>git config</code> 라는 도구와 설정으로 내용을 확인하고 변경할 수 있다.</p>
+<ol>
+<li>/etc/gitconfig : 시스템의 모든 사용자와 모든 저장소에 적용되는 설정 ( git config &ndash;system )</li>
+<li>~/.gitconfig, ~/.config/git/config : 특정 사용자에게만 적용되는 설정 ( git config &ndash;global )</li>
+<li>.git/config : 현재 디렉토리에만 적용되어 있는 설정 ( git config &ndash;local )</li>
+</ol>
+</li>
+<li>
+<p>위 설정들은 역순으로 우선시 되어 1 &lt; 2 &lt; 3 과 같은 우선순위를 가지고 있다.</p>
+</li>
+</ul>
+<pre tabindex="0"><code>$ git config --global user.name &#34;John Doe&#34;
+$ git config --global user.email johndoe@example.com
+</code></pre><ul>
+<li>&ndash;global 옵션으로 설정하는 것은 한번이며 (전역), 만약 프로젝트마다 다른 이름과 메일주소를 사용하고 싶다면 &ndash;global 옵션을 빼고 사용한다.</li>
+</ul>
+<h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<pre tabindex="0"><code>$ git config --list
+user.name=John Doe
+user.email=johndoe@example.com
+color.status=auto
+color.branch=auto
+color.interactive=auto
+color.diff=auto
+
+$ git config user.name
+john Doe
+</code></pre><ul>
+<li>설정했던 옵션들은 git config &ndash;list 명령어로 확인할 수 있다.</li>
+</ul>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<h2 id="git의-기초">
+  Git의 기초
+  <a class="anchor" href="#git%ec%9d%98-%ea%b8%b0%ec%b4%88">#</a>
+</h2>
+<hr>
+<pre tabindex="0"><code>$ cd 
+$ git init
+</code></pre><ul>
+<li>위 명령어를 통해 .git이라는 하위 디렉터리를 만들며, 이 안에는 저장소에 필요한 뼈대 파일(Skeleton)이 들어 있다.</li>
+</ul>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<pre tabindex="0"><code>$ git add *.c
+$ git add LICENSE
+$ git commit -m &#39;initial project version&#39;
+</code></pre><ul>
+<li>위 명령어를 통해 GIt 저장소가 생성되었고 파일 버전 관리가 시작되었다. (commit)</li>
+</ul>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<pre tabindex="0"><code>$ git clone https://github.com/libgit2/libgit2
+$ git clone https://github.com/libgit2/libgit2 &lt;other name&gt;
+</code></pre><ul>
+<li>다른 프로젝트의 참여하고 싶거나, git 저장소를 복사하고 싶을 때, git clone 명령어를 사용한다.</li>
+<li>Subversion과 같은 VCS에 익숙한 사용자에게는 &ldquo;Checkout&rdquo; 이 아닌, &ldquo;clone&rdquo; 이라는 점이 다르며, git은 서버에 있는 거의 모든 데이터를 복사한다.</li>
+<li>즉, git은 서버의 모든 데이터 및 프로젝트의 히스토리를 전부 받아와, 실제 서버의 디스크가 망가져도, 로컬에서 복구가 가능한 특징을 가진다. (단, 서버설정파일은 제외)</li>
+</ul>
+<h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<ul>
+<li>이제 git 저장소를 만들고(init) 워킹 디렉토리에 Checkout(commit)도 헀다면, 이제는 파일의 스냅샷을 커밋한다.</li>
+<li>워킹 디렉토리의 파일은 크게 Tracked(관리대상)과 Untracked(비관리대상)으로 나뉘며, Tracked 파일은 이미 스냅샷에 포함돼 있던 파일(레포지터리에 있던)이다.</li>
+<li>Tracked 파일은 다시 Unmodified(비수정)와 Modified(수정된), 그리고 Staged(commit으로 저장소에 기록될) 상태로 나뉘어진다.</li>
+<li>이 외의 나머지는 untracked파일이며, 이는 워킹 디렉토리에 있는 파일 중 StagingArea에 포함되지 않는 파일이다.</li>
+<li>처음 clone을 진행하면, 모든 파일은 Tracked(스냅샷에 포함)파일이지만, Unmodified(수정되지 않았기에)상태이다.</li>
+<li>만약 clone 진행 후, 어떤 파일을 수정하게 되면 unmodified -&gt; modified 상태로 상태가 변경되며 실제로 commit을 진행하기 위한 staged 상태를 만들고, staged 상태의 파일을 commit하게 되며, git은 이러한 lifecycle을 반복하게 된다.</li>
+</ul>
+<p>
+  <img src="/images/git/lifecycle.png" alt="" /></p>
+<h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<pre tabindex="0"><code>$ git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+nothing to commit, working directory clean
+</code></pre><ul>
+<li>위 명령어를 실행하면 현재 하나도 수정되지 않았음을 알려준다.</li>
+</ul>
+<pre tabindex="0"><code>$ echo &#39;My Project&#39; &gt; README
+$ git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+  README
+nothing added to commit but untracked files present (use &#34;git add&#34; to
+track)
+</code></pre><ul>
+<li>README 파일은 “Untracked”에 속해 있는데 이것은 README 파일이 Untracked 상태라는 것을 의미한다.</li>
+<li>Git은 Untracked 파일을 아직 스냅샷(커밋)에 넣어지지 않은 파일이라고 본다.</li>
+<li>git init 명령을 실행한 후, git add (files) 명령을 실행했던 걸 기억할 것이다.</li>
+<li>이 명령을 통해 디렉토리에 있는 파일을 추적하고 관리하도록 한다. git add 명령은 파일 또는 디렉토리의 경로를 아규먼트로 받는다.</li>
+</ul>
+<h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<pre tabindex="0"><code>$ git add README
+
+$ git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+Changes to be committed:
+  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+  new file: README
+
+Changes not staged for commit:
+  (use &#34;git add &lt;file&gt;...&#34; to update what will be committed)
+  (use &#34;git checkout -- &lt;file&gt;...&#34; to discard changes in workingdirectory)
+  modified: CONTRIBUTING.md
+</code></pre><ul>
+<li>git status 명령을 실행하면 README 파일이 Tracked 상태이면서 commit에 추가될 Staged 상태라는 것이 확인이 가능하다.</li>
+<li>&ldquo;Changes to be commiteed&rdquo; 에 들어 있는 파일은 Staged 상태라는 것을 의미한다.</li>
+<li>즉, commit을 실행하면 add를 실행한 시점의 파일이 commit되어 stage -&gt; git history에 남게된다.</li>
+<li>CONTRIBUTING.md은 &ldquo;Changes not staged for commit&quot;에 있으며, 이는 수정한 파일이 Tracked 상태이지만 아직 Staged 상태는 아니라는 것이며 이는 add 명령어를 통해 staged에 올릴 수 있음을 의미한다.</li>
+</ul>
+<h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<pre tabindex="0"><code>$ git add CONTRIBUTING.md
+$ git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+Changes to be committed:
+  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+  new file: README
+  modified: CONTRIBUTING.md
+</code></pre><ul>
+<li>add 후 다시 staus를 입력하면 staged 상태로 올라간 것을 확인할 수 있다.</li>
+</ul>
+<h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<pre tabindex="0"><code>$ git status -s
+ M README
+MM Rakefile
+A lib/git.rb
+M lib/simplegit.rb
+?? LICENSE.txt
+</code></pre><h1 id="heading-10">
+  
+  <a class="anchor" href="#heading-10">#</a>
+</h1>
+<ul>
+<li>이는 위처럼 status -s 옵션을 통해 간단하게 확인할 수 있으며 앞에 문자는 아래와 같은 의미를 가진다.
+<ol>
+<li>A : New file</li>
+<li>M : Modified file</li>
+<li>MM : 작업 디렉터리 및 스테이지 변경</li>
+<li>?? : Untracked</li>
+<li>Unmodified 파일을 출력되지 않음</li>
+</ol>
+</li>
+</ul>
+<h1 id="heading-11">
+  
+  <a class="anchor" href="#heading-11">#</a>
+</h1>
+<h3 id="파일무시하기">
+  파일무시하기
+  <a class="anchor" href="#%ed%8c%8c%ec%9d%bc%eb%ac%b4%ec%8b%9c%ed%95%98%ea%b8%b0">#</a>
+</h3>
+<pre tabindex="0"><code>$ cat .gitignore
+*.[oa]
+*~
+</code></pre><ul>
+<li>.gitignore 파일을 만들고 그 안에 무시할 패턴을 적으면, 해당 패턴과 일치하는 파일들은 commit 되지 않는다.</li>
+<li>.gitignore은 아래와 같은 특징을 가진다.
+<ol>
+<li>아무것도 없는 라인이나, <code>#</code>로 시작하는 라인은 무시한다.</li>
+<li>표준 Glob 패턴을 사용한다. 이는 프로젝트 전체에 적용된다.</li>
+<li>슬래시(/)로 시작하면 하위 디렉토리에 적용되지(Recursivity) 않는다.</li>
+<li>디렉토리는 슬래시(/)를 끝에 사용하는 것으로 표현한다.</li>
+<li>느낌표(!)로 시작하는 패턴의 파일은 무시하지 않는다</li>
+</ol>
+</li>
+<li>기타 예제는 (gitignore_repo)[https://github.com/github/gitignore]를 참조하자.</li>
+</ul>
+<h1 id="heading-12">
+  
+  <a class="anchor" href="#heading-12">#</a>
+</h1>
+<h3 id="변경사항-확인하기">
+  변경사항 확인하기
+  <a class="anchor" href="#%eb%b3%80%ea%b2%bd%ec%82%ac%ed%95%ad-%ed%99%95%ec%9d%b8%ed%95%98%ea%b8%b0">#</a>
+</h3>
+<pre tabindex="0"><code>$ git diff
+$ git diff --staged
+</code></pre><ul>
+<li>git status 명령은 특정파일의 Staged 상태인지는 확인할 수 있으나, 변경사항은 확인할 수 없다.</li>
+<li>git diff 명령을 사용하는데 Patch처럼 어떤 라인을 추가했고 삭제했는지가 궁금할 때 사용한다.</li>
+</ul>
+<h1 id="heading-13">
+  
+  <a class="anchor" href="#heading-13">#</a>
+</h1>
+<pre tabindex="0"><code>$ git log
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+Date: Mon Mar 17 21:52:11 2008 -0700
+  changed the version number
+commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+Date: Sat Mar 15 16:40:33 2008 -0700
+  removed unnecessary test
+commit a11bef06a3f659402fe7563abf99ad00de2209e6
+Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+Date: Sat Mar 15 10:31:28 2008 -0700
+  first commit
+
+$ git log -p -2
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+Date: Mon Mar 17 21:52:11 2008 -0700
+  changed the version number
+diff --git a/Rakefile b/Rakefile
+...
+
+$ git log --stat
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+Date: Mon Mar 17 21:52:11 2008 -0700
+  changed the version number
+ Rakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+...
+</code></pre><ul>
+<li>git log 명령을 실행하면 저장소의 커밋 히스토리를 시간순으로 보여준다.</li>
+<li>즉, 가장 최근의 커밋이 가장 먼저 나온다. 그리고 이어서 각 커밋의 SHA-1 체크섬, 저자 이름, 저자 이메일, 커밋한 날짜, 커밋 메시지를 보여준다.</li>
+<li>-p, &ndash;patch 는 굉장히 유용한 옵션이다. -p 는 각 커밋의 diff 결과를 보여준다.</li>
+<li>&ndash;stat 옵션으로 각 커밋의 통계 정보를 출력할 수 있다.</li>
+<li>&ndash;pretty 옵션이다. 이 옵션을 통해 히스토리 내용을 보여줄 때 기본 형식 이외에 여러 가지 중에 하나를 선택할 수 있다.</li>
+</ul>
+<h1 id="heading-14">
+  
+  <a class="anchor" href="#heading-14">#</a>
+</h1>
+<h3 id="회귀">
+  회귀
+  <a class="anchor" href="#%ed%9a%8c%ea%b7%80">#</a>
+</h3>
+<h1 id="heading-15">
+  
+  <a class="anchor" href="#heading-15">#</a>
+</h1>
+<pre tabindex="0"><code>$ git commit -m &#39;initial commit&#39;
+$ git add forgotten_file
+$ git commit --amend
+</code></pre><ul>
+<li>위는 실수로 파일을 Stage 하는 것을 깜빡하고 빠트린 파일이 있으면 위와 같이 고칠 수 있다.</li>
+<li>하지만, 이는 두 번째 commit이 첫 번째 commit이 완전히 뒤집어 쓰는 것(첫 번째 commit은 히스토리가 없어진다)으로 주의가 필요하다.</li>
+</ul>
+<h1 id="heading-16">
+  
+  <a class="anchor" href="#heading-16">#</a>
+</h1>
+<pre tabindex="0"><code>$ git reset HEAD CONTRIBUTING.md
+Unstaged changes after reset:
+M CONTRIBUTING.md
+$ git status
+On branch master
+Changes to be committed:
+  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+  renamed: README.md -&gt; README
+Changes not staged for commit:
+  (use &#34;git add &lt;file&gt;...&#34; to update what will be committed)
+  (use &#34;git checkout -- &lt;file&gt;...&#34; to discard changes in working
+directory)
+  modified: CONTRIBUTING.md
+
+$ git status
+Changes not staged for commit:
+  (use &#34;git add &lt;file&gt;...&#34; to update what will be committed)
+  (use &#34;git checkout -- &lt;file&gt;...&#34; to discard changes in working
+directory)
+  modified: CONTRIBUTING.md
+
+$ git checkout -- CONTRIBUTING.md
+$ git status
+On branch master
+Changes to be committed:
+  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+  renamed: README.md -&gt; README
+</code></pre><ul>
+<li>reset과 staged는 비슷하게 보일 수 있으나, 서로 사용되는 영역이 다른다.</li>
+<li>reset은 staged영역을 조절하는 데 사용되며, checkout은 주로 브런치 간 이동이나 특정 파일의 변경 내용을 취소하는 데 사용된다.</li>
+</ul>
+<h1 id="heading-17">
+  
+  <a class="anchor" href="#heading-17">#</a>
+</h1>
+<h3 id="리모트-저장소">
+  리모트 저장소
+  <a class="anchor" href="#%eb%a6%ac%eb%aa%a8%ed%8a%b8-%ec%a0%80%ec%9e%a5%ec%86%8c">#</a>
+</h3>
+<h1 id="heading-18">
+  
+  <a class="anchor" href="#heading-18">#</a>
+</h1>
+<pre tabindex="0"><code>$ git remote -v
+origin https://github.com/schacon/ticgit (fetch)
+origin https://github.com/schacon/ticgit (push)
+</code></pre><ul>
+<li>remote는 연결되어 있는 저장소를 의미하며, 이는 단지 네트워크 뿐이 아닌 다른 저장소도 의미함을 인지한다.</li>
+<li>위 명령어를 통해 현재 연결되어 있는 저장소를 출력할 수 있다.</li>
+</ul>
+<h1 id="heading-19">
+  
+  <a class="anchor" href="#heading-19">#</a>
+</h1>
+<pre tabindex="0"><code>$ git remote
+origin
+$ git remote add pb https://github.com/paulboone/ticgit
+$ git remote -v
+origin https://github.com/schacon/ticgit (fetch)
+origin https://github.com/schacon/ticgit (push)
+pb https://github.com/paulboone/ticgit (fetch)
+pb https://github.com/paulboone/ticgit (push)
+</code></pre><ul>
+<li>git remote add &lt;단축이름&gt; <url>으로 원격 저장소를 연격할 수 있다.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/CICD/CICD/git00.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#git">GIT</a>
+      <ul>
+        <li><a href="#git이란">Git이란?</a></li>
+        <li><a href="#git과-svn의-차이">GIT과 SVN의 차이</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#git-status">GIT Status</a></li>
+          </ul>
+        </li>
+        <li><a href="#git-설정">Git 설정</a>
+          <ul>
+            <li><a href="#git-최초-설정">Git 최초 설정</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a>
+      <ul>
+        <li><a href="#git의-기초">Git의 기초</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+    <li><a href="#heading-11"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#파일무시하기">파일무시하기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-12"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#변경사항-확인하기">변경사항 확인하기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-13"></a></li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#회귀">회귀</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a></li>
+    <li><a href="#heading-17"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#리모트-저장소">리모트 저장소</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-18"></a></li>
+    <li><a href="#heading-19"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

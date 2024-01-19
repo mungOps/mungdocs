@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Mung Book</title>
+    <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/</link>
+    <description>Recent content in Docker on Mung Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/docs/Docker/Docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>0. Docker</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</guid>
+      <description>Docker 와 Container&#xD;#&#xD;#&#xD;Docker의 등장배경&#xD;#&#xD;Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.&#xA;이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.&#xA;위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.&#xA;dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.</description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker/</guid>
+      <description>&#xD;Docker&#xD;#&#xD;Docker 와 Container&#xD;#&#xD;#&#xD;</description>
+    </item>
+  </channel>
+</rss>
