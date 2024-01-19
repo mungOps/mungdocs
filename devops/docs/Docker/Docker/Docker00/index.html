@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Docker 와 Container##Docker의 등장배경#Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
+<meta name="description" content="Docker 와 Container#Docker의 등장배경#Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
 이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.
 위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.
 dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="0. Docker" />
-<meta property="og:description" content="Docker 와 Container##Docker의 등장배경#Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="0. Docker&amp; Container" />
+<meta property="og:description" content="Docker 와 Container#Docker의 등장배경#Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
 이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.
 위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.
 dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/" /><meta property="article:section" content="docs" />
 
+<meta property="article:modified_time" content="2024-01-19T12:07:14+09:00" />
 
-
-<title>0. Docker | Mung Book</title>
+<title>0. Docker&amp; Container | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.17a2d550ee8500ecaad2b1ac34e9aee48c23fd6425c1ab6e53748641b84f3d28.js" integrity="sha256-F6LVUO6FAOyq0rGsNOmu5Iwj/WQlwatuU3SGQbhPPSg=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.7533b9261b176b2332fbd75fab6d131c0c018eadd2a3cb27f00c84bf3e53ebda.js" integrity="sha256-dTO5JhsXayMy&#43;9dfq20THAwBjq3So8sn8AyEvz5T69o=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -255,7 +255,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Docker/Docker/Docker00/" class="active">0. Docker</a>
+    <a href="/devops/docs/Docker/Docker/Docker00/" class="active">0. Docker&amp; Container</a>
   
 
         </li>
@@ -445,7 +445,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>0. Docker</strong>
+  <strong>0. Docker&amp; Container</strong>
 
   <label for="toc-control">
     
@@ -463,53 +463,31 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#docker-와-container"><strong>Docker 와 Container</strong></a></li>
-      </ul>
-    </li>
-    <li><a href="#heading"></a>
-      <ul>
-        <li>
+        <li><a href="#docker-와-container"><strong>Docker 와 Container</strong></a>
           <ul>
             <li><a href="#docker의-등장배경"><strong>Docker의 등장배경</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#heading-1"></a>
-      <ul>
-        <li>
-          <ul>
             <li><a href="#container란"><strong>Container란?</strong></a></li>
           </ul>
         </li>
-      </ul>
-    </li>
-    <li><a href="#heading-2"></a></li>
-    <li><a href="#heading-3"></a></li>
-    <li><a href="#heading-4"></a>
-      <ul>
-        <li><a href="#container-기반-기술"><strong>Container 기반 기술</strong></a></li>
-      </ul>
-    </li>
-    <li><a href="#heading-5"></a>
-      <ul>
-        <li>
+        <li><a href="#container-기반-기술"><strong>Container 기반 기술</strong></a>
           <ul>
             <li><a href="#chroot-and-chroot-jail"><strong>Chroot and Chroot Jail</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#heading-6"></a>
-      <ul>
-        <li>
-          <ul>
             <li><a href="#lxc-linux-container"><strong>LXC (LinuX Container)</strong></a></li>
+            <li><a href="#cgroup-control-group"><strong>cgroup (control group)</strong></a></li>
+            <li><a href="#namespace"><strong>namespace</strong></a></li>
+            <li><a href="#chroot"><strong>chroot</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#docker의-등장"><strong>Docker의 등장</strong></a>
+          <ul>
+            <li><a href="#docker의-이해"><strong>Docker의 이해</strong></a></li>
+            <li><a href="#docker-image의-이해"><strong>Docker Image의 이해</strong></a></li>
+            <li><a href="#docker-storage"><strong>Docker Storage</strong></a></li>
+            <li><a href="#docker-networking"><strong>Docker Networking</strong></a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#heading-7"></a></li>
   </ul>
 </nav>
 
@@ -527,10 +505,6 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#docker-%ec%99%80-container">#</a>
 </h2>
 <hr>
-<h1 id="heading">
-  
-  <a class="anchor" href="#heading">#</a>
-</h1>
 <h3 id="docker의-등장배경">
   <strong>Docker의 등장배경</strong>
   <a class="anchor" href="#docker%ec%9d%98-%eb%93%b1%ec%9e%a5%eb%b0%b0%ea%b2%bd">#</a>
@@ -549,18 +523,14 @@ https://github.com/alex-shpak/hugo-book
 <p>dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, <span style='background-color: #dcffe4'><strong>전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발</strong></span>됨.</p>
 </li>
 </ul>
-<h1 id="heading-1">
-  
-  <a class="anchor" href="#heading-1">#</a>
-</h1>
+<br/>
+<br/>
+<br/>
 <h3 id="container란">
   <strong>Container란?</strong>
   <a class="anchor" href="#container%eb%9e%80">#</a>
 </h3>
-<h1 id="heading-2">
-  
-  <a class="anchor" href="#heading-2">#</a>
-</h1>
+<br/>
 <p>
   <img src="https://wac-cdn.atlassian.com/dam/jcr:92adde69-f728-4cfc-8bab-ba391c25ae58/SWTM-2060_Diagram_Containers_VirtualMachines_v03.png?cdnVersion=1402" alt="" /></p>
 <ul>
@@ -579,23 +549,15 @@ https://github.com/alex-shpak/hugo-book
 <p>즉, 컨테이너 기반 가상화는 기존 가상화와 달리 하이퍼바이저 위에서 여러 개의 Guest OS를 실행하는 대신 호스트 OS 커널을 사용하여 격리된 여러 개의 컨테이너를 실행</p>
 </li>
 </ul>
-<h1 id="heading-3">
-  
-  <a class="anchor" href="#heading-3">#</a>
-</h1>
-<h1 id="heading-4">
-  
-  <a class="anchor" href="#heading-4">#</a>
-</h1>
+<br/>
+<br/>
+<br/>
 <h2 id="container-기반-기술">
   <strong>Container 기반 기술</strong>
   <a class="anchor" href="#container-%ea%b8%b0%eb%b0%98-%ea%b8%b0%ec%88%a0">#</a>
 </h2>
 <hr>
-<h1 id="heading-5">
-  
-  <a class="anchor" href="#heading-5">#</a>
-</h1>
+<br/>
 <h3 id="chroot-and-chroot-jail">
   <strong>Chroot and Chroot Jail</strong>
   <a class="anchor" href="#chroot-and-chroot-jail">#</a>
@@ -613,20 +575,241 @@ https://github.com/alex-shpak/hugo-book
 <p>이어 서로 다른 프로세스 그룹 간의 경계 관리 솔루션인 Solaris Zones이 출시되며, Container 라는 용어가 활용되기 시작하였음.</p>
 </li>
 </ul>
-<h1 id="heading-6">
-  
-  <a class="anchor" href="#heading-6">#</a>
-</h1>
+<br/>
 <h3 id="lxc-linux-container">
   <strong>LXC (LinuX Container)</strong>
   <a class="anchor" href="#lxc-linux-container">#</a>
 </h3>
-<h1 id="heading-7">
-  
-  <a class="anchor" href="#heading-7">#</a>
-</h1>
+<br/>
 <p>
   <img src="ttps://www.baeldung.com/linux/docker-containers-evolution" alt="" /></p>
+<ul>
+<li>LXC란 리눅스 컨테이너로 해당 커널의 <span style='background-color: #dcffe4'>주 구성요소는 namespace, cgroups, chroot</span> 이다.</li>
+</ul>
+<br/>
+<h3 id="cgroup-control-group">
+  <strong>cgroup (control group)</strong>
+  <a class="anchor" href="#cgroup-control-group">#</a>
+</h3>
+<br/>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Linux-Cgroups.jpg" alt="" /></p>
+<ul>
+<li>cgroup을 사용하여 각 컨테이너에 대한 시스템 리소스(CPU, 메모리, 디스크 I/O)를 제한하고 우선순위를 지정하며, 각 컨테이너에 리소스를 제어되고 효율적인 방식으로 할당하여 컨테이너의 성능에 영향을 미치는 것을 방지하는 역할을 수행한다.</li>
+</ul>
+<br/>
+<h3 id="namespace">
+  <strong>namespace</strong>
+  <a class="anchor" href="#namespace">#</a>
+</h3>
+<br/>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Linux-Process-Namespace-768x485.jpg" alt="" /></p>
+<ul>
+<li>LXC는 Linux 커널 namespace를 사용하여 각 컨테이너에 대해 별도의 네임스페이스를 생성</li>
+<li>namespace는 프로세스 ID, 네트워크 인터페이스, 파일 시스템 등 각 컨테이너에 대한 다양한 시스템 리소스를 격리하여, 다른 컨테이너 리소스의 간섭을 막는 역할을 수행한다.</li>
+</ul>
+<br/>
+<h3 id="chroot">
+  <strong>chroot</strong>
+  <a class="anchor" href="#chroot">#</a>
+</h3>
+<br/>
+<ul>
+<li>위에서 나타냈듯이, 각 컨테이너는 고유한 파일 시스템 계층 구조를 가질 수 있으며, 한 컨테이너 내의 프로세스가 다른 컨테이너의 파일에 액세스 하거나 수정 불가능하게 함</li>
+</ul>
+<br/>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Linux-Container-Architecture-1.jpg" alt="" /></p>
+<ul>
+<li>위 LXC 커널들을 사용하여 컨테이너 서비스가 개발되었기 때문에, 다른 운영체제서는 사용이 불가능
+<ul>
+<li>
+<p><strong>Namespaces</strong>: 네임스페이스는 리눅스에서 프로세스를 격리하고 독립적인 환경을 제공하는 기술로, 여러 가지 네임스페이스를 활용하여 프로세스, 마운트 포인트, 네트워크, 호스트 이름 등을 격리</p>
+</li>
+<li>
+<p><strong>Cgroups (컨트롤 그룹)</strong>: 리눅스에서 프로세스 그룹을 생성하고 리소스를 할당하거나 제한하는 기술 Cgroups를 사용하여 CPU, 메모리, 디스크 I/O 등의 자원을 제어하고 할당</p>
+</li>
+<li>
+<p>AppArmor 및 SELinux Profiles: AppArmor와 SELinux는 각각 리눅스 시스템에서 프로세스의 접근 권한을 제한하는 보안 모듈로 프로파일을 사용하여 각 컨테이너의 권한을 제어하고 보안을 강화</p>
+</li>
+<li>
+<p><strong>Network Devices (네트워크 디바이스)</strong>: 네트워크를 격리하고 각 컨테이너에 독립적인 네트워크 환경을 제공 및 네트워크 디바이스를 사용하여 컨테이너 간 통신이나 호스트와의 통신을 관리</p>
+</li>
+<li>
+<p><strong>Chroot (체인지 루트)</strong>: 파일 시스템에서 특정 디렉토리를 컨테이너의 루트로 변경, 이를 통해 컨테이너는 호스트 시스템과 독립된 파일 시스템 환경을 구축이 가능</p>
+</li>
+<li>
+<p><strong>Seccomp Policies</strong>: Seccomp은 리눅스에서 프로세스가 사용할 수 있는 시스템 콜을 제한하는 커널 보안 모듈로 Seccomp를 사용하여 컨테이너에서 특정 시스템 콜을 차단하여 보안을 강화</p>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<br/>
+<br/>
+<h2 id="docker의-등장">
+  <strong>Docker의 등장</strong>
+  <a class="anchor" href="#docker%ec%9d%98-%eb%93%b1%ec%9e%a5">#</a>
+</h2>
+<hr>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Docker-Execution-Environment.jpg" alt="" /></p>
+<ul>
+<li>
+<p>LXC는 사용자 공간 수준에서 깔끔하고 강력한 인터페이스를 제공하지만 여전히 사용하기 쉽지 않고 대중적 매력을 불러일으키지도 못했고, <span style='background-color: #dcffe4'><strong>Docker 커널 기능을 다루는 복잡성의 대부분을 추상화하면서 애플리케이션과 그 종속성을 컨테이너에 묶는 간단한 형식을 제공하여 이를 해결</strong></span>하였다.</p>
+</li>
+<li>
+<p>단, <span style='background-color: #dcffe4'><strong>Docker는 초기 LXC에서 실행환경을 구성하였으나, 이후 Go Lang을 활용한 libcontainer로 내부 환경을 변경하여 LXC와 같은 외부 패키지에 의존적이지 않도록 개발을 진행</strong></span>하였다.</p>
+</li>
+</ul>
+<br/>
+<br/>
+<h3 id="docker의-이해">
+  <strong>Docker의 이해</strong>
+  <a class="anchor" href="#docker%ec%9d%98-%ec%9d%b4%ed%95%b4">#</a>
+</h3>
+<br/>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Docker-Components.jpg" alt="" /></p>
+<ul>
+<li>도커는 위 그림과 같이 모듈식 아키텍처를 가지고 있으며, 서비스를 제공하기 위해 몇 가지 주요 구성 요소를 사용
+<ul>
+<li>
+<p><strong>Dockerd</strong>: docker engine으로 불리며 API 요청을 수신하고 개체를 관리하는 데몬 프로세스</p>
+</li>
+<li>
+<p><strong>Containerd</strong>: Docker 객체를 관리하기 위해 이미지 다운로드 및 컨테이너 실행과 같은 작업을 수행</p>
+</li>
+<li>
+<p><strong>runc</strong>: 커널 기능과 상호작용하며 네임스페이스 및 제어 그룹을 생성하는 표준 메커니즘을 제공</p>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Docker-Workflow.jpg" alt="" /></p>
+<br/>
+<br/>
+<h3 id="docker-image의-이해">
+  <strong>Docker Image의 이해</strong>
+  <a class="anchor" href="#docker-image%ec%9d%98-%ec%9d%b4%ed%95%b4">#</a>
+</h3>
+<br/>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Docker-Containers.jpg" alt="" />
+
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Docker-Images-768x335.jpg" alt="" /></p>
+<ul>
+<li>
+<p>도커의 이미지는 <span style='background-color: #dcffe4'><strong>컨테이너를 인스턴스화 하는 데 사용하는 읽기 전용 레이어 파일</strong></span>이다.</p>
+</li>
+<li>
+<p>이미지는 <code>Dockerfile</code>를 통해 생상하며, Dockerfile의 각 명령은 상위 이미지 위에 레이어를 생성하여 적용시키는 개념이다.</p>
+</li>
+</ul>
+<br/>
+<h3 id="docker-storage">
+  <strong>Docker Storage</strong>
+  <a class="anchor" href="#docker-storage">#</a>
+</h3>
+<br/>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Docker-Storage.jpg" alt="" /></p>
+<ul>
+<li>
+<p>Docker Image로 생성된 컨테이너는 위와 같이 Layer 형식으로 구성 되며, 이는 위 그림과 같이 스토리지 드라이버에 저장된다.</p>
+</li>
+<li>
+<p>스토리지 드라이버는 이미지 레이어와 컨테이너 레이어의 콘텐츠를 관리하며, aufs, overlay, <code>overlay2</code>, btrfs, ztf 등의 여러 스토리지 드라이버를 사용 할 수 있다.</p>
+</li>
+<li>
+<p>각 스토리지 드라이버는 구현 방식이 다르지만 모두 <span style='background-color: #dcffe4'><strong>스택 가능한 이미지 레이어와 CoW(기록 중 복사) 전략을 사용 (CoW는 기본적으로 효율성을 극대화하기 위해 파일을 공유하고 복사하는 전략)</strong></span></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Volume</strong></td>
+<td>볼륨은 호스트 파일 시스템의 특별한 디렉토리나 Docker가 관리하는 볼륨 드라이버에 의해 생성되며, 컨테이너에 마운트되며, 볼륨은 컨테이너의 생명주기 동안 데이터를 유지하고, 여러 컨테이너 간에 데이터를 쉽게 공유하는 역할을 수행</td>
+</tr>
+<tr>
+<td><strong>Bind Mount</strong></td>
+<td>바인드 마운트는 호스트 머신의 파일 시스템 경로를 직접 컨테이너 경로에 마운트하는 방식</td>
+</tr>
+<tr>
+<td><strong>Tmpfs</strong></td>
+<td>컨테이너 내의 임시 파일 시스템으로, RAM을 기반으로 컨테이너의 실행 중에만 유지되며, 컨테이너가 종료되면 데이터가 손실</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<h3 id="docker-networking">
+  <strong>Docker Networking</strong>
+  <a class="anchor" href="#docker-networking">#</a>
+</h3>
+<br/>
+<ul>
+<li>Docker 컨테이너는 다른 워크로드 유형에 대한 명시적인 지식 없이도 서로 연결될 수 있으며, Docker가 아닌 워크로드와도 연결이 가능한데, 이는 완전히 연결 가능한 Docker의 네트워킹 하위 시스템 덕분에 가능</li>
+<li>이는 아래의 네트워크 드라이버를 통해 지원</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bridge</td>
+<td>브리지 드라이버를 사용하여 독립형 컨테이너에서 실행되는 애플리케이션 간에 통신 (기본 드라이버)</td>
+</tr>
+<tr>
+<td>host</td>
+<td>호스트 드라이버는 컨테이너와 호스트 사이의 네트워크 격리를 제거하고 호스트 네트워크를 직접 사용</td>
+</tr>
+<tr>
+<td>overlay</td>
+<td>오버레이 드라이버를 사용하여 여러 Docker 데몬을 함께 연결 (Docker Swarm)</td>
+</tr>
+<tr>
+<td>macvlan</td>
+<td>macvlan 드라이버를 사용하면 Docker 데몬이 MAC 주소를 통해 컨테이너로 트래픽을 라우팅할 수 있도록 MAC 주소를 컨테이너에 할당이 가능</td>
+</tr>
+<tr>
+<td>none</td>
+<td>네트워크 비활성화</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<h4 id="docker-bridge-network">
+  <strong>Docker bridge network</strong>
+  <a class="anchor" href="#docker-bridge-network">#</a>
+</h4>
+<p>
+  <img src="https://www.baeldung.com/wp-content/uploads/sites/2/2020/11/Docker-Bridge-Network.jpg" alt="" /></p>
+<ul>
+<li>
+<p>Docker는 기본적으로 브리지 네트워크 &ldquo;docker0&quot;을 생성하고 &ldquo;vethxx&quot;를 통해 모든 컨테이너 네트워크를 여기에 연결</p>
+</li>
+<li>
+<p>기본 브리지 네트워크에 연결된 컨테이너는 IP 주소를 통해 서로 통신할 수 있습니다 . 또한 브리지 네트워크 “docker0”은 호스트 네트워크 “eth0”에 연결되어 외부 네트워크에 대한 연결을 제공</p>
+</li>
+</ul>
+<h4 id="참조httpswwwbaeldungcomlinuxdocker-containers-evolution">
+  
+  <a href="https://www.baeldung.com/linux/docker-containers-evolution">참조</a>
+  <a class="anchor" href="#%ec%b0%b8%ec%a1%b0httpswwwbaeldungcomlinuxdocker-containers-evolution">#</a>
+</h4>
 </article>
  
       
@@ -634,6 +817,15 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>January 19, 2024</span>
+    </a>
+  </div>
+
+
 
 
 
@@ -696,53 +888,31 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#docker-와-container"><strong>Docker 와 Container</strong></a></li>
-      </ul>
-    </li>
-    <li><a href="#heading"></a>
-      <ul>
-        <li>
+        <li><a href="#docker-와-container"><strong>Docker 와 Container</strong></a>
           <ul>
             <li><a href="#docker의-등장배경"><strong>Docker의 등장배경</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#heading-1"></a>
-      <ul>
-        <li>
-          <ul>
             <li><a href="#container란"><strong>Container란?</strong></a></li>
           </ul>
         </li>
-      </ul>
-    </li>
-    <li><a href="#heading-2"></a></li>
-    <li><a href="#heading-3"></a></li>
-    <li><a href="#heading-4"></a>
-      <ul>
-        <li><a href="#container-기반-기술"><strong>Container 기반 기술</strong></a></li>
-      </ul>
-    </li>
-    <li><a href="#heading-5"></a>
-      <ul>
-        <li>
+        <li><a href="#container-기반-기술"><strong>Container 기반 기술</strong></a>
           <ul>
             <li><a href="#chroot-and-chroot-jail"><strong>Chroot and Chroot Jail</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#heading-6"></a>
-      <ul>
-        <li>
-          <ul>
             <li><a href="#lxc-linux-container"><strong>LXC (LinuX Container)</strong></a></li>
+            <li><a href="#cgroup-control-group"><strong>cgroup (control group)</strong></a></li>
+            <li><a href="#namespace"><strong>namespace</strong></a></li>
+            <li><a href="#chroot"><strong>chroot</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#docker의-등장"><strong>Docker의 등장</strong></a>
+          <ul>
+            <li><a href="#docker의-이해"><strong>Docker의 이해</strong></a></li>
+            <li><a href="#docker-image의-이해"><strong>Docker Image의 이해</strong></a></li>
+            <li><a href="#docker-storage"><strong>Docker Storage</strong></a></li>
+            <li><a href="#docker-networking"><strong>Docker Networking</strong></a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#heading-7"></a></li>
   </ul>
 </nav>
 
