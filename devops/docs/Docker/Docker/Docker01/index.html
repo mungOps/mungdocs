@@ -18,7 +18,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.1d381e28782ca8977e72c691e2ffe8a575944c348b2908abf551f37de1f4275f.js" integrity="sha256-HTgeKHgsqJd&#43;csaR4v/opXWUTDSLKQir9VHzfeH0J18=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.1b106aecb94e5150b091e454c81e651ce4fd58589424edc6eca29f3ade1e6197.js" integrity="sha256-GxBq7LlOUVCwkeRUyB5lHOT9WFiUJO3G7KKfOt4eYZc=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -500,6 +500,8 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#docker-기본-명령어">Docker 기본 명령어</a>
           <ul>
             <li><a href="#컨테이너-생성"><strong>컨테이너 생성</strong></a></li>
+            <li><a href="#network-생성"><strong>Network 생성</strong></a></li>
+            <li><a href="#volume-생성"><strong>volume 생성</strong></a></li>
             <li><a href="#컨테니어-시작"><strong>컨테니어 시작</strong></a></li>
             <li><a href="#컨테이너-목록-확인"><strong>컨테이너 목록 확인</strong></a></li>
             <li><a href="#컨테이너-중지"><strong>컨테이너 중지</strong></a></li>
@@ -591,6 +593,164 @@ https://github.com/alex-shpak/hugo-book
 <tr>
 <td>&ndash;help</td>
 <td>도움말을 표시합니다.</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<br/>
+<h3 id="network-생성">
+  <strong>Network 생성</strong>
+  <a class="anchor" href="#network-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker network create <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> NETWORK
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>네트워크 드라이버 지정 (기본값: bridge)</td>
+</tr>
+<tr>
+<td>&ndash;subnet</td>
+<td>네트워크의 서브넷 설정</td>
+</tr>
+<tr>
+<td>&ndash;gateway</td>
+<td>네트워크의 게이트웨이 IP 설정</td>
+</tr>
+<tr>
+<td>&ndash;ip-range</td>
+<td>네트워크의 IP 범위 설정</td>
+</tr>
+<tr>
+<td>&ndash;attachable</td>
+<td>기존 네트워크에 컨테이너 연결 허용</td>
+</tr>
+<tr>
+<td>&ndash;internal</td>
+<td>외부에서의 네트워크 접근 제한</td>
+</tr>
+<tr>
+<td>&ndash;label</td>
+<td>네트워크에 메타데이터 설정</td>
+</tr>
+<tr>
+<td>&ndash;opt</td>
+<td>드라이버별 옵션 설정</td>
+</tr>
+<tr>
+<td>&ndash;ipv6</td>
+<td>IPv6 지원 활성화</td>
+</tr>
+<tr>
+<td>&ndash;ipam-driver</td>
+<td>IP 주소 관리 드라이버 지정</td>
+</tr>
+<tr>
+<td>&ndash;ipam-opt</td>
+<td>IP 주소 관리 옵션 설정</td>
+</tr>
+<tr>
+<td>&ndash;attachable</td>
+<td>기존 네트워크에 컨테이너 연결 허용</td>
+</tr>
+<tr>
+<td>&ndash;internal</td>
+<td>외부에서의 네트워크 접근 제한</td>
+</tr>
+<tr>
+<td>&ndash;ingress</td>
+<td>인그레스 네트워크 생성</td>
+</tr>
+<tr>
+<td>&ndash;ingress-opt</td>
+<td>인그레스 옵션 설정</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<br/>
+<h3 id="volume-생성">
+  <strong>volume 생성</strong>
+  <a class="anchor" href="#volume-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker volume create <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> STORAGE
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ndash;storage-driver</td>
+<td>사용할 스토리지 드라이버 설정</td>
+</tr>
+<tr>
+<td>&ndash;volume-driver</td>
+<td>사용할 볼륨 드라이버 설정</td>
+</tr>
+<tr>
+<td>&ndash;add-registry</td>
+<td>이미지를 가져올 도커 레지스트리 추가</td>
+</tr>
+<tr>
+<td>&ndash;disable-content-trust</td>
+<td>이미지에 대한 콘텐츠 신뢰 기능 비활성화</td>
+</tr>
+<tr>
+<td>&ndash;icc</td>
+<td>컨테이너 간 통신 허용 여부 설정</td>
+</tr>
+<tr>
+<td>&ndash;live-restore</td>
+<td>도커 데몬 재시작 시 컨테이너 자동 복구 설정</td>
+</tr>
+<tr>
+<td>&ndash;log-driver</td>
+<td>로깅 드라이버 설정</td>
+</tr>
+<tr>
+<td>&ndash;log-level</td>
+<td>로깅 레벨 설정</td>
+</tr>
+<tr>
+<td>&ndash;storage-opt</td>
+<td>스토리지 드라이버 옵션 설정</td>
+</tr>
+<tr>
+<td>&ndash;selinux-enabled</td>
+<td>SELinux 지원 여부 설정</td>
+</tr>
+<tr>
+<td>&ndash;storage-opt</td>
+<td>스토리지 드라이버 옵션 설정</td>
+</tr>
+<tr>
+<td>&ndash;tls</td>
+<td>TLS 보안 연결 설정</td>
+</tr>
+<tr>
+<td>&ndash;tlscacert</td>
+<td>TLS CA 인증서 파일 경로 설정</td>
+</tr>
+<tr>
+<td>&ndash;tlscert</td>
+<td>TLS 인증서 파일 경로 설정</td>
+</tr>
+<tr>
+<td>&ndash;tlskey</td>
+<td>TLS 키 파일 경로 설정</td>
+</tr>
+<tr>
+<td>&ndash;tlsverify</td>
+<td>TLS 연결 검증 설정</td>
 </tr>
 </tbody>
 </table>
@@ -1041,6 +1201,8 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#docker-기본-명령어">Docker 기본 명령어</a>
           <ul>
             <li><a href="#컨테이너-생성"><strong>컨테이너 생성</strong></a></li>
+            <li><a href="#network-생성"><strong>Network 생성</strong></a></li>
+            <li><a href="#volume-생성"><strong>volume 생성</strong></a></li>
             <li><a href="#컨테니어-시작"><strong>컨테니어 시작</strong></a></li>
             <li><a href="#컨테이너-목록-확인"><strong>컨테이너 목록 확인</strong></a></li>
             <li><a href="#컨테이너-중지"><strong>컨테이너 중지</strong></a></li>
