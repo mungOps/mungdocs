@@ -3,33 +3,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="학습목표#클라우드 서비스를 활용하기 위한 기본 지식 학습
-클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
-클라우드 서비스 내 프로젝트 배포를 간편화
-클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
-클라우드 서비스에 배포 자동화
-클라우드 서비스 무중단 배포
-정적 IP 할당을 위한 NLB 활용
-최종목표
-스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 ">
+<meta name="description" content="Docker#Docker Registry#Registry#Docker의 Registry는 이미지를 저장하는 장소이며 크게 Docker Hub, Private Registry로 나뉘어진다. Private Registry는 내부망, 로컬으로 나뉘어진다. Docker Hub 사용#$ docker login ... $ docker tag Push_image [ID]/[Image_name] $ docker pull [ID]/[REPO] ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="1. 학습목표" />
-<meta property="og:description" content="학습목표#클라우드 서비스를 활용하기 위한 기본 지식 학습
-클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
-클라우드 서비스 내 프로젝트 배포를 간편화
-클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
-클라우드 서비스에 배포 자동화
-클라우드 서비스 무중단 배포
-정적 IP 할당을 위한 NLB 활용
-최종목표
-스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 " />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="2. Docker Registry" />
+<meta property="og:description" content="Docker#Docker Registry#Registry#Docker의 Registry는 이미지를 저장하는 장소이며 크게 Docker Hub, Private Registry로 나뉘어진다. Private Registry는 내부망, 로컬으로 나뉘어진다. Docker Hub 사용#$ docker login ... $ docker tag Push_image [ID]/[Image_name] $ docker pull [ID]/[REPO] " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/CICD/CICD/with-toc/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker02/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-01-19T12:07:14+09:00" />
 
-<title>1. 학습목표 | Mung Book</title>
+
+<title>2. Docker Registry | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
@@ -140,7 +124,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle" checked />
+    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
     <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
       <a role="button" class="">CI/CD 배포 입문</a>
     </label>
@@ -169,7 +153,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/CICD/CICD/with-toc/" class="active">1. 학습목표</a>
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
   
 
         </li>
@@ -249,7 +233,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle"  />
+    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle" checked />
     <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
@@ -291,7 +275,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Docker/Docker/Docker02/" class="">2. Docker Registry</a>
+    <a href="/devops/docs/Docker/Docker/Docker02/" class="active">2. Docker Registry</a>
   
 
         </li>
@@ -494,7 +478,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>1. 학습목표</strong>
+  <strong>2. Docker Registry</strong>
 
   <label for="toc-control">
     
@@ -510,7 +494,16 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#학습목표">학습목표</a></li>
+    <li><a href="#docker">Docker</a>
+      <ul>
+        <li><a href="#docker-registry"><strong>Docker Registry</strong></a>
+          <ul>
+            <li><a href="#registry"><strong>Registry</strong></a></li>
+            <li><a href="#docker-hub-사용"><strong>Docker Hub 사용</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -523,40 +516,42 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="학습목표">
-  학습목표
-  <a class="anchor" href="#%ed%95%99%ec%8a%b5%eb%aa%a9%ed%91%9c">#</a>
+  <article class="markdown"><h1 id="docker">
+  Docker
+  <a class="anchor" href="#docker">#</a>
 </h1>
 <hr>
-<ol>
-<li>
-<p>클라우드 서비스를 활용하기 위한 기본 지식 학습</p>
-</li>
-<li>
-<p>클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축</p>
-</li>
-<li>
-<p>클라우드 서비스 내 프로젝트 배포를 간편화</p>
-</li>
-<li>
-<p>클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )</p>
-</li>
-<li>
-<p>클라우드 서비스에 배포 자동화</p>
-</li>
-<li>
-<p>클라우드 서비스 무중단 배포</p>
-</li>
-<li>
-<p>정적 IP 할당을 위한 NLB 활용</p>
-</li>
-<li>
-<p>최종목표</p>
+<h2 id="docker-registry">
+  <strong>Docker Registry</strong>
+  <a class="anchor" href="#docker-registry">#</a>
+</h2>
+<hr>
+<br/>
+<p>
+  <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbKbngS%2FbtrI2ZqGO68%2FlRguTdxlQ8EbO9OLozD0Nk%2Fimg.png" alt="" /></p>
+<br/>
+<h3 id="registry">
+  <strong>Registry</strong>
+  <a class="anchor" href="#registry">#</a>
+</h3>
 <ul>
-<li>스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포</li>
+<li>Docker의 Registry는 이미지를 저장하는 장소이며 크게 Docker Hub, Private Registry로 나뉘어진다.</li>
+<li>Private Registry는 내부망, 로컬으로 나뉘어진다.</li>
 </ul>
-</li>
-</ol>
+<br/>
+<br/>
+<h3 id="docker-hub-사용">
+  <strong>Docker Hub 사용</strong>
+  <a class="anchor" href="#docker-hub-%ec%82%ac%ec%9a%a9">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker login
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ docker tag Push_image <span style="color:#f92672">[</span>ID<span style="color:#f92672">]</span>/<span style="color:#f92672">[</span>Image_name<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ docker pull <span style="color:#f92672">[</span>ID<span style="color:#f92672">]</span>/<span style="color:#f92672">[</span>REPO<span style="color:#f92672">]</span>
+</span></span></code></pre></div><br/>
+<br/>
 </article>
  
       
@@ -566,19 +561,10 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2024</span>
-    </a>
-  </div>
 
 
 
-
-
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/CICD/CICD/with-toc.md" target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Docker/Docker/Docker02.md" target="_blank" rel="noopener">
           <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -633,7 +619,16 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#학습목표">학습목표</a></li>
+    <li><a href="#docker">Docker</a>
+      <ul>
+        <li><a href="#docker-registry"><strong>Docker Registry</strong></a>
+          <ul>
+            <li><a href="#registry"><strong>Registry</strong></a></li>
+            <li><a href="#docker-hub-사용"><strong>Docker Hub 사용</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Docker#Dockerfile#Dockerfile#Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시## 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="3. Dockerfile$ Compose" />
+<meta property="og:description" content="Docker#Dockerfile#Dockerfile#Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시## 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/" /><meta property="article:section" content="docs" />
+
+
+
+<title>3. Dockerfile$ Compose | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.bced699379e2924ccb3733fe3664c9d3ac0e532d8e129a8475431a27ee39ae31.js" integrity="sha256-vO1pk3nikkzLNzP&#43;NmTJ06wOUy2OEpqEdUMaJ&#43;45rjE=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CI/CD</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
+    <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
+      <a role="button" class="">CI/CD 배포 입문</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Docker</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle" checked />
+    <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker00/" class="">0. Docker&amp; Container</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker01/" class="">1. Docker 기본 명령어</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker02/" class="">2. Docker Registry</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker03/" class="active">3. Dockerfile$ Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker04/" class="">4. Docker 실습</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Git</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle"  />
+    <label for="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Kubernetes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
+    <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
+      <a role="button" class="">Kubernetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s00/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s01/" class="">1. Kubernetes Object</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>3. Dockerfile$ Compose</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker">Docker</a>
+      <ul>
+        <li><a href="#dockerfile"><strong>Dockerfile</strong></a>
+          <ul>
+            <li><a href="#dockerfile-1"><strong>Dockerfile</strong></a></li>
+            <li><a href="#dockerfile-예시"><strong>Dockerfile 예시</strong></a></li>
+            <li><a href="#docker-compose"><strong>Docker compose</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="docker">
+  Docker
+  <a class="anchor" href="#docker">#</a>
+</h1>
+<hr>
+<h2 id="dockerfile">
+  <strong>Dockerfile</strong>
+  <a class="anchor" href="#dockerfile">#</a>
+</h2>
+<hr>
+<br/>
+<br/>
+<h3 id="dockerfile-1">
+  <strong>Dockerfile</strong>
+  <a class="anchor" href="#dockerfile-1">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADD</td>
+<td>로컬 또는 원격 파일 및 디렉토리 추가</td>
+</tr>
+<tr>
+<td>ARG</td>
+<td>빌드 시간 변수 사용</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>기본 명령어 지정</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>파일 및 디렉토리 복사</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>기본 실행 파일 지정</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>환경 변수 설정</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>응용 프로그램이 수신 대기 중인 포트 설명</td>
+</tr>
+<tr>
+<td>FROM</td>
+<td>기본 이미지에서 새 빌드 단계 생성</td>
+</tr>
+<tr>
+<td>HEALTHCHECK</td>
+<td>컨테이너의 시작 시간에 대한 건강 상태 확인</td>
+</tr>
+<tr>
+<td>LABEL</td>
+<td>이미지에 메타데이터 추가</td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td>이미지 작성자 지정</td>
+</tr>
+<tr>
+<td>ONBUILD</td>
+<td>이미지가 빌드에 사용될 때 지시</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>빌드 명령어 실행</td>
+</tr>
+<tr>
+<td>SHELL</td>
+<td>이미지의 기본 셸 설정</td>
+</tr>
+<tr>
+<td>STOPSIGNAL</td>
+<td>컨테이너 종료에 대한 시스템 콜 신호 지정</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>사용자 및 그룹 ID 설정</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>볼륨 마운트 생성</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>작업 디렉토리 변경</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<br/>
+<h3 id="dockerfile-예시">
+  <strong>Dockerfile 예시</strong>
+  <a class="anchor" href="#dockerfile-%ec%98%88%ec%8b%9c">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># 기본 이미지로부터 빌드 스테이지 생성</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 로컬 또는 원격 파일 및 디렉토리 추가</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span> ./app /app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 빌드 시간 변수 사용</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> version<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>.0<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 기본 명령어 지정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;./app/start.sh&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 파일 및 디렉토리 복사</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./config /config<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 기본 실행 파일 지정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;/app/entrypoint.sh&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 환경 변수 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> APP_HOME<span style="color:#f92672">=</span>/app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 응용 프로그램이 수신 대기 중인 포트 설명</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 건강 상태 확인</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HEALTHCHECK</span> CMD curl --fail http://localhost:8080/ <span style="color:#f92672">||</span> exit <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 이미지에 메타데이터 추가</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> version<span style="color:#f92672">=</span>$version<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> maintainer<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your Name &lt;your.email@example.com&gt;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 이미지 작성자 지정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Your Name &lt;your.email@example.com&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 이미지가 빌드에 사용될 때 지시</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ONBUILD</span> <span style="color:#66d9ef">ADD</span> . /app/src<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ONBUILD</span> <span style="color:#66d9ef">RUN</span> /app/build.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 빌드 명령어 실행</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    package1 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    package2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 이미지의 기본 셸 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">SHELL</span> [<span style="color:#e6db74">&#34;/bin/bash&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 컨테이너 종료에 대한 시스템 콜 신호 지정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">STOPSIGNAL</span><span style="color:#e6db74"> SIGTERM</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 사용자 및 그룹 ID 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> 1000:1000</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 볼륨 마운트 생성</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">VOLUME</span><span style="color:#e6db74"> /app/data</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 작업 디렉토리 변경</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><br/>
+<br/>
+<h3 id="docker-compose">
+  <strong>Docker compose</strong>
+  <a class="anchor" href="#docker-compose">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span>version: <span style="color:#e6db74">&#39;3&#39;</span>  <span style="color:#75715e"># 도커 컴포즈 버전 지정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>services:  <span style="color:#75715e"># 서비스 정의 시작</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  web:  <span style="color:#75715e"># 서비스 이름</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    image: nginx:latest  <span style="color:#75715e"># 도커 이미지 지정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    ports:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#34;8080:80&#34;</span>  <span style="color:#75715e"># 호스트와 컨테이너 포트 매핑</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    volumes:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - ./web-content:/usr/share/nginx/html  <span style="color:#75715e"># 볼륨 매핑</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    networks:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - frontend  <span style="color:#75715e"># 네트워크 지정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  db:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    image: mysql:latest<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    environment:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      MYSQL_ROOT_PASSWORD: example  <span style="color:#75715e"># 환경 변수 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    volumes:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - db-data:/var/lib/mysql<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    networks:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - backend<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>networks:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  frontend:  <span style="color:#75715e"># 사용자 정의 네트워크 정의</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  backend:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>volumes:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  db-data:  <span style="color:#75715e"># 사용자 정의 볼륨 정의</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f, &ndash;file</td>
+<td>컴포즈 설정 파일 지정 (기본값: docker-compose.yml)</td>
+</tr>
+<tr>
+<td>-p, &ndash;project-name</td>
+<td>프로젝트 이름 설정 (기본값: 디렉터리 이름)</td>
+</tr>
+<tr>
+<td>-v, &ndash;verbose</td>
+<td>자세한 출력 활성화</td>
+</tr>
+<tr>
+<td>-q, &ndash;quiet</td>
+<td>출력을 최소화</td>
+</tr>
+<tr>
+<td>&ndash;log-level</td>
+<td>로그 레벨 설정 (기본값: INFO)</td>
+</tr>
+<tr>
+<td>&ndash;no-ansi</td>
+<td>ANSI 제어 코드를 사용하지 않음</td>
+</tr>
+<tr>
+<td>&ndash;version</td>
+<td>버전 정보 출력</td>
+</tr>
+<tr>
+<td>&ndash;help</td>
+<td>도움말 출력</td>
+</tr>
+<tr>
+<td>-H, &ndash;host</td>
+<td>컴포즈 엔진에 연결할 Docker 호스트 설정</td>
+</tr>
+<tr>
+<td>&ndash;compatibility</td>
+<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+</tr>
+<tr>
+<td>&ndash;env-file</td>
+<td>환경 파일에서 변수 지정</td>
+</tr>
+<tr>
+<td>&ndash;project-directory</td>
+<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+</tr>
+<tr>
+<td>&ndash;compatibility</td>
+<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+</tr>
+<tr>
+<td>&ndash;project-directory</td>
+<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+</tr>
+<tr>
+<td>&ndash;compatibility</td>
+<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+</tr>
+<tr>
+<td>&ndash;project-directory</td>
+<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+</tr>
+<tr>
+<td>&ndash;compatibility</td>
+<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+</tr>
+<tr>
+<td>&ndash;project-directory</td>
+<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+</tr>
+<tr>
+<td>&ndash;compatibility</td>
+<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+</tr>
+<tr>
+<td>&ndash;project-directory</td>
+<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<br/></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Docker/Docker/Docker03.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker">Docker</a>
+      <ul>
+        <li><a href="#dockerfile"><strong>Dockerfile</strong></a>
+          <ul>
+            <li><a href="#dockerfile-1"><strong>Dockerfile</strong></a></li>
+            <li><a href="#dockerfile-예시"><strong>Dockerfile 예시</strong></a></li>
+            <li><a href="#docker-compose"><strong>Docker compose</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

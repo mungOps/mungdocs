@@ -3,33 +3,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="학습목표#클라우드 서비스를 활용하기 위한 기본 지식 학습
-클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
-클라우드 서비스 내 프로젝트 배포를 간편화
-클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
-클라우드 서비스에 배포 자동화
-클라우드 서비스 무중단 배포
-정적 IP 할당을 위한 NLB 활용
-최종목표
-스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 ">
+<meta name="description" content="Docker##">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="1. 학습목표" />
-<meta property="og:description" content="학습목표#클라우드 서비스를 활용하기 위한 기본 지식 학습
-클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
-클라우드 서비스 내 프로젝트 배포를 간편화
-클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
-클라우드 서비스에 배포 자동화
-클라우드 서비스 무중단 배포
-정적 IP 할당을 위한 NLB 활용
-최종목표
-스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 " />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="4. Docker 실습" />
+<meta property="og:description" content="Docker##" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/CICD/CICD/with-toc/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker04/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-01-19T12:07:14+09:00" />
 
-<title>1. 학습목표 | Mung Book</title>
+
+<title>4. Docker 실습 | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
@@ -140,7 +124,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle" checked />
+    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
     <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
       <a role="button" class="">CI/CD 배포 입문</a>
     </label>
@@ -169,7 +153,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/CICD/CICD/with-toc/" class="active">1. 학습목표</a>
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
   
 
         </li>
@@ -249,7 +233,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle"  />
+    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle" checked />
     <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
@@ -317,7 +301,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Docker/Docker/Docker04/" class="">4. Docker 실습</a>
+    <a href="/devops/docs/Docker/Docker/Docker04/" class="active">4. Docker 실습</a>
   
 
         </li>
@@ -494,7 +478,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>1. 학습목표</strong>
+  <strong>4. Docker 실습</strong>
 
   <label for="toc-control">
     
@@ -510,7 +494,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#학습목표">학습목표</a></li>
+    <li><a href="#docker">Docker</a></li>
+    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 
@@ -523,40 +508,15 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="학습목표">
-  학습목표
-  <a class="anchor" href="#%ed%95%99%ec%8a%b5%eb%aa%a9%ed%91%9c">#</a>
+  <article class="markdown"><h1 id="docker">
+  Docker
+  <a class="anchor" href="#docker">#</a>
 </h1>
 <hr>
-<ol>
-<li>
-<p>클라우드 서비스를 활용하기 위한 기본 지식 학습</p>
-</li>
-<li>
-<p>클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축</p>
-</li>
-<li>
-<p>클라우드 서비스 내 프로젝트 배포를 간편화</p>
-</li>
-<li>
-<p>클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )</p>
-</li>
-<li>
-<p>클라우드 서비스에 배포 자동화</p>
-</li>
-<li>
-<p>클라우드 서비스 무중단 배포</p>
-</li>
-<li>
-<p>정적 IP 할당을 위한 NLB 활용</p>
-</li>
-<li>
-<p>최종목표</p>
-<ul>
-<li>스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포</li>
-</ul>
-</li>
-</ol>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
 </article>
  
       
@@ -566,19 +526,10 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2024</span>
-    </a>
-  </div>
 
 
 
-
-
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/CICD/CICD/with-toc.md" target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Docker/Docker/Docker04.md" target="_blank" rel="noopener">
           <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -633,7 +584,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#학습목표">학습목표</a></li>
+    <li><a href="#docker">Docker</a></li>
+    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 

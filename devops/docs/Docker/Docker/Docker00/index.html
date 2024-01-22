@@ -17,14 +17,14 @@ dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식�
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-01-19T12:07:14+09:00" />
+<meta property="article:modified_time" content="2024-01-19T18:03:28+09:00" />
 
 <title>0. Docker&amp; Container | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.7533b9261b176b2332fbd75fab6d131c0c018eadd2a3cb27f00c84bf3e53ebda.js" integrity="sha256-dTO5JhsXayMy&#43;9dfq20THAwBjq3So8sn8AyEvz5T69o=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.bced699379e2924ccb3733fe3664c9d3ac0e532d8e129a8475431a27ee39ae31.js" integrity="sha256-vO1pk3nikkzLNzP&#43;NmTJ06wOUy2OEpqEdUMaJ&#43;45rjE=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -268,7 +268,46 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Docker/Docker/Docker/" class="">Docker</a>
+    <a href="/devops/docs/Docker/Docker/Docker01/" class="">1. Docker 기본 명령어</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker02/" class="">2. Docker Registry</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker03/" class="">3. Dockerfile$ Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker04/" class="">4. Docker 실습</a>
   
 
         </li>
@@ -584,7 +623,7 @@ https://github.com/alex-shpak/hugo-book
 <p>
   <img src="ttps://www.baeldung.com/linux/docker-containers-evolution" alt="" /></p>
 <ul>
-<li>LXC란 리눅스 컨테이너로 해당 커널의 <span style='background-color: #dcffe4'>주 구성요소는 namespace, cgroups, chroot</span> 이다.</li>
+<li>LXC란 리눅스 컨테이너로 해당 커널의 <span style='background-color: #dcffe4'><strong>주 구성요소는 namespace, cgroups, chroot</strong></span> 이다.</li>
 </ul>
 <br/>
 <h3 id="cgroup-control-group">
@@ -631,7 +670,7 @@ https://github.com/alex-shpak/hugo-book
 <p><strong>Cgroups (컨트롤 그룹)</strong>: 리눅스에서 프로세스 그룹을 생성하고 리소스를 할당하거나 제한하는 기술 Cgroups를 사용하여 CPU, 메모리, 디스크 I/O 등의 자원을 제어하고 할당</p>
 </li>
 <li>
-<p>AppArmor 및 SELinux Profiles: AppArmor와 SELinux는 각각 리눅스 시스템에서 프로세스의 접근 권한을 제한하는 보안 모듈로 프로파일을 사용하여 각 컨테이너의 권한을 제어하고 보안을 강화</p>
+<p><strong>AppArmor 및 SELinux Profiles</strong>: AppArmor와 SELinux는 각각 리눅스 시스템에서 프로세스의 접근 권한을 제한하는 보안 모듈로 프로파일을 사용하여 각 컨테이너의 권한을 제어하고 보안을 강화</p>
 </li>
 <li>
 <p><strong>Network Devices (네트워크 디바이스)</strong>: 네트워크를 격리하고 각 컨테이너에 독립적인 네트워크 환경을 제공 및 네트워크 디바이스를 사용하여 컨테이너 간 통신이나 호스트와의 통신을 관리</p>
@@ -706,7 +745,7 @@ https://github.com/alex-shpak/hugo-book
 <p>도커의 이미지는 <span style='background-color: #dcffe4'><strong>컨테이너를 인스턴스화 하는 데 사용하는 읽기 전용 레이어 파일</strong></span>이다.</p>
 </li>
 <li>
-<p>이미지는 <code>Dockerfile</code>를 통해 생상하며, Dockerfile의 각 명령은 상위 이미지 위에 레이어를 생성하여 적용시키는 개념이다.</p>
+<p>이미지는 <code>Dockerfile</code>를 통해 생성하며, Dockerfile의 각 명령은 상위 이미지 위에 레이어를 생성하여 적용시키는 개념이다.</p>
 </li>
 </ul>
 <br/>
@@ -725,7 +764,7 @@ https://github.com/alex-shpak/hugo-book
 <p>스토리지 드라이버는 이미지 레이어와 컨테이너 레이어의 콘텐츠를 관리하며, aufs, overlay, <code>overlay2</code>, btrfs, ztf 등의 여러 스토리지 드라이버를 사용 할 수 있다.</p>
 </li>
 <li>
-<p>각 스토리지 드라이버는 구현 방식이 다르지만 모두 <span style='background-color: #dcffe4'><strong>스택 가능한 이미지 레이어와 CoW(기록 중 복사) 전략을 사용 (CoW는 기본적으로 효율성을 극대화하기 위해 파일을 공유하고 복사하는 전략)</strong></span></p>
+<p>각 스토리지 드라이버는 구현 방식이 다르지만 모두 <span style='background-color: #dcffe4'><strong>스택 가능한 이미지 레이어와 CoW(Copy On Write 기록 중 복사) 전략을 사용 (CoW는 기본적으로 효율성을 극대화하기 위해 파일을 공유하고 복사하는 전략)</strong></span></p>
 </li>
 </ul>
 <table>
@@ -819,7 +858,7 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/85fa5df1b796d25778ef1b28f99c3ca223f0a800" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>January 19, 2024</span>
     </a>
