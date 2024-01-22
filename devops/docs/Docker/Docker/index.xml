@@ -29,7 +29,7 @@
       <description>&#xD;Docker&#xD;#&#xD;Docker Registry&#xD;#&#xD;Registry&#xD;#&#xD;Docker의 Registry는 이미지를 저장하는 장소이며 크게 Docker Hub, Private Registry로 나뉘어진다. Private Registry는 내부망, 로컬으로 나뉘어진다. Docker Hub 사용&#xD;#&#xD;$ docker login ... $ docker tag Push_image [ID]/[Image_name] $ docker pull [ID]/[REPO] </description>
     </item>
     <item>
-      <title>3. Dockerfile$ Compose</title>
+      <title>3. Dockerfile&amp; Compose</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</guid>

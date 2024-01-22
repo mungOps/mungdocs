@@ -17,14 +17,14 @@ dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식�
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-01-19T18:03:28+09:00" />
+<meta property="article:modified_time" content="2024-01-22T13:50:06+09:00" />
 
 <title>0. Docker&amp; Container | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.bced699379e2924ccb3733fe3664c9d3ac0e532d8e129a8475431a27ee39ae31.js" integrity="sha256-vO1pk3nikkzLNzP&#43;NmTJ06wOUy2OEpqEdUMaJ&#43;45rjE=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.1d381e28782ca8977e72c691e2ffe8a575944c348b2908abf551f37de1f4275f.js" integrity="sha256-HTgeKHgsqJd&#43;csaR4v/opXWUTDSLKQir9VHzfeH0J18=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -294,7 +294,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Docker/Docker/Docker03/" class="">3. Dockerfile$ Compose</a>
+    <a href="/devops/docs/Docker/Docker/Docker03/" class="">3. Dockerfile&amp; Compose</a>
   
 
         </li>
@@ -626,6 +626,7 @@ https://github.com/alex-shpak/hugo-book
 <li>LXC란 리눅스 컨테이너로 해당 커널의 <span style='background-color: #dcffe4'><strong>주 구성요소는 namespace, cgroups, chroot</strong></span> 이다.</li>
 </ul>
 <br/>
+<br/>
 <h3 id="cgroup-control-group">
   <strong>cgroup (control group)</strong>
   <a class="anchor" href="#cgroup-control-group">#</a>
@@ -636,6 +637,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>cgroup을 사용하여 각 컨테이너에 대한 시스템 리소스(CPU, 메모리, 디스크 I/O)를 제한하고 우선순위를 지정하며, 각 컨테이너에 리소스를 제어되고 효율적인 방식으로 할당하여 컨테이너의 성능에 영향을 미치는 것을 방지하는 역할을 수행한다.</li>
 </ul>
+<br/>
 <br/>
 <h3 id="namespace">
   <strong>namespace</strong>
@@ -648,6 +650,7 @@ https://github.com/alex-shpak/hugo-book
 <li>LXC는 Linux 커널 namespace를 사용하여 각 컨테이너에 대해 별도의 네임스페이스를 생성</li>
 <li>namespace는 프로세스 ID, 네트워크 인터페이스, 파일 시스템 등 각 컨테이너에 대한 다양한 시스템 리소스를 격리하여, 다른 컨테이너 리소스의 간섭을 막는 역할을 수행한다.</li>
 </ul>
+<br/>
 <br/>
 <h3 id="chroot">
   <strong>chroot</strong>
@@ -749,6 +752,7 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <br/>
+<br/>
 <h3 id="docker-storage">
   <strong>Docker Storage</strong>
   <a class="anchor" href="#docker-storage">#</a>
@@ -790,6 +794,7 @@ https://github.com/alex-shpak/hugo-book
 </tbody>
 </table>
 <br/>
+<br/>
 <h3 id="docker-networking">
   <strong>Docker Networking</strong>
   <a class="anchor" href="#docker-networking">#</a>
@@ -830,6 +835,7 @@ https://github.com/alex-shpak/hugo-book
 </tbody>
 </table>
 <br/>
+<br/>
 <h4 id="docker-bridge-network">
   <strong>Docker bridge network</strong>
   <a class="anchor" href="#docker-bridge-network">#</a>
@@ -849,7 +855,8 @@ https://github.com/alex-shpak/hugo-book
   <a href="https://www.baeldung.com/linux/docker-containers-evolution">참조</a>
   <a class="anchor" href="#%ec%b0%b8%ec%a1%b0httpswwwbaeldungcomlinuxdocker-containers-evolution">#</a>
 </h4>
-</article>
+<br/>
+<br/></article>
  
       
 
@@ -858,9 +865,9 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/85fa5df1b796d25778ef1b28f99c3ca223f0a800" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/4a455153a1a31f6a3c554478eb09768dd4526337" title='Last modified by mungOps | January 22, 2024' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2024</span>
+      <span>January 22, 2024</span>
     </a>
   </div>
 
