@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="2. Installation &amp; Configuration 문제풀이#CKA##1. Deploy a pod named nginx-pod using the nginx:alpine image#Answer$ k run nginx-pod --image=nginx:alpine -o yaml &gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg#Answer$ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &gt; 1-2.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="2. Installation &amp; Configuration 문제풀이" />
+<meta property="og:description" content="2. Installation &amp; Configuration 문제풀이#CKA##1. Deploy a pod named nginx-pod using the nginx:alpine image#Answer$ k run nginx-pod --image=nginx:alpine -o yaml &gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg#Answer$ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &gt; 1-2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA01/" /><meta property="article:section" content="docs" />
+
+
+
+<title>2. Installation &amp; Configuration 문제풀이 | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.8ad3f06439c6abb05959fdbac340801cb6c0847e8b6489ee278ef459af8198e4.js" integrity="sha256-itPwZDnGq7BZWf26w0CAHLbAhH6LZInuJ470Wa&#43;BmOQ=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CI/CD</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
+    <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
+      <a role="button" class="">CI/CD 배포 입문</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Docker</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle"  />
+    <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker00/" class="">0. Docker&amp; Container</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker01/" class="">1. Docker 기본 명령어</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker02/" class="">2. Docker Registry</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker03/" class="">3. Dockerfile&amp; Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker04/" class="">4. Docker 실습</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Git</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle"  />
+    <label for="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Kubernetes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
+    <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
+      <a role="button" class="">Kubernetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s00/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s01/" class="">1. Kubernetes Object</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="toggle" checked />
+    <label for="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="flex justify-between">
+      <a role="button" class="">CKA</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA/" class="">0. CKA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA00/" class="">1. Cluster Architecture 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA01/" class="active">2. Installation &amp; Configuration 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA02/" class="">3. Workloads&amp; Scheduling 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA03/" class="">4. Service&amp; Networking 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA04/" class="">5. Storage 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA05/" class="">6. TroubleShooting 문제풀이</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>2. Installation &amp; Configuration 문제풀이</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#2-installation--configuration-문제풀이">2. Installation &amp; Configuration 문제풀이</a>
+      <ul>
+        <li><a href="#cka">CKA</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-deploy-a-pod-named-nginx-pod-using-the-nginxalpine-image">1. Deploy a pod named nginx-pod using the nginx:alpine image</a></li>
+            <li><a href="#2-deploy-a-messaging-pod-using-the-redisalpine-image-with-the-labels-set-to-tiermsg">2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg</a></li>
+            <li><a href="#3-create-a-namespace-named-apx-x9984574">3. Create a namespace named apx-x9984574</a></li>
+            <li><a href="#4-get-th-list-of-nodes-in-json-formaget-and-store-it-in-a-file-at-optoutputsnodes-z3444kd9json">4. Get th list of nodes in JSON formaget and store it in a file at /opt/outputs/nodes-z3444kd9.json</a></li>
+            <li><a href="#heading-1"></a></li>
+            <li><a href="#heading-2"></a></li>
+            <li><a href="#heading-3"></a></li>
+            <li><a href="#heading-4"></a></li>
+            <li><a href="#heading-5"></a></li>
+            <li><a href="#heading-6"></a></li>
+            <li><a href="#heading-7"></a></li>
+            <li><a href="#heading-8"></a></li>
+            <li><a href="#heading-9"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="2-installation--configuration-문제풀이">
+  2. Installation &amp; Configuration 문제풀이
+  <a class="anchor" href="#2-installation--configuration-%eb%ac%b8%ec%a0%9c%ed%92%80%ec%9d%b4">#</a>
+</h1>
+<hr>
+<h2 id="cka">
+  CKA
+  <a class="anchor" href="#cka">#</a>
+</h2>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<h3 id="1-deploy-a-pod-named-nginx-pod-using-the-nginxalpine-image">
+  1. Deploy a pod named nginx-pod using the nginx:alpine image
+  <a class="anchor" href="#1-deploy-a-pod-named-nginx-pod-using-the-nginxalpine-image">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ k run nginx-pod --image<span style="color:#f92672">=</span>nginx:alpine -o yaml &gt; 1-1.yaml
+</span></span><span style="display:flex;"><span>$ k apply -f 1-1.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ k get pods
+</span></span><span style="display:flex;"><span>NAME            READY   STATUS    RESTARTS   AGE
+</span></span><span style="display:flex;"><span>pod/nginx-pod   1/1     Running   <span style="color:#ae81ff">0</span>          59s
+</span></span></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="2-deploy-a-messaging-pod-using-the-redisalpine-image-with-the-labels-set-to-tiermsg">
+  2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg
+  <a class="anchor" href="#2-deploy-a-messaging-pod-using-the-redisalpine-image-with-the-labels-set-to-tiermsg">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ k run messaging --image<span style="color:#f92672">=</span>redis:alpine --labl<span style="color:#f92672">=</span>tier<span style="color:#f92672">=</span>msg -o yaml &gt; 1-2.yaml
+</span></span><span style="display:flex;"><span>$ k apply -f 1-2.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ k get pods -L tier
+</span></span><span style="display:flex;"><span>NAME        READY   STATUS    RESTARTS   AGE     TIER
+</span></span><span style="display:flex;"><span>messaging   1/1     Running   <span style="color:#ae81ff">0</span>          2m46s   msg
+</span></span></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="3-create-a-namespace-named-apx-x9984574">
+  3. Create a namespace named apx-x9984574
+  <a class="anchor" href="#3-create-a-namespace-named-apx-x9984574">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ k create namespace apx-x9984574
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ k get ns
+</span></span><span style="display:flex;"><span>NAME              STATUS   AGE
+</span></span><span style="display:flex;"><span>apx-x9984574      Active   1s
+</span></span></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="4-get-th-list-of-nodes-in-json-formaget-and-store-it-in-a-file-at-optoutputsnodes-z3444kd9json">
+  4. Get th list of nodes in JSON formaget and store it in a file at /opt/outputs/nodes-z3444kd9.json
+  <a class="anchor" href="#4-get-th-list-of-nodes-in-json-formaget-and-store-it-in-a-file-at-optoutputsnodes-z3444kd9json">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ k get nodes -o json &gt; /opt/outputs/nodes-z3444kd9.json
+</span></span></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ create a service messaging-service to expose the messaging application within the cluster on port <span style="color:#ae81ff">6379</span>
+</span></span></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+<br>
+<br>
+<h3 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h3>
+<br>
+<details ><summary>Answer</summary>
+  <div class="markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div>
+  </div>
+</details>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/CKA/CKA01.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#2-installation--configuration-문제풀이">2. Installation &amp; Configuration 문제풀이</a>
+      <ul>
+        <li><a href="#cka">CKA</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-deploy-a-pod-named-nginx-pod-using-the-nginxalpine-image">1. Deploy a pod named nginx-pod using the nginx:alpine image</a></li>
+            <li><a href="#2-deploy-a-messaging-pod-using-the-redisalpine-image-with-the-labels-set-to-tiermsg">2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg</a></li>
+            <li><a href="#3-create-a-namespace-named-apx-x9984574">3. Create a namespace named apx-x9984574</a></li>
+            <li><a href="#4-get-th-list-of-nodes-in-json-formaget-and-store-it-in-a-file-at-optoutputsnodes-z3444kd9json">4. Get th list of nodes in JSON formaget and store it in a file at /opt/outputs/nodes-z3444kd9.json</a></li>
+            <li><a href="#heading-1"></a></li>
+            <li><a href="#heading-2"></a></li>
+            <li><a href="#heading-3"></a></li>
+            <li><a href="#heading-4"></a></li>
+            <li><a href="#heading-5"></a></li>
+            <li><a href="#heading-6"></a></li>
+            <li><a href="#heading-7"></a></li>
+            <li><a href="#heading-8"></a></li>
+            <li><a href="#heading-9"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
