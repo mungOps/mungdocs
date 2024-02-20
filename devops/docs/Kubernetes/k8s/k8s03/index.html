@@ -5,24 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Kubernetes#Workload&amp; Scheduling##Pod#Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &ldquo;로컬호스트&rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
 파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
-쿠버네티스 접근법#쿠버네티스는 명령형 (Imperative), 선언형 (Declarative) 접근 법이 사용되며, 명령형 접근법의 경우 CLI기반의 객체관리, 선언형의 경우 (Kubectl apply)를 통한 YAML 파일 기반 객체 관리하는 방법이라 할 수 있다.">
+즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행
+POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="3. Workload&amp; Scheduling" />
 <meta property="og:description" content="Kubernetes#Workload&amp; Scheduling##Pod#Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &ldquo;로컬호스트&rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
 파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
-쿠버네티스 접근법#쿠버네티스는 명령형 (Imperative), 선언형 (Declarative) 접근 법이 사용되며, 명령형 접근법의 경우 CLI기반의 객체관리, 선언형의 경우 (Kubectl apply)를 통한 YAML 파일 기반 객체 관리하는 방법이라 할 수 있다." />
+즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행
+POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/" /><meta property="article:section" content="docs" />
 
-
+<meta property="article:modified_time" content="2024-02-20T11:28:05+09:00" />
 
 <title>3. Workload&amp; Scheduling | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.f2bcb8c9deec392d2dc39079d6d60c6b60a9af84700a413c4d333cb34875a376.js" integrity="sha256-8ry4yd7sOS0tw5B51tYMa2Cpr4RwCkE8TTM8s0h1o3Y=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.f97703ffde73d53767911c214a397ea319d7c2ea6989980d1cda55158cb8f0d8.js" integrity="sha256-&#43;XcD/95z1TdnkRwhSjl&#43;oxnXwuppiZgNHNpVFYy48Ng=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -461,6 +463,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/devops/docs/Kubernetes/k8s/k8s05/" class="">5. ConfigMap&amp; Secret</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/devops/docs/Kubernetes/k8s/k8s99/" class="">Kubernetes_Object_Table</a>
   
 
@@ -645,19 +660,33 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li>
           <ul>
-            <li><a href="#pod"><strong>Pod</strong></a></li>
+            <li><a href="#podhttpskubernetesiokodocsconceptsworkloadspods"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/pods/">Pod</a></strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#쿠버네티스-리소스"><strong>쿠버네티스 리소스</strong></a>
+          <ul>
+            <li><a href="#replicasethttpskubernetesiokodocsconceptsworkloadscontrollersreplicaset"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/replicaset/">ReplicaSet</a></strong></a></li>
+            <li><a href="#deploymenthttpskubernetesiokodocsconceptsworkloadscontrollersdeployment"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/deployment/">Deployment</a></strong></a></li>
+            <li><a href="#daemonsethttpskubernetesiokodocsconceptsworkloadscontrollersdaemonset"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/daemonset/">DaemonSet</a></strong></a></li>
+            <li><a href="#statefulsethttpskubernetesiokodocsconceptsworkloadscontrollersstatefulset"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/statefulset/">StatefulSet</a></strong></a></li>
+            <li><a href="#jobhttpskubernetesiokodocsconceptsworkloadscontrollersjob"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/job/">Job</a></strong></a></li>
+            <li><a href="#cronjobhttpskubernetesiokodocsconceptsworkloadscontrollerscron-jobsed81aceba1a0ec9ea1"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/cron-jobs/#%ED%81%AC%EB%A1%A0%EC%9E%A1">CronJob</a></strong></a></li>
           </ul>
         </li>
         <li><a href="#쿠버네티스-접근법"><strong>쿠버네티스 접근법</strong></a>
           <ul>
-            <li><a href="#명령형-imperative-접근">명령형 (Imperative) 접근</a></li>
-            <li><a href="#선언형-declarative-접근">선언형 (Declarative) 접근</a></li>
-            <li><a href="#활성-객체-설정-live-object-configuration"><strong>활성 객체 설정 (Live Object Configuration</strong></a></li>
+            <li><a href="#명령형-imperative-접근"><strong>명령형 (Imperative) 접근</strong></a></li>
+            <li><a href="#선언형-declarative-접근"><strong>선언형 (Declarative) 접근</strong></a></li>
+            <li><a href="#활성-객체-설정-live-object-configuration"><strong>활성 객체 설정 (Live Object Configuration)</strong></a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -683,15 +712,23 @@ https://github.com/alex-shpak/hugo-book
   
   <a class="anchor" href="#heading">#</a>
 </h1>
-<br>
-<h3 id="pod">
-  <strong>Pod</strong>
-  <a class="anchor" href="#pod">#</a>
+<h3 id="podhttpskubernetesiokodocsconceptsworkloadspods">
+  <strong>
+  <a href="https://kubernetes.io/ko/docs/concepts/workloads/pods/">Pod</a></strong>
+  <a class="anchor" href="#podhttpskubernetesiokodocsconceptsworkloadspods">#</a>
 </h3>
-<p>
-  <img src="https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg" alt="" /></p>
-<p>
-  <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*WHXv2Z0bBfC7GW4egoIwTw.png" alt="" /></p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmxXst%2FbtsDnEFYa3r%2FOXjqnGkv7KeZyIkWQgYOa0%2Fimg.png" alt="" />
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*WHXv2Z0bBfC7GW4egoIwTw.png" alt="" />
+  </div>
+
+</div>
+
 <ul>
 <li>
 <p>Pod란 컨테이너를 표현하는 <span style='background-color: #BFFFFF'> kubernetstis의 최소 단위 </span></p>
@@ -705,6 +742,146 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <br>
 <br>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <img src="https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg" alt="" />
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDL7NK%2FbtsDogSmdAu%2FIxlfJTta5cZKOv85Ajdlk0%2Fimg.png" alt="" />
+  </div>
+
+</div>
+
+<ul>
+<li>
+<p>즉, <span style='background-color: #BFFFFF'><strong>POD는 다양한 목적에 맞게 App을 배포하고 관리</strong></span> 하는 역할을 수행</p>
+</li>
+<li>
+<p>POD의 <span style='background-color: #BFFFFF'><strong>지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</strong></span></p>
+</li>
+<li>
+<p><span style='background-color: #BFFFFF'><strong>노드 단위 시스템으로 모든 노드에서 동일한 파드를 유지하도록 보장 통합 DaemonSet</strong></span></p>
+</li>
+<li>
+<p>특정 DB와 같이 POD 생성 시에, <span style='background-color: #BFFFFF'><strong>노드 및 특정 Volume이 필요 시 StatefulSet</strong></span></p>
+</li>
+<li>
+<p>1회성 작업 Job, 주기적인 배치 작업 Cronjob</p>
+</li>
+</ul>
+<br>
+<br>
+<h2 id="쿠버네티스-리소스">
+  <strong>쿠버네티스 리소스</strong>
+  <a class="anchor" href="#%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4-%eb%a6%ac%ec%86%8c%ec%8a%a4">#</a>
+</h2>
+<p>
+  <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb28E5g%2FbtsDrJevUmU%2FQM65hrAjZ3meaLOmqkzPi1%2Fimg.png" alt="" /></p>
+<ul>
+<li>각 리소스는 파드를 관리 최소 단위로 하여 상위 리소스가 자식 리소스를 관리한다. 예를 들어, Deployment는 ReplicaSet을 관리한고, 다시 ReplicaSet은 Pod를 관리하는 역할을 수행</li>
+</ul>
+<br>
+<h3 id="replicasethttpskubernetesiokodocsconceptsworkloadscontrollersreplicaset">
+  <strong>
+  <a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/replicaset/">ReplicaSet</a></strong>
+  <a class="anchor" href="#replicasethttpskubernetesiokodocsconceptsworkloadscontrollersreplicaset">#</a>
+</h3>
+<ul>
+<li>
+<p>Replicaset은 지정한 숫자만큼파드가 실행하도록 관리하는 가장 기본적인 컨트롤러</p>
+</li>
+<li>
+<p>ReplicaSets는 Replication Controller의 발전된 형태이며 집합기반의 셀렉터를 지원</p>
+</li>
+<li>
+<p>집합기반(in, notin, exists) 같은 집합연산자를 지원하여 명시된 셀렉터 조건에 맞는 새로운 파드도 직접적으로 관리</p>
+</li>
+</ul>
+<br>
+<h3 id="deploymenthttpskubernetesiokodocsconceptsworkloadscontrollersdeployment">
+  <strong>
+  <a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/deployment/">Deployment</a></strong>
+  <a class="anchor" href="#deploymenthttpskubernetesiokodocsconceptsworkloadscontrollersdeployment">#</a>
+</h3>
+<ul>
+<li>
+<p>디플로이먼트(Deployment)는 파드와 레플리카셋(ReplicaSet)에 대한 선언적 업데이트를 제공</p>
+</li>
+<li>
+<p>쿠버네티스에서 상태가 없는(stateless) 앱을 배포할 때 사용하는 가장 기본적인 컨트롤러</p>
+</li>
+<li>
+<p>Deployment는 유지해야할 Pod 개수만이 아니라 배포 방법에 대한 세부적인 기능을 수행할 수 있다. 앱을 배포할 때에 롤링 업데이트를 하거나, 배포 도중 Delay를 주어 배포의 안정성을 확보할 수 있다. 그리고 앱 배포 이후에 오류 발견 시 이전 버전으로 롤백이 가능</p>
+</li>
+</ul>
+<br>
+<h3 id="daemonsethttpskubernetesiokodocsconceptsworkloadscontrollersdaemonset">
+  <strong>
+  <a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/daemonset/">DaemonSet</a></strong>
+  <a class="anchor" href="#daemonsethttpskubernetesiokodocsconceptsworkloadscontrollersdaemonset">#</a>
+</h3>
+<p>
+  <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwkGb8%2FbtsDs3Rpymc%2FkC0HQxkvCPyMMqlTkGYxA1%2Fimg.png" alt="" /></p>
+<ul>
+<li>
+<p>DaemonSet은 특정 노드의 작업이 필요할 때 실행하는 Pod를 컨트롤</p>
+</li>
+<li>
+<p>클러스터 안에 새롭게 노드가 추가되면 DaemonSet은 자동으로 해당 노드에 파드를 실행</p>
+</li>
+<li>
+<p>DaemonSet의 대표적인 용도</p>
+<ul>
+<li>
+<p>모든 노드에서 클러스터 스토리지 데몬 실행</p>
+</li>
+<li>
+<p>모든 노드에서 로그 수집 데몬 실행</p>
+</li>
+<li>
+<p>모든 노드에서 노드 모니터링 데몬 실행</p>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<h3 id="statefulsethttpskubernetesiokodocsconceptsworkloadscontrollersstatefulset">
+  <strong>
+  <a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/statefulset/">StatefulSet</a></strong>
+  <a class="anchor" href="#statefulsethttpskubernetesiokodocsconceptsworkloadscontrollersstatefulset">#</a>
+</h3>
+<p>
+  <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJ4VJV%2FbtsDrlkJll6%2FSsf3gU3Cj8bj2F0uKIXTGK%2Fimg.webp" alt="" /></p>
+<ul>
+<li>
+<p>이전의 리소스들은 모두 상태가 없는(stateless) Pod를 관리하는 용도 였다. StatefulSet은 특정 볼륨을 사용해서 특정 데이터를 저장하는 경우에 필요</p>
+</li>
+<li>
+<p>Elasticsearch는 마스터 노드와 데이터 노드로 나뉘어 지고, 데이터 노드는 실제로 색인된 데이터를 저장하는 노드이다. 데이터의 안전성을 위해 Primary Shard와 Replica Shard로 나위어 데이터 손실 방지를 위해 서로 다른 노드에 하나씩 분포되어 있다. 그렇기 때문에 elasticsearch의 데이터 노드는 순서와 갯수 상태가 보존되어야 한다. 이럴 경우 statefulSet으로 배포</p>
+</li>
+</ul>
+<br>
+<h3 id="jobhttpskubernetesiokodocsconceptsworkloadscontrollersjob">
+  <strong>
+  <a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/job/">Job</a></strong>
+  <a class="anchor" href="#jobhttpskubernetesiokodocsconceptsworkloadscontrollersjob">#</a>
+</h3>
+<ul>
+<li>CronJob은 Job을 반복 일정에 따라 만든다. 백업, 리포트 생성 등의 정기적 작업을 수행하기 위해 사용된다. 리눅스 cron 명령어에서 사용하는 형식을 사용하여 지정한 시간(자정 한번)에 한번만 잡을 실행하거나 지정한 시간동안(10분주기) 주기적으로 반복</li>
+</ul>
+<br>
+<h3 id="cronjobhttpskubernetesiokodocsconceptsworkloadscontrollerscron-jobsed81aceba1a0ec9ea1">
+  <strong>
+  <a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/cron-jobs/#%ED%81%AC%EB%A1%A0%EC%9E%A1">CronJob</a></strong>
+  <a class="anchor" href="#cronjobhttpskubernetesiokodocsconceptsworkloadscontrollerscron-jobsed81aceba1a0ec9ea1">#</a>
+</h3>
+<ul>
+<li>CronJob은 Job을 반복 일정에 따라 만든다. 백업, 리포트 생성 등의 정기적 작업을 수행하기 위해 사용된다. 리눅스 cron 명령어에서 사용하는 형식을 사용하여 지정한 시간(자정 한번)에 한번만 잡을 실행하거나 지정한 시간동안(10분주기) 주기적으로 반복</li>
+</ul>
+<br>
+<br>
 <h2 id="쿠버네티스-접근법">
   <strong>쿠버네티스 접근법</strong>
   <a class="anchor" href="#%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4-%ec%a0%91%ea%b7%bc%eb%b2%95">#</a>
@@ -715,16 +892,17 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <br>
 <br>
+<br>
+<br>
 <h3 id="명령형-imperative-접근">
-  명령형 (Imperative) 접근
+  <strong>명령형 (Imperative) 접근</strong>
   <a class="anchor" href="#%eb%aa%85%eb%a0%b9%ed%98%95-imperative-%ec%a0%91%ea%b7%bc">#</a>
 </h3>
 <br>
 <div class="book-columns flex flex-wrap">
 
   <div class="flex-even markdown-inner">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ kubectl run nginx --image<span style="color:#f92672">=</span>nginx
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl run nginx --image<span style="color:#f92672">=</span>nginx
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$ kubectl create deployment nginx --image<span style="color:#f92672">=</span>nginx
 </span></span><span style="display:flex;"><span>
@@ -771,7 +949,7 @@ https://github.com/alex-shpak/hugo-book
 <br>
 <br>
 <h3 id="선언형-declarative-접근">
-  선언형 (Declarative) 접근
+  <strong>선언형 (Declarative) 접근</strong>
   <a class="anchor" href="#%ec%84%a0%ec%96%b8%ed%98%95-declarative-%ec%a0%91%ea%b7%bc">#</a>
 </h3>
 <br>
@@ -816,7 +994,7 @@ https://github.com/alex-shpak/hugo-book
 <br>
 <br>
 <h3 id="활성-객체-설정-live-object-configuration">
-  <strong>활성 객체 설정 (Live Object Configuration</strong>
+  <strong>활성 객체 설정 (Live Object Configuration)</strong>
   <a class="anchor" href="#%ed%99%9c%ec%84%b1-%ea%b0%9d%ec%b2%b4-%ec%84%a4%ec%a0%95-live-object-configuration">#</a>
 </h3>
 <h1 id="heading-1">
@@ -827,28 +1005,17 @@ https://github.com/alex-shpak/hugo-book
 <li>활성 객체 설정이란 쿠버네티스에서 클러스터 안에서 구동 중인 객체에 대한 정보를 담고 있는 일종의 데이터로 대게 etcd에 저장이 되어있다.</li>
 <li>만약 선언형(YAML) 형식의 구성파일로 만든 객체라면, 해당 파일이 JSON 포맷으로 변환되어 어노테이션(metadata.annotation) 안에 kubectl.kubernetes.io/last-applied-configuration 항목으로 함께 삽입되며,</li>
 </ul>
-
-
-<script src="/mermaid.min.js"></script>
-
-  <script>mermaid.initialize({
-  "flowchart": {
-    "useMaxWidth":true
-  },
-  "theme": "default"
-}
-)</script>
-
-
-
-
-<p class="mermaid optional">
-sequenceDiagram
-	Site->>mermaid: initialize
-	Site->>mermaid: content loaded
-	mermaid->>mermaidAPI: init
-</p>
-
+<br>
+<br>
+<h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<hr>
+<ul>
+<li>
+  <a href="https://peterica.tistory.com/480">https://peterica.tistory.com/480</a></li>
+</ul>
 </article>
  
       
@@ -856,6 +1023,15 @@ sequenceDiagram
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/ef3d055e77625f16ab804f9b48168bb35090f78b" title='Last modified by mungOps | February 20, 2024' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>February 20, 2024</span>
+    </a>
+  </div>
+
+
 
 
 
@@ -925,19 +1101,33 @@ sequenceDiagram
       <ul>
         <li>
           <ul>
-            <li><a href="#pod"><strong>Pod</strong></a></li>
+            <li><a href="#podhttpskubernetesiokodocsconceptsworkloadspods"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/pods/">Pod</a></strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#쿠버네티스-리소스"><strong>쿠버네티스 리소스</strong></a>
+          <ul>
+            <li><a href="#replicasethttpskubernetesiokodocsconceptsworkloadscontrollersreplicaset"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/replicaset/">ReplicaSet</a></strong></a></li>
+            <li><a href="#deploymenthttpskubernetesiokodocsconceptsworkloadscontrollersdeployment"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/deployment/">Deployment</a></strong></a></li>
+            <li><a href="#daemonsethttpskubernetesiokodocsconceptsworkloadscontrollersdaemonset"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/daemonset/">DaemonSet</a></strong></a></li>
+            <li><a href="#statefulsethttpskubernetesiokodocsconceptsworkloadscontrollersstatefulset"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/statefulset/">StatefulSet</a></strong></a></li>
+            <li><a href="#jobhttpskubernetesiokodocsconceptsworkloadscontrollersjob"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/job/">Job</a></strong></a></li>
+            <li><a href="#cronjobhttpskubernetesiokodocsconceptsworkloadscontrollerscron-jobsed81aceba1a0ec9ea1"><strong><a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/cron-jobs/#%ED%81%AC%EB%A1%A0%EC%9E%A1">CronJob</a></strong></a></li>
           </ul>
         </li>
         <li><a href="#쿠버네티스-접근법"><strong>쿠버네티스 접근법</strong></a>
           <ul>
-            <li><a href="#명령형-imperative-접근">명령형 (Imperative) 접근</a></li>
-            <li><a href="#선언형-declarative-접근">선언형 (Declarative) 접근</a></li>
-            <li><a href="#활성-객체-설정-live-object-configuration"><strong>활성 객체 설정 (Live Object Configuration</strong></a></li>
+            <li><a href="#명령형-imperative-접근"><strong>명령형 (Imperative) 접근</strong></a></li>
+            <li><a href="#선언형-declarative-접근"><strong>선언형 (Declarative) 접근</strong></a></li>
+            <li><a href="#활성-객체-설정-live-object-configuration"><strong>활성 객체 설정 (Live Object Configuration)</strong></a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

@@ -68,7 +68,7 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</guid>
-      <description>Kubernetes&#xD;#&#xD;Workload&amp;amp; Scheduling&#xD;#&#xD;#&#xD;Pod&#xD;#&#xD;Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행&#xA;파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작&#xA;쿠버네티스 접근법&#xD;#&#xD;쿠버네티스는 명령형 (Imperative), 선언형 (Declarative) 접근 법이 사용되며, 명령형 접근법의 경우 CLI기반의 객체관리, 선언형의 경우 (Kubectl apply)를 통한 YAML 파일 기반 객체 관리하는 방법이라 할 수 있다.</description>
+      <description>Kubernetes&#xD;#&#xD;Workload&amp;amp; Scheduling&#xD;#&#xD;#&#xD;Pod&#xD;#&#xD;Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행&#xA;파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작&#xA;즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행&#xA;POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</description>
     </item>
     <item>
       <title>With ToC</title>
@@ -139,6 +139,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA03/</guid>
       <description>&#xD;Service&amp;amp; Networking 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+    </item>
+    <item>
+      <title>5. ConfigMap&amp; Secret</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s05/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s05/</guid>
+      <description>Kubernetes&#xD;#&#xD;Configmap&amp;amp; Secret&#xD;#&#xD;#&#xD;ConfigMap&#xD;#&#xD;컨테이너 구성 정보를 한 대 모아 관리할 수 있도록 만들어진 객체 ConfigMap 일부 적용 apiVersion: v1 kind: Pod metadata: name: genid-stone spec: containers: - image: smlinux/genid:env env: - name: INTERVAL valueFrom: configMapKeyRef: name: ttabae-config key: INTERVAL name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.14 name: web-server volumeMounts: - name: html mountPath: /usr/share/nginx/html readOnly: true ports: - containerPort: 80 volumes: - name: html emptyDir: {} ConfigMap 전체적용 apiVersion: v1 kind: Pod metadata: name: genid-boy spec: containers: - image: smlinux/genid:env envFrom: - configMapRef: name: ttabae-config name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.</description>
     </item>
     <item>
       <title>5. Storage 문제풀이</title>
