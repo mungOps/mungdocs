@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes#Kubernetes##">
+<meta name="description" content="Kubernetes#Workload&amp; Scheduling##Pod#Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &ldquo;로컬호스트&rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
+파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
+쿠버네티스 접근법#쿠버네티스는 명령형 (Imperative), 선언형 (Declarative) 접근 법이 사용되며, 명령형 접근법의 경우 CLI기반의 객체관리, 선언형의 경우 (Kubectl apply)를 통한 YAML 파일 기반 객체 관리하는 방법이라 할 수 있다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="0. Kubernetes" />
-<meta property="og:description" content="Kubernetes#Kubernetes##" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="3. Workload&amp; Scheduling" />
+<meta property="og:description" content="Kubernetes#Workload&amp; Scheduling##Pod#Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &ldquo;로컬호스트&rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
+파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
+쿠버네티스 접근법#쿠버네티스는 명령형 (Imperative), 선언형 (Declarative) 접근 법이 사용되며, 명령형 접근법의 경우 CLI기반의 객체관리, 선언형의 경우 (Kubectl apply)를 통한 YAML 파일 기반 객체 관리하는 방법이라 할 수 있다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-01-19T12:07:14+09:00" />
 
-<title>0. Kubernetes | Mung Book</title>
+
+<title>3. Workload&amp; Scheduling | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
@@ -405,7 +409,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="active">0. Kubernetes</a>
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
   
 
         </li>
@@ -444,7 +448,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/k8s/k8s03/" class="">3. Workload&amp; Scheduling</a>
+    <a href="/devops/docs/Kubernetes/k8s/k8s03/" class="active">3. Workload&amp; Scheduling</a>
   
 
         </li>
@@ -616,7 +620,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>0. Kubernetes</strong>
+  <strong>3. Workload&amp; Scheduling</strong>
 
   <label for="toc-control">
     
@@ -634,10 +638,26 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#kubernetes-1">Kubernetes</a></li>
+        <li><a href="#workload-scheduling">Workload&amp; Scheduling</a></li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#pod"><strong>Pod</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#쿠버네티스-접근법"><strong>쿠버네티스 접근법</strong></a>
+          <ul>
+            <li><a href="#명령형-imperative-접근">명령형 (Imperative) 접근</a></li>
+            <li><a href="#선언형-declarative-접근">선언형 (Declarative) 접근</a></li>
+            <li><a href="#활성-객체-설정-live-object-configuration"><strong>활성 객체 설정 (Live Object Configuration</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
   </ul>
 </nav>
 
@@ -655,14 +675,180 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#kubernetes">#</a>
 </h1>
 <hr>
-<h2 id="kubernetes-1">
-  Kubernetes
-  <a class="anchor" href="#kubernetes-1">#</a>
+<h2 id="workload-scheduling">
+  Workload&amp; Scheduling
+  <a class="anchor" href="#workload-scheduling">#</a>
 </h2>
 <h1 id="heading">
   
   <a class="anchor" href="#heading">#</a>
 </h1>
+<br>
+<h3 id="pod">
+  <strong>Pod</strong>
+  <a class="anchor" href="#pod">#</a>
+</h3>
+<p>
+  <img src="https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg" alt="" /></p>
+<p>
+  <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*WHXv2Z0bBfC7GW4egoIwTw.png" alt="" /></p>
+<ul>
+<li>
+<p>Pod란 컨테이너를 표현하는 <span style='background-color: #BFFFFF'> kubernetstis의 최소 단위 </span></p>
+</li>
+<li>
+<p>파드는 특유한 <span style='background-color: #BFFFFF'> &ldquo;로컬호스트&rdquo; 애플리케이션 모형</span> 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행</p>
+</li>
+<li>
+<p>파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작</p>
+</li>
+</ul>
+<br>
+<br>
+<h2 id="쿠버네티스-접근법">
+  <strong>쿠버네티스 접근법</strong>
+  <a class="anchor" href="#%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4-%ec%a0%91%ea%b7%bc%eb%b2%95">#</a>
+</h2>
+<hr>
+<ul>
+<li>쿠버네티스는 명령형 (Imperative), 선언형 (Declarative) 접근 법이 사용되며, <span style='background-color: #BFFFFF'>명령형 접근법의 경우 CLI기반의 객체관리, 선언형의 경우 (Kubectl apply)를 통한 YAML 파일 기반 객체 관리하는 방법</span>이라 할 수 있다.</li>
+</ul>
+<br>
+<br>
+<h3 id="명령형-imperative-접근">
+  명령형 (Imperative) 접근
+  <a class="anchor" href="#%eb%aa%85%eb%a0%b9%ed%98%95-imperative-%ec%a0%91%ea%b7%bc">#</a>
+</h3>
+<br>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl run nginx --image<span style="color:#f92672">=</span>nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl create deployment nginx --image<span style="color:#f92672">=</span>nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl expose deployment nginx --port<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl edit deployment nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl scale deployment nginx --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl set image deployment nginx nginx<span style="color:#f92672">=</span>nginx:1.18
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl &lt;create|replace|delete&gt; -f nginx.yaml
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <ul>
+<li>
+<p>명령형 접근법은 원하는 상태를 만들기 위해 필요한 동작을 지시하는 방식</p>
+</li>
+<li>
+<p>즉 kubectl을 통해 구성 요소를 생성, 수정, 삭제 하는 명령어를 칭하며, 이는 <strong>요구되는 환경을 어떻게 만들 것인가</strong>에 초점을 두고 있다.</p>
+</li>
+<li>
+<p>이는 YAML 파일을 통해 구성 요소의 상태를 정의해 놓은 경우에도, create, replace에 해당하는 작업을 실행하면 이는 명령형 접근법에 속한다.</p>
+</li>
+<li>
+<p>이러한 명령형 접근법은 아래의 한게점을 가진다.</p>
+<ul>
+<li>명령어 만으로 수행 가능한 작업이 제한적</li>
+<li>작업 내역의 추적이 어려움</li>
+<li>현재 작업 환경의 설정사항을 직접 파악</li>
+</ul>
+</li>
+<li>
+<p>단, 필요한 요소를 명령어 한 줄로 즉시 생성하는 것이 명확한 장점이며, 이를 통해 빠르고 간결한 작업 수행이 요구되는 환경에서 명령형 접근법은 유용할 수 있다.</p>
+</li>
+</ul>
+
+  </div>
+
+</div>
+
+<br>
+<br>
+<h3 id="선언형-declarative-접근">
+  선언형 (Declarative) 접근
+  <a class="anchor" href="#%ec%84%a0%ec%96%b8%ed%98%95-declarative-%ec%a0%91%ea%b7%bc">#</a>
+</h3>
+<br>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx-container</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:1.20.2</span>
+</span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl apply -f nginx.yaml
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <ul>
+<li>
+<p>선언형 접근법은 원하는 상태(오브젝트)를 YAML을 통해 선언하는 방식</p>
+</li>
+<li>
+<p>선언형 접근법은 <strong>요구되는 환경이 무엇인가</strong>에 초점을 둔다.</p>
+</li>
+<li>
+<p><code>kubectl apply</code> 명령이 선언적 접근법에 해당하며, 이 명령은 적용하고자 하는 YAML 파일이 요구되는 문법에 맞게 작성되었느지를 검토 후, 해당되는 요소가 기준의 클러스터에 이미 배포되어 있는지를 체크하고, 신규생성이나 업데이트를 진행한다.</p>
+</li>
+<li>
+<p>즉, <strong>관리자가 선언한 특정한 상태를 시스템이 스스로 파악하여 반영하는 접근법</strong></p>
+</li>
+</ul>
+
+  </div>
+
+</div>
+
+<br>
+<br>
+<h3 id="활성-객체-설정-live-object-configuration">
+  <strong>활성 객체 설정 (Live Object Configuration</strong>
+  <a class="anchor" href="#%ed%99%9c%ec%84%b1-%ea%b0%9d%ec%b2%b4-%ec%84%a4%ec%a0%95-live-object-configuration">#</a>
+</h3>
+<h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<ul>
+<li>활성 객체 설정이란 쿠버네티스에서 클러스터 안에서 구동 중인 객체에 대한 정보를 담고 있는 일종의 데이터로 대게 etcd에 저장이 되어있다.</li>
+<li>만약 선언형(YAML) 형식의 구성파일로 만든 객체라면, 해당 파일이 JSON 포맷으로 변환되어 어노테이션(metadata.annotation) 안에 kubectl.kubernetes.io/last-applied-configuration 항목으로 함께 삽입되며,</li>
+</ul>
+
+
+<script src="/mermaid.min.js"></script>
+
+  <script>mermaid.initialize({
+  "flowchart": {
+    "useMaxWidth":true
+  },
+  "theme": "default"
+}
+)</script>
+
+
+
+
+<p class="mermaid optional">
+sequenceDiagram
+	Site->>mermaid: initialize
+	Site->>mermaid: content loaded
+	mermaid->>mermaidAPI: init
+</p>
+
 </article>
  
       
@@ -672,19 +858,10 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2024</span>
-    </a>
-  </div>
 
 
 
-
-
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/k8s/k8s.md" target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/k8s/k8s03.md" target="_blank" rel="noopener">
           <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -741,10 +918,26 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#kubernetes-1">Kubernetes</a></li>
+        <li><a href="#workload-scheduling">Workload&amp; Scheduling</a></li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#pod"><strong>Pod</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#쿠버네티스-접근법"><strong>쿠버네티스 접근법</strong></a>
+          <ul>
+            <li><a href="#명령형-imperative-접근">명령형 (Imperative) 접근</a></li>
+            <li><a href="#선언형-declarative-접근">선언형 (Declarative) 접근</a></li>
+            <li><a href="#활성-객체-설정-live-object-configuration"><strong>활성 객체 설정 (Live Object Configuration</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
   </ul>
 </nav>
 

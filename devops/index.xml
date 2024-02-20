@@ -64,6 +64,13 @@
       <description>&#xD;학습목표&#xD;#&#xD;클라우드 서비스를 활용하기 위한 기본 지식 학습&#xA;클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축&#xA;클라우드 서비스 내 프로젝트 배포를 간편화&#xA;클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )&#xA;클라우드 서비스에 배포 자동화&#xA;클라우드 서비스 무중단 배포&#xA;정적 IP 할당을 위한 NLB 활용&#xA;최종목표&#xA;스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 </description>
     </item>
     <item>
+      <title>3. Workload&amp; Scheduling</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</guid>
+      <description>Kubernetes&#xD;#&#xD;Workload&amp;amp; Scheduling&#xD;#&#xD;#&#xD;Pod&#xD;#&#xD;Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행&#xA;파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작&#xA;쿠버네티스 접근법&#xD;#&#xD;쿠버네티스는 명령형 (Imperative), 선언형 (Declarative) 접근 법이 사용되며, 명령형 접근법의 경우 CLI기반의 객체관리, 선언형의 경우 (Kubectl apply)를 통한 YAML 파일 기반 객체 관리하는 방법이라 할 수 있다.</description>
+    </item>
+    <item>
       <title>With ToC</title>
       <link>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/with-toc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -146,6 +153,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA05/</guid>
       <description>&#xD;TroubleShooting 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+    </item>
+    <item>
+      <title>Kubernetes_Object_Table</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</guid>
+      <description>Kubernetes Object&#xD;#&#xD;애플리케이션의 실행&#xD;#&#xD;Pod&#xD;#&#xD;apiVersion: v1 kind: Pod metadata: name: &amp;lt;pod-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet&#xD;#&#xD;apiVersion: apps/v1 kind: ReplicaSet metadata: name: &amp;lt;replicaset-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment&#xD;#&#xD;apiVersion: apps/v1 kind: Deployment metadata: name: &amp;lt;deployment-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리&#xD;#&#xD;Service&#xD;#&#xD;apiVersion: v1 kind: Service metadata: name: &amp;lt;service-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: selector: &amp;lt;selector-key&amp;gt;: &amp;lt;selector-value&amp;gt; ports: - protocol: TCP port: &amp;lt;service-port&amp;gt; targetPort: &amp;lt;target-port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress&#xD;#&#xD;apiVersion: networking.</description>
     </item>
   </channel>
 </rss>
