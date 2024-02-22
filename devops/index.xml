@@ -64,20 +64,6 @@
       <description>&#xD;학습목표&#xD;#&#xD;클라우드 서비스를 활용하기 위한 기본 지식 학습&#xA;클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축&#xA;클라우드 서비스 내 프로젝트 배포를 간편화&#xA;클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )&#xA;클라우드 서비스에 배포 자동화&#xA;클라우드 서비스 무중단 배포&#xA;정적 IP 할당을 위한 NLB 활용&#xA;최종목표&#xA;스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 </description>
     </item>
     <item>
-      <title>3. Workload&amp; Scheduling</title>
-      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</guid>
-      <description>Kubernetes&#xD;#&#xD;Workload&amp;amp; Scheduling&#xD;#&#xD;#&#xD;Pod&#xD;#&#xD;Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행&#xA;파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작&#xA;즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행&#xA;POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</description>
-    </item>
-    <item>
-      <title>4. Node Mangament</title>
-      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/</guid>
-      <description>&#xD;Kubernetes&#xD;#&#xD;Node Mangament&#xD;#&#xD;#&#xD;Taints&#xD;#&#xD;taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &amp;lt;노드이름&amp;gt; &amp;lt;키&amp;gt;=&amp;lt;값&amp;gt;:&amp;lt;효과&amp;gt; Node Affinity&#xD;#&#xD;Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels </description>
-    </item>
-    <item>
       <title>With ToC</title>
       <link>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/with-toc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -120,6 +106,13 @@
       <description>2. Installation &amp;amp; Configuration 문제풀이&#xD;#&#xD;CKA&#xD;#&#xD;#&#xD;1. Deploy a pod named nginx-pod using the nginx:alpine image&#xD;#&#xD;Answer&#xD;$ k run nginx-pod --image=nginx:alpine -o yaml &amp;gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg&#xD;#&#xD;Answer&#xD;$ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &amp;gt; 1-2.</description>
     </item>
     <item>
+      <title>3. Workload&amp; Scheduling</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</guid>
+      <description>Kubernetes&#xD;#&#xD;Workload&amp;amp; Scheduling&#xD;#&#xD;#&#xD;Pod&#xD;#&#xD;Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행&#xA;파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작&#xA;즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행&#xA;POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</description>
+    </item>
+    <item>
       <title>3. Dockerfile&amp; Compose</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -132,6 +125,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA02/</guid>
       <description>&#xD;Workloads&amp;amp; Scheduling 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+    </item>
+    <item>
+      <title>4. Node Mangament</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/</guid>
+      <description>&#xD;Kubernetes&#xD;#&#xD;Node Mangament&#xD;#&#xD;#&#xD;Taints&#xD;#&#xD;taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &amp;lt;노드이름&amp;gt; &amp;lt;키&amp;gt;=&amp;lt;값&amp;gt;:&amp;lt;효과&amp;gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity&#xD;#&#xD;Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels </description>
     </item>
     <item>
       <title>4. Docker 실습</title>
@@ -160,6 +160,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA04/</guid>
       <description>&#xD;Storage 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+    </item>
+    <item>
+      <title>6. Service</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</guid>
+      <description>&#xD;Kubernetes&#xD;#&#xD;Service&#xD;#&#xD;#&#xD;</description>
     </item>
     <item>
       <title>6. TroubleShooting 문제풀이</title>

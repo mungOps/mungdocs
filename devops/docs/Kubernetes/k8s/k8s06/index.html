@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ubi loqui#Mentem genus facietque salire tempus bracchia#Lorem markdownum partu paterno Achillem. Habent amne generosi aderant ad pellem nec erat sustinet merces columque haec et, dixit minus nutrit accipiam subibis subdidit. Temeraria servatum agros qui sed fulva facta. Primum ultima, dedit, suo quisque linguae medentes fixo: tum petis.
-Rapit vocant si hunc siste adspice#Ora precari Patraeque Neptunia, dixit Danae Cithaeron armaque maxima in nati Coniugis templis fluidove.">
+<meta name="description" content="Kubernetes#Service##">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="6. Service" />
+<meta property="og:description" content="Kubernetes#Service##" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/" /><meta property="article:section" content="docs" />
 
-<title>Table of Contents | Mung Book</title>
+
+
+<title>6. Service | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
@@ -20,7 +21,6 @@ Rapit vocant si hunc siste adspice#Ora precari Patraeque Neptunia, dixit Danae
   <script defer src="/devops.search.min.d9ce2e7ae14eba8705ee37231bfc37ef4b436fe05addcb9f0e651a301462e392.js" integrity="sha256-2c4ueuFOuocF7jcjG/w370tDb&#43;Ba3cufDmUaMBRi45I=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/index.xml" title="Mung Book" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -124,7 +124,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle" checked />
+    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
     <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
       <a role="button" class="">CI/CD 배포 입문</a>
     </label>
@@ -179,7 +179,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="active">Table of Contents</a>
+    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="">Table of Contents</a>
   
 
           
@@ -389,7 +389,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
+    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle" checked />
     <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
       <a role="button" class="">Kubernetes</a>
     </label>
@@ -483,7 +483,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/k8s/k8s06/" class="">6. Service</a>
+    <a href="/devops/docs/Kubernetes/k8s/k8s06/" class="active">6. Service</a>
   
 
         </li>
@@ -655,7 +655,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Table of Contents</strong>
+  <strong>6. Service</strong>
 
   <label for="toc-control">
     
@@ -671,15 +671,12 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#ubi-loqui">Ubi loqui</a>
+    <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#mentem-genus-facietque-salire-tempus-bracchia">Mentem genus facietque salire tempus bracchia</a></li>
-        <li><a href="#rapit-vocant-si-hunc-siste-adspice">Rapit vocant si hunc siste adspice</a></li>
-        <li><a href="#locus-fuit-caecis">Locus fuit caecis</a></li>
-        <li><a href="#placabilis-coactis-nega-ingemuit-ignoscat-nimia-non">Placabilis coactis nega ingemuit ignoscat nimia non</a></li>
-        <li><a href="#caesorum-illa-tu-sentit-micat-vestes-papyriferi">Caesorum illa tu sentit micat vestes papyriferi</a></li>
+        <li><a href="#service"><strong>Service</strong></a></li>
       </ul>
     </li>
+    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 
@@ -692,97 +689,19 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="ubi-loqui">
-  Ubi loqui
-  <a class="anchor" href="#ubi-loqui">#</a>
+  <article class="markdown"><h1 id="kubernetes">
+  Kubernetes
+  <a class="anchor" href="#kubernetes">#</a>
 </h1>
-<h2 id="mentem-genus-facietque-salire-tempus-bracchia">
-  Mentem genus facietque salire tempus bracchia
-  <a class="anchor" href="#mentem-genus-facietque-salire-tempus-bracchia">#</a>
+<hr>
+<h2 id="service">
+  <strong>Service</strong>
+  <a class="anchor" href="#service">#</a>
 </h2>
-<p>Lorem markdownum partu paterno Achillem. Habent amne generosi aderant ad pellem
-nec erat sustinet merces columque haec et, dixit minus nutrit accipiam subibis
-subdidit. Temeraria servatum agros qui sed fulva facta. Primum ultima, dedit,
-suo quisque linguae medentes fixo: tum petis.</p>
-<h2 id="rapit-vocant-si-hunc-siste-adspice">
-  Rapit vocant si hunc siste adspice
-  <a class="anchor" href="#rapit-vocant-si-hunc-siste-adspice">#</a>
-</h2>
-<p>Ora precari Patraeque Neptunia, dixit Danae 
-  <a href="http://mersis-an.org/litoristum">Cithaeron
-armaque</a> maxima in <strong>nati Coniugis</strong> templis
-fluidove. Effugit usus nec ingreditur agmen <em>ac manus</em> conlato. Nullis vagis
-nequiquam vultibus aliquos altera <em>suum venis</em> teneas fretum. Armos 
-  <a href="http://tutum.io/me">remotis
-hoc</a> sine ferrea iuncta quam!</p>
-<h2 id="locus-fuit-caecis">
-  Locus fuit caecis
-  <a class="anchor" href="#locus-fuit-caecis">#</a>
-</h2>
-<p>Nefas discordemque domino montes numen tum humili nexilibusque exit, Iove. Quae
-miror esse, scelerisque Melaneus viribus. Miseri laurus. Hoc est proposita me
-ante aliquid, aura inponere candidioribus quidque accendit bella, sumpta.
-Intravit quam erat figentem hunc, motus de fontes parvo tempestate.</p>
-<pre><code>iscsi_virus = pitch(json_in_on(eupViral),
-        northbridge_services_troubleshooting, personal(
-        firmware_rw.trash_rw_crm.device(interactive_gopher_personal,
-        software, -1), megabit, ergonomicsSoftware(cmyk_usb_panel,
-        mips_whitelist_duplex, cpa)));
-if (5) {
-    managementNetwork += dma - boolean;
-    kilohertz_token = 2;
-    honeypot_affiliate_ergonomics = fiber;
-}
-mouseNorthbridge = byte(nybble_xmp_modem.horse_subnet(
-        analogThroughputService * graphicPoint, drop(daw_bit, dnsIntranet),
-        gateway_ospf), repository.domain_key.mouse(serverData(fileNetwork,
-        trim_duplex_file), cellTapeDirect, token_tooltip_mashup(
-        ripcordingMashup)));
-module_it = honeypot_driver(client_cold_dvr(593902, ripping_frequency) +
-        coreLog.joystick(componentUdpLink), windows_expansion_touchscreen);
-bashGigabit.external.reality(2, server_hardware_codec.flops.ebookSampling(
-        ciscNavigationBacklink, table + cleanDriver), indexProtocolIsp);
-</code></pre>
-<h2 id="placabilis-coactis-nega-ingemuit-ignoscat-nimia-non">
-  Placabilis coactis nega ingemuit ignoscat nimia non
-  <a class="anchor" href="#placabilis-coactis-nega-ingemuit-ignoscat-nimia-non">#</a>
-</h2>
-<p>Frontis turba. Oculi gravis est Delphice; <em>inque praedaque</em> sanguine manu non.</p>
-<pre><code>if (ad_api) {
-    zif += usb.tiffAvatarRate(subnet, digital_rt) + exploitDrive;
-    gigaflops(2 - bluetooth, edi_asp_memory.gopher(queryCursor, laptop),
-            panel_point_firmware);
-    spyware_bash.statePopApplet = express_netbios_digital(
-            insertion_troubleshooting.brouter(recordFolderUs), 65);
-}
-recursionCoreRay = -5;
-if (hub == non) {
-    portBoxVirus = soundWeb(recursive_card(rwTechnologyLeopard),
-            font_radcab, guidCmsScalable + reciprocalMatrixPim);
-    left.bug = screenshot;
-} else {
-    tooltipOpacity = raw_process_permalink(webcamFontUser, -1);
-    executable_router += tape;
-}
-if (tft) {
-    bandwidthWeb *= social_page;
-} else {
-    regular += 611883;
-    thumbnail /= system_lag_keyboard;
-}
-</code></pre>
-<h2 id="caesorum-illa-tu-sentit-micat-vestes-papyriferi">
-  Caesorum illa tu sentit micat vestes papyriferi
-  <a class="anchor" href="#caesorum-illa-tu-sentit-micat-vestes-papyriferi">#</a>
-</h2>
-<p>Inde aderam facti; Theseus vis de tauri illa peream. Oculos <strong>uberaque</strong> non
-regisque vobis cursuque, opus venit quam vulnera. Et maiora necemque, lege modo;
-gestanda nitidi, vero? Dum ne pectoraque testantur.</p>
-<p>Venasque repulsa Samos qui, exspectatum eram animosque hinc, 
-  <a href="http://www.creveratnon.net/apricaaetheriis">aut
-manes</a>, Assyrii. Cupiens auctoribus
-pariter rubet, profana magni super nocens. Vos ius sibilat inpar turba visae
-iusto! Sedes ante dum superest <strong>extrema</strong>.</p>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
 </article>
  
       
@@ -792,19 +711,10 @@ iusto! Sedes ante dum superest <strong>extrema</strong>.</p>
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2024</span>
-    </a>
-  </div>
 
 
 
-
-
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/CICD/CICD/table-of-contents/_index.md" target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/k8s/k8s06.md" target="_blank" rel="noopener">
           <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -859,15 +769,12 @@ iusto! Sedes ante dum superest <strong>extrema</strong>.</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#ubi-loqui">Ubi loqui</a>
+    <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#mentem-genus-facietque-salire-tempus-bracchia">Mentem genus facietque salire tempus bracchia</a></li>
-        <li><a href="#rapit-vocant-si-hunc-siste-adspice">Rapit vocant si hunc siste adspice</a></li>
-        <li><a href="#locus-fuit-caecis">Locus fuit caecis</a></li>
-        <li><a href="#placabilis-coactis-nega-ingemuit-ignoscat-nimia-non">Placabilis coactis nega ingemuit ignoscat nimia non</a></li>
-        <li><a href="#caesorum-illa-tu-sentit-micat-vestes-papyriferi">Caesorum illa tu sentit micat vestes papyriferi</a></li>
+        <li><a href="#service"><strong>Service</strong></a></li>
       </ul>
     </li>
+    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 
