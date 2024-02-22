@@ -27,7 +27,9 @@
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</loc>
-    <lastmod>2024-02-20T16:59:22+09:00</lastmod>
+    <lastmod>2024-02-21T09:20:28+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/</loc>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/CICD/</loc>
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
@@ -139,7 +141,7 @@
                 />
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/</loc>
-    <lastmod>2024-02-20T16:59:22+09:00</lastmod>
+    <lastmod>2024-02-21T09:20:28+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"

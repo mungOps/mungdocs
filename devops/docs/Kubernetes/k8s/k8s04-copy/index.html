@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cluster Architecture 문제풀이#CKA##여기를 클릭하여 확장/접기이 부분은 숨겨져 있습니다. 원하는 내용을 넣어주세요.">
+<meta name="description" content="Kubernetes#Node Mangament##Taints#taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt; Node Affinity#Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="1. Cluster Architecture 문제풀이" />
-<meta property="og:description" content="Cluster Architecture 문제풀이#CKA##여기를 클릭하여 확장/접기이 부분은 숨겨져 있습니다. 원하는 내용을 넣어주세요." />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="4. Node Mangament" />
+<meta property="og:description" content="Kubernetes#Node Mangament##Taints#taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt; Node Affinity#Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA00/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-02-17T22:44:11+09:00" />
 
-<title>1. Cluster Architecture 문제풀이 | Mung Book</title>
+
+<title>4. Node Mangament | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
@@ -389,7 +389,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
+    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle" checked />
     <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
       <a role="button" class="">Kubernetes</a>
     </label>
@@ -457,7 +457,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/k8s/k8s04-copy/" class="">4. Node Mangament</a>
+    <a href="/devops/docs/Kubernetes/k8s/k8s04-copy/" class="active">4. Node Mangament</a>
   
 
         </li>
@@ -501,7 +501,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="toggle" checked />
+    <input type="checkbox" id="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="toggle"  />
     <label for="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="flex justify-between">
       <a role="button" class="">CKA</a>
     </label>
@@ -530,7 +530,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/CKA/CKA00/" class="active">1. Cluster Architecture 문제풀이</a>
+    <a href="/devops/docs/Kubernetes/CKA/CKA00/" class="">1. Cluster Architecture 문제풀이</a>
   
 
         </li>
@@ -642,7 +642,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>1. Cluster Architecture 문제풀이</strong>
+  <strong>4. Node Mangament</strong>
 
   <label for="toc-control">
     
@@ -658,12 +658,21 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#cluster-architecture-문제풀이">Cluster Architecture 문제풀이</a>
+    <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#cka">CKA</a></li>
+        <li><a href="#node-mangament"><strong>Node Mangament</strong></a></li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#taints"><strong>Taints</strong></a></li>
+            <li><a href="#node-affinity"><strong>Node Affinity</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -676,23 +685,82 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="cluster-architecture-문제풀이">
-  Cluster Architecture 문제풀이
-  <a class="anchor" href="#cluster-architecture-%eb%ac%b8%ec%a0%9c%ed%92%80%ec%9d%b4">#</a>
+  <article class="markdown"><h1 id="kubernetes">
+  Kubernetes
+  <a class="anchor" href="#kubernetes">#</a>
 </h1>
 <hr>
-<h2 id="cka">
-  CKA
-  <a class="anchor" href="#cka">#</a>
+<h2 id="node-mangament">
+  <strong>Node Mangament</strong>
+  <a class="anchor" href="#node-mangament">#</a>
 </h2>
 <h1 id="heading">
   
   <a class="anchor" href="#heading">#</a>
 </h1>
-<details>
-<summary>여기를 클릭하여 확장/접기</summary>
-<p>이 부분은 숨겨져 있습니다. 원하는 내용을 넣어주세요.</p>
-</details>
+<h3 id="taints">
+  <strong>Taints</strong>
+  <a class="anchor" href="#taints">#</a>
+</h3>
+<br>
+<ul>
+<li>taint는 특정 POD들을 노드로부터 배제하는 역할을 수행</li>
+<li>노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl taint node &lt;노드이름&gt; &lt;키&gt;<span style="color:#f92672">=</span>&lt;값&gt;:&lt;효과&gt;
+</span></span></code></pre></div><br>
+<br>
+<h3 id="node-affinity">
+  <strong>Node Affinity</strong>
+  <a class="anchor" href="#node-affinity">#</a>
+</h3>
+<br>
+<ul>
+<li>Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법</li>
+<li>POD 스펙에서 노드 어피니티 규칙의 지정이 가능</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Command</th>
+<th>Option</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Taints</td>
+<td><code>kubectl taint node</code></td>
+<td><code>--key</code>, <code>--value</code></td>
+<td><code>kubectl taint node node-1 key1=value1:NoSchedule</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><code>--effect</code></td>
+<td><code>kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute</code></td>
+</tr>
+<tr>
+<td>Node Affinity</td>
+<td>Node Affinity in Pod Spec</td>
+<td><code>nodeAffinity</code></td>
+<td>See Pod YAML example below</td>
+</tr>
+<tr>
+<td></td>
+<td><code>kubectl label nodes</code></td>
+<td></td>
+<td><code>kubectl label nodes node-1 key1=value1</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>kubectl get nodes --show-labels</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </article>
  
       
@@ -702,19 +770,10 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/7a5cb8807cad6adcf84ec9411b6b4c47d5ca8451" title='Last modified by mungOps | February 17, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 17, 2024</span>
-    </a>
-  </div>
 
 
 
-
-
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/CKA/CKA00.md" target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/k8s/k8s04%20copy.md" target="_blank" rel="noopener">
           <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -769,12 +828,21 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#cluster-architecture-문제풀이">Cluster Architecture 문제풀이</a>
+    <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#cka">CKA</a></li>
+        <li><a href="#node-mangament"><strong>Node Mangament</strong></a></li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#taints"><strong>Taints</strong></a></li>
+            <li><a href="#node-affinity"><strong>Node Affinity</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
