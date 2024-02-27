@@ -37,9 +37,9 @@
     </item>
     <item>
       <title>4. Node Mangament</title>
-      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/</link>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04-copy/</guid>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/</guid>
       <description>&#xD;Kubernetes&#xD;#&#xD;Node Mangament&#xD;#&#xD;#&#xD;Taints&#xD;#&#xD;taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &amp;lt;노드이름&amp;gt; &amp;lt;키&amp;gt;=&amp;lt;값&amp;gt;:&amp;lt;효과&amp;gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity&#xD;#&#xD;Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels </description>
     </item>
     <item>
@@ -54,7 +54,7 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</guid>
-      <description>&#xD;Kubernetes&#xD;#&#xD;Service&#xD;#&#xD;#&#xD;</description>
+      <description>Kubernetes Service&#xD;#&#xD;Kubernetes Networking&#xD;#&#xD;Cluster Networking 구성&#xD;#&#xD;Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음&#xA;클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.&#xA;Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음&#xA;파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp;amp; POD Networking&#xD;#&#xD;Docekr Container Networking&#xD;#&#xD;도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결</description>
     </item>
     <item>
       <title>Kubernetes_Object_Table</title>

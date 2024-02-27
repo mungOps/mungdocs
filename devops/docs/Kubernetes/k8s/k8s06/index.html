@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes#Service##">
+<meta name="description" content="Kubernetes Service#Kubernetes Networking#Cluster Networking 구성#Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
+클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.
+Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음
+파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp; POD Networking#Docekr Container Networking#도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="6. Service" />
-<meta property="og:description" content="Kubernetes#Service##" />
+<meta property="og:description" content="Kubernetes Service#Kubernetes Networking#Cluster Networking 구성#Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
+클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.
+Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음
+파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp; POD Networking#Docekr Container Networking#도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-02-22T18:05:40+09:00" />
+<meta property="article:modified_time" content="2024-02-27T15:35:48+09:00" />
 
 <title>6. Service | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.d9ce2e7ae14eba8705ee37231bfc37ef4b436fe05addcb9f0e651a301462e392.js" integrity="sha256-2c4ueuFOuocF7jcjG/w370tDb&#43;Ba3cufDmUaMBRi45I=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.46ef6c0bfbc7d4ce86a184c2fd52ce58ac80df7246bf0b87cf79a3e2357a69c9.js" integrity="sha256-Ru9sC/vH1M6GoYTC/VLOWKyA33JGvwuHz3mj4jV6ack=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -457,7 +463,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/k8s/k8s04-copy/" class="">4. Node Mangament</a>
+    <a href="/devops/docs/Kubernetes/k8s/k8s04/" class="">4. Node Mangament</a>
   
 
         </li>
@@ -671,12 +677,34 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#kubernetes">Kubernetes</a>
+    <li><a href="#kubernetes-service">Kubernetes Service</a>
       <ul>
-        <li><a href="#service"><strong>Service</strong></a></li>
+        <li><a href="#kubernetes-networking"><strong>Kubernetes Networking</strong></a>
+          <ul>
+            <li><a href="#cluster-networking-구성"><strong>Cluster Networking 구성</strong></a></li>
+            <li><a href="#docekr-networking-pod-networking"><strong>Docekr Networking&amp; POD Networking</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#kubernetes-network-종류"><strong>Kubernetes Network 종류</strong></a>
+          <ul>
+            <li><a href="#container-to-container--pod-to-pod-networking"><strong>Container-to-Container &amp; Pod-to-Pod Networking</strong></a></li>
+            <li><a href="#pod-service-networking"><strong>Pod-Service Networking</strong></a></li>
+            <li><a href="#internet-service-networking"><strong>Internet-Service Networking</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#service-network"><strong>Service Network</strong></a>
+          <ul>
+            <li><a href="#clusterip"><strong>ClusterIP</strong></a></li>
+            <li><a href="#nodeport"><strong>NodePort</strong></a></li>
+            <li><a href="#loadbalancer"><strong>LoadBalancer</strong></a></li>
+            <li><a href="#externalname"><strong>ExternalName</strong></a></li>
+            <li><a href="#headless"><strong>Headless</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#cni-container-network-interface"><strong>CNI (Container Network Interface)</strong></a></li>
+        <li><a href="#references"><strong>References</strong></a></li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 
@@ -689,20 +717,598 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="kubernetes">
-  Kubernetes
-  <a class="anchor" href="#kubernetes">#</a>
+  <article class="markdown"><h1 id="kubernetes-service">
+  Kubernetes Service
+  <a class="anchor" href="#kubernetes-service">#</a>
 </h1>
 <hr>
-<h2 id="service">
-  <strong>Service</strong>
-  <a class="anchor" href="#service">#</a>
+<h2 id="kubernetes-networking">
+  <strong>Kubernetes Networking</strong>
+  <a class="anchor" href="#kubernetes-networking">#</a>
 </h2>
-<h1 id="heading">
-  
-  <a class="anchor" href="#heading">#</a>
-</h1>
-</article>
+<hr>
+<h3 id="cluster-networking-구성">
+  <strong>Cluster Networking 구성</strong>
+  <a class="anchor" href="#cluster-networking-%ea%b5%ac%ec%84%b1">#</a>
+</h3>
+<ul>
+<li>
+<p>Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음</p>
+</li>
+<li>
+<p>클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.</p>
+</li>
+<li>
+<p>Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음</p>
+<ul>
+<li>
+<ol>
+<li><strong>파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신</strong></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능</strong></li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<br>
+<h3 id="docekr-networking-pod-networking">
+  <strong>Docekr Networking&amp; POD Networking</strong>
+  <a class="anchor" href="#docekr-networking-pod-networking">#</a>
+</h3>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h3 id="docekr-container-networking">
+  <strong>Docekr Container Networking</strong>
+  <a class="anchor" href="#docekr-container-networking">#</a>
+</h3>
+<p>
+  <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcwG0Pi%2FbtsdTauoIUa%2FZog1xWccMK5NQQ2PwiJ15k%2Fimg.png" alt="" /></p>
+<ul>
+<li>
+<p>도커 브리지 타입 네트워크는 <strong>호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결</strong></p>
+</li>
+<li>
+<p>네트워크 네임스페이스는 <strong>별도의 ARP(Address Resolution Protocol, IP를 MAC으로 변경), 라우팅, iptables가 존재</strong>하며, <strong>네트워크 네임스페이스는 서로 연결되기 전까지는 독립적</strong>으로 동작</p>
+</li>
+<li>
+<p>베스(vartual ethernet, veth)는 컨테이너와 호스트 브리지(docker0)에 연결해서 호스트 네임스페이스와 컨테이너 네트워크 사이를 통신</p>
+</li>
+</ul>
+
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h3 id="pod-container-networking">
+  <strong>POD Container Networking</strong>
+  <a class="anchor" href="#pod-container-networking">#</a>
+</h3>
+<p>
+  <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbr1Jkr%2FbtsdNvgtzLR%2FYnVfkIOL5QEDrXRFnGAwZK%2Fimg.png" alt="" /></p>
+<ul>
+<li>
+<p>쿠버네티스는 도커와는 달리 <strong>파드 단위로 컨테이너를 관리</strong></p>
+</li>
+<li>
+<p>파드의 <strong>veth0은 pause 컨테이너 네트워크 네임스페이스에 속한 장치</strong>로 <strong>같은 파드 안에서 pause 컨테이너 네트워크 네임스페이스를 공유</strong>해 사용</p>
+</li>
+<li>
+<p>즉, <strong>파드 하나에 여러개 컨테이너를 생성되더라도 컨테이너 각각에 할당된 IP는 변하지 않음</strong></p>
+</li>
+</ul>
+
+  </div>
+
+</div>
+
+<br>
+<br>
+<h2 id="kubernetes-network-종류">
+  <strong>Kubernetes Network 종류</strong>
+  <a class="anchor" href="#kubernetes-network-%ec%a2%85%eb%a5%98">#</a>
+</h2>
+<hr>
+<h3 id="container-to-container--pod-to-pod-networking">
+  <strong>Container-to-Container &amp; Pod-to-Pod Networking</strong>
+  <a class="anchor" href="#container-to-container--pod-to-pod-networking">#</a>
+</h3>
+<p>
+  <img src="https://opensource.com/sites/default/files/2022-05/1containerandpodnets.jpg" alt="" /></p>
+<ul>
+<li>
+<p><strong>컨테이너 간 네트워킹</strong></p>
+<ul>
+<li>컨테이너 간 네트워킹은 Pod 네트워크 네임스페이스를 동작</li>
+<li>네트워크 네임스페이스를 사용하면 시스템의 나머지 부분과 격리되어 <strong>독립적으로 작동하는 별도의 네트워크 인터페이스와 라우팅 테이블</strong>의 사용이 가능</li>
+</ul>
+</li>
+<li>
+<p><strong>포드 간 네트워킹</strong></p>
+</li>
+<li>
+<p>Kubernetes를 사용하면 모<strong>든 노드에 포드용으로 지정된 CIDR IP 범위</strong>가 있으며, 모든 포드가 클러스터의 다른 포드에서 볼 수 있는 <strong>고유한 IP 주소를 수신</strong></p>
+</li>
+<li>
+<p>컨테이너 간 네트워킹과 달리 <strong>Pod 간 통신은 Pod를 클러스터의 동일한 노드에 배포하든, 다른 노드에 배포하든 상관없이 실제 IP를 사용</strong>하여 발생</p>
+</li>
+<li>
+<p>포드 간 네트워킹 흐름은 아래와 같음</p>
+<ul>
+<li>
+<ol>
+<li>트래픽은 eth0을 통해 루트 네트워크 네임스페이스의 가상 인터페이스 veth0으로 이동</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>veth0을 거쳐 veth1에 연결된 가상 브리지로 이동</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>트래픽은 가상 브리지를 통해 veth1로 이동</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>veth1을 통해 Pod 2의 eth0 인터페이스에 도달
+<br></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<h3 id="pod-service-networking">
+  <strong>Pod-Service Networking</strong>
+  <a class="anchor" href="#pod-service-networking">#</a>
+</h3>
+<p>
+  <img src="https://opensource.com/sites/default/files/2022-05/2podtoservicenets.jpg" alt="" /></p>
+<ul>
+<li>
+<p>Pod는 수요에 따라 규모를 확장하거나 축소해야하며, 이럴 경우 Pod가 생성, 삭제되어 오류가 발생할 수 있음 (생성, 삭제시 Pod의 IP 주소가 변경)</p>
+</li>
+<li>
+<p>위의 문제를 다음의 <strong>Cluster Network를 사용하여 문제를 해결</strong></p>
+<ul>
+<li>
+<ol>
+<li>서비스와 연결된 모든 백엔드 포드를 연결하기 위해 <strong>프런트엔드에 고정 가상 IP 주소를 할당</strong></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>가상 IP로 주소가 지정된 모든 트래픽을 백엔드 포드 집합으로 부하 분산</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>Pod의 IP 주소를 추적하여 서비스 자체의 고정 가상 IP 주소로만 직접 연결</strong>하여, Pod IP 주소가 변경되더라도 클라이언트는 서비스 자체는 문제가 없음</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>위와 같은 Cluster LoadBalancing 발법은 아래와 같이 두 가지가 있음</p>
+<ul>
+<li>
+<p><strong>IPTABLES</strong></p>
+<ul>
+<li><strong>kube-proxy가 API 서버의 변경 사항을 감시</strong> 및 각각의 새로운 서비스에 대해 서비스의 클러스터 IP 및 포트에 대한 트래픽을 캡처</li>
+<li><strong>백엔드 포드로 트래픽을 리디렉션하는 iptables 규칙을 설치</strong></li>
+<li>Linux Netfilter가 사용자 공간과 커널 공간 사이를 전환할 필요 없이 트래픽을 처리하기 때문에 안정적이며 시스템 오버헤드가 낮음</li>
+</ul>
+</li>
+<li>
+<p><strong>IPVS</strong></p>
+<ul>
+<li>Netfilter 위에 구축되었으며 <strong>전송 계층 로드 밸런싱을 구현</strong></li>
+<li>IPVS는 해시 테이블을 기본 데이터 구조로 사용하여 <strong>Netfilter 후크 기능을 사용하며 커널 공간에서 작동</strong></li>
+<li>IPVS 모드의 kube-proxy가 iptables 모드의 kube-proxy보다 더 짧은 지연 시간, 더 높은 처리량, 더 나은 성능으로 트래픽을 리디렉션한다는 것을 의미</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<br>
+<h3 id="internet-service-networking">
+  <strong>Internet-Service Networking</strong>
+  <a class="anchor" href="#internet-service-networking">#</a>
+</h3>
+<p>
+  <img src="https://opensource.com/sites/default/files/2022-05/3internettoservicenets.jpg" alt="" /></p>
+<ul>
+<li>Kubernetes는 두 가지 방법으로 애플리케이션을 노출시킬 수 있음
+<ul>
+<li>
+<p><strong>Egress</strong> (Outbound)</p>
+<ul>
+<li><strong>Kubernetes Service에서 인터넷으로 트래픽을 라우팅하려는 경우 이를 사용</strong></li>
+<li>이 경우 iptables는 소스 NAT를 수행하므로 트래픽이 Pod가 아닌 노드에서 나오는 형태로 보임</li>
+</ul>
+</li>
+<li>
+<p><strong>Ingres</strong> (Inbound)</p>
+<ul>
+<li><strong>외부에서 들어오는 인터넷 트래픽을 라우팅하는 경우 사용</strong></li>
+<li>연결 규칙을 사용하여 서비스와의 특정 통신을 허용하고 차단</li>
+<li>일반적으로 서로 다른 네트워크 스택 지역에서 작동하는 두 가지 수신 솔루션, 즉 서비스 로드 밸런서와 수신 컨트롤러를 사용</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<br>
+<h2 id="service-network">
+  <strong>Service Network</strong>
+  <a class="anchor" href="#service-network">#</a>
+</h2>
+<hr>
+<ul>
+<li>Service는 파드들을 통해 실행되고 있는 <strong>애플리케이션을 네트워크에 노출(expose)시키는 가상의 컴포넌트</strong></li>
+<li>쿠버네티스 <strong>내부의 다양한 객체들이 애플리케이션 및 다른 외부의 애플리케이션이나 사용자와 연결</strong>될 수 있도록 도와주는 <strong>브릿지 역할을 수행</strong></li>
+<li>이와 같은 Service가 별도로 필요한 이유는 <strong>파드들의 반영속적인(ephemeral) 특성</strong>을 가지고 있기 때문이며, <strong>파드들은 일회성 자원으로 언제든 다른 노드로 옮겨지거나 삭제될 수 있으며, 이로인해 새로이 생성될 때마다 새로운 내부 IP를 받게 되므로, 이것만으로 클러스터 내/외부와 통신을 계속 유지하기는 어렵다.</strong></li>
+<li>즉, 위와 같은 이유로 <strong>파드가 외부와 통신할 수 있도록 클러스터 내부에서 고정적인 IP를 갖는 서비스(Service)를 이용</strong>하도록 하고 있다. 서비스는 또한 <strong>디플로이먼트나 스테이트풀셋처럼 같은 애플리케이션을 구동하도록 구성된 여러 파드들에게 단일한 네트워크 진입점을 부여하는 역할을 수행한다.</strong></li>
+<li>서비스를 정의하고 생성할 때에는 spec.ports 아래에 연결하고자 하는 항목 별로 각각 2개씩의 포트가 지정되어 있어야 하며, 추가로 서비스의 타입 또한 지정이 가능하다.</li>
+</ul>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h3 id="serviceyaml">
+  <strong>Service.yaml</strong>
+  <a class="anchor" href="#serviceyaml">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-app</span> <span style="color:#75715e"># Selector 값과 spec.selector.matchLabels.app이 일치해야 함</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span> <span style="color:#75715e"># 서비스 쪽에서 열려있는 포트</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span> <span style="color:#75715e"># 파드의 애플리케이션 포트</span>
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h3 id="service_kindyaml">
+  <strong>Service_Kind.yaml</strong>
+  <a class="anchor" href="#service_kindyaml">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-app</span> <span style="color:#75715e"># Selector 값과 spec.selector.matchLabels.app이 일치해야 함</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: { <span style="color:#ae81ff">ClusterIP | NodePort | LoadBalancer ExternalName }</span> <span style="color:#75715e"># type 지정</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span> <span style="color:#75715e"># 서비스 쪽에서 열려있는 포트</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span> <span style="color:#75715e"># 파드의 애플리케이션 포트</span>
+</span></span></code></pre></div>
+  </div>
+
+</div>
+
+<ul>
+<li>위와 같은 서비스의 유형은 아래와 같이 5가지가 있다.
+<ul>
+<li>ClusterIP</li>
+<li>NodePort</li>
+<li>LoadBalancer</li>
+<li>ExternalName</li>
+<li>Headless</li>
+</ul>
+</li>
+</ul>
+<br>
+<br>
+<h3 id="clusterip">
+  <strong>ClusterIP</strong>
+  <a class="anchor" href="#clusterip">#</a>
+</h3>
+<p>
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*I4j4xaaxsuchdvO66V3lAg.png" alt="" /></p>
+<ul>
+<li>쿠버네티스가 지원하는 기본적인 형태의 서비스로 <strong>가상의 클러스터 전용 IP</strong></li>
+<li><strong><ClusterIP>로 들어온 클러스터 내부 트래픽을 해당 파드의 &lt;파드IP:port&gt;:<targetPort>로 넘겨주도록 동작</strong>하므로, <strong>오직 클러스터 내부에서만 접근 가능</strong>하다.</li>
+<li>spec.selector에서 지정된 레이블로 여러 파드들이 존재할 경우, <strong>서비스는 그 파드들을 외부 요청(request)을 전달할 엔드포인트(endpoints)로 선택하여 트래픽을 분배</strong></li>
+<li>ClusterIP 이용하여 한 노드 안에 여러 파드, 또는 여러 노드에 걸쳐 있는 여러 파드에 동일한 서비스를 적용</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl create service clusterip nginx --http<span style="color:#f92672">=</span>80:8080
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl create service clusterip &lt;spec.selector vaule&gt; &lt;protocol=port:targetport&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl expose pod nginx --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span> --name nginx-service --type<span style="color:#f92672">=</span>ClusterIP
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl expose &lt;component type&gt; &lt;component name&gt; &lt;port=targetport&gt; &lt;service name&gt; &lt;--type=service type&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-app</span> <span style="color:#75715e"># Selector 값과 spec.selector.matchLabels.app이 일치해야 함</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ClusterIP</span> <span style="color:#75715e"># type 지정</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span> <span style="color:#75715e"># 서비스 쪽에서 열려있는 포트</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span> <span style="color:#75715e"># 파드의 애플리케이션 포트</span>
+</span></span></code></pre></div><br>
+<br>
+<h3 id="nodeport">
+  <strong>NodePort</strong>
+  <a class="anchor" href="#nodeport">#</a>
+</h3>
+<p>
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CdyUtG-8CfGu2oFC5s0KwA.png" alt="" /></p>
+<ul>
+<li>NodePort는 외부에서 <strong>노드 IP의 특정 포트(<NodeIP>:<NodePort>)로 들어오는 요청을 감지</strong>하여, <strong>해당 포트와 연결된 파드로 트래픽을 전달하는 유형의 서비스</strong></li>
+<li>클러스터 내부로 들어온 트래픽을 특정 파드로 연결하기 위한 ClusterIP가 자동으로 생성</li>
+<li>NodePort의 경우에도 <strong>spec.selector에 해당하는 모든 파드들에 동일한 로드 밸런싱이 적용</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl create service nordport nginx --http<span style="color:#f92672">=</span>80:8080
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl create service nordport &lt;spec.selector vaule&gt; &lt;protocol=port:targetport&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl expose pod nginx --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span> --name nginx-service --type<span style="color:#f92672">=</span>nordport
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl expose &lt;component type&gt; &lt;component name&gt; &lt;port=targetport&gt; &lt;service name&gt; &lt;--type=service type&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-app</span> <span style="color:#75715e"># Selector 값과 spec.selector.matchLabels.app이 일치해야 함</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span> <span style="color:#75715e"># type 지정</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span> <span style="color:#75715e"># 서비스 쪽에서 열려있는 포트</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span> <span style="color:#75715e"># 파드의 애플리케이션 포트</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">30008</span> <span style="color:#75715e"># 외부 사용자가 애플리케이션에 접근하기 위한 포트번호(선택) / 없을 시 30000에서 32767 사이 자동생성</span>
+</span></span></code></pre></div><br>
+<br>
+<h3 id="loadbalancer">
+  <strong>LoadBalancer</strong>
+  <a class="anchor" href="#loadbalancer">#</a>
+</h3>
+<p>
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*P-10bQg_1VheU9DRlvHBTQ.png" alt="" /></p>
+<ul>
+<li>별도의 <strong>외부 로드 밸런서를 제공하는 클라우드(CSP / AWS, Azure, GCP 등) 환경을 고려하여, 로드 밸런서를 클러스터의 서비스로 프로비저닝할 수 있는 LoadBalancer 유형</strong>도 제공</li>
+<li>서비스를 클라우드 제공자 측의 자체 로드 밸런서로 노출시키며, 이에 필요한 NodePort와 ClusterIP 역시 자동 생성</li>
+<li>외부의 로드 밸런서를 통해 들어온 트래픽이 서비스의 설정값을 따라 해당되는 파드들로 연결되며, <strong>트래픽이 어떻게 로드 밸런싱이 될지는 클라우드 제공자의 설정에 따름</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl create service loadbalancer nginx --http<span style="color:#f92672">=</span>80:8080
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl create service loadbalancer &lt;spec.selector vaule&gt; &lt;protocol=port:targetport&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl expose pod nginx --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span> --name nginx-service --type<span style="color:#f92672">=</span>loadbalancer
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl expose &lt;component type&gt; &lt;component name&gt; &lt;port=targetport&gt; &lt;service name&gt; &lt;--type=service type&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-app</span> <span style="color:#75715e"># Selector 값과 spec.selector.matchLabels.app이 일치해야 함</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span> <span style="color:#75715e"># type 지정</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span> <span style="color:#75715e"># 서비스 쪽에서 열려있는 포트</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span> <span style="color:#75715e"># 파드의 애플리케이션 포트</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">status</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loadBalancer</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ingress</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">ip</span>: <span style="color:#ae81ff">192.0.2.127</span> <span style="color:#75715e"># CSP LoadBalenser의 IP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">ㅁ</span>
+</span></span></code></pre></div><br>
+<br>
+<h3 id="externalname">
+  <strong>ExternalName</strong>
+  <a class="anchor" href="#externalname">#</a>
+</h3>
+<ul>
+<li>Service에 <strong>selector 대신 DNS name을 직접 명시</strong>하고자 할 때 사용</li>
+<li>spec.externalName 항목에 필요한 DNS 주소를 기입하면, 클러스터의 <strong>DNS 서비스가 해당 주소에 대한 CNAME 레코드를 반환</strong>하게 된다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ kubectl create service externalname --external-name<span style="color:#f92672">=</span>example.com
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl create service clusterip &lt;--external-name=spec.externalName vaule&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">my-service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-app</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ExternalName</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">externalName</span>: <span style="color:#ae81ff">my.database.example.com</span>
+</span></span></code></pre></div><br>
+<br>
+<h3 id="headless">
+  <strong>Headless</strong>
+  <a class="anchor" href="#headless">#</a>
+</h3>
+<ul>
+<li><strong>.spec.clusterIP필드 값을 None으로 설정</strong>하여 클러스터 IP가 없는 서비스의 생성이 가능</li>
+<li>로드밸런싱이 필요 없거나 단일 서비스 IP가 필요 없을 때 사용</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-app</span> <span style="color:#75715e"># Selector 값과 spec.selector.matchLabels.app이 일치해야 함</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">clusterIP</span>: <span style="color:#ae81ff">None</span> <span style="color:#75715e"># clusterIP를 None으로 설정</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>: <span style="color:#75715e"># 헤드리스 서비스의 경우 클러스터 내에서 DNS 조회를 통해 특정 파드의 IP를 얻을 때 해당 파드에 접근할 포트를 지정하기 위해 ports 필드를 사용</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span></code></pre></div><br>
+<br>
+<h2 id="cni-container-network-interface">
+  <strong>CNI (Container Network Interface)</strong>
+  <a class="anchor" href="#cni-container-network-interface">#</a>
+</h2>
+<hr>
+<ul>
+<li>
+<p>CNI(Container Network Interface)는 컨테이너 간의 <strong>네트워킹을 제어할 수 있는 기술적인 표준</strong>으로, <strong>Linux 컨테이너에서 네트워크 인터페이스를 구성하기 위한 플러그인</strong>을 의미</p>
+</li>
+<li>
+<p>쿠버네티스는 <strong>기본적으로 &lsquo;kubenet&rsquo; 이라는 자체적인 CNI 플러그인을 제공</strong>하지만 <strong>네트워크 기능이 매우 제한적인 단점</strong>이 있으며, <strong>이를 보완하기 위해, 3rd-party 플러그인을 사용</strong>하는데 그 종류에는 Flannel, Calico, Weavenet, NSX 등 다양한 종류의 3rd-party CNI 플러그인들이 존재</p>
+</li>
+<li>
+<p>쿠버네티스 뿐만 아니라 Amazon ECS, Cloud Foundry 등 컨테이너 런타임을 포함하고 있는 다양한 플랫폼들은 CNI를 사용</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Network</th>
+<th>Model</th>
+<th>Route</th>
+<th>Distribution</th>
+<th>Network Policy</th>
+<th>Mesh</th>
+<th>External Datastore</th>
+<th>Encryption</th>
+<th>Ingress/Egress Policies</th>
+<th>Commercial Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calico</td>
+<td>Layer 3</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Etcd</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Canal</td>
+<td>Layer 2</td>
+<td>vxlan</td>
+<td>N/A</td>
+<td>Yes</td>
+<td>Etcd</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Flannel</td>
+<td>vxlan</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>None</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>kopeio-networking</td>
+<td>Layer 2</td>
+<td>vxlan</td>
+<td>N/A</td>
+<td>No</td>
+<td>None</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>kube-router</td>
+<td>Layer 3</td>
+<td>BGP</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>romana</td>
+<td>Layer 3</td>
+<td>OSPF</td>
+<td>Yes</td>
+<td>No</td>
+<td>Etcd</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Weave Net</td>
+<td>Layer 2</td>
+<td>vxlan</td>
+<td>N/A</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="references">
+  <strong>References</strong>
+  <a class="anchor" href="#references">#</a>
+</h2>
+<hr>
+<ul>
+<li>
+  <a href="https://prod.velog.io/@pinion7/Kubernetes-%EB%A6%AC%EC%86%8C%EC%8A%A4-Service%EC%97%90-%EB%8C%80%ED%95%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B3%A0-%EC%8B%A4%EC%8A%B5%ED%95%B4%EB%B3%B4%EA%B8%B0">https://prod.velog.io/@pinion7/Kubernetes-%EB%A6%AC%EC%86%8C%EC%8A%A4-Service%EC%97%90-%EB%8C%80%ED%95%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B3%A0-%EC%8B%A4%EC%8A%B5%ED%95%B4%EB%B3%B4%EA%B8%B0</a></li>
+<li>
+  <a href="https://opensource.com/article/22/6/kubernetes-networking-fundamentals">https://opensource.com/article/22/6/kubernetes-networking-fundamentals</a></li>
+</ul>
+<pre tabindex="0"><code></code></pre></article>
  
       
 
@@ -711,9 +1317,9 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/fd51269c1bdba185e98961252b1a552a2da86aad" title='Last modified by mungOps | February 22, 2024' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/8098ff8b4b7c699ecaad9406844e289c00b2cb8a" title='Last modified by mungOps | February 27, 2024' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 22, 2024</span>
+      <span>February 27, 2024</span>
     </a>
   </div>
 
@@ -778,12 +1384,34 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#kubernetes">Kubernetes</a>
+    <li><a href="#kubernetes-service">Kubernetes Service</a>
       <ul>
-        <li><a href="#service"><strong>Service</strong></a></li>
+        <li><a href="#kubernetes-networking"><strong>Kubernetes Networking</strong></a>
+          <ul>
+            <li><a href="#cluster-networking-구성"><strong>Cluster Networking 구성</strong></a></li>
+            <li><a href="#docekr-networking-pod-networking"><strong>Docekr Networking&amp; POD Networking</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#kubernetes-network-종류"><strong>Kubernetes Network 종류</strong></a>
+          <ul>
+            <li><a href="#container-to-container--pod-to-pod-networking"><strong>Container-to-Container &amp; Pod-to-Pod Networking</strong></a></li>
+            <li><a href="#pod-service-networking"><strong>Pod-Service Networking</strong></a></li>
+            <li><a href="#internet-service-networking"><strong>Internet-Service Networking</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#service-network"><strong>Service Network</strong></a>
+          <ul>
+            <li><a href="#clusterip"><strong>ClusterIP</strong></a></li>
+            <li><a href="#nodeport"><strong>NodePort</strong></a></li>
+            <li><a href="#loadbalancer"><strong>LoadBalancer</strong></a></li>
+            <li><a href="#externalname"><strong>ExternalName</strong></a></li>
+            <li><a href="#headless"><strong>Headless</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#cni-container-network-interface"><strong>CNI (Container Network Interface)</strong></a></li>
+        <li><a href="#references"><strong>References</strong></a></li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 
