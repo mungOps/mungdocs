@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS Security##기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다. #AWS가 제공하는 기본적인 보안 서비스 #AWS 제공 서비스 서비스 개요 통신 경로 암호화 AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다.">
+<meta name="description" content="AWS Security # # 기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다. # AWS가 제공하는 기본적인 보안 서비스 # AWS 제공 서비스 서비스 개요 통신 경로 암호화 AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="AWS Security" />
-<meta property="og:description" content="AWS Security##기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다. #AWS가 제공하는 기본적인 보안 서비스 #AWS 제공 서비스 서비스 개요 통신 경로 암호화 AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다." />
+<meta property="og:description" content="AWS Security # # 기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다. # AWS가 제공하는 기본적인 보안 서비스 # AWS 제공 서비스 서비스 개요 통신 경로 암호화 AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AmazonWebService/AWS_Security/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00" />
-
 <title>AWS Security | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/cloud.search.min.e7d4ada8ab56cec131125ce564ab3359c701fd818d8ffbf4217d9fb1edf9a464.js" integrity="sha256-59StqKtWzsExElzlZKszWccB/YGNj/v0IX2fse35pGQ=" crossorigin="anonymous"></script>
+  <script defer src="/cloud.search.min.28d82f44c1c960a009665687a82aec5cfe9058390c4125d740817570608abe3c.js" integrity="sha256-KNgvRMHJYKAJZlaHqCrsXP6QWDkMQSXXQIF1cGCKvjw=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -2215,6 +2214,7 @@ https://github.com/alex-shpak/hugo-book
 <li>다중 AZ(가용 영역)에 제공되는 변조 방지 하드웨어에 키를 안전하게 저장</li>
 <li>고객의 HSM은 고객의 Virtual Private Cloud(VPC)에 상주하며 다른 AWS 워크로드와 격리</li>
 </ol>
+
     </div>
   </label>
 </div>
@@ -2561,7 +2561,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

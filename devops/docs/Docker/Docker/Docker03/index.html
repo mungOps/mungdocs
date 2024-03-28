@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Docker#Dockerfile#Dockerfile#Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시## 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .">
+<meta name="description" content="Docker # Dockerfile # Dockerfile # Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시 # # 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="3. Dockerfile&amp; Compose" />
-<meta property="og:description" content="Docker#Dockerfile#Dockerfile#Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시## 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD ." />
+<meta property="og:description" content="Docker # Dockerfile # Dockerfile # Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시 # # 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2024-01-22T13:50:06+09:00" />
-
 <title>3. Dockerfile&amp; Compose | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.2f8bf04b09bd3edfd5db78ffdaf8151a4db1fe392a65b5c2068ddd93514d8856.js" integrity="sha256-L4vwSwm9Pt/V23j/2vgVGk2x/jkqZbXCBo3dk1FNiFY=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.df0f4e16b7682bc7a13447e88865d702daffbfd0b560f4584952b3a95a93964b.js" integrity="sha256-3w9OFrdoK8ehNEfoiGXXAtr/v9C1YPRYSVKzqVqTlks=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -1023,7 +1022,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

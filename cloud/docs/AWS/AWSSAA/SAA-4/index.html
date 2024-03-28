@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="4장 Amazon Virtual Private Cloud##4장의 목표##복원력을 갖춘 아키텍처 설계 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. #안전한 어플리케이션 및 아키텍처 설계 단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다. 단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다. ##Virtual Private Cloud ( 이하 VPC )##VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다.">
+<meta name="description" content="4장 Amazon Virtual Private Cloud # # 4장의 목표 # # 복원력을 갖춘 아키텍처 설계 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. # 안전한 어플리케이션 및 아키텍처 설계 단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다. 단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다. # # Virtual Private Cloud ( 이하 VPC ) # # VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="4장 VPC" />
-<meta property="og:description" content="4장 Amazon Virtual Private Cloud##4장의 목표##복원력을 갖춘 아키텍처 설계 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. #안전한 어플리케이션 및 아키텍처 설계 단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다. 단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다. ##Virtual Private Cloud ( 이하 VPC )##VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다." />
+<meta property="og:description" content="4장 Amazon Virtual Private Cloud # # 4장의 목표 # # 복원력을 갖춘 아키텍처 설계 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. # 안전한 어플리케이션 및 아키텍처 설계 단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다. 단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다. # # Virtual Private Cloud ( 이하 VPC ) # # VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSSAA/SAA-4/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00" />
-
 <title>4장 VPC | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/cloud.search.min.e7d4ada8ab56cec131125ce564ab3359c701fd818d8ffbf4217d9fb1edf9a464.js" integrity="sha256-59StqKtWzsExElzlZKszWccB/YGNj/v0IX2fse35pGQ=" crossorigin="anonymous"></script>
+  <script defer src="/cloud.search.min.28d82f44c1c960a009665687a82aec5cfe9058390c4125d740817570608abe3c.js" integrity="sha256-KNgvRMHJYKAJZlaHqCrsXP6QWDkMQSXXQIF1cGCKvjw=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -3884,7 +3883,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

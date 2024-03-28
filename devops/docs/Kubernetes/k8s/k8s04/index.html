@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes#Node Mangament##Taints#taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity#Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels ">
+<meta name="description" content=" Kubernetes # Node Mangament # # Taints # taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity # Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="4. Node Mangament" />
-<meta property="og:description" content="Kubernetes#Node Mangament##Taints#taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity#Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels " />
+<meta property="og:description" content=" Kubernetes # Node Mangament # # Taints # taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity # Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2024-02-27T15:35:48+09:00" />
-
 <title>4. Node Mangament | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.2f8bf04b09bd3edfd5db78ffdaf8151a4db1fe392a65b5c2068ddd93514d8856.js" integrity="sha256-L4vwSwm9Pt/V23j/2vgVGk2x/jkqZbXCBo3dk1FNiFY=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.df0f4e16b7682bc7a13447e88865d702daffbfd0b560f4584952b3a95a93964b.js" integrity="sha256-3w9OFrdoK8ehNEfoiGXXAtr/v9C1YPRYSVKzqVqTlks=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -822,7 +821,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

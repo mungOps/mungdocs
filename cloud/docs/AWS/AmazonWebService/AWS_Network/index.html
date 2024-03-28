@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS Network#Amazon VPC ( Virtual Private Cloud )#AWS 상에 프라이빗 네트워크 공간을 구축할 수 있는 서비스 VPC를 이용하면 논리적인 네트워크 분리가 가능하고 라우팅 테이블과 각종 게이트웨이의 설정이 가능 AWS의 계정 전용 가상 네트워크 서비스 VPC 내에서 각종 리소스 ( EC2, RDS, ELB 등 )을 시작할 수 있으며 다른 가상 네트워크와 논리적으로 분리되어 있음 S3, Cloudfront 등은 다른 VPC 서비스로 VPC 내에서 생성되지 않음 각 Region 별로 VPC 가 다수 존재할 수 있음 VPC 하나의 사설 IP 대역을 보유하고, 서브넷을 생성하며 사설IP 대역 일부를 나누어 줄 수 있음 허용된 IP 블록 크기는 /16( IP 65536개 )- / 28 (IP 16개 ) 권고하는 VPC CIDR 블록 ( 사설 IP 대역과 동일 ) 10.">
+<meta name="description" content="AWS Network # Amazon VPC ( Virtual Private Cloud ) # AWS 상에 프라이빗 네트워크 공간을 구축할 수 있는 서비스 VPC를 이용하면 논리적인 네트워크 분리가 가능하고 라우팅 테이블과 각종 게이트웨이의 설정이 가능 AWS의 계정 전용 가상 네트워크 서비스 VPC 내에서 각종 리소스 ( EC2, RDS, ELB 등 )을 시작할 수 있으며 다른 가상 네트워크와 논리적으로 분리되어 있음 S3, Cloudfront 등은 다른 VPC 서비스로 VPC 내에서 생성되지 않음 각 Region 별로 VPC 가 다수 존재할 수 있음 VPC 하나의 사설 IP 대역을 보유하고, 서브넷을 생성하며 사설IP 대역 일부를 나누어 줄 수 있음 허용된 IP 블록 크기는 /16( IP 65536개 )- / 28 (IP 16개 ) 권고하는 VPC CIDR 블록 ( 사설 IP 대역과 동일 ) 10.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="AWS Network" />
-<meta property="og:description" content="AWS Network#Amazon VPC ( Virtual Private Cloud )#AWS 상에 프라이빗 네트워크 공간을 구축할 수 있는 서비스 VPC를 이용하면 논리적인 네트워크 분리가 가능하고 라우팅 테이블과 각종 게이트웨이의 설정이 가능 AWS의 계정 전용 가상 네트워크 서비스 VPC 내에서 각종 리소스 ( EC2, RDS, ELB 등 )을 시작할 수 있으며 다른 가상 네트워크와 논리적으로 분리되어 있음 S3, Cloudfront 등은 다른 VPC 서비스로 VPC 내에서 생성되지 않음 각 Region 별로 VPC 가 다수 존재할 수 있음 VPC 하나의 사설 IP 대역을 보유하고, 서브넷을 생성하며 사설IP 대역 일부를 나누어 줄 수 있음 허용된 IP 블록 크기는 /16( IP 65536개 )- / 28 (IP 16개 ) 권고하는 VPC CIDR 블록 ( 사설 IP 대역과 동일 ) 10." />
+<meta property="og:description" content="AWS Network # Amazon VPC ( Virtual Private Cloud ) # AWS 상에 프라이빗 네트워크 공간을 구축할 수 있는 서비스 VPC를 이용하면 논리적인 네트워크 분리가 가능하고 라우팅 테이블과 각종 게이트웨이의 설정이 가능 AWS의 계정 전용 가상 네트워크 서비스 VPC 내에서 각종 리소스 ( EC2, RDS, ELB 등 )을 시작할 수 있으며 다른 가상 네트워크와 논리적으로 분리되어 있음 S3, Cloudfront 등은 다른 VPC 서비스로 VPC 내에서 생성되지 않음 각 Region 별로 VPC 가 다수 존재할 수 있음 VPC 하나의 사설 IP 대역을 보유하고, 서브넷을 생성하며 사설IP 대역 일부를 나누어 줄 수 있음 허용된 IP 블록 크기는 /16( IP 65536개 )- / 28 (IP 16개 ) 권고하는 VPC CIDR 블록 ( 사설 IP 대역과 동일 ) 10." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AmazonWebService/AWS_Network/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00" />
-
 <title>AWS Network | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/cloud.search.min.e7d4ada8ab56cec131125ce564ab3359c701fd818d8ffbf4217d9fb1edf9a464.js" integrity="sha256-59StqKtWzsExElzlZKszWccB/YGNj/v0IX2fse35pGQ=" crossorigin="anonymous"></script>
+  <script defer src="/cloud.search.min.28d82f44c1c960a009665687a82aec5cfe9058390c4125d740817570608abe3c.js" integrity="sha256-KNgvRMHJYKAJZlaHqCrsXP6QWDkMQSXXQIF1cGCKvjw=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -2243,6 +2242,7 @@ https://github.com/alex-shpak/hugo-book
 <li>흔히 우리가 알고 있는 naver.com, google.com, daum.net 모두 DNS이다.</li>
 <li>AWS에서는 Route 53을 활용해 도메인 서비스를 지원한다.</li>
 </ul>
+
     </div>
   </label>
 </div>
@@ -2534,7 +2534,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

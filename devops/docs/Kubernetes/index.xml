@@ -5,7 +5,6 @@
     <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/</link>
     <description>Recent content in Kubernetes on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>devops</language>
-    <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <language>devops</language><atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

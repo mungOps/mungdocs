@@ -5,56 +5,71 @@
     <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/</link>
     <description>Recent content in CKA on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>devops</language>
-    <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/index.xml" rel="self" type="application/rss+xml" />
+    <language>devops</language><atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0. CKA</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA/</guid>
-      <description>&#xD;CKA&#xD;#&#xD;CKA&#xD;#&#xD;#&#xD;#&#xD;CKA 자격증은 Certified Kubernetes Administrator를 의미하며, Kubernetes 플랫폼에 대한 숙련도를 Linux Foundation에서 검증해주는 자격증을 의미&#xA;CKA 자격시험은 실기형 시험으로 Kubernetes 환경에서 명령어를 활용해 리소스를 다루는 형태로 문제가 출제되며. 2시간의 시험 시간 동안 66/100점 이상이면 시험에 통과&#xA;#&#xD;Section Table 분야 비중 Cluster Architecture, Installation &amp;amp; Configuration 25% Workloads &amp;amp; Scheduling 15% Service &amp;amp; Networking 20% Storage 10% TroubleShooting 30% CKA 관련 사이트&#xD;#&#xD;CKA 시험등록 Killer Answer&#xD;</description>
+      <description> CKA # CKA # # # CKA 자격증은 Certified Kubernetes Administrator를 의미하며, Kubernetes 플랫폼에 대한 숙련도를 Linux Foundation에서 검증해주는 자격증을 의미
+CKA 자격시험은 실기형 시험으로 Kubernetes 환경에서 명령어를 활용해 리소스를 다루는 형태로 문제가 출제되며. 2시간의 시험 시간 동안 66/100점 이상이면 시험에 통과
+# Section Table 분야 비중 Cluster Architecture, Installation &amp;amp; Configuration 25% Workloads &amp;amp; Scheduling 15% Service &amp;amp; Networking 20% Storage 10% TroubleShooting 30% CKA 관련 사이트 # CKA 시험등록 Killer Answer </description>
     </item>
+    
     <item>
       <title>1. Cluster Architecture 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA00/</guid>
-      <description>Cluster Architecture 문제풀이&#xD;#&#xD;CKA&#xD;#&#xD;#&#xD;여기를 클릭하여 확장/접기&#xD;이 부분은 숨겨져 있습니다. 원하는 내용을 넣어주세요.</description>
+      <description>Cluster Architecture 문제풀이 # CKA # # 여기를 클릭하여 확장/접기 이 부분은 숨겨져 있습니다. 원하는 내용을 넣어주세요.</description>
     </item>
+    
     <item>
       <title>2. Installation &amp; Configuration 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA01/</guid>
-      <description>2. Installation &amp;amp; Configuration 문제풀이&#xD;#&#xD;CKA&#xD;#&#xD;#&#xD;1. Deploy a pod named nginx-pod using the nginx:alpine image&#xD;#&#xD;Answer&#xD;$ k run nginx-pod --image=nginx:alpine -o yaml &amp;gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg&#xD;#&#xD;Answer&#xD;$ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &amp;gt; 1-2.</description>
+      <description>2. Installation &amp;amp; Configuration 문제풀이 # CKA # # 1. Deploy a pod named nginx-pod using the nginx:alpine image # Answer $ k run nginx-pod --image=nginx:alpine -o yaml &amp;gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg # Answer $ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &amp;gt; 1-2.</description>
     </item>
+    
     <item>
       <title>3. Workloads&amp; Scheduling 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA02/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA02/</guid>
-      <description>&#xD;Workloads&amp;amp; Scheduling 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> Workloads&amp;amp; Scheduling 문제풀이 # # Answer # Answer </description>
     </item>
+    
     <item>
       <title>4. Service&amp; Networking 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA03/</guid>
-      <description>&#xD;Service&amp;amp; Networking 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> Service&amp;amp; Networking 문제풀이 # # Answer # Answer </description>
     </item>
+    
     <item>
       <title>5. Storage 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA04/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA04/</guid>
-      <description>&#xD;Storage 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> Storage 문제풀이 # # Answer # Answer </description>
     </item>
+    
     <item>
       <title>6. TroubleShooting 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA05/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA05/</guid>
-      <description>&#xD;TroubleShooting 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> TroubleShooting 문제풀이 # # Answer # Answer </description>
     </item>
+    
   </channel>
 </rss>

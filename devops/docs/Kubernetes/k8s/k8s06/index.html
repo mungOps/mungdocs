@@ -3,28 +3,27 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes Service#Kubernetes Networking#Cluster Networking 구성#Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
+<meta name="description" content="Kubernetes Service # Kubernetes Networking # Cluster Networking 구성 # Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
 클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.
 Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음
-파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp; POD Networking#Docekr Container Networking#도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결">
+파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp; POD Networking # Docekr Container Networking # 도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="6. Service" />
-<meta property="og:description" content="Kubernetes Service#Kubernetes Networking#Cluster Networking 구성#Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
+<meta property="og:description" content="Kubernetes Service # Kubernetes Networking # Cluster Networking 구성 # Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
 클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.
 Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음
-파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp; POD Networking#Docekr Container Networking#도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결" />
+파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp; POD Networking # Docekr Container Networking # 도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2024-02-28T11:08:37+09:00" />
-
 <title>6. Service | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.2f8bf04b09bd3edfd5db78ffdaf8151a4db1fe392a65b5c2068ddd93514d8856.js" integrity="sha256-L4vwSwm9Pt/V23j/2vgVGk2x/jkqZbXCBo3dk1FNiFY=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.df0f4e16b7682bc7a13447e88865d702daffbfd0b560f4584952b3a95a93964b.js" integrity="sha256-3w9OFrdoK8ehNEfoiGXXAtr/v9C1YPRYSVKzqVqTlks=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -1361,7 +1360,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

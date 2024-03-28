@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="#OpenStack Ussuri : Swift##----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | ----------------------- | metadata agent | ----------------------- | Neutron Server | ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- #OpenStack Ussuri : Swift##Swift는 우리가 흔히 사용하는 네이버 클라우드, 구글 드라이브와 같은 오브젝트 스토리지 서비스 입니다.">
+<meta name="description" content="# OpenStack Ussuri : Swift # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | ----------------------- | metadata agent | ----------------------- | Neutron Server | ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Swift # # Swift는 우리가 흔히 사용하는 네이버 클라우드, 구글 드라이브와 같은 오브젝트 스토리지 서비스 입니다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="OpenStack Ussuri : Swift" />
-<meta property="og:description" content="#OpenStack Ussuri : Swift##----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | ----------------------- | metadata agent | ----------------------- | Neutron Server | ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- #OpenStack Ussuri : Swift##Swift는 우리가 흔히 사용하는 네이버 클라우드, 구글 드라이브와 같은 오브젝트 스토리지 서비스 입니다." />
+<meta property="og:description" content="# OpenStack Ussuri : Swift # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | ----------------------- | metadata agent | ----------------------- | Neutron Server | ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Swift # # Swift는 우리가 흔히 사용하는 네이버 클라우드, 구글 드라이브와 같은 오브젝트 스토리지 서비스 입니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2023-12-21T11:31:26+09:00" />
-
 <title>OpenStack Ussuri : Swift | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/cloud.search.min.e7d4ada8ab56cec131125ce564ab3359c701fd818d8ffbf4217d9fb1edf9a464.js" integrity="sha256-59StqKtWzsExElzlZKszWccB/YGNj/v0IX2fse35pGQ=" crossorigin="anonymous"></script>
+  <script defer src="/cloud.search.min.28d82f44c1c960a009665687a82aec5cfe9058390c4125d740817570608abe3c.js" integrity="sha256-KNgvRMHJYKAJZlaHqCrsXP6QWDkMQSXXQIF1cGCKvjw=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -2381,7 +2380,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

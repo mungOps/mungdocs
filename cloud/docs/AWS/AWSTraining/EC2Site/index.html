@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="EC2 동적 사이트 구축##이번 장에서는 EC2와 WordPress, RDS를 활용해 동적 사이트를 구축해보겠습니다. 이 장에서는 RDS 복제본 사용시 과금이 청구될 수 있습니다. 이를 원치 않는 분들은, RDS 설정 시, Multi-AZ 설정을 하지 않고, 1개의 Master RDS만 생성 후 진행하세요.#EC2 동적 사이트 구축###VPC VPC 이름 IPv4 CIDR VPC-WordPress 10.0.0.0/16 #Subnet Subnet 이름 VPC AZ IPv4 CIDR WordPress-Public-Subnet VPC-WordPress ap-northeast-a 10.0.1.0/24 WordPress-Public-Subnet2 VPC-WordPress ap-northeast-c 10.">
+<meta name="description" content="EC2 동적 사이트 구축 # # 이번 장에서는 EC2와 WordPress, RDS를 활용해 동적 사이트를 구축해보겠습니다. 이 장에서는 RDS 복제본 사용시 과금이 청구될 수 있습니다. 이를 원치 않는 분들은, RDS 설정 시, Multi-AZ 설정을 하지 않고, 1개의 Master RDS만 생성 후 진행하세요. # EC2 동적 사이트 구축 # # # VPC VPC 이름 IPv4 CIDR VPC-WordPress 10.0.0.0/16 # Subnet Subnet 이름 VPC AZ IPv4 CIDR WordPress-Public-Subnet VPC-WordPress ap-northeast-a 10.0.1.0/24 WordPress-Public-Subnet2 VPC-WordPress ap-northeast-c 10.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="EC2 동적 사이트 구축" />
-<meta property="og:description" content="EC2 동적 사이트 구축##이번 장에서는 EC2와 WordPress, RDS를 활용해 동적 사이트를 구축해보겠습니다. 이 장에서는 RDS 복제본 사용시 과금이 청구될 수 있습니다. 이를 원치 않는 분들은, RDS 설정 시, Multi-AZ 설정을 하지 않고, 1개의 Master RDS만 생성 후 진행하세요.#EC2 동적 사이트 구축###VPC VPC 이름 IPv4 CIDR VPC-WordPress 10.0.0.0/16 #Subnet Subnet 이름 VPC AZ IPv4 CIDR WordPress-Public-Subnet VPC-WordPress ap-northeast-a 10.0.1.0/24 WordPress-Public-Subnet2 VPC-WordPress ap-northeast-c 10." />
+<meta property="og:description" content="EC2 동적 사이트 구축 # # 이번 장에서는 EC2와 WordPress, RDS를 활용해 동적 사이트를 구축해보겠습니다. 이 장에서는 RDS 복제본 사용시 과금이 청구될 수 있습니다. 이를 원치 않는 분들은, RDS 설정 시, Multi-AZ 설정을 하지 않고, 1개의 Master RDS만 생성 후 진행하세요. # EC2 동적 사이트 구축 # # # VPC VPC 이름 IPv4 CIDR VPC-WordPress 10.0.0.0/16 # Subnet Subnet 이름 VPC AZ IPv4 CIDR WordPress-Public-Subnet VPC-WordPress ap-northeast-a 10.0.1.0/24 WordPress-Public-Subnet2 VPC-WordPress ap-northeast-c 10." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSTraining/EC2Site/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00" />
-
 <title>EC2 동적 사이트 구축 | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/cloud.search.min.e7d4ada8ab56cec131125ce564ab3359c701fd818d8ffbf4217d9fb1edf9a464.js" integrity="sha256-59StqKtWzsExElzlZKszWccB/YGNj/v0IX2fse35pGQ=" crossorigin="anonymous"></script>
+  <script defer src="/cloud.search.min.28d82f44c1c960a009665687a82aec5cfe9058390c4125d740817570608abe3c.js" integrity="sha256-KNgvRMHJYKAJZlaHqCrsXP6QWDkMQSXXQIF1cGCKvjw=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -2656,7 +2655,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     window.disqus_config = function () {
     
     

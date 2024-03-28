@@ -5,182 +5,259 @@
     <link>http://mungdocs.kro.kr/devops/</link>
     <description>Recent content in Introduction on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>devops</language>
-    <atom:link href="http://mungdocs.kro.kr/devops/index.xml" rel="self" type="application/rss+xml" />
+    <language>devops</language><atom:link href="http://mungdocs.kro.kr/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0. CKA</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA/</guid>
-      <description>&#xD;CKA&#xD;#&#xD;CKA&#xD;#&#xD;#&#xD;#&#xD;CKA 자격증은 Certified Kubernetes Administrator를 의미하며, Kubernetes 플랫폼에 대한 숙련도를 Linux Foundation에서 검증해주는 자격증을 의미&#xA;CKA 자격시험은 실기형 시험으로 Kubernetes 환경에서 명령어를 활용해 리소스를 다루는 형태로 문제가 출제되며. 2시간의 시험 시간 동안 66/100점 이상이면 시험에 통과&#xA;#&#xD;Section Table 분야 비중 Cluster Architecture, Installation &amp;amp; Configuration 25% Workloads &amp;amp; Scheduling 15% Service &amp;amp; Networking 20% Storage 10% TroubleShooting 30% CKA 관련 사이트&#xD;#&#xD;CKA 시험등록 Killer Answer&#xD;</description>
+      <description> CKA # CKA # # # CKA 자격증은 Certified Kubernetes Administrator를 의미하며, Kubernetes 플랫폼에 대한 숙련도를 Linux Foundation에서 검증해주는 자격증을 의미
+CKA 자격시험은 실기형 시험으로 Kubernetes 환경에서 명령어를 활용해 리소스를 다루는 형태로 문제가 출제되며. 2시간의 시험 시간 동안 66/100점 이상이면 시험에 통과
+# Section Table 분야 비중 Cluster Architecture, Installation &amp;amp; Configuration 25% Workloads &amp;amp; Scheduling 15% Service &amp;amp; Networking 20% Storage 10% TroubleShooting 30% CKA 관련 사이트 # CKA 시험등록 Killer Answer </description>
     </item>
+    
     <item>
       <title>0. Docker&amp; Container</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</guid>
-      <description>Docker 와 Container&#xD;#&#xD;Docker의 등장배경&#xD;#&#xD;Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.&#xA;이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.&#xA;위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.&#xA;dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.</description>
+      <description>Docker 와 Container # Docker의 등장배경 # Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
+이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.
+위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.
+dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.</description>
     </item>
+    
     <item>
       <title>0. Git이란?</title>
       <link>http://mungdocs.kro.kr/devops/docs/CICD/CICD/git00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/CICD/CICD/git00/</guid>
-      <description>GIT&#xD;#&#xD;Git이란?&#xD;#&#xD;깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)&#xA;컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.&#xA;DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.&#xA;GIT과 SVN의 차이&#xD;#&#xD;단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
+      <description>GIT # Git이란? # 깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)
+컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.
+DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.
+GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
     </item>
+    
     <item>
       <title>0. Git이란?</title>
       <link>http://mungdocs.kro.kr/devops/docs/Git/Git/git00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Git/Git/git00/</guid>
-      <description>GIT&#xD;#&#xD;Git이란?&#xD;#&#xD;깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)&#xA;컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.&#xA;DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.&#xA;GIT과 SVN의 차이&#xD;#&#xD;단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
+      <description>GIT # Git이란? # 깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)
+컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.
+DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.
+GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
     </item>
+    
     <item>
       <title>0. Kubernetes</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/</guid>
-      <description>&#xD;Kubernetes&#xD;#&#xD;Kubernetes&#xD;#&#xD;#&#xD;</description>
+      <description> Kubernetes # Kubernetes # # </description>
     </item>
+    
     <item>
       <title>0. Kubernetes</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/</guid>
-      <description>Kubernetes&#xD;#&#xD;Kubernetes&#xD;#&#xD;#&#xD;kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. #&#xD;#&#xD;Kubernets가 대두되는 이유&#xD;#&#xD;#&#xD;위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.&#xA;전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.</description>
+      <description>Kubernetes # Kubernetes # # kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. # # Kubernets가 대두되는 이유 # # 위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.
+전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.</description>
     </item>
+    
     <item>
       <title>1. Kubernetes Object</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</guid>
-      <description>Kubernetes Object&#xD;#&#xD;Kubernetes Object&#xD;#&#xD;쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.&#xA;어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.</description>
+      <description>Kubernetes Object # Kubernetes Object # 쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
+어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.</description>
     </item>
+    
     <item>
       <title>1. 학습목표</title>
       <link>http://mungdocs.kro.kr/devops/docs/CICD/CICD/with-toc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/CICD/CICD/with-toc/</guid>
-      <description>&#xD;학습목표&#xD;#&#xD;클라우드 서비스를 활용하기 위한 기본 지식 학습&#xA;클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축&#xA;클라우드 서비스 내 프로젝트 배포를 간편화&#xA;클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )&#xA;클라우드 서비스에 배포 자동화&#xA;클라우드 서비스 무중단 배포&#xA;정적 IP 할당을 위한 NLB 활용&#xA;최종목표&#xA;스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 </description>
+      <description> 학습목표 # 클라우드 서비스를 활용하기 위한 기본 지식 학습
+클라우드 서비스에 내 프로젝트를 단순 배포하기 위한 환경을 구축
+클라우드 서비스 내 프로젝트 배포를 간편화
+클라우드 서비스에 환경 구축 없이 프로젝트 배포 ( Elastic Beanstalk )
+클라우드 서비스에 배포 자동화
+클라우드 서비스 무중단 배포
+정적 IP 할당을 위한 NLB 활용
+최종목표
+스프링 부트를 사용한 간단한 프로젝트를 생성 후, 배포 </description>
     </item>
+    
     <item>
       <title>With ToC</title>
       <link>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/with-toc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/with-toc/</guid>
-      <description>Caput vino delphine in tamen vias&#xD;#&#xD;Cognita laeva illo fracta&#xD;#&#xD;Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.&#xA;Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit Natus quaerere&#xD;#&#xD;Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
+      <description>Caput vino delphine in tamen vias # Cognita laeva illo fracta # Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.
+Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit Natus quaerere # Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
     </item>
+    
     <item>
       <title>암호화</title>
       <link>http://mungdocs.kro.kr/devops/docs/CICD/CICD/key/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/CICD/CICD/key/</guid>
-      <description>암호화의 기술과 역사&#xD;#&#xD;암호화의 역사&#xD;#&#xD;시대 기간 특징 종류 고대 고대 - 19세기 말 수동 암호 사용 (단순, 문자 대입하여 암호화) Scytale, Caesar, Vigenere, Beaufort 등 근대 1900 - 1940년대 기계 암호 사용 (복잡한 기계를 이용하여 암호화) Enigma, M-209 등 현대 1950년대 - 현재 샤뇬의 &amp;ldquo;암호학의 수학적 배경&amp;rdquo; 발표 이후 시작, 컴퓨터 암호 사용 (컴퓨터 연산을 이용하여 암호화) DES, SEED, Rijindael, RSA, ECC, KCDSA 등 고대에는 외교, 군사 등의 한정적인 분야의 사용되었으나, 현대에는 인터넷, 전자상거래 등이 발달하면서 전반적인 분야의 대한 보안(암호화)의 기능이 중요시 되기 시작했다.</description>
+      <description>암호화의 기술과 역사 # 암호화의 역사 # 시대 기간 특징 종류 고대 고대 - 19세기 말 수동 암호 사용 (단순, 문자 대입하여 암호화) Scytale, Caesar, Vigenere, Beaufort 등 근대 1900 - 1940년대 기계 암호 사용 (복잡한 기계를 이용하여 암호화) Enigma, M-209 등 현대 1950년대 - 현재 샤뇬의 &amp;ldquo;암호학의 수학적 배경&amp;rdquo; 발표 이후 시작, 컴퓨터 암호 사용 (컴퓨터 연산을 이용하여 암호화) DES, SEED, Rijindael, RSA, ECC, KCDSA 등 고대에는 외교, 군사 등의 한정적인 분야의 사용되었으나, 현대에는 인터넷, 전자상거래 등이 발달하면서 전반적인 분야의 대한 보안(암호화)의 기능이 중요시 되기 시작했다.</description>
     </item>
+    
     <item>
       <title>1. Cluster Architecture 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA00/</guid>
-      <description>Cluster Architecture 문제풀이&#xD;#&#xD;CKA&#xD;#&#xD;#&#xD;여기를 클릭하여 확장/접기&#xD;이 부분은 숨겨져 있습니다. 원하는 내용을 넣어주세요.</description>
+      <description>Cluster Architecture 문제풀이 # CKA # # 여기를 클릭하여 확장/접기 이 부분은 숨겨져 있습니다. 원하는 내용을 넣어주세요.</description>
     </item>
+    
     <item>
       <title>1. Docker 기본 명령어</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/</guid>
-      <description>Docker&#xD;#&#xD;Docker 기본 명령어&#xD;#&#xD;컨테이너 생성&#xD;#&#xD;$ docker run [OPTION] NAME[:TAG|@DIGEST] OPTION 특징 -d, &amp;ndash;detach 백그라운드에서 실행합니다. -i, &amp;ndash;interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, &amp;ndash;tty 할당된 tty를 사용하여 실행합니다. &amp;ndash;name 컨테이너에 이름을 할당합니다. -e, &amp;ndash;env 컨테이너 내에서 사용할 환경 변수를 설정합니다. &amp;ndash;rm 컨테이너가 종료되면 자동으로 삭제합니다. &amp;ndash;network 컨테이너가 사용할 네트워크를 지정합니다. &amp;ndash;publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. &amp;ndash;volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</description>
+      <description>Docker # Docker 기본 명령어 # 컨테이너 생성 # $ docker run [OPTION] NAME[:TAG|@DIGEST] OPTION 특징 -d, &amp;ndash;detach 백그라운드에서 실행합니다. -i, &amp;ndash;interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, &amp;ndash;tty 할당된 tty를 사용하여 실행합니다. &amp;ndash;name 컨테이너에 이름을 할당합니다. -e, &amp;ndash;env 컨테이너 내에서 사용할 환경 변수를 설정합니다. &amp;ndash;rm 컨테이너가 종료되면 자동으로 삭제합니다. &amp;ndash;network 컨테이너가 사용할 네트워크를 지정합니다. &amp;ndash;publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. &amp;ndash;volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</description>
     </item>
+    
     <item>
       <title>2. Docker Registry</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker02/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker02/</guid>
-      <description>&#xD;Docker&#xD;#&#xD;Docker Registry&#xD;#&#xD;Registry&#xD;#&#xD;Docker의 Registry는 이미지를 저장하는 장소이며 크게 Docker Hub, Private Registry로 나뉘어진다. Private Registry는 내부망, 로컬으로 나뉘어진다. Docker Hub 사용&#xD;#&#xD;$ docker login ... $ docker tag Push_image [ID]/[Image_name] $ docker pull [ID]/[REPO] </description>
+      <description> Docker # Docker Registry # Registry # Docker의 Registry는 이미지를 저장하는 장소이며 크게 Docker Hub, Private Registry로 나뉘어진다. Private Registry는 내부망, 로컬으로 나뉘어진다. Docker Hub 사용 # $ docker login ... $ docker tag Push_image [ID]/[Image_name] $ docker pull [ID]/[REPO] </description>
     </item>
+    
     <item>
       <title>2. Installation &amp; Configuration 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA01/</guid>
-      <description>2. Installation &amp;amp; Configuration 문제풀이&#xD;#&#xD;CKA&#xD;#&#xD;#&#xD;1. Deploy a pod named nginx-pod using the nginx:alpine image&#xD;#&#xD;Answer&#xD;$ k run nginx-pod --image=nginx:alpine -o yaml &amp;gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg&#xD;#&#xD;Answer&#xD;$ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &amp;gt; 1-2.</description>
+      <description>2. Installation &amp;amp; Configuration 문제풀이 # CKA # # 1. Deploy a pod named nginx-pod using the nginx:alpine image # Answer $ k run nginx-pod --image=nginx:alpine -o yaml &amp;gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg # Answer $ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &amp;gt; 1-2.</description>
     </item>
+    
     <item>
       <title>3. Workload&amp; Scheduling</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</guid>
-      <description>Kubernetes&#xD;#&#xD;Workload&amp;amp; Scheduling&#xD;#&#xD;#&#xD;Pod&#xD;#&#xD;Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행&#xA;파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작&#xA;즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행&#xA;POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</description>
+      <description>Kubernetes # Workload&amp;amp; Scheduling # # Pod # Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
+파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
+즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행
+POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</description>
     </item>
+    
     <item>
       <title>3. Dockerfile&amp; Compose</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</guid>
-      <description>Docker&#xD;#&#xD;Dockerfile&#xD;#&#xD;Dockerfile&#xD;#&#xD;Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시&#xD;#&#xD;# 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .</description>
+      <description>Docker # Dockerfile # Dockerfile # Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시 # # 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .</description>
     </item>
+    
     <item>
       <title>3. Workloads&amp; Scheduling 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA02/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA02/</guid>
-      <description>&#xD;Workloads&amp;amp; Scheduling 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> Workloads&amp;amp; Scheduling 문제풀이 # # Answer # Answer </description>
     </item>
+    
     <item>
       <title>4. Node Mangament</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/</guid>
-      <description>&#xD;Kubernetes&#xD;#&#xD;Node Mangament&#xD;#&#xD;#&#xD;Taints&#xD;#&#xD;taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &amp;lt;노드이름&amp;gt; &amp;lt;키&amp;gt;=&amp;lt;값&amp;gt;:&amp;lt;효과&amp;gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity&#xD;#&#xD;Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels </description>
+      <description> Kubernetes # Node Mangament # # Taints # taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &amp;lt;노드이름&amp;gt; &amp;lt;키&amp;gt;=&amp;lt;값&amp;gt;:&amp;lt;효과&amp;gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity # Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels </description>
     </item>
+    
     <item>
       <title>4. Docker 실습</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker04/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker04/</guid>
-      <description>&#xD;Docker&#xD;#&#xD;#&#xD;</description>
+      <description> Docker # # </description>
     </item>
+    
     <item>
       <title>4. Service&amp; Networking 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA03/</guid>
-      <description>&#xD;Service&amp;amp; Networking 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> Service&amp;amp; Networking 문제풀이 # # Answer # Answer </description>
     </item>
+    
     <item>
       <title>5. ConfigMap&amp; Secret</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s05/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s05/</guid>
-      <description>Kubernetes&#xD;#&#xD;Configmap&amp;amp; Secret&#xD;#&#xD;#&#xD;ConfigMap&#xD;#&#xD;컨테이너 구성 정보를 한 대 모아 관리할 수 있도록 만들어진 객체 ConfigMap 일부 적용 apiVersion: v1 kind: Pod metadata: name: genid-stone spec: containers: - image: smlinux/genid:env env: - name: INTERVAL valueFrom: configMapKeyRef: name: ttabae-config key: INTERVAL name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.14 name: web-server volumeMounts: - name: html mountPath: /usr/share/nginx/html readOnly: true ports: - containerPort: 80 volumes: - name: html emptyDir: {} ConfigMap 전체적용 apiVersion: v1 kind: Pod metadata: name: genid-boy spec: containers: - image: smlinux/genid:env envFrom: - configMapRef: name: ttabae-config name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.</description>
+      <description>Kubernetes # Configmap&amp;amp; Secret # # ConfigMap # 컨테이너 구성 정보를 한 대 모아 관리할 수 있도록 만들어진 객체 ConfigMap 일부 적용 apiVersion: v1 kind: Pod metadata: name: genid-stone spec: containers: - image: smlinux/genid:env env: - name: INTERVAL valueFrom: configMapKeyRef: name: ttabae-config key: INTERVAL name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.14 name: web-server volumeMounts: - name: html mountPath: /usr/share/nginx/html readOnly: true ports: - containerPort: 80 volumes: - name: html emptyDir: {} ConfigMap 전체적용 apiVersion: v1 kind: Pod metadata: name: genid-boy spec: containers: - image: smlinux/genid:env envFrom: - configMapRef: name: ttabae-config name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.</description>
     </item>
+    
     <item>
       <title>5. Storage 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA04/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA04/</guid>
-      <description>&#xD;Storage 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> Storage 문제풀이 # # Answer # Answer </description>
     </item>
+    
     <item>
       <title>6. Service</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</guid>
-      <description>Kubernetes Service&#xD;#&#xD;Kubernetes Networking&#xD;#&#xD;Cluster Networking 구성&#xD;#&#xD;Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음&#xA;클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.&#xA;Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음&#xA;파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp;amp; POD Networking&#xD;#&#xD;Docekr Container Networking&#xD;#&#xD;도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결</description>
+      <description>Kubernetes Service # Kubernetes Networking # Cluster Networking 구성 # Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
+클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.
+Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음
+파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp;amp; POD Networking # Docekr Container Networking # 도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결</description>
     </item>
+    
     <item>
       <title>6. TroubleShooting 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA05/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA05/</guid>
-      <description>&#xD;TroubleShooting 문제풀이&#xD;#&#xD;#&#xD;Answer&#xD;#&#xD;Answer&#xD;</description>
+      <description> TroubleShooting 문제풀이 # # Answer # Answer </description>
     </item>
+    
     <item>
       <title>Kubernetes_Object_Table</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</guid>
-      <description>Kubernetes Object&#xD;#&#xD;애플리케이션의 실행&#xD;#&#xD;Pod&#xD;#&#xD;apiVersion: v1 kind: Pod metadata: name: &amp;lt;pod-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet&#xD;#&#xD;apiVersion: apps/v1 kind: ReplicaSet metadata: name: &amp;lt;replicaset-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment&#xD;#&#xD;apiVersion: apps/v1 kind: Deployment metadata: name: &amp;lt;deployment-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리&#xD;#&#xD;Service&#xD;#&#xD;apiVersion: v1 kind: Service metadata: name: &amp;lt;service-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: selector: &amp;lt;selector-key&amp;gt;: &amp;lt;selector-value&amp;gt; ports: - protocol: TCP port: &amp;lt;service-port&amp;gt; targetPort: &amp;lt;target-port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress&#xD;#&#xD;apiVersion: networking.</description>
+      <description>Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &amp;lt;pod-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &amp;lt;replicaset-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &amp;lt;deployment-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &amp;lt;service-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: selector: &amp;lt;selector-key&amp;gt;: &amp;lt;selector-value&amp;gt; ports: - protocol: TCP port: &amp;lt;service-port&amp;gt; targetPort: &amp;lt;target-port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.</description>
     </item>
+    
   </channel>
 </rss>
