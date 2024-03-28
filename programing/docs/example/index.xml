@@ -5,7 +5,6 @@
     <link>http://mungdocs.kro.kr/programing/docs/example/</link>
     <description>Recent content in Example Site on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>programing</language>
-    <atom:link href="http://mungdocs.kro.kr/programing/docs/example/index.xml" rel="self" type="application/rss+xml" />
+    <language>programing</language><atom:link href="http://mungdocs.kro.kr/programing/docs/example/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

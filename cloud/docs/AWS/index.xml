@@ -5,7 +5,6 @@
     <link>http://mungdocs.kro.kr/cloud/docs/AWS/</link>
     <description>Recent content in Amazon Web Services on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>cloud</language>
-    <atom:link href="http://mungdocs.kro.kr/cloud/docs/AWS/index.xml" rel="self" type="application/rss+xml" />
+    <language>cloud</language><atom:link href="http://mungdocs.kro.kr/cloud/docs/AWS/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

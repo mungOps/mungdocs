@@ -5,7 +5,6 @@
     <link>http://mungdocs.kro.kr/programing/categories/</link>
     <description>Recent content in Categories on Mung Book</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>programing</language>
-    <atom:link href="http://mungdocs.kro.kr/programing/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>programing</language><atom:link href="http://mungdocs.kro.kr/programing/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
