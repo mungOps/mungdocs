@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GIT 명령어 요약정리 # Git 명령어는 git &#43;명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &ndash;옵션을 추가가 가능
+Git 작업영역: Working Directory, Staging Area, Repository
+Git 파일의상태: Modified,Staged,Commited
+브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨
+master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)
+HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능
+git init # 저장소(repository) 생성 git config user.name &#34;［작성자 이름］&#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="99. Git 명령어 요약정리" />
+<meta property="og:description" content="GIT 명령어 요약정리 # Git 명령어는 git &#43;명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &ndash;옵션을 추가가 가능
+Git 작업영역: Working Directory, Staging Area, Repository
+Git 파일의상태: Modified,Staged,Commited
+브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨
+master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)
+HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능
+git init # 저장소(repository) 생성 git config user.name &#34;［작성자 이름］&#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Git/Git/git99/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2024-05-22T19:13:46+09:00" />
+<title>99. Git 명령어 요약정리 | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.152ec64f017dda96c7f7b811d28ec3bea4e54171c5c67ab3534e2a02af399642.js" integrity="sha256-FS7GTwF92pbH97gR0o7DvqTlQXHFxnqzU04qAq85lkI=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                 
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CI/CD</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
+    <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
+      <a role="button" class="">CI/CD 배포 입문</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Docker</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle"  />
+    <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker00/" class="">0. Docker&amp; Container</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker01/" class="">1. Docker 기본 명령어</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker02/" class="">2. Docker Registry</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker03/" class="">3. Dockerfile&amp; Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker04/" class="">4. Docker 실습</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Git</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle" checked />
+    <label for="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git99/" class="active">99. Git 명령어 요약정리</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Kubernetes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
+    <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
+      <a role="button" class="">Kubernetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s00/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s01/" class="">1. Kubernetes Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s03/" class="">3. Workload&amp; Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s04/" class="">4. Node Mangament</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s05/" class="">5. ConfigMap&amp; Secret</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s06/" class="">6. Service</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s99/" class="">Kubernetes_Object_Table</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="toggle"  />
+    <label for="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="flex justify-between">
+      <a role="button" class="">CKA</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA/" class="">0. CKA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA00/" class="">1. Cluster Architecture 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA01/" class="">2. Installation &amp; Configuration 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA02/" class="">3. Workloads&amp; Scheduling 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA03/" class="">4. Service&amp; Networking 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA04/" class="">5. Storage 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA05/" class="">6. TroubleShooting 문제풀이</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>99. Git 명령어 요약정리</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#git-명령어-요약정리">GIT 명령어 요약정리</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="git-명령어-요약정리">
+  GIT 명령어 요약정리
+  <a class="anchor" href="#git-%eb%aa%85%eb%a0%b9%ec%96%b4-%ec%9a%94%ec%95%bd%ec%a0%95%eb%a6%ac">#</a>
+</h2>
+<hr>
+<br>
+<ul>
+<li>
+<p>Git 명령어는 git +명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &ndash;옵션을 추가가 가능</p>
+</li>
+<li>
+<p>Git 작업영역: Working Directory, Staging Area, Repository</p>
+</li>
+<li>
+<p>Git 파일의상태: Modified,Staged,Commited</p>
+</li>
+<li>
+<p>브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨</p>
+</li>
+<li>
+<p>master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)</p>
+</li>
+<li>
+<p>HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능</p>
+</li>
+</ul>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 저장소(repository) 생성</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git config user.name <span style="color:#e6db74">&#34;［작성자 이름］&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 사용자 이름 설정 --global 추가시 전역설정</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git config user.email <span style="color:#e6db74">&#34;［이메일 계정]&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 사용자 이메일 설정 --global 추가시 전역설정</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git config --list
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 저장소 설정 전체 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git config ［설정 항목<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 항목 설정 값 출력(예 : git config user.name)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git help
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 도움말</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git status
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 저장소의 상태 정보 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git add ［파일 이름 &amp; 디렉터리<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 파일을 Staging Area에 update</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Working Directory 안에 추가，수정된 모든 파일을 Staging Area에 을리기</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git commit
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이력 저장，커밋</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;［메시지］&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># vim을 사용하지 않고 인라인으로 메시지를 추가하여 커밋</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git commit -am <span style="color:#e6db74">&#34;［메시지］&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># git add와 git commit을 한꺼번에 명령 (Untracked 파일은 제외)</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git status
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 저장소 파일의 상태 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git status -s
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 저장소 파일 상태를 간략하게 표시</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git log
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 저장소의 커밋 히스토리（로그，이력）를 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git log --pretty<span style="color:#f92672">=</span>oneline
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로그 출력 시 커밋을 한 줄로 간략하게 표시 （--pretty 옵션 사용）</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git log --oneline
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로그 출력 시 커밋을 한 줄로 표시 （해시도 앞자리 7글자만 출력）</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git log --graph
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로그를 그래프 형태로 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git show
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 가장 최근 커밋의 상세 정보 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git show ［커밋 해시］
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 커밋의 상세 정보 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git show HEAD
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HEAD가 참조하는 커밋의 상세 정보 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git show HEAD〜n
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HEAD를 기준으로 n단계 이전의 커밋 정보 출력</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+- git diff는 각 파일의 변경사항을 비교하는 명령어
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git diff
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 최근 커밋과 변경 사항이 발생한(Unstaged) 파일들의 내용 비교</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git diff --staged
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 스테이지된 변경사항을 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git diff <span style="color:#f92672">[</span>commit hash1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>commit hash2<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># commit1과 commit2를 비교</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git reset
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Staging Area 의파일전체 를언스테이징 상태로 되돌리기</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git reset <span style="color:#f92672">[</span>파일이름<span style="color:#f92672">(</span>또는경로<span style="color:#f92672">)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당파일(또는경로)을 언스테이징 상태로 되돌리기</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<ul>
+<li>git checkout은 HEAD의 참조를 변경하는 명령</li>
+<li>최신 커밋을 참조할 때 HEAD는 master를 간, 직접적으로 참조하고 있으며, HEAD는 master에서 떨어진 Detacghed 상태 또는 DetachedHEAD가 됨</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gitcheckout <span style="color:#f92672">[</span>커밋해시<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당커밋으로파일상태변경</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git checkout-:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HEAD가이전에참조했던커밋으로상태변경</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git checkout master
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HEAD가master를참조</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git checkout HEAD~n
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># HEAD를기준으로 n단계이전커밋으로상태변경</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<ul>
+<li>git reset은 커밋을 취소하는 명령어이지만, 해당 커밋이 삭제되는 것이 아닌 브런치의 포인터를 바꾸는 개념</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Working Dirtory</th>
+<th>Stating Area</th>
+<th>Repository</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ndash;hard</td>
+<td>변경</td>
+<td>변경</td>
+<td>변경</td>
+</tr>
+<tr>
+<td>&ndash;mixed (default)</td>
+<td>유지</td>
+<td>변경</td>
+<td>변경</td>
+</tr>
+<tr>
+<td>&ndash;soft</td>
+<td>유지</td>
+<td>유지</td>
+<td>변경</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git reset <span style="color:#f92672">[</span>커밋주소<span style="color:#f92672">]</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git remote
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 브랜치에 추가 된 원격 저장소 리스트 출력</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git remote -v <span style="color:#f92672">(</span>--verbose<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 브랜치에 추가 된 원격 저장소 리스트 출력(주소포함)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git remote add <span style="color:#f92672">[</span>원격저장소이름<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>원격저장소주소<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당이름으로 원격저장소의 주소등록</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git remote rm <span style="color:#f92672">[</span>원격저장소이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 원격 저장소를 삭제</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git push -u <span style="color:#f92672">(</span>--set-upstream-to<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>원격 저장소 이름<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>로컬 저장소의 브런치<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로컬저장소의 브랜치가 원격저장소를 추적하도록 설정하고, 파일들을 원격저장소로 저장</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git push <span style="color:#f92672">[</span>원격 저장소 이름<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>로컬 저장소 브런치<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로컬 브런치의 변경사항을 원격 저장소 (레포지터리)에 Push (업로드)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># upstream (-u) 설정 후, 원격 저장소, 로컬 저장소 브런치 생략이 가능</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git pull <span style="color:#f92672">[</span>원격 저장소 이름<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>로컬 저장소 브런치<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 원격저장소의 정보를 현재 로컬브랜치에 병합 (fetch + merge)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># upstream (-u) 설정 후, 원격 저장소, 로컬 저장소 브런치 생략이 가능</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git tag
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로컬저장소의 모든 태그를 조회</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git tag <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 커밋에 태그를 생성(Lightweight 태그)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git tag <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>커밋해시<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 커밋에 태그를 생성 (Lightweight 태그)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git tag -a <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span> -m <span style="color:#e6db74">&#34;[메시지]&#34;</span> <span style="color:#f92672">[</span>커밋해시<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 메시지를 추가하여 태그 생성 (Annotated tag)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git tag -am <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;[메시지]&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 커밋에 메시지를 추가하여 태그 생성 (Annotated tag)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git show <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 태그가 부착된 커밋의 상세정보 확인</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git push --tags
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 생성된 전체태그를 원격 저장소에 푸시(=git push origin -tags)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git push <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당태그를 원격저장소에 푸시 (= git push origin &#34;[태그이름]&#34;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git tag -d <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 태그 삭제</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git push -d <span style="color:#f92672">[</span>태그이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 원격저장소에서 해당 태그 삭제</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<ul>
+<li>git reset은 master의 참조를 특정 커밋으로 되돌리는 명령</li>
+<li>git revert는 특정 커밋을 취소하는 내용의 새로운 커밋을 만드는 명령</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git revert <span style="color:#f92672">[</span>커밋 해시<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 커밋으로 되돌리기</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git revert -n <span style="color:#f92672">(</span>--no-edit<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>커밋 해시<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 커밋 메시지 수정 없이 기본메시지로 되돌리기</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git revert n <span style="color:#f92672">[</span>커밋 해시<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 커밋 하지 않고 스테이징 상태로 되돌리기</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git revert <span style="color:#f92672">[</span>커밋 해시1<span style="color:#f92672">]</span>..<span style="color:#f92672">[</span>커밋 해시2<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 구간 만큼 커밋 되돌리기, 커밋 해시1은 되돌려지지 않음</span>
+</span></span></code></pre></div><br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div><br>
+<br>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/1974b457d86575b54eeef48fa85e3986c627c6dc" title='Last modified by mungOps | May 22, 2024' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>May 22, 2024</span>
+    </a>
+  </div>
+
+
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Git/Git/git99.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#git-명령어-요약정리">GIT 명령어 요약정리</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

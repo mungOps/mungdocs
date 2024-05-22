@@ -71,10 +71,7 @@ POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</guid>
-      <description>Kubernetes Service # Kubernetes Networking # Cluster Networking 구성 # Kubernetes의 network model은 Kubernetes 내의 다양한 엔터티 유형이 통신할 수 있도록 설계되어져 있음
-클러스터의 모든 POD는 고유의 IP 주소를 갖으며, NAT 없이 동일 노드 상의 모든 파드와 통신이 가능하다.
-Kubernetest Networking은 아래의 와 같은 특징을 가지고 있음
-파드 내의 컨테이너는 루프백(loopback)을 통한 네트워킹을 사용하여 통신 클러스터 네트워킹은 서로 다른 파드 간의 통신을 제공 서비스 리소스를 사용시 파드에서 실행 중인 애플리케이션을 클러스터 외부에서 접근이 가능 서비스를 이용하여 서비스를 클러스터 내부에서만 사용이 가능하도록 설정이 가능 Docekr Networking&amp;amp; POD Networking # Docekr Container Networking # 도커 브리지 타입 네트워크는 호스트 안에 docker0이라는 브리지를 추가해 컨테이너와 호스트 사이를 연결</description>
+      <description>Kubernetes Service # CNI (Container Network Interface) # f ## **Service Network** Service는 파드들을 통해 실행되고 있는 애플리케이션을 네트워크에 노출(expose)시키는 가상의 컴포넌트 쿠버네티스 내부의 다양한 객체들이 애플리케이션 및 다른 외부의 애플리케이션이나 사용자와 연결될 수 있도록 도와주는 브릿지 역할을 수행 이와 같은 Service가 별도로 필요한 이유는 파드들의 반영속적인(ephemeral) 특성을 가지고 있기 때문이며, 파드들은 일회성 자원으로 언제든 다른 노드로 옮겨지거나 삭제될 수 있으며, 이로인해 새로이 생성될 때마다 새로운 내부 IP를 받게 되므로, 이것만으로 클러스터 내/외부와 통신을 계속 유지하기는 어렵다.</description>
     </item>
     
     <item>

@@ -18,5 +18,20 @@ DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Chec
 GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
     </item>
     
+    <item>
+      <title>99. Git 명령어 요약정리</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Git/Git/git99/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mungdocs.kro.kr/devops/docs/Git/Git/git99/</guid>
+      <description>GIT 명령어 요약정리 # Git 명령어는 git +명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &amp;ndash;옵션을 추가가 가능
+Git 작업영역: Working Directory, Staging Area, Repository
+Git 파일의상태: Modified,Staged,Commited
+브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨
+master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)
+HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능
+git init # 저장소(repository) 생성 git config user.name &amp;#34;［작성자 이름］&amp;#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user.</description>
+    </item>
+    
   </channel>
 </rss>
