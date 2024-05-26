@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" Kubernetes # Kubernetes # # ">
+<meta name="description" content="GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미
+Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름 브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능
+Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="0. Kubernetes" />
-<meta property="og:description" content=" Kubernetes # Kubernetes # # " />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="3. Git Branch" />
+<meta property="og:description" content="GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미
+Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름 브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능
+Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Git/Git/git03/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-01-19T12:07:14+09:00" />
-<title>0. Kubernetes | Mung Book</title>
+
+<title>3. Git Branch | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
@@ -336,7 +340,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle"  />
+    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle" checked />
     <label for="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="flex justify-between">
       <a role="button" class="">Git</a>
     </label>
@@ -365,7 +369,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Git/Git/git03/" class="">3. Git Branch</a>
+    <a href="/devops/docs/Git/Git/git03/" class="active">3. Git Branch</a>
   
 
         </li>
@@ -414,7 +418,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle" checked />
+    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
     <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
       <a role="button" class="">Kubernetes</a>
     </label>
@@ -430,7 +434,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="active">0. Kubernetes</a>
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
   
 
         </li>
@@ -680,7 +684,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>0. Kubernetes</strong>
+  <strong>3. Git Branch</strong>
 
   <label for="toc-control">
     
@@ -696,12 +700,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#kubernetes">Kubernetes</a>
+    <li><a href="#git">GIT</a>
       <ul>
-        <li><a href="#kubernetes-1">Kubernetes</a></li>
+        <li><a href="#git-branch-이란"><strong>Git Branch 이란?</strong></a></li>
+        <li><a href="#git-merge-이란"><strong>Git Merge 이란?</strong></a>
+          <ul>
+            <li><a href="#fast-forward-merge"><strong>Fast-forward Merge</strong></a></li>
+            <li><a href="#3-way-merge"><strong>3-way Merge</strong></a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 
@@ -714,19 +723,121 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="kubernetes">
-  Kubernetes
-  <a class="anchor" href="#kubernetes">#</a>
+  <article class="markdown"><h1 id="git">
+  GIT
+  <a class="anchor" href="#git">#</a>
 </h1>
 <hr>
-<h2 id="kubernetes-1">
-  Kubernetes
-  <a class="anchor" href="#kubernetes-1">#</a>
+<h2 id="git-branch-이란">
+  <strong>Git Branch 이란?</strong>
+  <a class="anchor" href="#git-branch-%ec%9d%b4%eb%9e%80">#</a>
 </h2>
-<h1 id="heading">
-  
-  <a class="anchor" href="#heading">#</a>
-</h1>
+<p>
+  <img src="/images/git/branch00.png" alt="" /></p>
+<ul>
+<li>
+<p>Branch란 독립적인 이력 관리 영역을 의미</p>
+<ul>
+<li>Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름</li>
+</ul>
+</li>
+<li>
+<p><strong>브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능</strong></p>
+</li>
+</ul>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<h2 id="git-merge-이란">
+  <strong>Git Merge 이란?</strong>
+  <a class="anchor" href="#git-merge-%ec%9d%b4%eb%9e%80">#</a>
+</h2>
+<p>
+  <img src="/images/git/merge00.png" alt="" /></p>
+<ul>
+<li><strong>다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용</strong>
+<ul>
+<li>단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨</li>
+</ul>
+</li>
+</ul>
+<br>
+<br>
+<h3 id="fast-forward-merge">
+  <strong>Fast-forward Merge</strong>
+  <a class="anchor" href="#fast-forward-merge">#</a>
+</h3>
+<p>
+  <img src="/images/git/merge01.png" alt="" /></p>
+<ul>
+<li>
+<p><strong>특징</strong></p>
+<ul>
+<li>
+<p>두 개의 브랜치가 존재</p>
+</li>
+<li>
+<p>하나의 브랜치에서 새로운 커밋을 생성</p>
+</li>
+<li>
+<p>다른 브랜치에서는 아무런 변경 사항이 없음</p>
+</li>
+</ul>
+</li>
+<li>
+<p>브랜치는 분리되어 있지 않고 직선으로 연결된 것처럼 보이는 특징을 가지며, 단순히 두 브랜치의 포인터를 이동시켜 새로운 커밋을 가리키게 만드는 것만으로 병합이 이루어지는 병합을 Fast-forward 병합이라고 함, 이 때, 기존 브랜치가 새로운 커밋으로 이동</p>
+</li>
+</ul>
+<br>
+<h3 id="3-way-merge">
+  <strong>3-way Merge</strong>
+  <a class="anchor" href="#3-way-merge">#</a>
+</h3>
+<p>
+  <img src="/images/git/merge02.png" alt="" /></p>
+<ul>
+<li>
+<p><strong>특징</strong></p>
+<ul>
+<li>
+<p>두 개의 브랜치가 존재</p>
+</li>
+<li>
+<p>각 브랜치에서는 서로 다른 변경 사항 존재</p>
+</li>
+<li>
+<p>이 두 브랜치를 병합</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>병합진행 과정</strong></p>
+<ul>
+<li>
+<p>병합할 브랜치의 마지막 커밋 (merge 대상 브랜치)</p>
+</li>
+<li>
+<p>현재 브랜치의 마지막 커밋 (merge를 실행하는 브랜치)</p>
+</li>
+<li>
+<p>두 브랜치의 공통 조상 (공통 부모 커밋)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>이런 방식으로 병합을 수행하여 각 브랜치에서의 변경 사항을 적절히 통합</p>
+</li>
+<li>
+<p>Fast-forward 병합: 두 브랜치의 이력이 간단하고 직선적인 경우에 발생합니다. 이전 커밋이 공통 부모가 되지 않으며, 단순히 브랜치의 포인터를 이동시켜 새로운 커밋</p>
+</li>
+<li>
+<p>3-way 병합: 두 브랜치가 서로 다른 변경 사항을 가지고 있을 때 발생하며, 이전 커밋이 공통 조상이 됩니다. 이전 커밋을 기반으로 변경 사항을 적절히 통합하여 새로운 병합 커밋</p>
+</li>
+</ul>
+<br>
+<br>
 </article>
  
       
@@ -736,19 +847,10 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2024</span>
-    </a>
-  </div>
 
 
 
-
-
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/k8s/k8s.md" target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Git/Git/git03.md" target="_blank" rel="noopener">
           <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -803,12 +905,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#kubernetes">Kubernetes</a>
+    <li><a href="#git">GIT</a>
       <ul>
-        <li><a href="#kubernetes-1">Kubernetes</a></li>
+        <li><a href="#git-branch-이란"><strong>Git Branch 이란?</strong></a></li>
+        <li><a href="#git-merge-이란"><strong>Git Merge 이란?</strong></a>
+          <ul>
+            <li><a href="#fast-forward-merge"><strong>Fast-forward Merge</strong></a></li>
+            <li><a href="#3-way-merge"><strong>3-way Merge</strong></a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
   </ul>
 </nav>
 
