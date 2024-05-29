@@ -19,6 +19,17 @@ GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서
     </item>
     
     <item>
+      <title>3. Git Branch</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Git/Git/git03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mungdocs.kro.kr/devops/docs/Git/Git/git03/</guid>
+      <description>GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미
+Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름 브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능
+Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징</description>
+    </item>
+    
+    <item>
       <title>99. Git 명령어 요약정리</title>
       <link>http://mungdocs.kro.kr/devops/docs/Git/Git/git99/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

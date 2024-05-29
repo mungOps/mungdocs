@@ -23,13 +23,13 @@ git init # 저장소(repository) 생성 git config user.name &#34;［작성자 �
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Git/Git/git99/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-05-22T19:13:46+09:00" />
+<meta property="article:modified_time" content="2024-05-26T16:32:01+09:00" />
 <title>99. Git 명령어 요약정리 | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.152ec64f017dda96c7f7b811d28ec3bea4e54171c5c67ab3534e2a02af399642.js" integrity="sha256-FS7GTwF92pbH97gR0o7DvqTlQXHFxnqzU04qAq85lkI=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.7c7350b91b49a37b5db17eeb30d789508663d425145da0dbfbebbc7cc60931f4.js" integrity="sha256-fHNQuRtJo3tdsX7rMNeJUIZj1CUUXaDb&#43;&#43;u8fMYJMfQ=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -365,6 +365,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/devops/docs/Git/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git03/" class="">3. Git Branch</a>
   
 
         </li>
@@ -987,7 +1000,59 @@ https://github.com/alex-shpak/hugo-book
 <hr>
 <br>
 <br>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git branch
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 브랜치 표시</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git branch --list
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 브랜치 목록 표시</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git branch <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 브랜치이름으로 브랜치 생성</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git checkout <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>git switch <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당브랜치로전환</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git checkout -b <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>git switch -c <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 브랜치 생성과 동시에 전환</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git branch -m <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>새로운 브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 브랜치 이름변경</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git branch -d <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 로컬 브랜치 삭제</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git push -d <span style="color:#f92672">[</span>repo<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 레포지터리 브런치 삭제</span>
+</span></span></code></pre></div><br>
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git merge <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 해당 이름의 브랜치를 병합</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git merge --ff <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># fast-for ward 관계에 있으면 커밋을 생성하지않고 현재 브랜치의 참조만 변경(default)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git merge --no-ff <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># fast-forward 관계에 있어도 머지 커밋 생성</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git merge --squash <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 병합할 브랜치의 내용을 하나의 커밋에 합침 병합할 브랜치 정보는 생략</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git rebase <span style="color:#f92672">[</span>브랜치이름<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 브랜치가 해당 브랜치(브랜치이름)부터 분기하도록 재배치</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git rebase --continue
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 충돌 수정 후 재배치 진행</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git rebase --abort
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># rebase 취소</span>
+</span></span></code></pre></div><br>
 <br>
 </article>
  
@@ -998,9 +1063,9 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/1974b457d86575b54eeef48fa85e3986c627c6dc" title='Last modified by mungOps | May 22, 2024' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/3bca90fe8ce4ca63caf2b8ab5df005060a53ed22" title='Last modified by mungOps | May 26, 2024' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 22, 2024</span>
+      <span>May 26, 2024</span>
     </a>
   </div>
 
