@@ -4,55 +4,43 @@
     <title>Docker on Mung Book</title>
     <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/</link>
     <description>Recent content in Docker on Mung Book</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>devops</language><atom:link href="http://mungdocs.kro.kr/devops/docs/Docker/Docker/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/docs/Docker/Docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0. Docker&amp; Container</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</guid>
-      <description>Docker 와 Container # Docker의 등장배경 # Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
-이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.
-위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.
-dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.</description>
+      <description>Docker 와 Container # Docker의 등장배경 # Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.&#xA;이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.&#xA;위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.&#xA;dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.</description>
     </item>
-    
     <item>
       <title>1. Docker 기본 명령어</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/</guid>
       <description>Docker # Docker 기본 명령어 # 컨테이너 생성 # $ docker run [OPTION] NAME[:TAG|@DIGEST] OPTION 특징 -d, &amp;ndash;detach 백그라운드에서 실행합니다. -i, &amp;ndash;interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, &amp;ndash;tty 할당된 tty를 사용하여 실행합니다. &amp;ndash;name 컨테이너에 이름을 할당합니다. -e, &amp;ndash;env 컨테이너 내에서 사용할 환경 변수를 설정합니다. &amp;ndash;rm 컨테이너가 종료되면 자동으로 삭제합니다. &amp;ndash;network 컨테이너가 사용할 네트워크를 지정합니다. &amp;ndash;publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. &amp;ndash;volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</description>
     </item>
-    
     <item>
       <title>2. Docker Registry</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker02/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker02/</guid>
       <description> Docker # Docker Registry # Registry # Docker의 Registry는 이미지를 저장하는 장소이며 크게 Docker Hub, Private Registry로 나뉘어진다. Private Registry는 내부망, 로컬으로 나뉘어진다. Docker Hub 사용 # $ docker login ... $ docker tag Push_image [ID]/[Image_name] $ docker pull [ID]/[REPO] </description>
     </item>
-    
     <item>
       <title>3. Dockerfile&amp; Compose</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</guid>
       <description>Docker # Dockerfile # Dockerfile # Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시 # # 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .</description>
     </item>
-    
     <item>
       <title>4. Docker 실습</title>
       <link>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker04/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker04/</guid>
       <description> Docker # # </description>
     </item>
-    
   </channel>
 </rss>

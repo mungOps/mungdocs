@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>System / Linux on Mung Book</title>
+    <link>http://localhost:1313/erp/docs/Linux/</link>
+    <description>Recent content in System / Linux on Mung Book</description>
+    <generator>Hugo</generator>
+    <language>erp</language>
+    <atom:link href="http://localhost:1313/erp/docs/Linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DHCP Server</title>
+      <link>http://localhost:1313/erp/docs/Linux/DHCP/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/DHCP/</guid>
+      <description>DHCP Server # DHCP Server</description>
+    </item>
+    <item>
+      <title>HTTPS Server</title>
+      <link>http://localhost:1313/erp/docs/Linux/HTTPS/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/HTTPS/</guid>
+      <description>HTTPS Server # HTTPS Server</description>
+    </item>
+    <item>
+      <title>ISCSI Server</title>
+      <link>http://localhost:1313/erp/docs/Linux/ISCSI/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/ISCSI/</guid>
+      <description>ISCSI Server # ISCSI Server</description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/erp/docs/Linux/Linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/Linux/</guid>
+      <description>Linux # Linux란 # - Linux는 1991년 Linus Torvals가 개발한 운영체제의 하나이다. - Linux는 Unix 기반으로 만들어진 운영체제로 Unix가 애초부터 통신 네트워크를 지향해 설계된 것 처럼 Linux 또한 서버로 작동하는데 최적화 되어있다. - Linux는 자유 소프트 라이센스로 누구나 소스코드를 활용, 수정 및 재 배포가 가능하며, 이를 기반으로 지속적인 업그레이드가 이루어진다. f Linux 배포판 # - 리눅스 커널, GNU소프트웨어 및 여러가지 자유 소프트웨어로 구성된 운영체제로 현재 전 세계쩍으로 300여가지의 배포판이 존재한다.</description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/erp/docs/Linux/Linux00/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/Linux00/</guid>
+      <description> Linux # Linux란 # - Linux는 1991년 Linus Torvals가 개발한 운영체제의 하나이다. - Linux는 Unix 기반으로 만들어진 운영체제로 Unix가 애초부터 통신 네트워크를 지향해 설계된 것 처럼 Linux 또한 서버로 작동하는데 최적화 되어있다. - Linux는 자유 소프트 라이센스로 누구나 소스코드를 활용, 수정 및 재 배포가 가능하며, 이를 기반으로 지속적인 업그레이드가 이루어진다. # - # - # - # - # - # - </description>
+    </item>
+    <item>
+      <title>NFS Server</title>
+      <link>http://localhost:1313/erp/docs/Linux/NFS/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/NFS/</guid>
+      <description>NFS Server # NFS Server</description>
+    </item>
+    <item>
+      <title>SMB Server</title>
+      <link>http://localhost:1313/erp/docs/Linux/SMB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/SMB/</guid>
+      <description>SMB Server # SMB Server</description>
+    </item>
+    <item>
+      <title>DNS Server</title>
+      <link>http://localhost:1313/erp/docs/Linux/DNS/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/Linux/DNS/</guid>
+      <description>DNS Server # DNS (Domain Name System) # DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.&#xA;www.mungdocs.kro.kr을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.&#xA;위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.&#xA;즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.</description>
+    </item>
+  </channel>
+</rss>

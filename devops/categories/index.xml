@@ -4,7 +4,8 @@
     <title>Categories on Mung Book</title>
     <link>http://mungdocs.kro.kr/devops/categories/</link>
     <description>Recent content in Categories on Mung Book</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>devops</language><atom:link href="http://mungdocs.kro.kr/devops/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -4,45 +4,29 @@
     <title>Git on Mung Book</title>
     <link>http://mungdocs.kro.kr/devops/docs/Git/Git/</link>
     <description>Recent content in Git on Mung Book</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>devops</language><atom:link href="http://mungdocs.kro.kr/devops/docs/Git/Git/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/docs/Git/Git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0. Git이란?</title>
       <link>http://mungdocs.kro.kr/devops/docs/Git/Git/git00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Git/Git/git00/</guid>
-      <description>GIT # Git이란? # 깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)
-컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.
-DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.
-GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
+      <description>GIT # Git이란? # 깃(Git)은 2005년에 리누스 토르발스에 의해 개발된 분산 버전관리 시스템(Distributed Version Control Systems - DVCS)&#xA;컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용하는 형상관리 도구 이다.&#xA;DVCS에서의 클라이언트는 단순히 파일의 마지막 스냅샷을 Checkout 하지 않고, 저장소를 히스토리와 더불어 전부 복제하여, 서버에 문제가 생기더라도 바로 복구가 가능하다.&#xA;GIT과 SVN의 차이 # 단, Git은 기존 SVN(Subversion SVN)와 기능면에서는 유사해 보일 수는 있으나, 아래와 같은 차이를 가지고 있다.</description>
     </item>
-    
     <item>
       <title>3. Git Branch</title>
       <link>http://mungdocs.kro.kr/devops/docs/Git/Git/git03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Git/Git/git03/</guid>
-      <description>GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미
-Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름 브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능
-Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징</description>
+      <description>GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미&#xA;Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름 브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능&#xA;Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징</description>
     </item>
-    
     <item>
       <title>99. Git 명령어 요약정리</title>
       <link>http://mungdocs.kro.kr/devops/docs/Git/Git/git99/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Git/Git/git99/</guid>
-      <description>GIT 명령어 요약정리 # Git 명령어는 git +명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &amp;ndash;옵션을 추가가 가능
-Git 작업영역: Working Directory, Staging Area, Repository
-Git 파일의상태: Modified,Staged,Commited
-브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨
-master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)
-HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능
-git init # 저장소(repository) 생성 git config user.name &amp;#34;［작성자 이름］&amp;#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user.</description>
+      <description>GIT 명령어 요약정리 # Git 명령어는 git +명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &amp;ndash;옵션을 추가가 가능&#xA;Git 작업영역: Working Directory, Staging Area, Repository&#xA;Git 파일의상태: Modified,Staged,Commited&#xA;브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨&#xA;master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)&#xA;HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능&#xA;git init # 저장소(repository) 생성 git config user.name &amp;#34;［작성자 이름］&amp;#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user.</description>
     </item>
-    
   </channel>
 </rss>

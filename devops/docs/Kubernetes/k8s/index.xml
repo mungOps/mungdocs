@@ -4,84 +4,64 @@
     <title>Kubernetes on Mung Book</title>
     <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/</link>
     <description>Recent content in Kubernetes on Mung Book</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>devops</language><atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0. Kubernetes</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s/</guid>
       <description> Kubernetes # Kubernetes # # </description>
     </item>
-    
     <item>
       <title>0. Kubernetes</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/</guid>
-      <description>Kubernetes # Kubernetes # # kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. # # Kubernets가 대두되는 이유 # # 위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.
-전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.</description>
+      <description>Kubernetes # Kubernetes # # kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. # # Kubernets가 대두되는 이유 # # 위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.&#xA;전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.</description>
     </item>
-    
     <item>
       <title>1. Kubernetes Object</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</guid>
-      <description>Kubernetes Object # Kubernetes Object # 쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
-어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.</description>
+      <description>Kubernetes Object # Kubernetes Object # 쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.&#xA;어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.</description>
     </item>
-    
     <item>
       <title>3. Workload&amp; Scheduling</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</guid>
-      <description>Kubernetes # Workload&amp;amp; Scheduling # # Pod # Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
-파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
-즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행
-POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</description>
+      <description>Kubernetes # Workload&amp;amp; Scheduling # # Pod # Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &amp;ldquo;로컬호스트&amp;rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행&#xA;파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작&#xA;즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행&#xA;POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용</description>
     </item>
-    
     <item>
       <title>4. Node Mangament</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/</guid>
       <description> Kubernetes # Node Mangament # # Taints # taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &amp;lt;노드이름&amp;gt; &amp;lt;키&amp;gt;=&amp;lt;값&amp;gt;:&amp;lt;효과&amp;gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity # Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels </description>
     </item>
-    
     <item>
       <title>5. ConfigMap&amp; Secret</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s05/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s05/</guid>
       <description>Kubernetes # Configmap&amp;amp; Secret # # ConfigMap # 컨테이너 구성 정보를 한 대 모아 관리할 수 있도록 만들어진 객체 ConfigMap 일부 적용 apiVersion: v1 kind: Pod metadata: name: genid-stone spec: containers: - image: smlinux/genid:env env: - name: INTERVAL valueFrom: configMapKeyRef: name: ttabae-config key: INTERVAL name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.14 name: web-server volumeMounts: - name: html mountPath: /usr/share/nginx/html readOnly: true ports: - containerPort: 80 volumes: - name: html emptyDir: {} ConfigMap 전체적용 apiVersion: v1 kind: Pod metadata: name: genid-boy spec: containers: - image: smlinux/genid:env envFrom: - configMapRef: name: ttabae-config name: fakeid volumeMounts: - name: html mountPath: /webdata - image: nginx:1.</description>
     </item>
-    
     <item>
       <title>6. Service</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</guid>
       <description>Kubernetes Service # CNI (Container Network Interface) # f ## **Service Network** Service는 파드들을 통해 실행되고 있는 애플리케이션을 네트워크에 노출(expose)시키는 가상의 컴포넌트 쿠버네티스 내부의 다양한 객체들이 애플리케이션 및 다른 외부의 애플리케이션이나 사용자와 연결될 수 있도록 도와주는 브릿지 역할을 수행 이와 같은 Service가 별도로 필요한 이유는 파드들의 반영속적인(ephemeral) 특성을 가지고 있기 때문이며, 파드들은 일회성 자원으로 언제든 다른 노드로 옮겨지거나 삭제될 수 있으며, 이로인해 새로이 생성될 때마다 새로운 내부 IP를 받게 되므로, 이것만으로 클러스터 내/외부와 통신을 계속 유지하기는 어렵다.</description>
     </item>
-    
     <item>
       <title>Kubernetes_Object_Table</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</guid>
       <description>Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &amp;lt;pod-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &amp;lt;replicaset-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &amp;lt;deployment-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &amp;lt;service-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: selector: &amp;lt;selector-key&amp;gt;: &amp;lt;selector-value&amp;gt; ports: - protocol: TCP port: &amp;lt;service-port&amp;gt; targetPort: &amp;lt;target-port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.</description>
     </item>
-    
   </channel>
 </rss>

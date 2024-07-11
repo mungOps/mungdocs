@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OpenStack Ussuri : Manila # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | | Manila Share | | API-CFN | | Neutron Server | ----------------------- | Heat Engine | | Gnocchi Trove API | | Designate Services | | Barbican API | ----------------------- | Rally Manila API | ----------------------- # OpenStack Ussuri : Manila # # Manila는 OpenStack에서 맡는 서비스입니다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="OpenStack Ussuri : Manila">
+  <meta property="og:description" content="OpenStack Ussuri : Manila # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | | Manila Share | | API-CFN | | Neutron Server | ----------------------- | Heat Engine | | Gnocchi Trove API | | Designate Services | | Barbican API | ----------------------- | Rally Manila API | ----------------------- # OpenStack Ussuri : Manila # # Manila는 OpenStack에서 맡는 서비스입니다.">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>OpenStack Ussuri : Manila | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+  <link rel="alternate" hreflang="cloud" href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/" title="OpenStack Ussuri : Manila">
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.34a613df353d3b485a7c05de0392c29761057436e2df030fbd36d12724653ffd.js" integrity="sha256-NKYT3zU9O0hafAXeA5LCl2EFdDbi3wMPvTbRJyRlP/0=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                     
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SAP</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7dc3eb908953303803f4193c0d409a2" class="toggle"  />
+    <label for="section-f7dc3eb908953303803f4193c0d409a2" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42d84c30d8f3d130306756fa5df08a34" class="toggle"  />
+    <label for="section-42d84c30d8f3d130306756fa5df08a34" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-efc7b5b26e46f695a867fcc035ec86af" class="toggle"  />
+    <label for="section-efc7b5b26e46f695a867fcc035ec86af" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-80c97e49a653d732ddd3a245f2036c82" class="toggle"  />
+    <label for="section-80c97e49a653d732ddd3a245f2036c82" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ae77cdd55cab53ffc4d769b15c6773" class="toggle"  />
+    <label for="section-13ae77cdd55cab53ffc4d769b15c6773" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03900401de566084325d318cf786250d" class="toggle"  />
+    <label for="section-03900401de566084325d318cf786250d" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fce2d58e539681754720cea0ca25c5a" class="toggle"  />
+    <label for="section-8fce2d58e539681754720cea0ca25c5a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/OpenStack/OpenStack/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-978308dfbf79cbac8bade6ee008b9803" class="toggle"  />
+    <label for="section-978308dfbf79cbac8bade6ee008b9803" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2bee225828f4ab6a6713a17886d53c4c" class="toggle"  />
+    <label for="section-2bee225828f4ab6a6713a17886d53c4c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="toggle"  />
+    <label for="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="toggle"  />
+    <label for="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Trove/" class="">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8312694bbaf6fa051d7c9dc3e36012cf" class="toggle"  />
+    <label for="section-8312694bbaf6fa051d7c9dc3e36012cf" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca1eff58cd5bca6157d8d342ea4e132c" class="toggle"  />
+    <label for="section-ca1eff58cd5bca6157d8d342ea4e132c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2cc4dc9995e9f9cb5684091431361d22" class="toggle"  />
+    <label for="section-2cc4dc9995e9f9cb5684091431361d22" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1918f9d76cde54090f90336203c289d6" class="toggle" checked />
+    <label for="section-1918f9d76cde54090f90336203c289d6" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c2c13699fcac8c2273b9192d15ca3e0" class="toggle"  />
+    <label for="section-9c2c13699fcac8c2273b9192d15ca3e0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="toggle"  />
+    <label for="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4315e737bb69dd0391eb5dd9bf36d62c" class="toggle"  />
+    <label for="section-4315e737bb69dd0391eb5dd9bf36d62c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-597c2799205b827d5c7ab71a2d402882" class="toggle"  />
+    <label for="section-597c2799205b827d5c7ab71a2d402882" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42dbab293af4648ec92e892d864865cb" class="toggle"  />
+    <label for="section-42dbab293af4648ec92e892d864865cb" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a1339544015f56c1506abcddaab9b3f3" class="toggle"  />
+    <label for="section-a1339544015f56c1506abcddaab9b3f3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/" class="">OpenStack Ussuri : Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a979c54687057f4f76d7c019e7596a87" class="toggle"  />
+    <label for="section-a979c54687057f4f76d7c019e7596a87" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c706afb8aa1555379e017ad43bace477" class="toggle"  />
+    <label for="section-c706afb8aa1555379e017ad43bace477" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f74c2a46724970d36791c6781d2ff7e3" class="toggle"  />
+    <label for="section-f74c2a46724970d36791c6781d2ff7e3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" class="">OpenStack Ussuri : Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6303b6db54e205267dc3549a8f26dd0" class="toggle"  />
+    <label for="section-d6303b6db54e205267dc3549a8f26dd0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7a231284edd65906e160494c2ee8e8be" class="toggle"  />
+    <label for="section-7a231284edd65906e160494c2ee8e8be" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2999e43c9febc21006bd9b8feac3e37a" class="toggle"  />
+    <label for="section-2999e43c9febc21006bd9b8feac3e37a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-11/" class="">OpenStack Ussuri : Gnocch</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b682d7a4fa2d7036138e84d857e66a60" class="toggle"  />
+    <label for="section-b682d7a4fa2d7036138e84d857e66a60" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/" class="">OpenStack Ussuri : Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-93b9fe20970a7f5cba4ed9da335ddb40" class="toggle"  />
+    <label for="section-93b9fe20970a7f5cba4ed9da335ddb40" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="toggle"  />
+    <label for="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="toggle"  />
+    <label for="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-15/" class="">OpenStack Ussuri : Rally</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-72877fd1d0dc0d4d08adecfd34ad2947" class="toggle" checked />
+    <label for="section-72877fd1d0dc0d4d08adecfd34ad2947" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/" class="active">OpenStack Ussuri : Manila</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="toggle"  />
+    <label for="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Devstack/" class="">DevStack</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-136f8be1d19ed1e5809de99a5152dadc" class="toggle"  />
+    <label for="section-136f8be1d19ed1e5809de99a5152dadc" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Packstack/" class="">Packstack</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>OpenStack Ussuri : Manila</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--manila"><strong>OpenStack Ussuri : Manila</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--manila-1"><strong>OpenStack Ussuri : Manila</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#manila-service-및-user-생성"><strong>Manila service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#manila-유저의-db를-생성합니다"><strong>Manila 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#controller-node-manila-api-설치"><strong>controller node manila api 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+    <li><a href="#heading-11"></a>
+      <ul>
+        <li><a href="#compute-node-manila-share-설차"><strong>compute node manila share 설차</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a></li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li><a href="#확인"><strong>확인</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="openstack-ussuri--manila">
+  <strong>OpenStack Ussuri : Manila</strong>
+  <a class="anchor" href="#openstack-ussuri--manila">#</a>
+</h1>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>-----------------------         -----------------------        -----------------------
+</span></span><span style="display:flex;"><span>|  [ Controller Node ]  |       |    [ Compute Node ]   |      |   [ Network Node ]    | 
+</span></span><span style="display:flex;"><span>|                       |       |        Libvirt        |      |     Open vSwitch      |
+</span></span><span style="display:flex;"><span>| MariaDB    RabbitMQ   |       |      Nova compute     |      |       L2 Agent        |
+</span></span><span style="display:flex;"><span>| Memcached  Keystone   |       |      Open vSwitch     |      |       L3 Agent        |
+</span></span><span style="display:flex;"><span>| httpd      Cinder API |       |       L2 Agent        |      |     metadata agent    |
+</span></span><span style="display:flex;"><span>| Nova-API   Compute    |       |      Cinder-LVM       |      |      Swift-proxy      |
+</span></span><span style="display:flex;"><span>| L2 agent   L3 agent   |       |          NFS          |      |       Heat API        |
+</span></span><span style="display:flex;"><span>| metadata agent        |       |     Manila Share      |      |        API-CFN        |
+</span></span><span style="display:flex;"><span>| Neutron Server        |        -----------------------       |      Heat Engine      |
+</span></span><span style="display:flex;"><span>| Gnocchi    Trove API  |                                      |   Designate Services  |
+</span></span><span style="display:flex;"><span>| Barbican API          |                                       -----------------------
+</span></span><span style="display:flex;"><span>| Rally      Manila API |
+</span></span><span style="display:flex;"><span> -----------------------
+</span></span></code></pre></div><h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<h2 id="openstack-ussuri--manila-1">
+  <strong>OpenStack Ussuri : Manila</strong>
+  <a class="anchor" href="#openstack-ussuri--manila-1">#</a>
+</h2>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<ul>
+<li><strong>Manila는 OpenStack에서 맡는 서비스입니다.</strong></li>
+<li><strong>Manila의 대한 보다 자세한 설명은 
+  <a href="/erp/">Manila</a>를 참조해주세요.</strong></li>
+</ul>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<h3 id="manila-service-및-user-생성">
+  <strong>Manila service 및 User 생성</strong>
+  <a class="anchor" href="#manila-service-%eb%b0%8f-user-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack user create --domain default --project service --password qwer1234 manila
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field               | Value                            |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| default_project_id  | b470c69e28db47cdbfc81e06cc67f627 |
+</span></span><span style="display:flex;"><span>| domain_id           | default                          |
+</span></span><span style="display:flex;"><span>| enabled             | True                             |
+</span></span><span style="display:flex;"><span>| id                  | 4ea7c62d89194d9883e6773a977133b6 |
+</span></span><span style="display:flex;"><span>| name                | manila                           |
+</span></span><span style="display:flex;"><span>| options             | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>| password_expires_at | None                             |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack role add --project service --user manila admin
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack service create --name manila --description &#34;OpenStack Shared Filesystem&#34; share
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | OpenStack Shared Filesystem      |
+</span></span><span style="display:flex;"><span>| enabled     | True                             |
+</span></span><span style="display:flex;"><span>| id          | 1129696ac3f5449293b638e0daec3bde |
+</span></span><span style="display:flex;"><span>| name        | manila                           |
+</span></span><span style="display:flex;"><span>| type        | share                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack service create --name manilav2 --description &#34;OpenStack Shared Filesystem V2&#34; sharev2
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | OpenStack Shared Filesystem V2   |
+</span></span><span style="display:flex;"><span>| enabled     | True                             |
+</span></span><span style="display:flex;"><span>| id          | 1d94787a2d34489dbe880faa5e165e5e |
+</span></span><span style="display:flex;"><span>| name        | manilav2                         |
+</span></span><span style="display:flex;"><span>| type        | sharev2                          |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne share public http://controller:8786/v1/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                   |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                    |
+</span></span><span style="display:flex;"><span>| id           | d3d6590a342047eab8abca304701d90d        |
+</span></span><span style="display:flex;"><span>| interface    | public                                  |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                               |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                               |
+</span></span><span style="display:flex;"><span>| service_id   | 1129696ac3f5449293b638e0daec3bde        |
+</span></span><span style="display:flex;"><span>| service_name | manila                                  |
+</span></span><span style="display:flex;"><span>| service_type | share                                   |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8786/v1/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne share internal http://controller:8786/v1/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                   |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                    |
+</span></span><span style="display:flex;"><span>| id           | 0a6516d199d346febe62800b87a10eb9        |
+</span></span><span style="display:flex;"><span>| interface    | internal                                |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                               |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                               |
+</span></span><span style="display:flex;"><span>| service_id   | 1129696ac3f5449293b638e0daec3bde        |
+</span></span><span style="display:flex;"><span>| service_name | manila                                  |
+</span></span><span style="display:flex;"><span>| service_type | share                                   |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8786/v1/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne share admin http://controller:8786/v1/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                   |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                    |
+</span></span><span style="display:flex;"><span>| id           | 6153d88f7eab40caa669c3130f03226a        |
+</span></span><span style="display:flex;"><span>| interface    | admin                                   |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                               |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                               |
+</span></span><span style="display:flex;"><span>| service_id   | 1129696ac3f5449293b638e0daec3bde        |
+</span></span><span style="display:flex;"><span>| service_name | manila                                  |
+</span></span><span style="display:flex;"><span>| service_type | share                                   |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8786/v1/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne sharev2 public http://controller:8786/v2/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                   |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                    |
+</span></span><span style="display:flex;"><span>| id           | 22e9d4e2b62a4203ae182041c9c10049        |
+</span></span><span style="display:flex;"><span>| interface    | public                                  |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                               |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                               |
+</span></span><span style="display:flex;"><span>| service_id   | 1d94787a2d34489dbe880faa5e165e5e        |
+</span></span><span style="display:flex;"><span>| service_name | manilav2                                |
+</span></span><span style="display:flex;"><span>| service_type | sharev2                                 |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8786/v2/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne sharev2 internal http://controller:8786/v2/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                   |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                    |
+</span></span><span style="display:flex;"><span>| id           | eb4e0b33fae7432d87078a0ba2c2e8de        |
+</span></span><span style="display:flex;"><span>| interface    | internal                                |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                               |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                               |
+</span></span><span style="display:flex;"><span>| service_id   | 1d94787a2d34489dbe880faa5e165e5e        |
+</span></span><span style="display:flex;"><span>| service_name | manilav2                                |
+</span></span><span style="display:flex;"><span>| service_type | sharev2                                 |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8786/v2/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne sharev2 admin http://controller:8786/v2/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                   |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                    |
+</span></span><span style="display:flex;"><span>| id           | 212c9ddfbc554dfb83f80e3a252db235        |
+</span></span><span style="display:flex;"><span>| interface    | admin                                   |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                               |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                               |
+</span></span><span style="display:flex;"><span>| service_id   | 1d94787a2d34489dbe880faa5e165e5e        |
+</span></span><span style="display:flex;"><span>| service_name | manilav2                                |
+</span></span><span style="display:flex;"><span>| service_type | sharev2                                 |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8786/v2/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-----------------------------------------+
+</span></span></code></pre></div><h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<h3 id="manila-유저의-db를-생성합니다">
+  <strong>Manila 유저의 DB를 생성합니다.</strong>
+  <a class="anchor" href="#manila-%ec%9c%a0%ec%a0%80%ec%9d%98-db%eb%a5%bc-%ec%83%9d%ec%84%b1%ed%95%a9%eb%8b%88%eb%8b%a4">#</a>
+</h3>
+<h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; mysql -u root -p
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; create database manila;  
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on manila.* to manila@&#39;localhost&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on manila.* to manila@&#39;%&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; flush privileges; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; exit;
+</span></span></code></pre></div><h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<h3 id="controller-node-manila-api-설치">
+  <strong>controller node manila api 설치</strong>
+  <a class="anchor" href="#controller-node-manila-api-%ec%84%a4%ec%b9%98">#</a>
+</h3>
+<h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-manila python3-manilaclient
+</span></span><span style="display:flex;"><span># manila 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; vi /etc/manila/manila.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>my_ip = controller
+</span></span><span style="display:flex;"><span>api_paste_config = /etc/manila/api-paste.ini
+</span></span><span style="display:flex;"><span>rootwrap_config = /etc/manila/rootwrap.conf
+</span></span><span style="display:flex;"><span>state_path = /var/lib/manila
+</span></span><span style="display:flex;"><span>auth_strategy = keystone
+</span></span><span style="display:flex;"><span>default_share_type = default_share_type
+</span></span><span style="display:flex;"><span>share_name_template = share-%s
+</span></span><span style="display:flex;"><span>transport_url = rabbit://openstack:qwer1234@controller
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[database]
+</span></span><span style="display:flex;"><span>connection = mysql+pymysql://manila:qwer1234@controller/manila
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[keystone_authtoken]
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = manila
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[oslo_concurrency]
+</span></span><span style="display:flex;"><span>lock_path = $state_path/tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; su -s /bin/bash manila -c &#34;manila-manage db sync&#34;
+</span></span><span style="display:flex;"><span>$ controller&gt; systemctl enable --now openstack-manila-api openstack-manila-scheduler
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; firewall-cmd --add-port=8786/tcp --permanent
+</span></span><span style="display:flex;"><span>$ controller&gt; firewall-cmd --reload
+</span></span><span style="display:flex;"><span># 방화벽을 설정합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila service-list
+</span></span><span style="display:flex;"><span>+----+------------------+------------+------+---------+-------+----------------------------+
+</span></span><span style="display:flex;"><span>| Id | Binary           | Host       | Zone | Status  | State | Updated_at                 |
+</span></span><span style="display:flex;"><span>+----+------------------+------------+------+---------+-------+----------------------------+
+</span></span><span style="display:flex;"><span>| 1  | manila-scheduler | controller | nova | enabled | up    | 2020-08-21T01:27:53.000000 |
+</span></span><span style="display:flex;"><span>+----+------------------+------------+------+---------+-------+----------------------------+
+</span></span><span style="display:flex;"><span># 확인
+</span></span></code></pre></div><h1 id="heading-10">
+  
+  <a class="anchor" href="#heading-10">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-11">
+  
+  <a class="anchor" href="#heading-11">#</a>
+</h1>
+<h2 id="compute-node-manila-share-설차">
+  <strong>compute node manila share 설차</strong>
+  <a class="anchor" href="#compute-node-manila-share-%ec%84%a4%ec%b0%a8">#</a>
+</h2>
+<h1 id="heading-12">
+  
+  <a class="anchor" href="#heading-12">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ compute&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-manila-share python3-manilaclient mariadb-devel python3-devel gcc make
+</span></span><span style="display:flex;"><span>$ compute&gt; pip3 install mysqlclient
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; vi /etc/manila/manila.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>my_ip = compute
+</span></span><span style="display:flex;"><span>api_paste_config = /etc/manila/api-paste.ini
+</span></span><span style="display:flex;"><span>rootwrap_config = /etc/manila/rootwrap.conf
+</span></span><span style="display:flex;"><span>state_path = /var/lib/manila
+</span></span><span style="display:flex;"><span>auth_strategy = keystone
+</span></span><span style="display:flex;"><span>default_share_type = default_share_type
+</span></span><span style="display:flex;"><span>share_name_template = share-%s
+</span></span><span style="display:flex;"><span>transport_url = rabbit://openstack:qwer1234@controller
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[database]
+</span></span><span style="display:flex;"><span>connection = mysql+pymysql://manila:qwer1234@controller/manila
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[keystone_authtoken]
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = manila
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[oslo_concurrency]
+</span></span><span style="display:flex;"><span>lock_path = $state_path/tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; mkdir /var/lib/manila
+</span></span><span style="display:flex;"><span>$ compute&gt; chown manila. /var/lib/manila
+</span></span><span style="display:flex;"><span>$ compute&gt; firewall-cmd --add-service=nfs --permanent
+</span></span><span style="display:flex;"><span>$ compute&gt; firewall-cmd --reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 새로운 Disk install
+</span></span><span style="display:flex;"><span>$ compute&gt; dnf -y install nfs-utils nfs4-acl-tools
+</span></span><span style="display:flex;"><span>$ compute&gt; fdisk /dev/sdc
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>$ compute&gt; pvcreate /dev/sdc1
+</span></span><span style="display:flex;"><span>$ compute&gt; vgcreate manila-volumes /dev/sdc1
+</span></span><span style="display:flex;"><span>$ compute&gt; vi /etc/manila/manila.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>enabled_share_backends = lvm
+</span></span><span style="display:flex;"><span>[lvm]
+</span></span><span style="display:flex;"><span>share_backend_name = LVM
+</span></span><span style="display:flex;"><span>share_driver = manila.share.drivers.lvm.LVMShareDriver
+</span></span><span style="display:flex;"><span>driver_handles_share_servers = False
+</span></span><span style="display:flex;"><span>lvm_share_volume_group = manila-volumes
+</span></span><span style="display:flex;"><span>lvm_share_export_ips = compute
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; systemctl enable --now openstack-manila-share nfs-server
+</span></span></code></pre></div><h1 id="heading-13">
+  
+  <a class="anchor" href="#heading-13">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-14">
+  
+  <a class="anchor" href="#heading-14">#</a>
+</h1>
+<h2 id="확인">
+  <strong>확인</strong>
+  <a class="anchor" href="#%ed%99%95%ec%9d%b8">#</a>
+</h2>
+<h1 id="heading-15">
+  
+  <a class="anchor" href="#heading-15">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila type-create default_share_type False
+</span></span><span style="display:flex;"><span>+----------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| Property             | Value                                |
+</span></span><span style="display:flex;"><span>+----------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| ID                   | 9f6323f6-7443-4a83-ba70-7c10f78366c9 |
+</span></span><span style="display:flex;"><span>| Name                 | default_share_type                   |
+</span></span><span style="display:flex;"><span>| Visibility           | public                               |
+</span></span><span style="display:flex;"><span>| is_default           | YES                                  |
+</span></span><span style="display:flex;"><span>| required_extra_specs | driver_handles_share_servers : False |
+</span></span><span style="display:flex;"><span>| optional_extra_specs |                                      |
+</span></span><span style="display:flex;"><span>| Description          | None                                 |
+</span></span><span style="display:flex;"><span>+----------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila type-list
+</span></span><span style="display:flex;"><span>+--------------------------------------+--------------------+------------+------------+--------------------------------------+----------------------+-------------+
+</span></span><span style="display:flex;"><span>| ID                                   | Name               | visibility | is_default | required_extra_specs                 | optional_extra_specs | Description |
+</span></span><span style="display:flex;"><span>+--------------------------------------+--------------------+------------+------------+--------------------------------------+----------------------+-------------+
+</span></span><span style="display:flex;"><span>| 9f6323f6-7443-4a83-ba70-7c10f78366c9 | default_share_type | public     | YES        | driver_handles_share_servers : False |                      | None        |
+</span></span><span style="display:flex;"><span>+--------------------------------------+--------------------+------------+------------+--------------------------------------+----------------------+-------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila create NFS 10 --name share01
+</span></span><span style="display:flex;"><span>+---------------------------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| Property                              | Value                                |
+</span></span><span style="display:flex;"><span>+---------------------------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| id                                    | 72ab96c5-80f5-401a-b414-ab76a240acf1 |
+</span></span><span style="display:flex;"><span>| size                                  | 10                                   |
+</span></span><span style="display:flex;"><span>| availability_zone                     | None                                 |
+</span></span><span style="display:flex;"><span>| created_at                            | 2020-08-21T01:52:16.000000           |
+</span></span><span style="display:flex;"><span>| status                                | creating                             |
+</span></span><span style="display:flex;"><span>| name                                  | share01                              |
+</span></span><span style="display:flex;"><span>| description                           | None                                 |
+</span></span><span style="display:flex;"><span>| project_id                            | edd7025c02574d3aa2d3ab6e56208320     |
+</span></span><span style="display:flex;"><span>| snapshot_id                           | None                                 |
+</span></span><span style="display:flex;"><span>| share_network_id                      | None                                 |
+</span></span><span style="display:flex;"><span>| share_proto                           | NFS                                  |
+</span></span><span style="display:flex;"><span>| metadata                              | <span style="color:#75715e">{}</span>                                   |
+</span></span><span style="display:flex;"><span>| share_type                            | 9f6323f6-7443-4a83-ba70-7c10f78366c9 |
+</span></span><span style="display:flex;"><span>| is_public                             | False                                |
+</span></span><span style="display:flex;"><span>| snapshot_support                      | False                                |
+</span></span><span style="display:flex;"><span>| task_state                            | None                                 |
+</span></span><span style="display:flex;"><span>| share_type_name                       | default_share_type                   |
+</span></span><span style="display:flex;"><span>| access_rules_status                   | active                               |
+</span></span><span style="display:flex;"><span>| replication_type                      | None                                 |
+</span></span><span style="display:flex;"><span>| has_replicas                          | False                                |
+</span></span><span style="display:flex;"><span>| user_id                               | 4ebf85318da84b5cb1257152f9fc35ba     |
+</span></span><span style="display:flex;"><span>| create_share_from_snapshot_support    | False                                |
+</span></span><span style="display:flex;"><span>| revert_to_snapshot_support            | False                                |
+</span></span><span style="display:flex;"><span>| share_group_id                        | None                                 |
+</span></span><span style="display:flex;"><span>| source_share_group_snapshot_member_id | None                                 |
+</span></span><span style="display:flex;"><span>| mount_snapshot_support                | False                                |
+</span></span><span style="display:flex;"><span>| progress                              | None                                 |
+</span></span><span style="display:flex;"><span>| share_server_id                       | None                                 |
+</span></span><span style="display:flex;"><span>| host                                  |                                      |
+</span></span><span style="display:flex;"><span>+---------------------------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila access-allow share01 ip 1.1.1.0/24 --access-level rw
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila access-list share01
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack server start CentOS_8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; manila show share01 | grep path | cut -d&#39;|&#39; -f3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; ssh centos@10.0.0.247
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; sudo mount -t nfs \
+</span></span><span style="display:flex;"><span>10.0.0.50:/var/lib/manila/mnt/share-3544d5a3-7157-4c10-aaa3-edd4b6fd2512 /mnt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; df -hT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; 
+</span></span></code></pre></div><h1 id="heading-16">
+  
+  <a class="anchor" href="#heading-16">#</a>
+</h1>
+<p> </p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--manila"><strong>OpenStack Ussuri : Manila</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--manila-1"><strong>OpenStack Ussuri : Manila</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#manila-service-및-user-생성"><strong>Manila service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#manila-유저의-db를-생성합니다"><strong>Manila 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#controller-node-manila-api-설치"><strong>controller node manila api 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+    <li><a href="#heading-11"></a>
+      <ul>
+        <li><a href="#compute-node-manila-share-설차"><strong>compute node manila share 설차</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a></li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li><a href="#확인"><strong>확인</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

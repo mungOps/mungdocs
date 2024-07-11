@@ -5,13 +5,13 @@
     <loc>http://mungdocs.kro.kr/network/categories/</loc>
     <xhtml:link
                 rel="alternate"
-                hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/categories/"
+                hreflang="main"
+                href="http://mungdocs.kro.kr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="main"
-                href="http://mungdocs.kro.kr/categories/"
+                hreflang="erp"
+                href="http://mungdocs.kro.kr/erp/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -30,6 +30,11 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="devops"
+                href="http://mungdocs.kro.kr/devops/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="programing"
                 href="http://mungdocs.kro.kr/programing/categories/"
                 />
@@ -42,13 +47,13 @@
     <loc>http://mungdocs.kro.kr/network/</loc>
     <xhtml:link
                 rel="alternate"
-                hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/"
+                hreflang="main"
+                href="http://mungdocs.kro.kr/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="main"
-                href="http://mungdocs.kro.kr/"
+                hreflang="erp"
+                href="http://mungdocs.kro.kr/erp/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -67,6 +72,11 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="devops"
+                href="http://mungdocs.kro.kr/devops/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="programing"
                 href="http://mungdocs.kro.kr/programing/"
                 />
@@ -79,13 +89,13 @@
     <loc>http://mungdocs.kro.kr/network/tags/</loc>
     <xhtml:link
                 rel="alternate"
-                hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/tags/"
+                hreflang="main"
+                href="http://mungdocs.kro.kr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="main"
-                href="http://mungdocs.kro.kr/tags/"
+                hreflang="erp"
+                href="http://mungdocs.kro.kr/erp/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -101,6 +111,11 @@
                 rel="alternate"
                 hreflang="database"
                 href="http://mungdocs.kro.kr/database/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="devops"
+                href="http://mungdocs.kro.kr/devops/tags/"
                 />
     <xhtml:link
                 rel="alternate"

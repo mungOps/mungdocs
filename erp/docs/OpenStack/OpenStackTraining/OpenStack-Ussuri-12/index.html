@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="! 아직 수정 중 문제있음 # OpenStack Ussuri : Trove # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi Trove API | ----------------------- ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Trove # # Trove는 관리형 데이터베이스 서비스 입니다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="OpenStack Ussuri : Trove">
+  <meta property="og:description" content="! 아직 수정 중 문제있음 # OpenStack Ussuri : Trove # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi Trove API | ----------------------- ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Trove # # Trove는 관리형 데이터베이스 서비스 입니다.">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>OpenStack Ussuri : Trove | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+  <link rel="alternate" hreflang="cloud" href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/" title="OpenStack Ussuri : Trove">
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.34a613df353d3b485a7c05de0392c29761057436e2df030fbd36d12724653ffd.js" integrity="sha256-NKYT3zU9O0hafAXeA5LCl2EFdDbi3wMPvTbRJyRlP/0=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                     
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SAP</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7dc3eb908953303803f4193c0d409a2" class="toggle"  />
+    <label for="section-f7dc3eb908953303803f4193c0d409a2" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42d84c30d8f3d130306756fa5df08a34" class="toggle"  />
+    <label for="section-42d84c30d8f3d130306756fa5df08a34" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-efc7b5b26e46f695a867fcc035ec86af" class="toggle"  />
+    <label for="section-efc7b5b26e46f695a867fcc035ec86af" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-80c97e49a653d732ddd3a245f2036c82" class="toggle"  />
+    <label for="section-80c97e49a653d732ddd3a245f2036c82" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ae77cdd55cab53ffc4d769b15c6773" class="toggle"  />
+    <label for="section-13ae77cdd55cab53ffc4d769b15c6773" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03900401de566084325d318cf786250d" class="toggle"  />
+    <label for="section-03900401de566084325d318cf786250d" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fce2d58e539681754720cea0ca25c5a" class="toggle"  />
+    <label for="section-8fce2d58e539681754720cea0ca25c5a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/OpenStack/OpenStack/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-978308dfbf79cbac8bade6ee008b9803" class="toggle"  />
+    <label for="section-978308dfbf79cbac8bade6ee008b9803" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2bee225828f4ab6a6713a17886d53c4c" class="toggle"  />
+    <label for="section-2bee225828f4ab6a6713a17886d53c4c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="toggle"  />
+    <label for="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="toggle"  />
+    <label for="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Trove/" class="">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8312694bbaf6fa051d7c9dc3e36012cf" class="toggle"  />
+    <label for="section-8312694bbaf6fa051d7c9dc3e36012cf" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca1eff58cd5bca6157d8d342ea4e132c" class="toggle"  />
+    <label for="section-ca1eff58cd5bca6157d8d342ea4e132c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2cc4dc9995e9f9cb5684091431361d22" class="toggle"  />
+    <label for="section-2cc4dc9995e9f9cb5684091431361d22" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1918f9d76cde54090f90336203c289d6" class="toggle" checked />
+    <label for="section-1918f9d76cde54090f90336203c289d6" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c2c13699fcac8c2273b9192d15ca3e0" class="toggle"  />
+    <label for="section-9c2c13699fcac8c2273b9192d15ca3e0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="toggle"  />
+    <label for="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4315e737bb69dd0391eb5dd9bf36d62c" class="toggle"  />
+    <label for="section-4315e737bb69dd0391eb5dd9bf36d62c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-597c2799205b827d5c7ab71a2d402882" class="toggle"  />
+    <label for="section-597c2799205b827d5c7ab71a2d402882" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42dbab293af4648ec92e892d864865cb" class="toggle"  />
+    <label for="section-42dbab293af4648ec92e892d864865cb" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a1339544015f56c1506abcddaab9b3f3" class="toggle"  />
+    <label for="section-a1339544015f56c1506abcddaab9b3f3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/" class="">OpenStack Ussuri : Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a979c54687057f4f76d7c019e7596a87" class="toggle"  />
+    <label for="section-a979c54687057f4f76d7c019e7596a87" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c706afb8aa1555379e017ad43bace477" class="toggle"  />
+    <label for="section-c706afb8aa1555379e017ad43bace477" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f74c2a46724970d36791c6781d2ff7e3" class="toggle"  />
+    <label for="section-f74c2a46724970d36791c6781d2ff7e3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" class="">OpenStack Ussuri : Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6303b6db54e205267dc3549a8f26dd0" class="toggle"  />
+    <label for="section-d6303b6db54e205267dc3549a8f26dd0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7a231284edd65906e160494c2ee8e8be" class="toggle"  />
+    <label for="section-7a231284edd65906e160494c2ee8e8be" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2999e43c9febc21006bd9b8feac3e37a" class="toggle"  />
+    <label for="section-2999e43c9febc21006bd9b8feac3e37a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-11/" class="">OpenStack Ussuri : Gnocch</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b682d7a4fa2d7036138e84d857e66a60" class="toggle" checked />
+    <label for="section-b682d7a4fa2d7036138e84d857e66a60" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/" class="active">OpenStack Ussuri : Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-93b9fe20970a7f5cba4ed9da335ddb40" class="toggle"  />
+    <label for="section-93b9fe20970a7f5cba4ed9da335ddb40" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="toggle"  />
+    <label for="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="toggle"  />
+    <label for="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-15/" class="">OpenStack Ussuri : Rally</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-72877fd1d0dc0d4d08adecfd34ad2947" class="toggle"  />
+    <label for="section-72877fd1d0dc0d4d08adecfd34ad2947" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/" class="">OpenStack Ussuri : Manila</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="toggle"  />
+    <label for="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Devstack/" class="">DevStack</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-136f8be1d19ed1e5809de99a5152dadc" class="toggle"  />
+    <label for="section-136f8be1d19ed1e5809de99a5152dadc" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Packstack/" class="">Packstack</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>OpenStack Ussuri : Trove</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-아직-수정-중-문제있음">! 아직 수정 중 문제있음</a></li>
+    <li><a href="#openstack-ussuri--trove"><strong>OpenStack Ussuri : Trove</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--trove-1"><strong>OpenStack Ussuri : Trove</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove-service-및-user-생성"><strong>Trove service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove-유저의-db를-생성합니다"><strong>Trove 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove-설치"><strong>Trove 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="-아직-수정-중-문제있음">
+  ! 아직 수정 중 문제있음
+  <a class="anchor" href="#-%ec%95%84%ec%a7%81-%ec%88%98%ec%a0%95-%ec%a4%91-%eb%ac%b8%ec%a0%9c%ec%9e%88%ec%9d%8c">#</a>
+</h1>
+<h1 id="openstack-ussuri--trove">
+  <strong>OpenStack Ussuri : Trove</strong>
+  <a class="anchor" href="#openstack-ussuri--trove">#</a>
+</h1>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span> -----------------------         -----------------------        -----------------------
+</span></span><span style="display:flex;"><span>|  [ Controller Node ]  |       |    [ Compute Node ]   |      |   [ Network Node ]    | 
+</span></span><span style="display:flex;"><span>|                       |       |        Libvirt        |      |     Open vSwitch      |
+</span></span><span style="display:flex;"><span>| MariaDB    RabbitMQ   |       |      Nova compute     |      |       L2 Agent        |
+</span></span><span style="display:flex;"><span>| Memcached  Keystone   |       |      Open vSwitch     |      |       L3 Agent        |
+</span></span><span style="display:flex;"><span>| httpd      Cinder API |       |       L2 Agent        |      |     metadata agent    |
+</span></span><span style="display:flex;"><span>| Nova-API   Compute    |       |      Cinder-LVM       |      |      Swift-proxy      |
+</span></span><span style="display:flex;"><span>| L2 agent   L3 agent   |       |          NFS          |      |       Heat API        |
+</span></span><span style="display:flex;"><span>| metadata agent        |        -----------------------       |        API-CFN        |
+</span></span><span style="display:flex;"><span>| Neutron Server        |                                      |      Heat Engine      |
+</span></span><span style="display:flex;"><span>| Gnocchi    Trove API  |                                       -----------------------
+</span></span><span style="display:flex;"><span> -----------------------                                        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> ---------------------------------       
+</span></span><span style="display:flex;"><span>|     [ Storage Node 1, 2, 3 ]    |     
+</span></span><span style="display:flex;"><span>|                                 | 
+</span></span><span style="display:flex;"><span>|      Swift-account-auditor      |
+</span></span><span style="display:flex;"><span>|      Swift-account-replicator   |
+</span></span><span style="display:flex;"><span>|      Swift-account              |
+</span></span><span style="display:flex;"><span>|      Swift-container-auditor    |
+</span></span><span style="display:flex;"><span>|      Swift-container-replicator |
+</span></span><span style="display:flex;"><span>|      Swift-container-updater    |
+</span></span><span style="display:flex;"><span>|      Swift-container            |
+</span></span><span style="display:flex;"><span>|      Swift-object-auditor       |
+</span></span><span style="display:flex;"><span>|      Swift-object-replicator    |
+</span></span><span style="display:flex;"><span>|      Swift-object-updater       |
+</span></span><span style="display:flex;"><span>|      Swift-swift-object         |
+</span></span><span style="display:flex;"><span> ---------------------------------
+</span></span></code></pre></div><h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<h2 id="openstack-ussuri--trove-1">
+  <strong>OpenStack Ussuri : Trove</strong>
+  <a class="anchor" href="#openstack-ussuri--trove-1">#</a>
+</h2>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<ul>
+<li><strong>Trove는 관리형 데이터베이스 서비스 입니다.</strong></li>
+<li><strong>Trove*에 대한 설명은 
+  <a href="https://mung0001.github.io/docs/study/openstack/trove/">Heat</a>을 참조해주세요.</strong></li>
+</ul>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<h3 id="trove-service-및-user-생성">
+  <strong>Trove service 및 User 생성</strong>
+  <a class="anchor" href="#trove-service-%eb%b0%8f-user-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack user create --domain default --project service --password qwer1234 trove
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field               | Value                            |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| default_project_id  | b470c69e28db47cdbfc81e06cc67f627 |
+</span></span><span style="display:flex;"><span>| domain_id           | default                          |
+</span></span><span style="display:flex;"><span>| enabled             | True                             |
+</span></span><span style="display:flex;"><span>| id                  | 3cdb0abe0a3a429ba08f98d8db786b6d |
+</span></span><span style="display:flex;"><span>| name                | trove                            |
+</span></span><span style="display:flex;"><span>| options             | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>| password_expires_at | None                             |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack role add --project service --user trove admin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack service create --name trove --description &#34;Database&#34; database
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | Database                         |
+</span></span><span style="display:flex;"><span>| enabled     | True                             |
+</span></span><span style="display:flex;"><span>| id          | 701b7dca93e74509aaf811eafc29cc03 |
+</span></span><span style="display:flex;"><span>| name        | trove                            |
+</span></span><span style="display:flex;"><span>| type        | database                         |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne database public http://controller:8779/v1.0/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                     |
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                      |
+</span></span><span style="display:flex;"><span>| id           | 58fa28821c444c869be463b550f48651          |
+</span></span><span style="display:flex;"><span>| interface    | public                                    |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                                 |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                                 |
+</span></span><span style="display:flex;"><span>| service_id   | 701b7dca93e74509aaf811eafc29cc03          |
+</span></span><span style="display:flex;"><span>| service_name | trove                                     |
+</span></span><span style="display:flex;"><span>| service_type | database                                  |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8779/v1.0/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne database internal http://controller:8779/v1.0/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                     |
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                      |
+</span></span><span style="display:flex;"><span>| id           | 2809c9cb57884ceabf2902c6b6e62ced          |
+</span></span><span style="display:flex;"><span>| interface    | internal                                  |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                                 |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                                 |
+</span></span><span style="display:flex;"><span>| service_id   | 701b7dca93e74509aaf811eafc29cc03          |
+</span></span><span style="display:flex;"><span>| service_name | trove                                     |
+</span></span><span style="display:flex;"><span>| service_type | database                                  |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8779/v1.0/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne database admin http://controller:8779/v1.0/%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                                     |
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                                      |
+</span></span><span style="display:flex;"><span>| id           | d86280b59bf04be28e71a57ff8b36a0b          |
+</span></span><span style="display:flex;"><span>| interface    | admin                                     |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                                 |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                                 |
+</span></span><span style="display:flex;"><span>| service_id   | 701b7dca93e74509aaf811eafc29cc03          |
+</span></span><span style="display:flex;"><span>| service_name | trove                                     |
+</span></span><span style="display:flex;"><span>| service_type | database                                  |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8779/v1.0/%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+-------------------------------------------+
+</span></span></code></pre></div><h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<h3 id="trove-유저의-db를-생성합니다">
+  <strong>Trove 유저의 DB를 생성합니다.</strong>
+  <a class="anchor" href="#trove-%ec%9c%a0%ec%a0%80%ec%9d%98-db%eb%a5%bc-%ec%83%9d%ec%84%b1%ed%95%a9%eb%8b%88%eb%8b%a4">#</a>
+</h3>
+<h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; mysql -u root -p
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; create database trove;  
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on trove.* to trove@&#39;localhost&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on trove.* to trove@&#39;%&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; flush privileges; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; exit;
+</span></span></code></pre></div><h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<h3 id="trove-설치">
+  <strong>Trove 설치</strong>
+  <a class="anchor" href="#trove-%ec%84%a4%ec%b9%98">#</a>
+</h3>
+<h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-trove python-troveclient
+</span></span><span style="display:flex;"><span># Trove 서비스 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; vi /etc/trove/trove.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>network_driver = trove.network.neutron.NeutronDriver
+</span></span><span style="display:flex;"><span>management_networks = ef7541ad-9599-4285-878a-e0ab62032b03
+</span></span><span style="display:flex;"><span>management_security_groups = d0d797f7-11d4-436e-89a3-ac8bca829f81
+</span></span><span style="display:flex;"><span>cinder_volume_type = lvmdriver-1
+</span></span><span style="display:flex;"><span>nova_keypair = trove-mgmt
+</span></span><span style="display:flex;"><span>default_datastore = mysql
+</span></span><span style="display:flex;"><span>taskmanager_manager = trove.taskmanager.manager.Manager
+</span></span><span style="display:flex;"><span>trove_api_workers = 5
+</span></span><span style="display:flex;"><span>transport_url = rabbit://openstack:qwer1234@controller
+</span></span><span style="display:flex;"><span>control_exchange = trove
+</span></span><span style="display:flex;"><span>rpc_backend = rabbit
+</span></span><span style="display:flex;"><span>reboot_time_out = 300
+</span></span><span style="display:flex;"><span>usage_timeout = 900
+</span></span><span style="display:flex;"><span>agent_call_high_timeout = 1200
+</span></span><span style="display:flex;"><span>use_syslog = False
+</span></span><span style="display:flex;"><span>debug = True
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[keystone_authtoken]
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = trove
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>service_token_roles_required = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[service_credentials]
+</span></span><span style="display:flex;"><span>auth_url = http://controller/identity/v3
+</span></span><span style="display:flex;"><span>region_name = RegionOne
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>project_domain_name = Default
+</span></span><span style="display:flex;"><span>user_domain_name = Default
+</span></span><span style="display:flex;"><span>username = trove
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[database]
+</span></span><span style="display:flex;"><span>connection = mysql+pymysql://trove:qwer1234@controller/trove
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[mariadb]
+</span></span><span style="display:flex;"><span>tcp_ports = 3306,4444,4567,4568
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[mysql]
+</span></span><span style="display:flex;"><span>tcp_ports = 3306
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[postgresql]
+</span></span><span style="display:flex;"><span>tcp_ports = 5432
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; vi /etc/trove/trove-guestagent.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>log_file = trove-guestagent.log
+</span></span><span style="display:flex;"><span>log_dir = /var/log/trove/
+</span></span><span style="display:flex;"><span>ignore_users = os_admin
+</span></span><span style="display:flex;"><span>control_exchange = trove
+</span></span><span style="display:flex;"><span>transport_url = rabbit://openstack:qwer1234@controller
+</span></span><span style="display:flex;"><span>rpc_backend = rabbit
+</span></span><span style="display:flex;"><span>command_process_timeout = 60
+</span></span><span style="display:flex;"><span>use_syslog = False
+</span></span><span style="display:flex;"><span>debug = True
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[service_credentials]
+</span></span><span style="display:flex;"><span>auth_url = http://controller/identity/v3
+</span></span><span style="display:flex;"><span>region_name = RegionOne
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>project_domain_name = Default
+</span></span><span style="display:flex;"><span>user_domain_name = Default
+</span></span><span style="display:flex;"><span>username = trove
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; su -s /bin/sh -c &#34;trove-manage db_sync&#34; trove
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; systemctl enable --now openstack-trove-api.service openstack-trove-taskmanager.service openstack-trove-conductor.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; 
+</span></span></code></pre></div><h1 id="heading-10">
+  
+  <a class="anchor" href="#heading-10">#</a>
+</h1>
+<p> </p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-아직-수정-중-문제있음">! 아직 수정 중 문제있음</a></li>
+    <li><a href="#openstack-ussuri--trove"><strong>OpenStack Ussuri : Trove</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--trove-1"><strong>OpenStack Ussuri : Trove</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove-service-및-user-생성"><strong>Trove service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove-유저의-db를-생성합니다"><strong>Trove 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove-설치"><strong>Trove 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

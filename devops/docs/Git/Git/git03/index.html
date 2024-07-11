@@ -8,14 +8,16 @@ Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가�
 Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="3. Git Branch" />
-<meta property="og:description" content="GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Git/Git/git03/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="3. Git Branch">
+  <meta property="og:description" content="GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미
 Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름 브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능
-Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Git/Git/git03/" /><meta property="article:section" content="docs" />
-
-<meta property="article:modified_time" content="2024-05-26T16:32:01+09:00" />
+Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징">
+  <meta property="og:locale" content="devops">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2024-05-29T17:35:15+09:00">
 <title>3. Git Branch | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -24,6 +26,9 @@ Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 
   <script defer src="/devops.search.min.7c7350b91b49a37b5db17eeb30d789508663d425145da0dbfbebbc7cc60931f4.js" integrity="sha256-fHNQuRtJo3tdsX7rMNeJUIZj1CUUXaDb&#43;&#43;u8fMYJMfQ=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -54,7 +59,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                 
+                   
 
 <ul class="book-languages">
   <li>
@@ -69,6 +74,10 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
       <li>
@@ -127,8 +136,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
-    <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
+    <input type="checkbox" id="section-ab33f98ec482c8bc16f6f3aadd72961c" class="toggle"  />
+    <label for="section-ab33f98ec482c8bc16f6f3aadd72961c" class="flex justify-between">
       <a role="button" class="">CI/CD 배포 입문</a>
     </label>
   
@@ -236,8 +245,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle"  />
-    <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
+    <input type="checkbox" id="section-7acb0652a4b3ec3e86a5d34ca37c0bd1" class="toggle"  />
+    <label for="section-7acb0652a4b3ec3e86a5d34ca37c0bd1" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
   
@@ -340,8 +349,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle" checked />
-    <label for="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="flex justify-between">
+    <input type="checkbox" id="section-8fc86ab93e770996b2a42d54bb94a951" class="toggle" checked />
+    <label for="section-8fc86ab93e770996b2a42d54bb94a951" class="flex justify-between">
       <a role="button" class="">Git</a>
     </label>
   
@@ -418,8 +427,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle"  />
-    <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
+    <input type="checkbox" id="section-5f7f8f111f73dbb7707958fc3e6a0a67" class="toggle"  />
+    <label for="section-5f7f8f111f73dbb7707958fc3e6a0a67" class="flex justify-between">
       <a role="button" class="">Kubernetes</a>
     </label>
   
@@ -543,8 +552,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="toggle"  />
-    <label for="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="flex justify-between">
+    <input type="checkbox" id="section-fe7868a478c068e2b228e3f91670cbc2" class="toggle"  />
+    <label for="section-fe7868a478c068e2b228e3f91670cbc2" class="flex justify-between">
       <a role="button" class="">CKA</a>
     </label>
   
@@ -956,9 +965,9 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/3bca90fe8ce4ca63caf2b8ab5df005060a53ed22" title='Last modified by mungOps | May 26, 2024' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/b116631e3ea0343192751b70340df84d6d1b7eeb" title='Last modified by mungOps | May 29, 2024' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 26, 2024</span>
+      <span>May 29, 2024</span>
     </a>
   </div>
 
@@ -990,7 +999,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     

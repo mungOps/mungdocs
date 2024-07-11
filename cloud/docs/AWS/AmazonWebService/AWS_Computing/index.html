@@ -6,20 +6,25 @@
 <meta name="description" content=" AWS 컴퓨팅 서비스 # EC2 ( Elastic Compute Cloud ) # EC2 공식 홈페이지 가상 컴퓨팅 서비스를 제공해주는 서버로 실제 물리서버와 똑같은 형태의 서비스를 제공 AMI를 통해 필요한 운영체제와 여러 소프트웨어를 쉽게 생성 가능 키 페어를 사용하여 로그린 정보 보호 SSH로 원격 연결이 가능 중지가 가능한 EBS 기반 인스턴스와 임시 스토리지를 제공하여 중지가 불가능한 Instance Store 기반 EC2로 분류 됨 ( 재부팅은 모두 가능 ) 인스턴스의 유형으로는 범용, 컴퓨팅 최적화, 메모리 최적화, 스토리지 최적화 등이 존재 # EC2 상태의 종류 # Pending : 인스턴스가 구동하기 위해 준비중인 상태, 요금 미청구 Runnung : 인스턴스가 실행하고 사용할 준비가 된 상태, 요금 청구 Stopping : 인스턴스가 중지 모드로 전환되려는 상태, 요금 미청구 Shutting-down : 인스턴스가 종료를 위해 준비중인 상태, 요금 미청구 Terminated : 인스턴스가 종료된 상태, 요금 미청구 # EC2 구매옵션 # On demand : 필요할 때 바로 생성하는 방식으로 1시간 단위로 과금이 이루어짐 ( 1분 사용시도 1시간 ) Spot : 경매방식의 인스턴스 기준가격보다 높은 가격 제시시 사용가능하며, 타인에 의해 불시로 종료되거나 정지될 수 있어 각종 테스트에 적합 Reserved : 12개월- 36개월 단위로 예약하여 사용하는 인스턴스로 On demandq비해 가격이 대폭 할인되며, 장기적으로 사용할 경우 효율이 좋지만, 예약된 인스턴스이기에 사용하지 않아도 과금이 부과되어짐 # Lightsail # Lightsail Site AWS에서 VPS ( Virtual Private Server : 가상 사설 서버 ) 를 시작하는 가장 쉽고 빠른 방법 가상 사설 서버, 영구적인 스토리지, 네트워킹을 포함 클릭 한 번으로 모든 과정을 생략, 쉽게 VPS를 생성 및 관리 확장가능 및 타 AWS Services에 접근 가능 고가용성 어플리케이션 생성 가능 저렴하고, 비용의 예측이 보다 쉬움 완전히 사전구성되어 있는 서버 ( BluePrint ) # Lightsail의 유료 Plan # 월간 무료 데이터 허용량 초과시, 퍼블릭 IP 주소를 사용ㅎ여 요금 청구 Lightsail 스냅샷 비용 : 인스턴스 스냅샷 &#43; 디스크 스냅샷 1시간 이상 인스턴스에 연결되어 있지 않은 고정 IP ( Elastic IP ) 무료로 주어지는 3백만 개의 쿼리를 초과하는 경우 # Lightsail&amp; EC2 # Lightsail의 주 사용용도 웹 사이트 및 블로그 단순 앱 개발 및 테스트 환경 소수의 서버로 구성된 비즈니스 소프트웨어 EC2 빅데이터 분석 고성능 컴퓨팅 과학 분야 컴퓨팅 멀티&rsquo;티어 애플리케이션 # ECS ( Elastic Container Service ) # AWS의 Virtual Machine, VM (가상 머신) 가상의 컴퓨터, 하나의 호스트에 안에 또다른 호스트를 만들어 사용하는 것 CPU, Memory와 같은 주요 하드웨어 부품을 소프트웨어로 완전 재현해내어 기능을 흉내내게 하고(에뮬레이션), 격리된 실행 환경(OS)를 만듬 즉 하드웨어를 직접 가상화 클러스터에서 도커 컨테이너를 손쉽게 관리하기 위해 컨테이너 관리 서비스 클러스터는 Task(작업) 또는 서비스로 일컬어지는 컨테이너들의 집합 # 2가지 구성 요소로 시작 가능 EC2(Container Instance) : EC2를 생성하여 EC2 내에 Task(컨테이너가 수행할 작업) Fargate : EC2를 생성하거나 컨테이너를 실행하기 위한 Orchestration을 AWS가 맡아 하는 서비스로, 관리가 용이함 하나의 클러스터 내에 다수의 Task 혹은 컨테이너 인스턴스로 구성됨 또한 ELB, EBS 볼륨, VPC, IAM과 같은 기능을 사용하여 구성 가능 즉 ECS 각 작업의 권한, ECS 액세스를 IAM으로 조절하거나, EC2 유형의 컨테이너 인스턴스만이 OS에 액세스 가능한 특징 등을 갖게 됨 호스트의 OS(Operating System) 내에 또다른 실행환경의 OS가 존재함 윈도우 OS의 호스트 내에 리눅스, 우분투 등의 다양한 OS를 올릴 수 있음 다만 OS를 포함하기 때문에 용량을 많이 차지할 뿐더러, 사용자가 필요치 않는 기능까지 포함할 수 있으며 느림 # Linux Container # ECS를 사용하는 목적이자 관리 대상 하드웨어가 아닌 OS를 가상화하여 커널을 공유하며 프로세스(컨테이너와 비슷)를 격리된 환경에서 실행하는 것 VM와 달리 달리 호스트의 OS에서 가상화를 실시하여, 이 OS 위에 프로세스들이 ‘컨테이너’로서 격리된 환경에서 실행됨 호스트의 입장에선 컨테이너는 프로세스에 불과하지만, 컨테이너 입장에서는 독립된 실행환경임 OS를 포함하지 않는만큼 가볍고, 하드웨어를 가상화하지 않기 때문에 빠름 # Kernel # Operaintg System에서 가장 중요한 역할을 맡고 있는 핵심(核心) 커널이 각 프로세스(실행환경)에 하드웨어 자원(CPU 등)을 할당하고, 작업 스케쥴링(처리순서)를 담당하며, 프로세스 간 접근과 보안을 책임짐 과거에 커널이 없던 시절에도 컴퓨터는 존재할 수 있었으나 메모리를 초기화하기 위해서는 컴퓨터를 리부팅해야 하는 등, 자원관리/제어 주체의 필요성에 의해 탄생 # Docker # 앞서 설명한 Linux Container 기술에 근간을 두는 오픈소스 컨테이너 프로젝트 ‘Docker’라는 단어 자체가 ‘부두에서 일하는 노동자’, 즉 컨테이너를 관리하는 존재임을 뜻함 Linux Container 기술을 사용하는 솔루션이므로 별도의 OS를 설치하지 않고 컨테이너를 생성하여 애플리케이션을 실행함 컨테이너를 생성할 이미지(서비스에 필요한 리소스를 모아둔 최소한의 단위)를 기반으로 운영함 이미지만 가지고 있다면 어느 시점에서든 동일한 리소스의 컨테이너를 생성할 수 있음 그 밖에 컨테이너간의 연결, 다양한 API 제공 등의 기능을 보유 # Lambda # Serverless Service 서버를 구축, 프로비져닝하고 필요한 패키지를 설치하는 등의 과정을 거치지 않고, 코드를 실행하는 서비스 사용자는 애플리케이션이나 백엔드 서비스를 관리할 필요 없이 코드를 실행할 수 있음 CloudWatch, ALB, DynamoDB 등을 트리거로 이용하여 특정 상황에서 코드를 실행시키고 것이 가능 API Gateway와 Lambda를 조합하여 요청별로 특정 코드를 수행하도록 구성 가능 15분을 초과하는 작업에 대해서는 Lambda 비적합 # Lamda Function의 정의와 구성 # 코드를 실행하기 위해 호출할 수 있는 리소스 이벤트를 처리하는 코드, 계층, 트리거, 전달 대상 등으로 구성됨 함수코드 : 실제 호출되기 실행되는 코드, Runtime(코드 실행지원), IAM, VPC, Memory 등으로 구성됨 트리거 : 함수코드를 발동시키는 서비스(S3, SNS, SQS, DynamoDB, CloudWatch Event, Cloudwatch Log 등) SNS의 메시지 구독 대상에 Lambda를 포함시키면, 메시지 발송시 Lambda가 이를 전달받고 함수코드 실행 전달대상 : 함수가 비동기식으로 호출되거나, 레코드를 처리한 경우 전달될 대상 SNS, SQS, 또다른 Lambda, EventBridge 이벤트 버스로 전달가능 NS로부터 메시지를 전달받아 코드를 처리하고 이를 SQS로 보내 메시지 대기열에 적재할 수 있음 # EC2 vs Lambda # EC2 사용시 프로비져닝, 운영 체제, 네트워크 세부 설정, 보안 설정 등을 사용자가 원하는 방향으로 지정 가능 Lambda 사용시 프로비져닝 필요없이 AWS가 모니터링, 프로비져닝, 보안패치 적용, 코드 배포를 모두 수행함 # Batch # 종합 관리형 서비스 한 리전 내의 여러 가용 영역에 걸쳐 배치 작업을 실행하는 과정을 간소화하는 리전 서비스 새 VPC 또는 기존 VPC에서 컴퓨팅 환경을 생성할 수 있음 AWS Batch를 사용하면 AWS 클라우드에서 배치 컴퓨팅 워크로드를 실행이 가능 배치 컴퓨팅 : 다수의 사람들이 수 많은 컴퓨터 리소스에 엑세스 할 때 일반적으로 사용하는 방법 # AWS Batch의 구성요소 # 작업 AWS Batch에 제출한 작업 단위 ( 쉘 스크립ㅌ, Linux 실행 파일, Docker 컨테이너 이미지 ) 작업에는 이름이 있으며, 파라미터를 사용하여 컴퓨팅 환경의 인스턴스에서 컨테이너화된 애플리케이션으로 실행 작업 정의 작업이 실행되는 방식을 지정하며 작업에 있는 리소스에 대한 블루프린트를 의미 IAM 역할을 제공하여 다른 AWS 리소스에 프로그래밍 방식으로 엑세스할 수 있으며 메모리 및 CPU 요구 사항을 모두 지정가능 작업 대기열 AWS Batch 작업이 대기열 예약되는 환경 우선 순위 갑 및 작업 대기열 전체에 우선 순위 할당 가능 컴퓨팅 환경 작업을 싱해하는 데 사용되는 관리형 또는 비관리형 컴퓨팅 리소스 세트 여러 세부 수준에서의 인스턴스 유형의 설정이 가능 # Batch Group # 클러스터 : 인스턴스를 AZ 내에서 근접하게 배치, 결합된 노드 간 낮은 지연 시간의 네트워크 달성 가능 파티션 : 인스턴스가 담긴 그룹을 논리 세그먼트로 나누어 각 파티션에 배치, 최대 7개의 파티션을 가질 수 있으며, 각 파티션은 자체 랙 세트를 보유하고 자체 네트워크 전원을 보유 분산 : 파티션이 논리 세그먼트로 분리된 인스턴스 그룹인 것과 달리 분산은 인스턴스 개체 하나가 자체 랙에 분산 배치됨, AZ당 최대 7개의 인스턴스 배치 가능 # Elastic Beanstalk # Java, NET, PHP, Node js, Python, Ruby, Go, Docker을 사용하여 Apache, Nginx, Passenger, llS와 같은 친숙한 서버에서 개발된 웹 어플리케이션 및 서비스를 간편하게 배포하고 조정 할 수 있는 서비스 EC2, ASG, RDS 등 AWS 리소스들을 조합하여 완성된 어플리케이션 플랫폼으로 PaaS의 일종 오토 스케일링, 로브 밸런싱, 버전 관리 등의 기능을 콘솔에서 몇 번의 클릭으로 생성 가능 실제 서비스가 아니기에 사용 요금이 없음 # Elastic Beanstalk의 장점 # 간단한 서버 세팅 환경변수들을 쉽게 변경/ 관리가 가능 오토 스케일링이 용이 로그의 자동화 추가요금이 없음 # ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="AWS Computing" />
-<meta property="og:description" content=" AWS 컴퓨팅 서비스 # EC2 ( Elastic Compute Cloud ) # EC2 공식 홈페이지 가상 컴퓨팅 서비스를 제공해주는 서버로 실제 물리서버와 똑같은 형태의 서비스를 제공 AMI를 통해 필요한 운영체제와 여러 소프트웨어를 쉽게 생성 가능 키 페어를 사용하여 로그린 정보 보호 SSH로 원격 연결이 가능 중지가 가능한 EBS 기반 인스턴스와 임시 스토리지를 제공하여 중지가 불가능한 Instance Store 기반 EC2로 분류 됨 ( 재부팅은 모두 가능 ) 인스턴스의 유형으로는 범용, 컴퓨팅 최적화, 메모리 최적화, 스토리지 최적화 등이 존재 # EC2 상태의 종류 # Pending : 인스턴스가 구동하기 위해 준비중인 상태, 요금 미청구 Runnung : 인스턴스가 실행하고 사용할 준비가 된 상태, 요금 청구 Stopping : 인스턴스가 중지 모드로 전환되려는 상태, 요금 미청구 Shutting-down : 인스턴스가 종료를 위해 준비중인 상태, 요금 미청구 Terminated : 인스턴스가 종료된 상태, 요금 미청구 # EC2 구매옵션 # On demand : 필요할 때 바로 생성하는 방식으로 1시간 단위로 과금이 이루어짐 ( 1분 사용시도 1시간 ) Spot : 경매방식의 인스턴스 기준가격보다 높은 가격 제시시 사용가능하며, 타인에 의해 불시로 종료되거나 정지될 수 있어 각종 테스트에 적합 Reserved : 12개월- 36개월 단위로 예약하여 사용하는 인스턴스로 On demandq비해 가격이 대폭 할인되며, 장기적으로 사용할 경우 효율이 좋지만, 예약된 인스턴스이기에 사용하지 않아도 과금이 부과되어짐 # Lightsail # Lightsail Site AWS에서 VPS ( Virtual Private Server : 가상 사설 서버 ) 를 시작하는 가장 쉽고 빠른 방법 가상 사설 서버, 영구적인 스토리지, 네트워킹을 포함 클릭 한 번으로 모든 과정을 생략, 쉽게 VPS를 생성 및 관리 확장가능 및 타 AWS Services에 접근 가능 고가용성 어플리케이션 생성 가능 저렴하고, 비용의 예측이 보다 쉬움 완전히 사전구성되어 있는 서버 ( BluePrint ) # Lightsail의 유료 Plan # 월간 무료 데이터 허용량 초과시, 퍼블릭 IP 주소를 사용ㅎ여 요금 청구 Lightsail 스냅샷 비용 : 인스턴스 스냅샷 &#43; 디스크 스냅샷 1시간 이상 인스턴스에 연결되어 있지 않은 고정 IP ( Elastic IP ) 무료로 주어지는 3백만 개의 쿼리를 초과하는 경우 # Lightsail&amp; EC2 # Lightsail의 주 사용용도 웹 사이트 및 블로그 단순 앱 개발 및 테스트 환경 소수의 서버로 구성된 비즈니스 소프트웨어 EC2 빅데이터 분석 고성능 컴퓨팅 과학 분야 컴퓨팅 멀티&rsquo;티어 애플리케이션 # ECS ( Elastic Container Service ) # AWS의 Virtual Machine, VM (가상 머신) 가상의 컴퓨터, 하나의 호스트에 안에 또다른 호스트를 만들어 사용하는 것 CPU, Memory와 같은 주요 하드웨어 부품을 소프트웨어로 완전 재현해내어 기능을 흉내내게 하고(에뮬레이션), 격리된 실행 환경(OS)를 만듬 즉 하드웨어를 직접 가상화 클러스터에서 도커 컨테이너를 손쉽게 관리하기 위해 컨테이너 관리 서비스 클러스터는 Task(작업) 또는 서비스로 일컬어지는 컨테이너들의 집합 # 2가지 구성 요소로 시작 가능 EC2(Container Instance) : EC2를 생성하여 EC2 내에 Task(컨테이너가 수행할 작업) Fargate : EC2를 생성하거나 컨테이너를 실행하기 위한 Orchestration을 AWS가 맡아 하는 서비스로, 관리가 용이함 하나의 클러스터 내에 다수의 Task 혹은 컨테이너 인스턴스로 구성됨 또한 ELB, EBS 볼륨, VPC, IAM과 같은 기능을 사용하여 구성 가능 즉 ECS 각 작업의 권한, ECS 액세스를 IAM으로 조절하거나, EC2 유형의 컨테이너 인스턴스만이 OS에 액세스 가능한 특징 등을 갖게 됨 호스트의 OS(Operating System) 내에 또다른 실행환경의 OS가 존재함 윈도우 OS의 호스트 내에 리눅스, 우분투 등의 다양한 OS를 올릴 수 있음 다만 OS를 포함하기 때문에 용량을 많이 차지할 뿐더러, 사용자가 필요치 않는 기능까지 포함할 수 있으며 느림 # Linux Container # ECS를 사용하는 목적이자 관리 대상 하드웨어가 아닌 OS를 가상화하여 커널을 공유하며 프로세스(컨테이너와 비슷)를 격리된 환경에서 실행하는 것 VM와 달리 달리 호스트의 OS에서 가상화를 실시하여, 이 OS 위에 프로세스들이 ‘컨테이너’로서 격리된 환경에서 실행됨 호스트의 입장에선 컨테이너는 프로세스에 불과하지만, 컨테이너 입장에서는 독립된 실행환경임 OS를 포함하지 않는만큼 가볍고, 하드웨어를 가상화하지 않기 때문에 빠름 # Kernel # Operaintg System에서 가장 중요한 역할을 맡고 있는 핵심(核心) 커널이 각 프로세스(실행환경)에 하드웨어 자원(CPU 등)을 할당하고, 작업 스케쥴링(처리순서)를 담당하며, 프로세스 간 접근과 보안을 책임짐 과거에 커널이 없던 시절에도 컴퓨터는 존재할 수 있었으나 메모리를 초기화하기 위해서는 컴퓨터를 리부팅해야 하는 등, 자원관리/제어 주체의 필요성에 의해 탄생 # Docker # 앞서 설명한 Linux Container 기술에 근간을 두는 오픈소스 컨테이너 프로젝트 ‘Docker’라는 단어 자체가 ‘부두에서 일하는 노동자’, 즉 컨테이너를 관리하는 존재임을 뜻함 Linux Container 기술을 사용하는 솔루션이므로 별도의 OS를 설치하지 않고 컨테이너를 생성하여 애플리케이션을 실행함 컨테이너를 생성할 이미지(서비스에 필요한 리소스를 모아둔 최소한의 단위)를 기반으로 운영함 이미지만 가지고 있다면 어느 시점에서든 동일한 리소스의 컨테이너를 생성할 수 있음 그 밖에 컨테이너간의 연결, 다양한 API 제공 등의 기능을 보유 # Lambda # Serverless Service 서버를 구축, 프로비져닝하고 필요한 패키지를 설치하는 등의 과정을 거치지 않고, 코드를 실행하는 서비스 사용자는 애플리케이션이나 백엔드 서비스를 관리할 필요 없이 코드를 실행할 수 있음 CloudWatch, ALB, DynamoDB 등을 트리거로 이용하여 특정 상황에서 코드를 실행시키고 것이 가능 API Gateway와 Lambda를 조합하여 요청별로 특정 코드를 수행하도록 구성 가능 15분을 초과하는 작업에 대해서는 Lambda 비적합 # Lamda Function의 정의와 구성 # 코드를 실행하기 위해 호출할 수 있는 리소스 이벤트를 처리하는 코드, 계층, 트리거, 전달 대상 등으로 구성됨 함수코드 : 실제 호출되기 실행되는 코드, Runtime(코드 실행지원), IAM, VPC, Memory 등으로 구성됨 트리거 : 함수코드를 발동시키는 서비스(S3, SNS, SQS, DynamoDB, CloudWatch Event, Cloudwatch Log 등) SNS의 메시지 구독 대상에 Lambda를 포함시키면, 메시지 발송시 Lambda가 이를 전달받고 함수코드 실행 전달대상 : 함수가 비동기식으로 호출되거나, 레코드를 처리한 경우 전달될 대상 SNS, SQS, 또다른 Lambda, EventBridge 이벤트 버스로 전달가능 NS로부터 메시지를 전달받아 코드를 처리하고 이를 SQS로 보내 메시지 대기열에 적재할 수 있음 # EC2 vs Lambda # EC2 사용시 프로비져닝, 운영 체제, 네트워크 세부 설정, 보안 설정 등을 사용자가 원하는 방향으로 지정 가능 Lambda 사용시 프로비져닝 필요없이 AWS가 모니터링, 프로비져닝, 보안패치 적용, 코드 배포를 모두 수행함 # Batch # 종합 관리형 서비스 한 리전 내의 여러 가용 영역에 걸쳐 배치 작업을 실행하는 과정을 간소화하는 리전 서비스 새 VPC 또는 기존 VPC에서 컴퓨팅 환경을 생성할 수 있음 AWS Batch를 사용하면 AWS 클라우드에서 배치 컴퓨팅 워크로드를 실행이 가능 배치 컴퓨팅 : 다수의 사람들이 수 많은 컴퓨터 리소스에 엑세스 할 때 일반적으로 사용하는 방법 # AWS Batch의 구성요소 # 작업 AWS Batch에 제출한 작업 단위 ( 쉘 스크립ㅌ, Linux 실행 파일, Docker 컨테이너 이미지 ) 작업에는 이름이 있으며, 파라미터를 사용하여 컴퓨팅 환경의 인스턴스에서 컨테이너화된 애플리케이션으로 실행 작업 정의 작업이 실행되는 방식을 지정하며 작업에 있는 리소스에 대한 블루프린트를 의미 IAM 역할을 제공하여 다른 AWS 리소스에 프로그래밍 방식으로 엑세스할 수 있으며 메모리 및 CPU 요구 사항을 모두 지정가능 작업 대기열 AWS Batch 작업이 대기열 예약되는 환경 우선 순위 갑 및 작업 대기열 전체에 우선 순위 할당 가능 컴퓨팅 환경 작업을 싱해하는 데 사용되는 관리형 또는 비관리형 컴퓨팅 리소스 세트 여러 세부 수준에서의 인스턴스 유형의 설정이 가능 # Batch Group # 클러스터 : 인스턴스를 AZ 내에서 근접하게 배치, 결합된 노드 간 낮은 지연 시간의 네트워크 달성 가능 파티션 : 인스턴스가 담긴 그룹을 논리 세그먼트로 나누어 각 파티션에 배치, 최대 7개의 파티션을 가질 수 있으며, 각 파티션은 자체 랙 세트를 보유하고 자체 네트워크 전원을 보유 분산 : 파티션이 논리 세그먼트로 분리된 인스턴스 그룹인 것과 달리 분산은 인스턴스 개체 하나가 자체 랙에 분산 배치됨, AZ당 최대 7개의 인스턴스 배치 가능 # Elastic Beanstalk # Java, NET, PHP, Node js, Python, Ruby, Go, Docker을 사용하여 Apache, Nginx, Passenger, llS와 같은 친숙한 서버에서 개발된 웹 어플리케이션 및 서비스를 간편하게 배포하고 조정 할 수 있는 서비스 EC2, ASG, RDS 등 AWS 리소스들을 조합하여 완성된 어플리케이션 플랫폼으로 PaaS의 일종 오토 스케일링, 로브 밸런싱, 버전 관리 등의 기능을 콘솔에서 몇 번의 클릭으로 생성 가능 실제 서비스가 아니기에 사용 요금이 없음 # Elastic Beanstalk의 장점 # 간단한 서버 세팅 환경변수들을 쉽게 변경/ 관리가 가능 오토 스케일링이 용이 로그의 자동화 추가요금이 없음 # " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AmazonWebService/AWS_Computing/" /><meta property="article:section" content="docs" />
-
-<meta property="article:modified_time" content="2023-12-17T19:51:40+09:00" />
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AmazonWebService/AWS_Computing/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="AWS Computing">
+  <meta property="og:description" content=" AWS 컴퓨팅 서비스 # EC2 ( Elastic Compute Cloud ) # EC2 공식 홈페이지 가상 컴퓨팅 서비스를 제공해주는 서버로 실제 물리서버와 똑같은 형태의 서비스를 제공 AMI를 통해 필요한 운영체제와 여러 소프트웨어를 쉽게 생성 가능 키 페어를 사용하여 로그린 정보 보호 SSH로 원격 연결이 가능 중지가 가능한 EBS 기반 인스턴스와 임시 스토리지를 제공하여 중지가 불가능한 Instance Store 기반 EC2로 분류 됨 ( 재부팅은 모두 가능 ) 인스턴스의 유형으로는 범용, 컴퓨팅 최적화, 메모리 최적화, 스토리지 최적화 등이 존재 # EC2 상태의 종류 # Pending : 인스턴스가 구동하기 위해 준비중인 상태, 요금 미청구 Runnung : 인스턴스가 실행하고 사용할 준비가 된 상태, 요금 청구 Stopping : 인스턴스가 중지 모드로 전환되려는 상태, 요금 미청구 Shutting-down : 인스턴스가 종료를 위해 준비중인 상태, 요금 미청구 Terminated : 인스턴스가 종료된 상태, 요금 미청구 # EC2 구매옵션 # On demand : 필요할 때 바로 생성하는 방식으로 1시간 단위로 과금이 이루어짐 ( 1분 사용시도 1시간 ) Spot : 경매방식의 인스턴스 기준가격보다 높은 가격 제시시 사용가능하며, 타인에 의해 불시로 종료되거나 정지될 수 있어 각종 테스트에 적합 Reserved : 12개월- 36개월 단위로 예약하여 사용하는 인스턴스로 On demandq비해 가격이 대폭 할인되며, 장기적으로 사용할 경우 효율이 좋지만, 예약된 인스턴스이기에 사용하지 않아도 과금이 부과되어짐 # Lightsail # Lightsail Site AWS에서 VPS ( Virtual Private Server : 가상 사설 서버 ) 를 시작하는 가장 쉽고 빠른 방법 가상 사설 서버, 영구적인 스토리지, 네트워킹을 포함 클릭 한 번으로 모든 과정을 생략, 쉽게 VPS를 생성 및 관리 확장가능 및 타 AWS Services에 접근 가능 고가용성 어플리케이션 생성 가능 저렴하고, 비용의 예측이 보다 쉬움 완전히 사전구성되어 있는 서버 ( BluePrint ) # Lightsail의 유료 Plan # 월간 무료 데이터 허용량 초과시, 퍼블릭 IP 주소를 사용ㅎ여 요금 청구 Lightsail 스냅샷 비용 : 인스턴스 스냅샷 &#43; 디스크 스냅샷 1시간 이상 인스턴스에 연결되어 있지 않은 고정 IP ( Elastic IP ) 무료로 주어지는 3백만 개의 쿼리를 초과하는 경우 # Lightsail&amp; EC2 # Lightsail의 주 사용용도 웹 사이트 및 블로그 단순 앱 개발 및 테스트 환경 소수의 서버로 구성된 비즈니스 소프트웨어 EC2 빅데이터 분석 고성능 컴퓨팅 과학 분야 컴퓨팅 멀티’티어 애플리케이션 # ECS ( Elastic Container Service ) # AWS의 Virtual Machine, VM (가상 머신) 가상의 컴퓨터, 하나의 호스트에 안에 또다른 호스트를 만들어 사용하는 것 CPU, Memory와 같은 주요 하드웨어 부품을 소프트웨어로 완전 재현해내어 기능을 흉내내게 하고(에뮬레이션), 격리된 실행 환경(OS)를 만듬 즉 하드웨어를 직접 가상화 클러스터에서 도커 컨테이너를 손쉽게 관리하기 위해 컨테이너 관리 서비스 클러스터는 Task(작업) 또는 서비스로 일컬어지는 컨테이너들의 집합 # 2가지 구성 요소로 시작 가능 EC2(Container Instance) : EC2를 생성하여 EC2 내에 Task(컨테이너가 수행할 작업) Fargate : EC2를 생성하거나 컨테이너를 실행하기 위한 Orchestration을 AWS가 맡아 하는 서비스로, 관리가 용이함 하나의 클러스터 내에 다수의 Task 혹은 컨테이너 인스턴스로 구성됨 또한 ELB, EBS 볼륨, VPC, IAM과 같은 기능을 사용하여 구성 가능 즉 ECS 각 작업의 권한, ECS 액세스를 IAM으로 조절하거나, EC2 유형의 컨테이너 인스턴스만이 OS에 액세스 가능한 특징 등을 갖게 됨 호스트의 OS(Operating System) 내에 또다른 실행환경의 OS가 존재함 윈도우 OS의 호스트 내에 리눅스, 우분투 등의 다양한 OS를 올릴 수 있음 다만 OS를 포함하기 때문에 용량을 많이 차지할 뿐더러, 사용자가 필요치 않는 기능까지 포함할 수 있으며 느림 # Linux Container # ECS를 사용하는 목적이자 관리 대상 하드웨어가 아닌 OS를 가상화하여 커널을 공유하며 프로세스(컨테이너와 비슷)를 격리된 환경에서 실행하는 것 VM와 달리 달리 호스트의 OS에서 가상화를 실시하여, 이 OS 위에 프로세스들이 ‘컨테이너’로서 격리된 환경에서 실행됨 호스트의 입장에선 컨테이너는 프로세스에 불과하지만, 컨테이너 입장에서는 독립된 실행환경임 OS를 포함하지 않는만큼 가볍고, 하드웨어를 가상화하지 않기 때문에 빠름 # Kernel # Operaintg System에서 가장 중요한 역할을 맡고 있는 핵심(核心) 커널이 각 프로세스(실행환경)에 하드웨어 자원(CPU 등)을 할당하고, 작업 스케쥴링(처리순서)를 담당하며, 프로세스 간 접근과 보안을 책임짐 과거에 커널이 없던 시절에도 컴퓨터는 존재할 수 있었으나 메모리를 초기화하기 위해서는 컴퓨터를 리부팅해야 하는 등, 자원관리/제어 주체의 필요성에 의해 탄생 # Docker # 앞서 설명한 Linux Container 기술에 근간을 두는 오픈소스 컨테이너 프로젝트 ‘Docker’라는 단어 자체가 ‘부두에서 일하는 노동자’, 즉 컨테이너를 관리하는 존재임을 뜻함 Linux Container 기술을 사용하는 솔루션이므로 별도의 OS를 설치하지 않고 컨테이너를 생성하여 애플리케이션을 실행함 컨테이너를 생성할 이미지(서비스에 필요한 리소스를 모아둔 최소한의 단위)를 기반으로 운영함 이미지만 가지고 있다면 어느 시점에서든 동일한 리소스의 컨테이너를 생성할 수 있음 그 밖에 컨테이너간의 연결, 다양한 API 제공 등의 기능을 보유 # Lambda # Serverless Service 서버를 구축, 프로비져닝하고 필요한 패키지를 설치하는 등의 과정을 거치지 않고, 코드를 실행하는 서비스 사용자는 애플리케이션이나 백엔드 서비스를 관리할 필요 없이 코드를 실행할 수 있음 CloudWatch, ALB, DynamoDB 등을 트리거로 이용하여 특정 상황에서 코드를 실행시키고 것이 가능 API Gateway와 Lambda를 조합하여 요청별로 특정 코드를 수행하도록 구성 가능 15분을 초과하는 작업에 대해서는 Lambda 비적합 # Lamda Function의 정의와 구성 # 코드를 실행하기 위해 호출할 수 있는 리소스 이벤트를 처리하는 코드, 계층, 트리거, 전달 대상 등으로 구성됨 함수코드 : 실제 호출되기 실행되는 코드, Runtime(코드 실행지원), IAM, VPC, Memory 등으로 구성됨 트리거 : 함수코드를 발동시키는 서비스(S3, SNS, SQS, DynamoDB, CloudWatch Event, Cloudwatch Log 등) SNS의 메시지 구독 대상에 Lambda를 포함시키면, 메시지 발송시 Lambda가 이를 전달받고 함수코드 실행 전달대상 : 함수가 비동기식으로 호출되거나, 레코드를 처리한 경우 전달될 대상 SNS, SQS, 또다른 Lambda, EventBridge 이벤트 버스로 전달가능 NS로부터 메시지를 전달받아 코드를 처리하고 이를 SQS로 보내 메시지 대기열에 적재할 수 있음 # EC2 vs Lambda # EC2 사용시 프로비져닝, 운영 체제, 네트워크 세부 설정, 보안 설정 등을 사용자가 원하는 방향으로 지정 가능 Lambda 사용시 프로비져닝 필요없이 AWS가 모니터링, 프로비져닝, 보안패치 적용, 코드 배포를 모두 수행함 # Batch # 종합 관리형 서비스 한 리전 내의 여러 가용 영역에 걸쳐 배치 작업을 실행하는 과정을 간소화하는 리전 서비스 새 VPC 또는 기존 VPC에서 컴퓨팅 환경을 생성할 수 있음 AWS Batch를 사용하면 AWS 클라우드에서 배치 컴퓨팅 워크로드를 실행이 가능 배치 컴퓨팅 : 다수의 사람들이 수 많은 컴퓨터 리소스에 엑세스 할 때 일반적으로 사용하는 방법 # AWS Batch의 구성요소 # 작업 AWS Batch에 제출한 작업 단위 ( 쉘 스크립ㅌ, Linux 실행 파일, Docker 컨테이너 이미지 ) 작업에는 이름이 있으며, 파라미터를 사용하여 컴퓨팅 환경의 인스턴스에서 컨테이너화된 애플리케이션으로 실행 작업 정의 작업이 실행되는 방식을 지정하며 작업에 있는 리소스에 대한 블루프린트를 의미 IAM 역할을 제공하여 다른 AWS 리소스에 프로그래밍 방식으로 엑세스할 수 있으며 메모리 및 CPU 요구 사항을 모두 지정가능 작업 대기열 AWS Batch 작업이 대기열 예약되는 환경 우선 순위 갑 및 작업 대기열 전체에 우선 순위 할당 가능 컴퓨팅 환경 작업을 싱해하는 데 사용되는 관리형 또는 비관리형 컴퓨팅 리소스 세트 여러 세부 수준에서의 인스턴스 유형의 설정이 가능 # Batch Group # 클러스터 : 인스턴스를 AZ 내에서 근접하게 배치, 결합된 노드 간 낮은 지연 시간의 네트워크 달성 가능 파티션 : 인스턴스가 담긴 그룹을 논리 세그먼트로 나누어 각 파티션에 배치, 최대 7개의 파티션을 가질 수 있으며, 각 파티션은 자체 랙 세트를 보유하고 자체 네트워크 전원을 보유 분산 : 파티션이 논리 세그먼트로 분리된 인스턴스 그룹인 것과 달리 분산은 인스턴스 개체 하나가 자체 랙에 분산 배치됨, AZ당 최대 7개의 인스턴스 배치 가능 # Elastic Beanstalk # Java, NET, PHP, Node js, Python, Ruby, Go, Docker을 사용하여 Apache, Nginx, Passenger, llS와 같은 친숙한 서버에서 개발된 웹 어플리케이션 및 서비스를 간편하게 배포하고 조정 할 수 있는 서비스 EC2, ASG, RDS 등 AWS 리소스들을 조합하여 완성된 어플리케이션 플랫폼으로 PaaS의 일종 오토 스케일링, 로브 밸런싱, 버전 관리 등의 기능을 콘솔에서 몇 번의 클릭으로 생성 가능 실제 서비스가 아니기에 사용 요금이 없음 # Elastic Beanstalk의 장점 # 간단한 서버 세팅 환경변수들을 쉽게 변경/ 관리가 가능 오토 스케일링이 용이 로그의 자동화 추가요금이 없음 # ">
+  <meta property="og:locale" content="cloud">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>AWS Computing | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/cloud.search.min.28d82f44c1c960a009665687a82aec5cfe9058390c4125d740817570608abe3c.js" integrity="sha256-KNgvRMHJYKAJZlaHqCrsXP6QWDkMQSXXQIF1cGCKvjw=" crossorigin="anonymous"></script>
+  <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -50,7 +55,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                 
+                   
 
 <ul class="book-languages">
   <li>
@@ -64,11 +69,11 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://mungdocs.kro.kr/devops/"> DevOps </a>
+        <a href="http://mungdocs.kro.kr/"> Main </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/"> Main </a>
+        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
       <li>
@@ -81,6 +86,10 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/devops/"> DevOps </a>
       </li>
       
       <li>
@@ -123,8 +132,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-559739c10f554f33601ed16477a2a1bf" class="toggle" checked />
-    <label for="section-559739c10f554f33601ed16477a2a1bf" class="flex justify-between">
+    <input type="checkbox" id="section-c474a2c6f171164bd8b8dd74a994bcdb" class="toggle" checked />
+    <label for="section-c474a2c6f171164bd8b8dd74a994bcdb" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/" class="">AWS docs</a>
     </label>
   
@@ -139,8 +148,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-01214a43abe8217e4c31de26b69292b5" class="toggle"  />
-    <label for="section-01214a43abe8217e4c31de26b69292b5" class="flex justify-between">
+    <input type="checkbox" id="section-127f7272cb23a5e683badcbf574b43bd" class="toggle"  />
+    <label for="section-127f7272cb23a5e683badcbf574b43bd" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS%EB%9E%80/" class="">CloudComputing과 AWS</a>
     </label>
   
@@ -155,8 +164,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9320d3c2720542aa55c4c13bf4cf3944" class="toggle" checked />
-    <label for="section-9320d3c2720542aa55c4c13bf4cf3944" class="flex justify-between">
+    <input type="checkbox" id="section-eb9db5ec8ebc80eaecfbc98e5cf891a4" class="toggle" checked />
+    <label for="section-eb9db5ec8ebc80eaecfbc98e5cf891a4" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Computing/" class="active">AWS Computing</a>
     </label>
   
@@ -171,8 +180,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-687a5febe39299bf42a7f85877b9ae78" class="toggle"  />
-    <label for="section-687a5febe39299bf42a7f85877b9ae78" class="flex justify-between">
+    <input type="checkbox" id="section-d14c4ce10b0a95da980448ca58de48e3" class="toggle"  />
+    <label for="section-d14c4ce10b0a95da980448ca58de48e3" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Database/" class="">AWS Database</a>
     </label>
   
@@ -187,8 +196,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-3e9a856552b65c7cf2f94e7e9c8debe1" class="toggle"  />
-    <label for="section-3e9a856552b65c7cf2f94e7e9c8debe1" class="flex justify-between">
+    <input type="checkbox" id="section-dfa2073fcba1bed879e71c576cfc12da" class="toggle"  />
+    <label for="section-dfa2073fcba1bed879e71c576cfc12da" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Storage/" class="">AWS Storage</a>
     </label>
   
@@ -203,8 +212,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-eb55c18d3622bc3e157902b5c3e80ab4" class="toggle"  />
-    <label for="section-eb55c18d3622bc3e157902b5c3e80ab4" class="flex justify-between">
+    <input type="checkbox" id="section-754a99ab9ae2c8865179891f25a0da46" class="toggle"  />
+    <label for="section-754a99ab9ae2c8865179891f25a0da46" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Network/" class="">AWS Network</a>
     </label>
   
@@ -219,8 +228,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7828bef039f47afe761031f9f53dd372" class="toggle"  />
-    <label for="section-7828bef039f47afe761031f9f53dd372" class="flex justify-between">
+    <input type="checkbox" id="section-8ce43a3b275b660e79cea6d0295a9e8f" class="toggle"  />
+    <label for="section-8ce43a3b275b660e79cea6d0295a9e8f" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Migrate/" class="">AWS Migrate</a>
     </label>
   
@@ -235,8 +244,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5275748c5176f455992ccc16d91dab4f" class="toggle"  />
-    <label for="section-5275748c5176f455992ccc16d91dab4f" class="flex justify-between">
+    <input type="checkbox" id="section-77c68d26e976c7b050f79a8b65cd6b66" class="toggle"  />
+    <label for="section-77c68d26e976c7b050f79a8b65cd6b66" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Developer/" class="">AWS Developer</a>
     </label>
   
@@ -251,8 +260,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d53f0d1594292910ed9a9197c4a4eb84" class="toggle"  />
-    <label for="section-d53f0d1594292910ed9a9197c4a4eb84" class="flex justify-between">
+    <input type="checkbox" id="section-1715d1903f89834cb237b0b60938402a" class="toggle"  />
+    <label for="section-1715d1903f89834cb237b0b60938402a" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Management/" class="">AWS Management</a>
     </label>
   
@@ -267,8 +276,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e1956338f3b1917320dfaaf78c79fe4e" class="toggle"  />
-    <label for="section-e1956338f3b1917320dfaaf78c79fe4e" class="flex justify-between">
+    <input type="checkbox" id="section-eb3fa22aaf7248d03733669022459735" class="toggle"  />
+    <label for="section-eb3fa22aaf7248d03733669022459735" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Security/" class="">AWS Security</a>
     </label>
   
@@ -283,8 +292,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e8ce18580cb61bc02dfdbad16e573703" class="toggle"  />
-    <label for="section-e8ce18580cb61bc02dfdbad16e573703" class="flex justify-between">
+    <input type="checkbox" id="section-9fae7f6bf3c34ac43bf2d067ba587064" class="toggle"  />
+    <label for="section-9fae7f6bf3c34ac43bf2d067ba587064" class="flex justify-between">
       <a href="/cloud/docs/AWS/AmazonWebService/AWS_Analysis/" class="">AWS Analysis</a>
     </label>
   
@@ -304,8 +313,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-aaf0c0f91cf79e707d750d3399578720" class="toggle"  />
-    <label for="section-aaf0c0f91cf79e707d750d3399578720" class="flex justify-between">
+    <input type="checkbox" id="section-08d73906b2917807be397f1d7a98234f" class="toggle"  />
+    <label for="section-08d73906b2917807be397f1d7a98234f" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/" class="">AWS Training</a>
     </label>
   
@@ -320,8 +329,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-34ff7a2d1c1132b8504c6f4e6a015f3b" class="toggle"  />
-    <label for="section-34ff7a2d1c1132b8504c6f4e6a015f3b" class="flex justify-between">
+    <input type="checkbox" id="section-c8ac59f74f09d0223040725553cabfab" class="toggle"  />
+    <label for="section-c8ac59f74f09d0223040725553cabfab" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/Start/" class="">AWS 시작하기</a>
     </label>
   
@@ -336,8 +345,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-62db6ace5a8d9160add1cec57af1f390" class="toggle"  />
-    <label for="section-62db6ace5a8d9160add1cec57af1f390" class="flex justify-between">
+    <input type="checkbox" id="section-74e9c8c927ba3fa88b7a14ab151ecc28" class="toggle"  />
+    <label for="section-74e9c8c927ba3fa88b7a14ab151ecc28" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/IAM/" class="">AWS 사용자 계정 생성</a>
     </label>
   
@@ -352,8 +361,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d92936973728a32fff0609d14fc4623f" class="toggle"  />
-    <label for="section-d92936973728a32fff0609d14fc4623f" class="flex justify-between">
+    <input type="checkbox" id="section-04c6c08180bfdec704ceb06be136aada" class="toggle"  />
+    <label for="section-04c6c08180bfdec704ceb06be136aada" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/Cli/" class="">AWS CLI 활용</a>
     </label>
   
@@ -368,8 +377,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1d474a464b70097646e91eea74d70ad5" class="toggle"  />
-    <label for="section-1d474a464b70097646e91eea74d70ad5" class="flex justify-between">
+    <input type="checkbox" id="section-643749b016f7e759f4d5e8108c7691de" class="toggle"  />
+    <label for="section-643749b016f7e759f4d5e8108c7691de" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/VPC/" class="">AWS 사용자 정의 VPC 생성</a>
     </label>
   
@@ -384,8 +393,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d76d7cc323ae039c1b0f0a8bbb75dd8b" class="toggle"  />
-    <label for="section-d76d7cc323ae039c1b0f0a8bbb75dd8b" class="flex justify-between">
+    <input type="checkbox" id="section-ddad93cb3fa77fe064f586c970b52d90" class="toggle"  />
+    <label for="section-ddad93cb3fa77fe064f586c970b52d90" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/EC2/" class="">AWS EC2 생성</a>
     </label>
   
@@ -400,8 +409,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5b0208072f17b2ad73c771bae4b9b14f" class="toggle"  />
-    <label for="section-5b0208072f17b2ad73c771bae4b9b14f" class="flex justify-between">
+    <input type="checkbox" id="section-a22195daab911da56068b61585c80253" class="toggle"  />
+    <label for="section-a22195daab911da56068b61585c80253" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/AMI/" class="">AWS AMI 생성</a>
     </label>
   
@@ -416,8 +425,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-378a734dfe4ff63eb5bc3f1d69b36626" class="toggle"  />
-    <label for="section-378a734dfe4ff63eb5bc3f1d69b36626" class="flex justify-between">
+    <input type="checkbox" id="section-26655bc804cb6c38966a565212d8610a" class="toggle"  />
+    <label for="section-26655bc804cb6c38966a565212d8610a" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/EIP/" class="">AWS Elastic IP 할당</a>
     </label>
   
@@ -432,8 +441,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-27facc7c949755ae81fcd8d51a323966" class="toggle"  />
-    <label for="section-27facc7c949755ae81fcd8d51a323966" class="flex justify-between">
+    <input type="checkbox" id="section-914bdd743edd5e5e8be298973544233f" class="toggle"  />
+    <label for="section-914bdd743edd5e5e8be298973544233f" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/ELB/" class="">AWS ELB ( 2 Tier ) 생성</a>
     </label>
   
@@ -448,8 +457,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-53dd89a6941007271039c624b455ad12" class="toggle"  />
-    <label for="section-53dd89a6941007271039c624b455ad12" class="flex justify-between">
+    <input type="checkbox" id="section-3a1972c06fdbd4b9976850d0c06d5e29" class="toggle"  />
+    <label for="section-3a1972c06fdbd4b9976850d0c06d5e29" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/AS/" class="">AWS AutoScaling</a>
     </label>
   
@@ -464,8 +473,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-8d31b17e4c1709dbbfefa52cd9553658" class="toggle"  />
-    <label for="section-8d31b17e4c1709dbbfefa52cd9553658" class="flex justify-between">
+    <input type="checkbox" id="section-a21e9ac9e916e61222c6b49d7f5de6c0" class="toggle"  />
+    <label for="section-a21e9ac9e916e61222c6b49d7f5de6c0" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/RDS/" class="">AWS RDS 생성</a>
     </label>
   
@@ -480,8 +489,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0c6fe286f3eaf6aaeb3ae6d49ef47ce6" class="toggle"  />
-    <label for="section-0c6fe286f3eaf6aaeb3ae6d49ef47ce6" class="flex justify-between">
+    <input type="checkbox" id="section-4b8217b3cf1f544a4d31d30590c69e3e" class="toggle"  />
+    <label for="section-4b8217b3cf1f544a4d31d30590c69e3e" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/3Tier/" class="">AWS 3Tier 구현</a>
     </label>
   
@@ -496,8 +505,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-f4eed6e58a9cdb647e622986cc6f5845" class="toggle"  />
-    <label for="section-f4eed6e58a9cdb647e622986cc6f5845" class="flex justify-between">
+    <input type="checkbox" id="section-c6f0ddc93e89614f42b68d9b8ff6dc67" class="toggle"  />
+    <label for="section-c6f0ddc93e89614f42b68d9b8ff6dc67" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/S3/" class="">AWS S3 생성</a>
     </label>
   
@@ -512,8 +521,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-14f06e2990e3289b99e7ff77817a00eb" class="toggle"  />
-    <label for="section-14f06e2990e3289b99e7ff77817a00eb" class="flex justify-between">
+    <input type="checkbox" id="section-10bfb4dc8a8c99c0ab36a65d83fdc5f8" class="toggle"  />
+    <label for="section-10bfb4dc8a8c99c0ab36a65d83fdc5f8" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/OwnCloud/" class="">AWS OwnCloud</a>
     </label>
   
@@ -528,8 +537,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c1f89151b39397845d8f9d9699b61aff" class="toggle"  />
-    <label for="section-c1f89151b39397845d8f9d9699b61aff" class="flex justify-between">
+    <input type="checkbox" id="section-a95772bfb0c5ae38d0c29cc413c779cf" class="toggle"  />
+    <label for="section-a95772bfb0c5ae38d0c29cc413c779cf" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/CloudFormation/" class="">AWS CloudFormation</a>
     </label>
   
@@ -544,8 +553,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-953395ef1cedfe312d27b98e93952d01" class="toggle"  />
-    <label for="section-953395ef1cedfe312d27b98e93952d01" class="flex justify-between">
+    <input type="checkbox" id="section-cf31ec845577cf8ba07592d494d5614c" class="toggle"  />
+    <label for="section-cf31ec845577cf8ba07592d494d5614c" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/NoServer/" class="">AWS 서버리스 사이트 구축</a>
     </label>
   
@@ -560,8 +569,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5c227fcd1ae915a41ae4e4b4610e8d8d" class="toggle"  />
-    <label for="section-5c227fcd1ae915a41ae4e4b4610e8d8d" class="flex justify-between">
+    <input type="checkbox" id="section-8b2aea8de43ac4119013e13c9be80475" class="toggle"  />
+    <label for="section-8b2aea8de43ac4119013e13c9be80475" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/EBS/" class="">정리 중</a>
     </label>
   
@@ -576,8 +585,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-af571bbbcb8eb4db068e46f6c1d212aa" class="toggle"  />
-    <label for="section-af571bbbcb8eb4db068e46f6c1d212aa" class="flex justify-between">
+    <input type="checkbox" id="section-8347aff58d79e5ba6fbe695454e27bc0" class="toggle"  />
+    <label for="section-8347aff58d79e5ba6fbe695454e27bc0" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/Cognito/" class="">AWS Cognito</a>
     </label>
   
@@ -592,8 +601,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-66f6f2b37ecc79219a4e9d47ea8e4561" class="toggle"  />
-    <label for="section-66f6f2b37ecc79219a4e9d47ea8e4561" class="flex justify-between">
+    <input type="checkbox" id="section-d96fdd4c3d9c421918cc834401792513" class="toggle"  />
+    <label for="section-d96fdd4c3d9c421918cc834401792513" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/EC2Site/" class="">EC2 동적 사이트 구축</a>
     </label>
   
@@ -608,8 +617,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-768658eee1293f83068a6b207ff96c54" class="toggle"  />
-    <label for="section-768658eee1293f83068a6b207ff96c54" class="flex justify-between">
+    <input type="checkbox" id="section-b54977baf5488aeac9c507e645a0406f" class="toggle"  />
+    <label for="section-b54977baf5488aeac9c507e645a0406f" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/ElasticBeanstalk/" class="">Elastic Beanstalk 사이트 구축</a>
     </label>
   
@@ -624,8 +633,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0580b159571ac957954766b55c157773" class="toggle"  />
-    <label for="section-0580b159571ac957954766b55c157773" class="flex justify-between">
+    <input type="checkbox" id="section-661206ae5ba68ce73b5f493baf8b8b3f" class="toggle"  />
+    <label for="section-661206ae5ba68ce73b5f493baf8b8b3f" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/SES/" class="">AWS SES 메일 시스템 구축</a>
     </label>
   
@@ -640,8 +649,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d038291309973e62c7b96fa61d4e3be3" class="toggle"  />
-    <label for="section-d038291309973e62c7b96fa61d4e3be3" class="flex justify-between">
+    <input type="checkbox" id="section-cc0e5e8287e3706a142342b98f8806d9" class="toggle"  />
+    <label for="section-cc0e5e8287e3706a142342b98f8806d9" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/AWS-Lambda-Crawling/" class="">AWS Lambda Crawling</a>
     </label>
   
@@ -656,8 +665,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-53615f6aa0d8800e7bfe60663d8bd180" class="toggle"  />
-    <label for="section-53615f6aa0d8800e7bfe60663d8bd180" class="flex justify-between">
+    <input type="checkbox" id="section-8ed0ab96a3ce393a21d7db92d09dc41e" class="toggle"  />
+    <label for="section-8ed0ab96a3ce393a21d7db92d09dc41e" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSTraining/Game/" class="">EC2 끄투온라인 서버 구축</a>
     </label>
   
@@ -677,8 +686,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7f3fb864385111e956f94b2475a5e6a7" class="toggle"  />
-    <label for="section-7f3fb864385111e956f94b2475a5e6a7" class="flex justify-between">
+    <input type="checkbox" id="section-29288a01ba1c2fbd915e723298121745" class="toggle"  />
+    <label for="section-29288a01ba1c2fbd915e723298121745" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/" class="">AWS SAA 시험정리</a>
     </label>
   
@@ -693,8 +702,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-060344b66e26cb0a5d4aba9f3ff39bea" class="toggle"  />
-    <label for="section-060344b66e26cb0a5d4aba9f3ff39bea" class="flex justify-between">
+    <input type="checkbox" id="section-f2650ef3e1cba3d12e64299054a61254" class="toggle"  />
+    <label for="section-f2650ef3e1cba3d12e64299054a61254" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-1/" class="">1장 AWS의 핵심 서비스</a>
     </label>
   
@@ -709,8 +718,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-92010054b47d1673f2b76ac20f614049" class="toggle"  />
-    <label for="section-92010054b47d1673f2b76ac20f614049" class="flex justify-between">
+    <input type="checkbox" id="section-3ecf37c2491b249352221b86cc719924" class="toggle"  />
+    <label for="section-3ecf37c2491b249352221b86cc719924" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-2/" class="">2장 EC2와 EBS</a>
     </label>
   
@@ -725,8 +734,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-32a1bfa2b573d79877958382e69b7141" class="toggle"  />
-    <label for="section-32a1bfa2b573d79877958382e69b7141" class="flex justify-between">
+    <input type="checkbox" id="section-13ab5ff24e5e7cfcac212a7de597892c" class="toggle"  />
+    <label for="section-13ab5ff24e5e7cfcac212a7de597892c" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-3/" class="">3장 S3와 Glacier</a>
     </label>
   
@@ -741,8 +750,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bea4fd258fc97d2689ca370348188c48" class="toggle"  />
-    <label for="section-bea4fd258fc97d2689ca370348188c48" class="flex justify-between">
+    <input type="checkbox" id="section-cf087437c8794692614dcc23f2c81e5e" class="toggle"  />
+    <label for="section-cf087437c8794692614dcc23f2c81e5e" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-4/" class="">4장 VPC</a>
     </label>
   
@@ -757,8 +766,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-f4f508fe2c26aa2081903911bf955f7a" class="toggle"  />
-    <label for="section-f4f508fe2c26aa2081903911bf955f7a" class="flex justify-between">
+    <input type="checkbox" id="section-88b3707c0a0a60559a9a3b0beda71e92" class="toggle"  />
+    <label for="section-88b3707c0a0a60559a9a3b0beda71e92" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-5/" class="">5장 데이터베이스</a>
     </label>
   
@@ -773,8 +782,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7fb27fc0df8d2bc7c5627fb3eb5e7b77" class="toggle"  />
-    <label for="section-7fb27fc0df8d2bc7c5627fb3eb5e7b77" class="flex justify-between">
+    <input type="checkbox" id="section-d03a4697bdef37196b2a2ece94ec1949" class="toggle"  />
+    <label for="section-d03a4697bdef37196b2a2ece94ec1949" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-6/" class="">6장 인증과 권한</a>
     </label>
   
@@ -789,8 +798,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-809eb9caeda3cc6945d6c6110ae0f704" class="toggle"  />
-    <label for="section-809eb9caeda3cc6945d6c6110ae0f704" class="flex justify-between">
+    <input type="checkbox" id="section-ff04db2d9e0c8ca5e2f9ae9115bb5790" class="toggle"  />
+    <label for="section-ff04db2d9e0c8ca5e2f9ae9115bb5790" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-15/" class="">15장 기출문제 정리</a>
     </label>
   
@@ -805,8 +814,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b81d1feb51c6a90859d57e3f9a38f106" class="toggle"  />
-    <label for="section-b81d1feb51c6a90859d57e3f9a38f106" class="flex justify-between">
+    <input type="checkbox" id="section-2c29382bc794153c0c0d0ad12ecbad5f" class="toggle"  />
+    <label for="section-2c29382bc794153c0c0d0ad12ecbad5f" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-16/" class="">16장 기출문제(kr)</a>
     </label>
   
@@ -821,8 +830,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-cc0bc9fa6c33f67f704969ec918ba91f" class="toggle"  />
-    <label for="section-cc0bc9fa6c33f67f704969ec918ba91f" class="flex justify-between">
+    <input type="checkbox" id="section-5b2dee9e943d841d2b89e28b1c10084b" class="toggle"  />
+    <label for="section-5b2dee9e943d841d2b89e28b1c10084b" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA_all/" class="">aws SAA 총정리</a>
     </label>
   
@@ -837,8 +846,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-8b0b79b646dc6dd20f5972c31b88da7d" class="toggle"  />
-    <label for="section-8b0b79b646dc6dd20f5972c31b88da7d" class="flex justify-between">
+    <input type="checkbox" id="section-9f92e7605810ec90b1ced055368346b8" class="toggle"  />
+    <label for="section-9f92e7605810ec90b1ced055368346b8" class="flex justify-between">
       <a href="/cloud/docs/AWS/AWSSAA/SAA-17/" class="">SAA02-기출</a>
     </label>
   
@@ -876,8 +885,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-927c873cfee05f2a43a22ba79adf98ad" class="toggle"  />
-    <label for="section-927c873cfee05f2a43a22ba79adf98ad" class="flex justify-between">
+    <input type="checkbox" id="section-dbd29fe31d7f3e97b0fa8b9814984076" class="toggle"  />
+    <label for="section-dbd29fe31d7f3e97b0fa8b9814984076" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/" class="">Azure docs</a>
     </label>
   
@@ -892,8 +901,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d8e23e367846867ff2dd70b87d195601" class="toggle"  />
-    <label for="section-d8e23e367846867ff2dd70b87d195601" class="flex justify-between">
+    <input type="checkbox" id="section-441d8066ca823054bff165613dc84799" class="toggle"  />
+    <label for="section-441d8066ca823054bff165613dc84799" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure00/" class="">Azure Computing</a>
     </label>
   
@@ -908,8 +917,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-72d9a856f74bc924d152a389b48d6a19" class="toggle"  />
-    <label for="section-72d9a856f74bc924d152a389b48d6a19" class="flex justify-between">
+    <input type="checkbox" id="section-9d15b790bc566b7584c1b4c343866a30" class="toggle"  />
+    <label for="section-9d15b790bc566b7584c1b4c343866a30" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure01/" class="">Azure Networking</a>
     </label>
   
@@ -924,8 +933,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-cf504011209bb894334c2d19b98e8e58" class="toggle"  />
-    <label for="section-cf504011209bb894334c2d19b98e8e58" class="flex justify-between">
+    <input type="checkbox" id="section-47028ce25ad48a19e83354e36fcf58d5" class="toggle"  />
+    <label for="section-47028ce25ad48a19e83354e36fcf58d5" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure02/" class="">Azure Mobile</a>
     </label>
   
@@ -940,8 +949,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0cfad8112204738f1bddec2c244fcce6" class="toggle"  />
-    <label for="section-0cfad8112204738f1bddec2c244fcce6" class="flex justify-between">
+    <input type="checkbox" id="section-e25d92508684a23b3c4ec5c10aa5abe3" class="toggle"  />
+    <label for="section-e25d92508684a23b3c4ec5c10aa5abe3" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure10/" class="">Azure DataBase</a>
     </label>
   
@@ -956,8 +965,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-8b8bac4f72dae1af470f8102f9a62f42" class="toggle"  />
-    <label for="section-8b8bac4f72dae1af470f8102f9a62f42" class="flex justify-between">
+    <input type="checkbox" id="section-0e088e847aecc9f159b578a881873d16" class="toggle"  />
+    <label for="section-0e088e847aecc9f159b578a881873d16" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure03/" class="">Azure Storage</a>
     </label>
   
@@ -972,8 +981,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6cb11a4dafe0563b101bbf88b49f0293" class="toggle"  />
-    <label for="section-6cb11a4dafe0563b101bbf88b49f0293" class="flex justify-between">
+    <input type="checkbox" id="section-e15edb9315a1063521bfb30a51bd3962" class="toggle"  />
+    <label for="section-e15edb9315a1063521bfb30a51bd3962" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure04/" class="">Azure Web</a>
     </label>
   
@@ -988,8 +997,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bc84b7a3c76111da03515dee13fbd3b1" class="toggle"  />
-    <label for="section-bc84b7a3c76111da03515dee13fbd3b1" class="flex justify-between">
+    <input type="checkbox" id="section-b15260b09fd6d94f1794e01472e75722" class="toggle"  />
+    <label for="section-b15260b09fd6d94f1794e01472e75722" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure05/" class="">Azure IoT</a>
     </label>
   
@@ -1004,8 +1013,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-25d82e77d5c1efd075d9ad17104f5e90" class="toggle"  />
-    <label for="section-25d82e77d5c1efd075d9ad17104f5e90" class="flex justify-between">
+    <input type="checkbox" id="section-7bca1fefdb01d208f61a4f49829248a6" class="toggle"  />
+    <label for="section-7bca1fefdb01d208f61a4f49829248a6" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure06/" class="">Azure BigData</a>
     </label>
   
@@ -1020,8 +1029,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0fd470d70174c43576e566967b7f9df3" class="toggle"  />
-    <label for="section-0fd470d70174c43576e566967b7f9df3" class="flex justify-between">
+    <input type="checkbox" id="section-e533678fc9371fa112f40dee44aaa1e5" class="toggle"  />
+    <label for="section-e533678fc9371fa112f40dee44aaa1e5" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure07/" class="">Azure AI</a>
     </label>
   
@@ -1036,8 +1045,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b58853f52218823b034387b52bc49082" class="toggle"  />
-    <label for="section-b58853f52218823b034387b52bc49082" class="flex justify-between">
+    <input type="checkbox" id="section-3a8c2c169bb2afa732c06690616a89a4" class="toggle"  />
+    <label for="section-3a8c2c169bb2afa732c06690616a89a4" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure08/" class="">Azure DevOps</a>
     </label>
   
@@ -1052,8 +1061,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-60279e6b8459cc67a52eb04d4c5a2217" class="toggle"  />
-    <label for="section-60279e6b8459cc67a52eb04d4c5a2217" class="flex justify-between">
+    <input type="checkbox" id="section-0ea6c1e40ced831f44732d84d0e0b140" class="toggle"  />
+    <label for="section-0ea6c1e40ced831f44732d84d0e0b140" class="flex justify-between">
       <a href="/cloud/docs/Azure/MicrosoftAzure/Azure09/" class="">Azure HybridCloud</a>
     </label>
   
@@ -1073,8 +1082,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d4ef60b12d064cf75e493d7efcc46321" class="toggle"  />
-    <label for="section-d4ef60b12d064cf75e493d7efcc46321" class="flex justify-between">
+    <input type="checkbox" id="section-e71e577245d85cd40c06952e0dcda3e9" class="toggle"  />
+    <label for="section-e71e577245d85cd40c06952e0dcda3e9" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/" class="">Azure Training</a>
     </label>
   
@@ -1089,8 +1098,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1fd6528ffd1fc1d3344a25fdbcf18a2d" class="toggle"  />
-    <label for="section-1fd6528ffd1fc1d3344a25fdbcf18a2d" class="flex justify-between">
+    <input type="checkbox" id="section-2407cef7cb0ae34f5029436da3836063" class="toggle"  />
+    <label for="section-2407cef7cb0ae34f5029436da3836063" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/Base/" class="">Azure </a>
     </label>
   
@@ -1105,8 +1114,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-fb4fedd992f23cc083356953f59f4db8" class="toggle"  />
-    <label for="section-fb4fedd992f23cc083356953f59f4db8" class="flex justify-between">
+    <input type="checkbox" id="section-ade5183f570d625643a3c6fbff88c0be" class="toggle"  />
+    <label for="section-ade5183f570d625643a3c6fbff88c0be" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/Azure00/" class="">Az-900 : CloudComputing</a>
     </label>
   
@@ -1121,8 +1130,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9cc7b2d5bb25a781a6d8349d712a0b29" class="toggle"  />
-    <label for="section-9cc7b2d5bb25a781a6d8349d712a0b29" class="flex justify-between">
+    <input type="checkbox" id="section-374d33d56d1a34af071c4f95d1a1e50a" class="toggle"  />
+    <label for="section-374d33d56d1a34af071c4f95d1a1e50a" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/Azure01/" class="">Az-900 : Region</a>
     </label>
   
@@ -1137,8 +1146,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6d916aae1c4dfca72a5050400cd042e4" class="toggle"  />
-    <label for="section-6d916aae1c4dfca72a5050400cd042e4" class="flex justify-between">
+    <input type="checkbox" id="section-9d5b6533010f23ad8e9db175a4715c65" class="toggle"  />
+    <label for="section-9d5b6533010f23ad8e9db175a4715c65" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/Azure02/" class="">Az-900 : 관리옵션</a>
     </label>
   
@@ -1153,8 +1162,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-89414bef906c9593c53b956e8e67255c" class="toggle"  />
-    <label for="section-89414bef906c9593c53b956e8e67255c" class="flex justify-between">
+    <input type="checkbox" id="section-d0bbe8bb1c3766cf776e83b01ba8cfd8" class="toggle"  />
+    <label for="section-d0bbe8bb1c3766cf776e83b01ba8cfd8" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/Azure12/" class="">Az-900 : 서비스</a>
     </label>
   
@@ -1169,8 +1178,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-07bd101f0a78b4c8bddb47d9b3d5b2d8" class="toggle"  />
-    <label for="section-07bd101f0a78b4c8bddb47d9b3d5b2d8" class="flex justify-between">
+    <input type="checkbox" id="section-a1b4e029b4badaf934b1ae01686eaaaa" class="toggle"  />
+    <label for="section-a1b4e029b4badaf934b1ae01686eaaaa" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/az-900/" class="">Az-900 : 문제풀이</a>
     </label>
   
@@ -1185,8 +1194,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-60acdac28114b86ad11fe4ed069c2a30" class="toggle"  />
-    <label for="section-60acdac28114b86ad11fe4ed069c2a30" class="flex justify-between">
+    <input type="checkbox" id="section-ec4cd80d4e0f44e10aae9a478adce60a" class="toggle"  />
+    <label for="section-ec4cd80d4e0f44e10aae9a478adce60a" class="flex justify-between">
       <a href="/cloud/docs/Azure/AzureTraining/Base-copy-3/" class="">Azure 학생 계정생성</a>
     </label>
   
@@ -1224,8 +1233,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-958818d82297c125835ffde4bc55ce36" class="toggle"  />
-    <label for="section-958818d82297c125835ffde4bc55ce36" class="flex justify-between">
+    <input type="checkbox" id="section-f7dc3eb908953303803f4193c0d409a2" class="toggle"  />
+    <label for="section-f7dc3eb908953303803f4193c0d409a2" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/" class="">OpenStack docs</a>
     </label>
   
@@ -1240,8 +1249,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bf3c7b654183e66cf657f2533957a235" class="toggle"  />
-    <label for="section-bf3c7b654183e66cf657f2533957a235" class="flex justify-between">
+    <input type="checkbox" id="section-42d84c30d8f3d130306756fa5df08a34" class="toggle"  />
+    <label for="section-42d84c30d8f3d130306756fa5df08a34" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/openstack/" class="">OpenStack 개요</a>
     </label>
   
@@ -1256,8 +1265,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c707c76d90b265fd4e34a33dc6e4e38e" class="toggle"  />
-    <label for="section-c707c76d90b265fd4e34a33dc6e4e38e" class="flex justify-between">
+    <input type="checkbox" id="section-efc7b5b26e46f695a867fcc035ec86af" class="toggle"  />
+    <label for="section-efc7b5b26e46f695a867fcc035ec86af" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Keystone/" class="">Keystone</a>
     </label>
   
@@ -1272,8 +1281,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-596f378b815aadd2f643dd06ff99495f" class="toggle"  />
-    <label for="section-596f378b815aadd2f643dd06ff99495f" class="flex justify-between">
+    <input type="checkbox" id="section-80c97e49a653d732ddd3a245f2036c82" class="toggle"  />
+    <label for="section-80c97e49a653d732ddd3a245f2036c82" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Glance/" class="">Glance</a>
     </label>
   
@@ -1288,8 +1297,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-335cc590d8d43983777985158915fb52" class="toggle"  />
-    <label for="section-335cc590d8d43983777985158915fb52" class="flex justify-between">
+    <input type="checkbox" id="section-13ae77cdd55cab53ffc4d769b15c6773" class="toggle"  />
+    <label for="section-13ae77cdd55cab53ffc4d769b15c6773" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Nova/" class="">Nova</a>
     </label>
   
@@ -1304,8 +1313,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a5cdd6e0dd32312f09aec1ccbacc2139" class="toggle"  />
-    <label for="section-a5cdd6e0dd32312f09aec1ccbacc2139" class="flex justify-between">
+    <input type="checkbox" id="section-03900401de566084325d318cf786250d" class="toggle"  />
+    <label for="section-03900401de566084325d318cf786250d" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Neutron/" class="">Neutron</a>
     </label>
   
@@ -1320,8 +1329,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-cd110a79a855af3c9def4603ad39e3b9" class="toggle"  />
-    <label for="section-cd110a79a855af3c9def4603ad39e3b9" class="flex justify-between">
+    <input type="checkbox" id="section-8fce2d58e539681754720cea0ca25c5a" class="toggle"  />
+    <label for="section-8fce2d58e539681754720cea0ca25c5a" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Cinder/" class="">Cinder</a>
     </label>
   
@@ -1349,8 +1358,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-490115262e5408a36541008da48eb814" class="toggle"  />
-    <label for="section-490115262e5408a36541008da48eb814" class="flex justify-between">
+    <input type="checkbox" id="section-978308dfbf79cbac8bade6ee008b9803" class="toggle"  />
+    <label for="section-978308dfbf79cbac8bade6ee008b9803" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Horizon/" class="">Horizon</a>
     </label>
   
@@ -1365,8 +1374,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b71c39f638b95d6b88fb393ce0fa8aeb" class="toggle"  />
-    <label for="section-b71c39f638b95d6b88fb393ce0fa8aeb" class="flex justify-between">
+    <input type="checkbox" id="section-2bee225828f4ab6a6713a17886d53c4c" class="toggle"  />
+    <label for="section-2bee225828f4ab6a6713a17886d53c4c" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Swift/" class="">Swift</a>
     </label>
   
@@ -1381,8 +1390,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1c4c96efccee29af70612e10bc74a333" class="toggle"  />
-    <label for="section-1c4c96efccee29af70612e10bc74a333" class="flex justify-between">
+    <input type="checkbox" id="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="toggle"  />
+    <label for="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Heat/" class="">Heat</a>
     </label>
   
@@ -1397,8 +1406,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-783af3d838e0ea844e44b8160a400c47" class="toggle"  />
-    <label for="section-783af3d838e0ea844e44b8160a400c47" class="flex justify-between">
+    <input type="checkbox" id="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="toggle"  />
+    <label for="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Trove/" class="">Trove</a>
     </label>
   
@@ -1413,8 +1422,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b9222e989624a87db91d23bdf1d9b624" class="toggle"  />
-    <label for="section-b9222e989624a87db91d23bdf1d9b624" class="flex justify-between">
+    <input type="checkbox" id="section-8312694bbaf6fa051d7c9dc3e36012cf" class="toggle"  />
+    <label for="section-8312694bbaf6fa051d7c9dc3e36012cf" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Sahara/" class="">Sahara</a>
     </label>
   
@@ -1429,8 +1438,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-3ed54991be35d45a47672de565c35876" class="toggle"  />
-    <label for="section-3ed54991be35d45a47672de565c35876" class="flex justify-between">
+    <input type="checkbox" id="section-ca1eff58cd5bca6157d8d342ea4e132c" class="toggle"  />
+    <label for="section-ca1eff58cd5bca6157d8d342ea4e132c" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Ironic/" class="">Ironic</a>
     </label>
   
@@ -1445,8 +1454,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-ec44f321410e89e9aecc570b92e9c32d" class="toggle"  />
-    <label for="section-ec44f321410e89e9aecc570b92e9c32d" class="flex justify-between">
+    <input type="checkbox" id="section-2cc4dc9995e9f9cb5684091431361d22" class="toggle"  />
+    <label for="section-2cc4dc9995e9f9cb5684091431361d22" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStack/Service/" class="">Service</a>
     </label>
   
@@ -1466,8 +1475,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7ebc5d39ec3bd06fb22aedf07de32827" class="toggle"  />
-    <label for="section-7ebc5d39ec3bd06fb22aedf07de32827" class="flex justify-between">
+    <input type="checkbox" id="section-1918f9d76cde54090f90336203c289d6" class="toggle"  />
+    <label for="section-1918f9d76cde54090f90336203c289d6" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/" class="">OpenStack Training</a>
     </label>
   
@@ -1482,8 +1491,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-46af6b678c7449bcc761d94e2b3f3da2" class="toggle"  />
-    <label for="section-46af6b678c7449bcc761d94e2b3f3da2" class="flex justify-between">
+    <input type="checkbox" id="section-9c2c13699fcac8c2273b9192d15ca3e0" class="toggle"  />
+    <label for="section-9c2c13699fcac8c2273b9192d15ca3e0" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
     </label>
   
@@ -1498,8 +1507,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-546828ebedbe31963e52101a20e88444" class="toggle"  />
-    <label for="section-546828ebedbe31963e52101a20e88444" class="flex justify-between">
+    <input type="checkbox" id="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="toggle"  />
+    <label for="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
     </label>
   
@@ -1514,8 +1523,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e1f352b3c29c4c0710842f009f129e5d" class="toggle"  />
-    <label for="section-e1f352b3c29c4c0710842f009f129e5d" class="flex justify-between">
+    <input type="checkbox" id="section-4315e737bb69dd0391eb5dd9bf36d62c" class="toggle"  />
+    <label for="section-4315e737bb69dd0391eb5dd9bf36d62c" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
     </label>
   
@@ -1530,8 +1539,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-aed37743504c29532fa95922377fa059" class="toggle"  />
-    <label for="section-aed37743504c29532fa95922377fa059" class="flex justify-between">
+    <input type="checkbox" id="section-597c2799205b827d5c7ab71a2d402882" class="toggle"  />
+    <label for="section-597c2799205b827d5c7ab71a2d402882" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
     </label>
   
@@ -1546,8 +1555,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-acc37f7cb47c321fb28500c14089b56d" class="toggle"  />
-    <label for="section-acc37f7cb47c321fb28500c14089b56d" class="flex justify-between">
+    <input type="checkbox" id="section-42dbab293af4648ec92e892d864865cb" class="toggle"  />
+    <label for="section-42dbab293af4648ec92e892d864865cb" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
     </label>
   
@@ -1562,8 +1571,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b4723eeea8514c90f09de769e8baf407" class="toggle"  />
-    <label for="section-b4723eeea8514c90f09de769e8baf407" class="flex justify-between">
+    <input type="checkbox" id="section-a1339544015f56c1506abcddaab9b3f3" class="toggle"  />
+    <label for="section-a1339544015f56c1506abcddaab9b3f3" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/" class="">OpenStack Ussuri : Neutron</a>
     </label>
   
@@ -1578,8 +1587,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4c05c25994d3d04bae3ca787656e3aa0" class="toggle"  />
-    <label for="section-4c05c25994d3d04bae3ca787656e3aa0" class="flex justify-between">
+    <input type="checkbox" id="section-a979c54687057f4f76d7c019e7596a87" class="toggle"  />
+    <label for="section-a979c54687057f4f76d7c019e7596a87" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
     </label>
   
@@ -1594,8 +1603,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-51fdaed4f40563928519119929f3547f" class="toggle"  />
-    <label for="section-51fdaed4f40563928519119929f3547f" class="flex justify-between">
+    <input type="checkbox" id="section-c706afb8aa1555379e017ad43bace477" class="toggle"  />
+    <label for="section-c706afb8aa1555379e017ad43bace477" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
     </label>
   
@@ -1610,8 +1619,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-334a3d59b5963ccb5051a66840f39fb8" class="toggle"  />
-    <label for="section-334a3d59b5963ccb5051a66840f39fb8" class="flex justify-between">
+    <input type="checkbox" id="section-f74c2a46724970d36791c6781d2ff7e3" class="toggle"  />
+    <label for="section-f74c2a46724970d36791c6781d2ff7e3" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" class="">OpenStack Ussuri : Swift</a>
     </label>
   
@@ -1626,8 +1635,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-162b6e1dd902e66ff54ba4b09e1ff60e" class="toggle"  />
-    <label for="section-162b6e1dd902e66ff54ba4b09e1ff60e" class="flex justify-between">
+    <input type="checkbox" id="section-d6303b6db54e205267dc3549a8f26dd0" class="toggle"  />
+    <label for="section-d6303b6db54e205267dc3549a8f26dd0" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
     </label>
   
@@ -1642,8 +1651,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-366ca67a71486e1337afd93037c8629f" class="toggle"  />
-    <label for="section-366ca67a71486e1337afd93037c8629f" class="flex justify-between">
+    <input type="checkbox" id="section-7a231284edd65906e160494c2ee8e8be" class="toggle"  />
+    <label for="section-7a231284edd65906e160494c2ee8e8be" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
     </label>
   
@@ -1658,8 +1667,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bb593c6c61669faead03929e24820e89" class="toggle"  />
-    <label for="section-bb593c6c61669faead03929e24820e89" class="flex justify-between">
+    <input type="checkbox" id="section-2999e43c9febc21006bd9b8feac3e37a" class="toggle"  />
+    <label for="section-2999e43c9febc21006bd9b8feac3e37a" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-11/" class="">OpenStack Ussuri : Gnocch</a>
     </label>
   
@@ -1674,8 +1683,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e5b0baf34e44eb0dfd94ddd9b60436c5" class="toggle"  />
-    <label for="section-e5b0baf34e44eb0dfd94ddd9b60436c5" class="flex justify-between">
+    <input type="checkbox" id="section-b682d7a4fa2d7036138e84d857e66a60" class="toggle"  />
+    <label for="section-b682d7a4fa2d7036138e84d857e66a60" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/" class="">OpenStack Ussuri : Trove</a>
     </label>
   
@@ -1690,8 +1699,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-07d092c6ebe226424c6a09f964f2e535" class="toggle"  />
-    <label for="section-07d092c6ebe226424c6a09f964f2e535" class="flex justify-between">
+    <input type="checkbox" id="section-93b9fe20970a7f5cba4ed9da335ddb40" class="toggle"  />
+    <label for="section-93b9fe20970a7f5cba4ed9da335ddb40" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
     </label>
   
@@ -1706,8 +1715,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-8dda8376df3a6b4ed39284324c8ed470" class="toggle"  />
-    <label for="section-8dda8376df3a6b4ed39284324c8ed470" class="flex justify-between">
+    <input type="checkbox" id="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="toggle"  />
+    <label for="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
     </label>
   
@@ -1722,8 +1731,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b91bf583628c5a4132d559d82b7dca34" class="toggle"  />
-    <label for="section-b91bf583628c5a4132d559d82b7dca34" class="flex justify-between">
+    <input type="checkbox" id="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="toggle"  />
+    <label for="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-15/" class="">OpenStack Ussuri : Rally</a>
     </label>
   
@@ -1738,8 +1747,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-cd2973a1ee6b63eb7238ae7555089d8f" class="toggle"  />
-    <label for="section-cd2973a1ee6b63eb7238ae7555089d8f" class="flex justify-between">
+    <input type="checkbox" id="section-72877fd1d0dc0d4d08adecfd34ad2947" class="toggle"  />
+    <label for="section-72877fd1d0dc0d4d08adecfd34ad2947" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/" class="">OpenStack Ussuri : Manila</a>
     </label>
   
@@ -1754,8 +1763,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-acbdb812b6498c963b7d1394a041cdd0" class="toggle"  />
-    <label for="section-acbdb812b6498c963b7d1394a041cdd0" class="flex justify-between">
+    <input type="checkbox" id="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="toggle"  />
+    <label for="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/Devstack/" class="">DevStack</a>
     </label>
   
@@ -1770,8 +1779,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-59471b8b1646a9c95a4acb3d4a4b1fd5" class="toggle"  />
-    <label for="section-59471b8b1646a9c95a4acb3d4a4b1fd5" class="flex justify-between">
+    <input type="checkbox" id="section-136f8be1d19ed1e5809de99a5152dadc" class="toggle"  />
+    <label for="section-136f8be1d19ed1e5809de99a5152dadc" class="flex justify-between">
       <a href="/cloud/docs/OpenStack/OpenStackTraining/Packstack/" class="">Packstack</a>
     </label>
   
@@ -2393,7 +2402,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     

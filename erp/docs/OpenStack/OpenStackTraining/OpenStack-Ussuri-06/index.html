@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OpenStack Ussuri : Neutron # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Neutron | | L2 Agent | | metadata agent | | Nova-API Compute | ----------------------- ----------------------- | L2 agent L3 agent | | metadata agent | | Neutron Server | ----------------------- # OpenStack Ussuri : Neutron # # Neutron는 OpenStack에서 네트워크 전반을 관리하는 서비스입니다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="OpenStack Ussuri : Neutron">
+  <meta property="og:description" content="OpenStack Ussuri : Neutron # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Neutron | | L2 Agent | | metadata agent | | Nova-API Compute | ----------------------- ----------------------- | L2 agent L3 agent | | metadata agent | | Neutron Server | ----------------------- # OpenStack Ussuri : Neutron # # Neutron는 OpenStack에서 네트워크 전반을 관리하는 서비스입니다.">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>OpenStack Ussuri : Neutron | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+  <link rel="alternate" hreflang="cloud" href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/" title="OpenStack Ussuri : Neutron">
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.34a613df353d3b485a7c05de0392c29761057436e2df030fbd36d12724653ffd.js" integrity="sha256-NKYT3zU9O0hafAXeA5LCl2EFdDbi3wMPvTbRJyRlP/0=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                     
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SAP</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7dc3eb908953303803f4193c0d409a2" class="toggle"  />
+    <label for="section-f7dc3eb908953303803f4193c0d409a2" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42d84c30d8f3d130306756fa5df08a34" class="toggle"  />
+    <label for="section-42d84c30d8f3d130306756fa5df08a34" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-efc7b5b26e46f695a867fcc035ec86af" class="toggle"  />
+    <label for="section-efc7b5b26e46f695a867fcc035ec86af" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-80c97e49a653d732ddd3a245f2036c82" class="toggle"  />
+    <label for="section-80c97e49a653d732ddd3a245f2036c82" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ae77cdd55cab53ffc4d769b15c6773" class="toggle"  />
+    <label for="section-13ae77cdd55cab53ffc4d769b15c6773" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03900401de566084325d318cf786250d" class="toggle"  />
+    <label for="section-03900401de566084325d318cf786250d" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fce2d58e539681754720cea0ca25c5a" class="toggle"  />
+    <label for="section-8fce2d58e539681754720cea0ca25c5a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/OpenStack/OpenStack/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-978308dfbf79cbac8bade6ee008b9803" class="toggle"  />
+    <label for="section-978308dfbf79cbac8bade6ee008b9803" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2bee225828f4ab6a6713a17886d53c4c" class="toggle"  />
+    <label for="section-2bee225828f4ab6a6713a17886d53c4c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="toggle"  />
+    <label for="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="toggle"  />
+    <label for="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Trove/" class="">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8312694bbaf6fa051d7c9dc3e36012cf" class="toggle"  />
+    <label for="section-8312694bbaf6fa051d7c9dc3e36012cf" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca1eff58cd5bca6157d8d342ea4e132c" class="toggle"  />
+    <label for="section-ca1eff58cd5bca6157d8d342ea4e132c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2cc4dc9995e9f9cb5684091431361d22" class="toggle"  />
+    <label for="section-2cc4dc9995e9f9cb5684091431361d22" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1918f9d76cde54090f90336203c289d6" class="toggle" checked />
+    <label for="section-1918f9d76cde54090f90336203c289d6" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c2c13699fcac8c2273b9192d15ca3e0" class="toggle"  />
+    <label for="section-9c2c13699fcac8c2273b9192d15ca3e0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="toggle"  />
+    <label for="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4315e737bb69dd0391eb5dd9bf36d62c" class="toggle"  />
+    <label for="section-4315e737bb69dd0391eb5dd9bf36d62c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-597c2799205b827d5c7ab71a2d402882" class="toggle"  />
+    <label for="section-597c2799205b827d5c7ab71a2d402882" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42dbab293af4648ec92e892d864865cb" class="toggle"  />
+    <label for="section-42dbab293af4648ec92e892d864865cb" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a1339544015f56c1506abcddaab9b3f3" class="toggle" checked />
+    <label for="section-a1339544015f56c1506abcddaab9b3f3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/" class="active">OpenStack Ussuri : Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a979c54687057f4f76d7c019e7596a87" class="toggle"  />
+    <label for="section-a979c54687057f4f76d7c019e7596a87" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c706afb8aa1555379e017ad43bace477" class="toggle"  />
+    <label for="section-c706afb8aa1555379e017ad43bace477" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f74c2a46724970d36791c6781d2ff7e3" class="toggle"  />
+    <label for="section-f74c2a46724970d36791c6781d2ff7e3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" class="">OpenStack Ussuri : Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6303b6db54e205267dc3549a8f26dd0" class="toggle"  />
+    <label for="section-d6303b6db54e205267dc3549a8f26dd0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7a231284edd65906e160494c2ee8e8be" class="toggle"  />
+    <label for="section-7a231284edd65906e160494c2ee8e8be" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2999e43c9febc21006bd9b8feac3e37a" class="toggle"  />
+    <label for="section-2999e43c9febc21006bd9b8feac3e37a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-11/" class="">OpenStack Ussuri : Gnocch</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b682d7a4fa2d7036138e84d857e66a60" class="toggle"  />
+    <label for="section-b682d7a4fa2d7036138e84d857e66a60" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/" class="">OpenStack Ussuri : Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-93b9fe20970a7f5cba4ed9da335ddb40" class="toggle"  />
+    <label for="section-93b9fe20970a7f5cba4ed9da335ddb40" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="toggle"  />
+    <label for="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="toggle"  />
+    <label for="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-15/" class="">OpenStack Ussuri : Rally</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-72877fd1d0dc0d4d08adecfd34ad2947" class="toggle"  />
+    <label for="section-72877fd1d0dc0d4d08adecfd34ad2947" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/" class="">OpenStack Ussuri : Manila</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="toggle"  />
+    <label for="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Devstack/" class="">DevStack</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-136f8be1d19ed1e5809de99a5152dadc" class="toggle"  />
+    <label for="section-136f8be1d19ed1e5809de99a5152dadc" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Packstack/" class="">Packstack</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>OpenStack Ussuri : Neutron</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--neutron"><strong>OpenStack Ussuri : Neutron</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--neutron-1"><strong>OpenStack Ussuri : Neutron</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-service-및-user-생성"><strong>Neutron service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-유저의-db를-생성합니다"><strong>neutron 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-설치"><strong>Neutron 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-11"></a></li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a>
+      <ul>
+        <li><a href="#neutron-network-node-설치"><strong>neutron Network Node 설치</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-설치-1"><strong>Neutron 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a>
+      <ul>
+        <li><a href="#neutron-compute-node-설치"><strong>neutron compute Node 설치</strong></a>
+          <ul>
+            <li><a href="#neutron-설치-2"><strong>Neutron 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-17"></a></li>
+    <li><a href="#heading-18"></a></li>
+    <li><a href="#heading-19"></a>
+      <ul>
+        <li><a href="#확인"><strong>확인</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-20"></a></li>
+    <li><a href="#heading-21"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="openstack-ussuri--neutron">
+  <strong>OpenStack Ussuri : Neutron</strong>
+  <a class="anchor" href="#openstack-ussuri--neutron">#</a>
+</h1>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span> -----------------------         -----------------------        -----------------------
+</span></span><span style="display:flex;"><span>|  [ Controller Node ]  |       |    [ Compute Node ]   |      |   [ Network Node ]    | 
+</span></span><span style="display:flex;"><span>|                       |       |        Libvirt        |      |     Open vSwitch      |
+</span></span><span style="display:flex;"><span>|  MariaDB    RabbitMQ  |       |      Nova compute     |      |       L2 Agent        |
+</span></span><span style="display:flex;"><span>|  Memcached  Keystone  |       |      Open vSwitch     |      |       L3 Agent        |
+</span></span><span style="display:flex;"><span>|  httpd      Neutron   |       |       L2 Agent        |      |     metadata agent    |
+</span></span><span style="display:flex;"><span>|  Nova-API   Compute   |        -----------------------        -----------------------
+</span></span><span style="display:flex;"><span>|  L2 agent   L3 agent  |
+</span></span><span style="display:flex;"><span>|  metadata agent       |
+</span></span><span style="display:flex;"><span>|  Neutron Server       |        
+</span></span><span style="display:flex;"><span> -----------------------   
+</span></span></code></pre></div><h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<h2 id="openstack-ussuri--neutron-1">
+  <strong>OpenStack Ussuri : Neutron</strong>
+  <a class="anchor" href="#openstack-ussuri--neutron-1">#</a>
+</h2>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<ul>
+<li><strong>Neutron는 OpenStack에서 네트워크 전반을 관리하는 서비스입니다.</strong></li>
+<li><strong>Neutron에 대한 자세한 설명은 
+  <a href="/erp/">Neutron</a>를 참조해주세요.</strong></li>
+</ul>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<h3 id="neutron-service-및-user-생성">
+  <strong>Neutron service 및 User 생성</strong>
+  <a class="anchor" href="#neutron-service-%eb%b0%8f-user-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack user create --domain default --project service --password qwer1234 neutron
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field               | Value                            |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| default_project_id  | 7c10c02365be496fb47f12bfd40fe4a7 |
+</span></span><span style="display:flex;"><span>| domain_id           | default                          |
+</span></span><span style="display:flex;"><span>| enabled             | True                             |
+</span></span><span style="display:flex;"><span>| id                  | 943fbb4370164c77ae6bf7fa455292f8 |
+</span></span><span style="display:flex;"><span>| name                | neutron                          |
+</span></span><span style="display:flex;"><span>| options             | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>| password_expires_at | None                             |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack role add --project service --user neutron admin
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack service create --name neutron --description &#34;OpenStack Networking service&#34; network
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | OpenStack Networking service     |
+</span></span><span style="display:flex;"><span>| enabled     | True                             |
+</span></span><span style="display:flex;"><span>| id          | 055e5f6e38004338b0ae4a86e77932ae |
+</span></span><span style="display:flex;"><span>| name        | neutron                          |
+</span></span><span style="display:flex;"><span>| type        | network                          |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># neutron service 및 user을 생성합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne network public http://controller:9696
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                            |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                             |
+</span></span><span style="display:flex;"><span>| id           | 350c666f597a41e59234b09f534aa72f |
+</span></span><span style="display:flex;"><span>| interface    | public                           |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                        |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                        |
+</span></span><span style="display:flex;"><span>| service_id   | 055e5f6e38004338b0ae4a86e77932ae |
+</span></span><span style="display:flex;"><span>| service_name | neutron                          |
+</span></span><span style="display:flex;"><span>| service_type | network                          |
+</span></span><span style="display:flex;"><span>| url          | http://controller:9696           |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne network internal http://controller:9696
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                            |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                             |
+</span></span><span style="display:flex;"><span>| id           | b9cad959e1634ff797e27f00d50e9578 |
+</span></span><span style="display:flex;"><span>| interface    | internal                         |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                        |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                        |
+</span></span><span style="display:flex;"><span>| service_id   | 055e5f6e38004338b0ae4a86e77932ae |
+</span></span><span style="display:flex;"><span>| service_name | neutron                          |
+</span></span><span style="display:flex;"><span>| service_type | network                          |
+</span></span><span style="display:flex;"><span>| url          | http://controller:9696           |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne network admin http://controller:9696
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                            |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                             |
+</span></span><span style="display:flex;"><span>| id           | 72fc145deb1d4d508e3691b3bf77708e |
+</span></span><span style="display:flex;"><span>| interface    | admin                            |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                        |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                        |
+</span></span><span style="display:flex;"><span>| service_id   | 055e5f6e38004338b0ae4a86e77932ae |
+</span></span><span style="display:flex;"><span>| service_name | neutron                          |
+</span></span><span style="display:flex;"><span>| service_type | network                          |
+</span></span><span style="display:flex;"><span>| url          | http://controller:9696           |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># neutron endpoint를 등록합니다.
+</span></span></code></pre></div><h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<h3 id="neutron-유저의-db를-생성합니다">
+  <strong>neutron 유저의 DB를 생성합니다.</strong>
+  <a class="anchor" href="#neutron-%ec%9c%a0%ec%a0%80%ec%9d%98-db%eb%a5%bc-%ec%83%9d%ec%84%b1%ed%95%a9%eb%8b%88%eb%8b%a4">#</a>
+</h3>
+<h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; mysql -u root -p
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; create database neutron_ml2;  
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on neutron_ml2.* to neutron@&#39;localhost&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on neutron_ml2.* to neutron@&#39;%&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; flush privileges; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; exit;
+</span></span></code></pre></div><h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-10">
+  
+  <a class="anchor" href="#heading-10">#</a>
+</h1>
+<h3 id="neutron-설치">
+  <strong>Neutron 설치</strong>
+  <a class="anchor" href="#neutron-%ec%84%a4%ec%b9%98">#</a>
+</h3>
+<h1 id="heading-11">
+  
+  <a class="anchor" href="#heading-11">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-neutron openstack-neutron-ml2
+</span></span><span style="display:flex;"><span># neutron 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; vi /etc/neutron/neutron.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>core_plugin = ml2
+</span></span><span style="display:flex;"><span>service_plugins = router
+</span></span><span style="display:flex;"><span>auth_strategy = keystone
+</span></span><span style="display:flex;"><span>state_path = /var/lib/neutron
+</span></span><span style="display:flex;"><span>dhcp_agent_notification = True
+</span></span><span style="display:flex;"><span>allow_overlapping_ips = True
+</span></span><span style="display:flex;"><span>notify_nova_on_port_status_changes = True
+</span></span><span style="display:flex;"><span>notify_nova_on_port_data_changes = True
+</span></span><span style="display:flex;"><span>transport_url = rabbit://openstack:qwer1234@controller
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[keystone_authtoken]
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = neutron
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[database]
+</span></span><span style="display:flex;"><span>connection = mysql+pymysql://neutron:qwer1234@controller/neutron_ml2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[nova]
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>region_name = RegionOne
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = nova
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[oslo_concurrency]
+</span></span><span style="display:flex;"><span>lock_path = $state_path/tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; vi /etc/neutron/metadata_agent.ini
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>nova_metadata_host = controller
+</span></span><span style="display:flex;"><span>metadata_proxy_shared_secret = metadata_secret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[cache]
+</span></span><span style="display:flex;"><span>memcache_servers = controller:11211
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; vi /etc/neutron/plugins/ml2/ml2_conf.ini
+</span></span><span style="display:flex;"><span>[ml2]
+</span></span><span style="display:flex;"><span>type_drivers = flat,vlan,gre,vxlan
+</span></span><span style="display:flex;"><span>tenant_network_types = vxlan
+</span></span><span style="display:flex;"><span>mechanism_drivers = openvswitch
+</span></span><span style="display:flex;"><span>extension_drivers = port_security
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ml2_type_flat]
+</span></span><span style="display:flex;"><span>flat_networks = physnet1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ml2_type_vxlan]
+</span></span><span style="display:flex;"><span>vni_ranges = 1:1000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; vi /etc/nova/nova.conf
+</span></span><span style="display:flex;"><span>[default]
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>use_neutron = True
+</span></span><span style="display:flex;"><span>linuxnet_interface_driver = nova.network.linux_net.LinuxOVSInterfaceDriver
+</span></span><span style="display:flex;"><span>firewall_driver = nova.virt.firewall.NoopFirewallDriver
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[neutron]
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>region_name = RegionOne
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = neutron
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>service_metadata_proxy = True
+</span></span><span style="display:flex;"><span>metadata_proxy_shared_secret = metadata_secret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; setsebool -P neutron_can_network on
+</span></span><span style="display:flex;"><span>$ controller&gt; setsebool -P daemons_enable_cluster_mode on
+</span></span><span style="display:flex;"><span>$ controller&gt; firewall-cmd --add-port=9696/tcp --permanent
+</span></span><span style="display:flex;"><span>$ controller&gt; firewall-cmd --reload
+</span></span><span style="display:flex;"><span># 방화벽 및 SELinux를 설정합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
+</span></span><span style="display:flex;"><span>$ controller&gt; su -s /bin/bash neutron -c &#34;neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugin.ini upgrade head&#34;
+</span></span><span style="display:flex;"><span>$ controller&gt; systemctl enable --now neutron-server neutron-metadata-agent
+</span></span><span style="display:flex;"><span>$ controller&gt; systemctl restart openstack-nova-api
+</span></span><span style="display:flex;"><span># neutron DB를 임포트 시킨 후, 서비스를 등록 합니다.
+</span></span></code></pre></div><h1 id="heading-12">
+  
+  <a class="anchor" href="#heading-12">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-13">
+  
+  <a class="anchor" href="#heading-13">#</a>
+</h1>
+<h2 id="neutron-network-node-설치">
+  <strong>neutron Network Node 설치</strong>
+  <a class="anchor" href="#neutron-network-node-%ec%84%a4%ec%b9%98">#</a>
+</h2>
+<h1 id="heading-14">
+  
+  <a class="anchor" href="#heading-14">#</a>
+</h1>
+<h3 id="neutron-설치-1">
+  <strong>Neutron 설치</strong>
+  <a class="anchor" href="#neutron-%ec%84%a4%ec%b9%98-1">#</a>
+</h3>
+<h1 id="heading-15">
+  
+  <a class="anchor" href="#heading-15">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ network&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-neutron openstack-neutron-ml2 openstack-neutron-openvswitch libibverbs
+</span></span><span style="display:flex;"><span># neutron 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/neutron/neutron.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>core_plugin = ml2
+</span></span><span style="display:flex;"><span>service_plugins = router
+</span></span><span style="display:flex;"><span>auth_strategy = keystone
+</span></span><span style="display:flex;"><span>state_path = /var/lib/neutron
+</span></span><span style="display:flex;"><span>allow_overlapping_ips = True
+</span></span><span style="display:flex;"><span># RabbitMQ connection info
+</span></span><span style="display:flex;"><span>transport_url = rabbit://openstack:qwer1234@controller
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[keystone_authtoken]
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = neutron
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[oslo_concurrency]
+</span></span><span style="display:flex;"><span>lock_path = $state_path/lock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/neutron/dhcp_agent.ini
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>interface_driver = openvswitch
+</span></span><span style="display:flex;"><span>dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+</span></span><span style="display:flex;"><span>enable_isolated_metadata = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/neutron/metadata_agent.ini
+</span></span><span style="display:flex;"><span>nova_metadata_host = controller
+</span></span><span style="display:flex;"><span>metadata_proxy_shared_secret = metadata_secret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[cache]
+</span></span><span style="display:flex;"><span>memcache_servers = controller:11211
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/neutron/plugins/ml2/ml2_conf.ini
+</span></span><span style="display:flex;"><span>[ml2]
+</span></span><span style="display:flex;"><span>type_drivers = flat,vlan,gre,vxlan
+</span></span><span style="display:flex;"><span>tenant_network_types = vxlan
+</span></span><span style="display:flex;"><span>mechanism_drivers = openvswitch
+</span></span><span style="display:flex;"><span>extension_drivers = port_security
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ml2_type_flat]
+</span></span><span style="display:flex;"><span>flat_networks = physnet1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ml2_type_vxlan]
+</span></span><span style="display:flex;"><span>vni_ranges = 1:1000
+</span></span><span style="display:flex;"><span># 끝에 추가합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/neutron/plugins/ml2/openvswitch_agent.ini
+</span></span><span style="display:flex;"><span>[securitygroup]
+</span></span><span style="display:flex;"><span>firewall_driver = openvswitch
+</span></span><span style="display:flex;"><span>enable_security_group = true
+</span></span><span style="display:flex;"><span>enable_ipset = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[agent]
+</span></span><span style="display:flex;"><span>tunnel_types = vxlan
+</span></span><span style="display:flex;"><span>prevent_arp_spoofing = True
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ovs]
+</span></span><span style="display:flex;"><span>local_ip = 10.10.10.20
+</span></span><span style="display:flex;"><span>bridge_mappings = physnet1:br-eth1
+</span></span><span style="display:flex;"><span># 끝에 추가합니다.
+</span></span><span style="display:flex;"><span># 여기는 IP 를 반드시 적어야 해요 !
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; setsebool -P neutron_can_network on
+</span></span><span style="display:flex;"><span>$ network&gt; setsebool -P haproxy_connect_any on
+</span></span><span style="display:flex;"><span>$ network&gt; setsebool -P daemons_enable_cluster_mode on
+</span></span><span style="display:flex;"><span>$ network&gt; vi ovsofctl.te
+</span></span><span style="display:flex;"><span>module ovsofctl 1.0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>require <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">neutron_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">neutron_exec_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">neutron_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">dnsmasq_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">class</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">execute_no_trans</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">class</span> <span style="color:#a6e22e">capability</span> <span style="color:#75715e">{</span> <span style="color:#a6e22e">dac_override</span> <span style="color:#a6e22e">sys_rawio</span> <span style="color:#75715e">}</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#============= neutron_t ==============
+</span></span><span style="display:flex;"><span>allow neutron_t self:capability <span style="color:#75715e">{</span> <span style="color:#a6e22e">dac_override</span> <span style="color:#a6e22e">sys_rawio</span> <span style="color:#75715e">}</span>;
+</span></span><span style="display:flex;"><span>allow neutron_t neutron_exec_t:file execute_no_trans;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#============= dnsmasq_t ==============
+</span></span><span style="display:flex;"><span>allow dnsmasq_t self:capability dac_override;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; checkmodule -m -M -o ovsofctl.mod ovsofctl.te
+</span></span><span style="display:flex;"><span>$ network&gt; semodule_package --outfile ovsofctl.pp --module ovsofctl.mod
+</span></span><span style="display:flex;"><span>$ network&gt; semodule -i ovsofctl.pp
+</span></span><span style="display:flex;"><span>$ network&gt; systemctl disable --now firewalld
+</span></span><span style="display:flex;"><span># Selinux 및 방화벽을 설정합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
+</span></span><span style="display:flex;"><span>$ network&gt; systemctl enable --now openvswitch
+</span></span><span style="display:flex;"><span>$ network&gt; ovs-vsctl add-br br-int
+</span></span><span style="display:flex;"><span>$ network&gt; ovs-vsctl add-br br-eth1
+</span></span><span style="display:flex;"><span>$ network&gt; ovs-vsctl add-port br-eth1 ens32
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/sysconfig/network-scripts/ifcfg-ens32
+</span></span><span style="display:flex;"><span>TYPE=Ethernet
+</span></span><span style="display:flex;"><span>BOOTPROTO=static
+</span></span><span style="display:flex;"><span>NAME=ens32
+</span></span><span style="display:flex;"><span>DEVICE=ens32
+</span></span><span style="display:flex;"><span>ONBOOT=yes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /var/tmp/network_interface.sh
+</span></span><span style="display:flex;"><span>#!/bin/bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip link set up br-eth1
+</span></span><span style="display:flex;"><span>ip addr add 192.168.10.20/24 dev br-eth1
+</span></span><span style="display:flex;"><span>route add default gw 192.168.10.2 dev br-eth1
+</span></span><span style="display:flex;"><span>echo &#34;nameserver 8.8.8.8&#34; &gt; /etc/resolv.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; chmod 755 /var/tmp/network_interface.sh
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/systemd/system/set_interface.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Unit]
+</span></span><span style="display:flex;"><span>Description=Description for sample script goes here
+</span></span><span style="display:flex;"><span>After=network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Service]
+</span></span><span style="display:flex;"><span>Type=simple
+</span></span><span style="display:flex;"><span>ExecStart=/var/tmp/network_interface.sh
+</span></span><span style="display:flex;"><span>TimeoutStartSec=0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Install]
+</span></span><span style="display:flex;"><span>WantedBy=default.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ systemctl enable set_interface
+</span></span><span style="display:flex;"><span>$ init 6
+</span></span><span style="display:flex;"><span># network 인터페이스 주의 !!! ( ex : ens32 )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; for service in dhcp-agent l3-agent metadata-agent openvswitch-agent; do
+</span></span><span style="display:flex;"><span>systemctl enable --now neutron-$service
+</span></span><span style="display:flex;"><span>done
+</span></span><span style="display:flex;"><span># neutron 서비스를 등록합니다.
+</span></span></code></pre></div><p> </p>
+<h1 id="heading-16">
+  
+  <a class="anchor" href="#heading-16">#</a>
+</h1>
+<h2 id="neutron-compute-node-설치">
+  <strong>neutron compute Node 설치</strong>
+  <a class="anchor" href="#neutron-compute-node-%ec%84%a4%ec%b9%98">#</a>
+</h2>
+<h3 id="neutron-설치-2">
+  <strong>Neutron 설치</strong>
+  <a class="anchor" href="#neutron-%ec%84%a4%ec%b9%98-2">#</a>
+</h3>
+<h1 id="heading-17">
+  
+  <a class="anchor" href="#heading-17">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ compute&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-neutron openstack-neutron-ml2 openstack-neutron-openvswitch
+</span></span><span style="display:flex;"><span># neutron 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; vi /etc/neutron/neutron.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>core_plugin = ml2
+</span></span><span style="display:flex;"><span>service_plugins = router
+</span></span><span style="display:flex;"><span>auth_strategy = keystone
+</span></span><span style="display:flex;"><span>state_path = /var/lib/neutron
+</span></span><span style="display:flex;"><span>allow_overlapping_ips = True
+</span></span><span style="display:flex;"><span>transport_url = rabbit://openstack:qwer1234@controller
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[keystone_authtoken]
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = neutron
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[oslo_concurrency]
+</span></span><span style="display:flex;"><span>lock_path = $state_path/lock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; vi /etc/neutron/plugins/ml2/ml2_conf.ini
+</span></span><span style="display:flex;"><span>[ml2]
+</span></span><span style="display:flex;"><span>type_drivers = flat,vlan,gre,vxlan
+</span></span><span style="display:flex;"><span>tenant_network_types = vxlan
+</span></span><span style="display:flex;"><span>mechanism_drivers = openvswitch
+</span></span><span style="display:flex;"><span>extension_drivers = port_security
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ml2_type_flat]
+</span></span><span style="display:flex;"><span>flat_networks = physnet1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ml2_type_vxlan]
+</span></span><span style="display:flex;"><span>vni_ranges = 1:1000
+</span></span><span style="display:flex;"><span># 끝에 추가합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; vi /etc/neutron/plugins/ml2/openvswitch_agent.ini
+</span></span><span style="display:flex;"><span>[securitygroup]
+</span></span><span style="display:flex;"><span>firewall_driver = openvswitch
+</span></span><span style="display:flex;"><span>enable_security_group = true
+</span></span><span style="display:flex;"><span>enable_ipset = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[agent]
+</span></span><span style="display:flex;"><span>tunnel_types = vxlan
+</span></span><span style="display:flex;"><span>prevent_arp_spoofing = True
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[ovs]
+</span></span><span style="display:flex;"><span>local_ip = 10.10.10.20
+</span></span><span style="display:flex;"><span># 끝에 추가합니다.
+</span></span><span style="display:flex;"><span># 여기는 반드시 IP로 적어야 해요 !
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; vi /etc/nova/nova.conf
+</span></span><span style="display:flex;"><span>[default]
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>use_neutron = True
+</span></span><span style="display:flex;"><span>linuxnet_interface_driver = nova.network.linux_net.LinuxOVSInterfaceDriver
+</span></span><span style="display:flex;"><span>firewall_driver = nova.virt.firewall.NoopFirewallDriver
+</span></span><span style="display:flex;"><span>vif_plugging_is_fatal = True
+</span></span><span style="display:flex;"><span>vif_plugging_timeout = 300
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[neutron]
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>region_name = RegionOne
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = neutron
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>service_metadata_proxy = True
+</span></span><span style="display:flex;"><span>metadata_proxy_shared_secret = metadata_secret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; setsebool -P neutron_can_network on
+</span></span><span style="display:flex;"><span>$ compute&gt; setsebool -P daemons_enable_cluster_mode on
+</span></span><span style="display:flex;"><span>$ compute&gt; vi ovsofctl.te
+</span></span><span style="display:flex;"><span>module ovsofctl 1.0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>require <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">neutron_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">neutron_exec_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">neutron_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">dnsmasq_t</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">class</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">execute_no_trans</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">class</span> <span style="color:#a6e22e">capability</span> <span style="color:#75715e">{</span> <span style="color:#a6e22e">dac_override</span> <span style="color:#a6e22e">sys_rawio</span> <span style="color:#75715e">}</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#============= neutron_t ==============
+</span></span><span style="display:flex;"><span>allow neutron_t self:capability <span style="color:#75715e">{</span> <span style="color:#a6e22e">dac_override</span> <span style="color:#a6e22e">sys_rawio</span> <span style="color:#75715e">}</span>;
+</span></span><span style="display:flex;"><span>allow neutron_t neutron_exec_t:file execute_no_trans;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#============= dnsmasq_t ==============
+</span></span><span style="display:flex;"><span>allow dnsmasq_t self:capability dac_override;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; checkmodule -m -M -o ovsofctl.mod ovsofctl.te
+</span></span><span style="display:flex;"><span>$ network&gt; semodule_package --outfile ovsofctl.pp --module ovsofctl.mod
+</span></span><span style="display:flex;"><span>$ network&gt; semodule -i ovsofctl.pp
+</span></span><span style="display:flex;"><span>$ systemctl disable --now firewalld
+</span></span><span style="display:flex;"><span># Selinux 및 방화벽을 설정합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ compute&gt; ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
+</span></span><span style="display:flex;"><span>$ compute&gt; systemctl enable --now openvswitch
+</span></span><span style="display:flex;"><span>$ compute&gt; ovs-vsctl add-br br-int
+</span></span><span style="display:flex;"><span>$ compute&gt; systemctl restart openstack-nova-compute
+</span></span><span style="display:flex;"><span>$ compute&gt; systemctl enable --now neutron-openvswitch-agent
+</span></span><span style="display:flex;"><span># neutron 서비스를 등록합니다.
+</span></span></code></pre></div><h1 id="heading-18">
+  
+  <a class="anchor" href="#heading-18">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-19">
+  
+  <a class="anchor" href="#heading-19">#</a>
+</h1>
+<h2 id="확인">
+  <strong>확인</strong>
+  <a class="anchor" href="#%ed%99%95%ec%9d%b8">#</a>
+</h2>
+<h1 id="heading-20">
+  
+  <a class="anchor" href="#heading-20">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack router create router
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+-------------------------+-----------------------------------------------------                       --------------------------------------------------------------------------------                       --------------------+
+</span></span><span style="display:flex;"><span>| Field                   | Value                                                                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>+-------------------------+-----------------------------------------------------                       --------------------------------------------------------------------------------                       --------------------+
+</span></span><span style="display:flex;"><span>| admin_state_up          | UP                                                                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| availability_zone_hints |                                                                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| availability_zones      |                                                                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| created_at              | 2020-08-07T00:05:40Z                                                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>| description             |                                                                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| distributed             | False                                                                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| external_gateway_info   | null                                                                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>| flavor_id               | None                                                                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>| ha                      | False                                                                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| id                      | f40d6130-a01c-486a-b088-3f27c9f57607                                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>| location                | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;d                       efault&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, re                       gion_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| name                    | router                                                                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| project_id              | c76211c24a1f460ca67274d655d46725                                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| revision_number         | 1                                                                                                                                                                                                     |
+</span></span><span style="display:flex;"><span>| routes                  |                                                                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| status                  | ACTIVE                                                                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| tags                    |                                                                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| updated_at              | 2020-08-07T00:05:40Z                                                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>+-------------------------+-----------------------------------------------------                       --------------------------------------------------------------------------------                       --------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack network create int --provider-network-type vxlan
+</span></span><span style="display:flex;"><span>+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field                     | Value                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| admin_state_up            | UP                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| availability_zone_hints   |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| availability_zones        |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| created_at                | 2020-08-07T00:05:58Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| description               |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| dns_domain                | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| id                        | 0edec63e-cc62-4e93-8962-d0ad2df27bc8                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ipv4_address_scope        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ipv6_address_scope        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| is_default                | False                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>| is_vlan_transparent       | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| location                  | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;default&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, region_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| mtu                       | 1450                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| name                      | int                                                                                                                                                     |
+</span></span><span style="display:flex;"><span>| port_security_enabled     | True                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| project_id                | c76211c24a1f460ca67274d655d46725                                                                                                                        |
+</span></span><span style="display:flex;"><span>| provider:network_type     | vxlan                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>| provider:physical_network | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| provider:segmentation_id  | 1                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| qos_policy_id             | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| revision_number           | 1                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| router:external           | Internal                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| segments                  | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| shared                    | False                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>| status                    | ACTIVE                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>| subnets                   |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| tags                      |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| updated_at                | 2020-08-07T00:05:58Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack subnet create int-sub --network int \
+</span></span><span style="display:flex;"><span>--subnet-range 1.1.1.0/24 --gateway 1.1.1.1 \
+</span></span><span style="display:flex;"><span>--dns-nameserver 8.8.8.8
+</span></span><span style="display:flex;"><span>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field                | Value                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| allocation_pools     | 1.1.1.2-1.1.1.254                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| cidr                 | 1.1.1.0/24                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| created_at           | 2020-08-07T00:06:25Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| description          |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| dns_nameservers      | 8.8.8.8                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| dns_publish_fixed_ip | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| enable_dhcp          | True                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| gateway_ip           | 1.1.1.1                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| host_routes          |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| id                   | 800bc5af-45e9-4719-8969-4c154bc111d6                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ip_version           | 4                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| ipv6_address_mode    | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ipv6_ra_mode         | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| location             | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;default&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, region_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| name                 | int-sub                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| network_id           | 0edec63e-cc62-4e93-8962-d0ad2df27bc8                                                                                                                    |
+</span></span><span style="display:flex;"><span>| prefix_length        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| project_id           | c76211c24a1f460ca67274d655d46725                                                                                                                        |
+</span></span><span style="display:flex;"><span>| revision_number      | 0                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| segment_id           | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| service_types        |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| subnetpool_id        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| tags                 |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| updated_at           | 2020-08-07T00:06:25Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack router add subnet router int-sub
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack network create \
+</span></span><span style="display:flex;"><span>--provider-physical-network physnet1 \
+</span></span><span style="display:flex;"><span>--provider-network-type flat --external ext
+</span></span><span style="display:flex;"><span>+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field                     | Value                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| admin_state_up            | UP                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| availability_zone_hints   |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| availability_zones        |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| created_at                | 2020-08-07T00:06:47Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| description               |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| dns_domain                | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| id                        | 68e5adb0-a8c4-473b-88a9-fdaaf6f12ec2                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ipv4_address_scope        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ipv6_address_scope        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| is_default                | False                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>| is_vlan_transparent       | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| location                  | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;default&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, region_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| mtu                       | 1500                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| name                      | ext                                                                                                                                                     |
+</span></span><span style="display:flex;"><span>| port_security_enabled     | True                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| project_id                | c76211c24a1f460ca67274d655d46725                                                                                                                        |
+</span></span><span style="display:flex;"><span>| provider:network_type     | flat                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| provider:physical_network | physnet1                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| provider:segmentation_id  | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| qos_policy_id             | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| revision_number           | 1                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| router:external           | External                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| segments                  | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| shared                    | False                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>| status                    | ACTIVE                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>| subnets                   |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| tags                      |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| updated_at                | 2020-08-07T00:06:47Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>+---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack subnet create ext-sub \
+</span></span><span style="display:flex;"><span>--network ext --subnet-range 192.168.10.0/24 \
+</span></span><span style="display:flex;"><span>--allocation-pool start=192.168.10.150,end=192.168.10.200 \
+</span></span><span style="display:flex;"><span>--gateway 192.168.10.2 --dns-nameserver 8.8.8.8
+</span></span><span style="display:flex;"><span>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field                | Value                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| allocation_pools     | 192.168.10.150-192.168.10.200                                                                                                                           |
+</span></span><span style="display:flex;"><span>| cidr                 | 192.168.10.0/24                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| created_at           | 2020-08-07T00:07:21Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| description          |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| dns_nameservers      | 8.8.8.8                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| dns_publish_fixed_ip | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| enable_dhcp          | True                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| gateway_ip           | 192.168.10.2                                                                                                                                            |
+</span></span><span style="display:flex;"><span>| host_routes          |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| id                   | 31a92331-f102-4c4e-8c02-f97baa9eab28                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ip_version           | 4                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| ipv6_address_mode    | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| ipv6_ra_mode         | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| location             | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;default&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, region_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| name                 | ext-sub                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| network_id           | 68e5adb0-a8c4-473b-88a9-fdaaf6f12ec2                                                                                                                    |
+</span></span><span style="display:flex;"><span>| prefix_length        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| project_id           | c76211c24a1f460ca67274d655d46725                                                                                                                        |
+</span></span><span style="display:flex;"><span>| revision_number      | 0                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| segment_id           | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| service_types        |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| subnetpool_id        | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| tags                 |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| updated_at           | 2020-08-07T00:07:21Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack router set router --external-gateway ext
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack network rbac list
+</span></span><span style="display:flex;"><span>+--------------------------------------+-------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| ID                                   | Object Type | Object ID                            |
+</span></span><span style="display:flex;"><span>+--------------------------------------+-------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| 4e8ebe0b-60f0-485c-8696-74378068c844 | network     | 68e5adb0-a8c4-473b-88a9-fdaaf6f12ec2 |
+</span></span><span style="display:flex;"><span>+--------------------------------------+-------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; wget http://cloud-images.ubuntu.com/releases/18.04/release/ubuntu-18.04-server-cloudimg-amd64.img -P /var/kvm/images
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack image create &#34;Ubuntu1804&#34; --file /var/kvm/images/ubuntu-18.04-server-cloudimg-amd64.img --disk-format qcow2 --container-format bare --public
+</span></span><span style="display:flex;"><span># Ubuntu18.04 이미지를 다운로드 후, 등록합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack security group create all-port
+</span></span><span style="display:flex;"><span>+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field           | Value                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| created_at      | 2020-08-07T00:10:31Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| description     | all-port                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| id              | 97224218-b304-4076-9645-d68092a9366a                                                                                                                    |
+</span></span><span style="display:flex;"><span>| location        | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;default&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, region_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| name            | all-port                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| project_id      | c76211c24a1f460ca67274d655d46725                                                                                                                        |
+</span></span><span style="display:flex;"><span>| revision_number | 1                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| rules           | created_at=&#39;2020-08-07T00:10:32Z&#39;, direction=&#39;egress&#39;, ethertype=&#39;IPv6&#39;, id=&#39;333de7e9-5c1b-4b2f-bb0e-2da1b878abb6&#39;, updated_at=&#39;2020-08-07T00:10:32Z&#39;   |
+</span></span><span style="display:flex;"><span>|                 | created_at=&#39;2020-08-07T00:10:32Z&#39;, direction=&#39;egress&#39;, ethertype=&#39;IPv4&#39;, id=&#39;644e18e1-4f4e-42ad-bef8-937e47254a27&#39;, updated_at=&#39;2020-08-07T00:10:32Z&#39;   |
+</span></span><span style="display:flex;"><span>| stateful        | True                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| tags            | []                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| updated_at      | 2020-08-07T00:10:32Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack security group rule create --protocol icmp --ingress all-port
+</span></span><span style="display:flex;"><span>+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field             | Value                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| created_at        | 2020-08-07T00:13:31Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| description       |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| direction         | ingress                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| ether_type        | IPv4                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| id                | 27688481-047b-4fc0-948c-de109e46d7f5                                                                                                                    |
+</span></span><span style="display:flex;"><span>| location          | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;default&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, region_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| name              | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| port_range_max    | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| port_range_min    | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| project_id        | c76211c24a1f460ca67274d655d46725                                                                                                                        |
+</span></span><span style="display:flex;"><span>| protocol          | icmp                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| remote_group_id   | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| remote_ip_prefix  | 0.0.0.0/0                                                                                                                                               |
+</span></span><span style="display:flex;"><span>| revision_number   | 0                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| security_group_id | 97224218-b304-4076-9645-d68092a9366a                                                                                                                    |
+</span></span><span style="display:flex;"><span>| tags              | []                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| updated_at        | 2020-08-07T00:13:31Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack security group rule create --protocol tcp --dst-port 22:22 all-port
+</span></span><span style="display:flex;"><span>+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field             | Value                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| created_at        | 2020-08-07T00:13:36Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| description       |                                                                                                                                                         |
+</span></span><span style="display:flex;"><span>| direction         | ingress                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| ether_type        | IPv4                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| id                | da2afd20-818a-4bfe-9017-c837b2bf30ec                                                                                                                    |
+</span></span><span style="display:flex;"><span>| location          | cloud=&#39;&#39;, project.domain_id=, project.domain_name=&#39;default&#39;, project.id=&#39;c76211c24a1f460ca67274d655d46725&#39;, project.name=&#39;admin&#39;, region_name=&#39;&#39;, zone= |
+</span></span><span style="display:flex;"><span>| name              | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| port_range_max    | 22                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| port_range_min    | 22                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| project_id        | c76211c24a1f460ca67274d655d46725                                                                                                                        |
+</span></span><span style="display:flex;"><span>| protocol          | tcp                                                                                                                                                     |
+</span></span><span style="display:flex;"><span>| remote_group_id   | None                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| remote_ip_prefix  | 0.0.0.0/0                                                                                                                                               |
+</span></span><span style="display:flex;"><span>| revision_number   | 0                                                                                                                                                       |
+</span></span><span style="display:flex;"><span>| security_group_id | 97224218-b304-4076-9645-d68092a9366a                                                                                                                    |
+</span></span><span style="display:flex;"><span>| tags              | []                                                                                                                                                      |
+</span></span><span style="display:flex;"><span>| updated_at        | 2020-08-07T00:13:36Z                                                                                                                                    |
+</span></span><span style="display:flex;"><span>+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; ssh-keygen -q -N &#34;&#34;
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack keypair create --public-key ~/.ssh/id_rsa.pub MyKey
+</span></span><span style="display:flex;"><span>+-------------+-------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                                           |
+</span></span><span style="display:flex;"><span>+-------------+-------------------------------------------------+
+</span></span><span style="display:flex;"><span>| fingerprint | a3:8f:44:f6:e1:4e:da:a0:90:f1:5d:dc:6a:8b:ad:76 |
+</span></span><span style="display:flex;"><span>| name        | MyKey                                           |
+</span></span><span style="display:flex;"><span>| user_id     | 57ce8f772e374a7c9282f2674fda1ba7                |
+</span></span><span style="display:flex;"><span>+-------------+-------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack flavor create --ram 1024 --disk 10 --vcpus 1 m1.small
+</span></span><span style="display:flex;"><span>+----------------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| Field                      | Value                                |
+</span></span><span style="display:flex;"><span>+----------------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>| OS-FLV-DISABLED:disabled   | False                                |
+</span></span><span style="display:flex;"><span>| OS-FLV-EXT-DATA:ephemeral  | 0                                    |
+</span></span><span style="display:flex;"><span>| disk                       | 10                                   |
+</span></span><span style="display:flex;"><span>| id                         | dabfebd4-cd05-4cec-9567-78b8c9e3d6b6 |
+</span></span><span style="display:flex;"><span>| name                       | m1.small                             |
+</span></span><span style="display:flex;"><span>| os-flavor-access:is_public | True                                 |
+</span></span><span style="display:flex;"><span>| properties                 |                                      |
+</span></span><span style="display:flex;"><span>| ram                        | 1024                                 |
+</span></span><span style="display:flex;"><span>| rxtx_factor                | 1.0                                  |
+</span></span><span style="display:flex;"><span>| swap                       |                                      |
+</span></span><span style="display:flex;"><span>| vcpus                      | 1                                    |
+</span></span><span style="display:flex;"><span>+----------------------------+--------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack server create --image Ubuntu1804 --flavor m1.small --key Mykey --network int --security-group all-port Ubuntu
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack floating ip create ext
+</span></span><span style="display:flex;"><span>+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field               | Value                                                                                                                                                                             |
+</span></span><span style="display:flex;"><span>+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| created_at          | 2020-08-07T00:16:15Z                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| description         |                                                                                                                                                                                   |
+</span></span><span style="display:flex;"><span>| dns_domain          | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| dns_name            | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| fixed_ip_address    | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| floating_ip_address | 192.168.10.191                                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| floating_network_id | 68e5adb0-a8c4-473b-88a9-fdaaf6f12ec2                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| id                  | 409a4724-1e13-4150-a2e1-6b3a205c4ff6                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| location            | Munch(<span style="color:#75715e">{</span><span style="color:#e6db74">&#39;cloud&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;region_name&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;zone&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">None</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;project&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Munch</span><span style="color:#f92672">(</span><span style="color:#75715e">{</span><span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;c76211c24a1f460ca67274d655d46725&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;name&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;admin&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;domain_id&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">None</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;domain_name&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;default&#39;</span><span style="color:#75715e">}</span><span style="color:#f92672">)</span><span style="color:#75715e">}</span>) |
+</span></span><span style="display:flex;"><span>| name                | 192.168.10.191                                                                                                                                                                    |
+</span></span><span style="display:flex;"><span>| port_details        | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| port_id             | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| project_id          | c76211c24a1f460ca67274d655d46725                                                                                                                                                  |
+</span></span><span style="display:flex;"><span>| qos_policy_id       | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| revision_number     | 0                                                                                                                                                                                 |
+</span></span><span style="display:flex;"><span>| router_id           | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| status              | DOWN                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| subnet_id           | None                                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>| tags                | []                                                                                                                                                                                |
+</span></span><span style="display:flex;"><span>| updated_at          | 2020-08-07T00:16:15Z                                                                                                                                                              |
+</span></span><span style="display:flex;"><span>+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack server add floating ip Ubuntu 192.168.10.191
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; 
+</span></span></code></pre></div><h1 id="heading-21">
+  
+  <a class="anchor" href="#heading-21">#</a>
+</h1>
+<p> </p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--neutron"><strong>OpenStack Ussuri : Neutron</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--neutron-1"><strong>OpenStack Ussuri : Neutron</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-service-및-user-생성"><strong>Neutron service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-유저의-db를-생성합니다"><strong>neutron 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-설치"><strong>Neutron 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-11"></a></li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a>
+      <ul>
+        <li><a href="#neutron-network-node-설치"><strong>neutron Network Node 설치</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-14"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#neutron-설치-1"><strong>Neutron 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-15"></a></li>
+    <li><a href="#heading-16"></a>
+      <ul>
+        <li><a href="#neutron-compute-node-설치"><strong>neutron compute Node 설치</strong></a>
+          <ul>
+            <li><a href="#neutron-설치-2"><strong>Neutron 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-17"></a></li>
+    <li><a href="#heading-18"></a></li>
+    <li><a href="#heading-19"></a>
+      <ul>
+        <li><a href="#확인"><strong>확인</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-20"></a></li>
+    <li><a href="#heading-21"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

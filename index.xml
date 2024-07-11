@@ -4,7 +4,8 @@
     <title>Main on Mung Book</title>
     <link>http://mungdocs.kro.kr/</link>
     <description>Recent content in Main on Mung Book</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>main</language><atom:link href="http://mungdocs.kro.kr/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>main</language>
+    <atom:link href="http://mungdocs.kro.kr/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

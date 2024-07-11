@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SAP on Mung Book</title>
+    <link>http://mungdocs.kro.kr/erp/docs/SAP/</link>
+    <description>Recent content in SAP on Mung Book</description>
+    <generator>Hugo</generator>
+    <language>erp</language>
+    <atom:link href="http://mungdocs.kro.kr/erp/docs/SAP/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

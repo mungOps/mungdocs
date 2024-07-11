@@ -6,12 +6,14 @@
 <meta name="description" content="Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &lt;pod-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &lt;replicaset-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &lt;deployment-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &lt;service-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: selector: &lt;selector-key&gt;: &lt;selector-value&gt; ports: - protocol: TCP port: &lt;service-port&gt; targetPort: &lt;target-port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Kubernetes_Object_Table" />
-<meta property="og:description" content="Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &lt;pod-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &lt;replicaset-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &lt;deployment-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &lt;service-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: selector: &lt;selector-key&gt;: &lt;selector-value&gt; ports: - protocol: TCP port: &lt;service-port&gt; targetPort: &lt;target-port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/" /><meta property="article:section" content="docs" />
-
-<meta property="article:modified_time" content="2024-02-20T11:28:05+09:00" />
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="Kubernetes_Object_Table">
+  <meta property="og:description" content="Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &lt;pod-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &lt;replicaset-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &lt;deployment-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &lt;service-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: selector: &lt;selector-key&gt;: &lt;selector-value&gt; ports: - protocol: TCP port: &lt;service-port&gt; targetPort: &lt;target-port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.">
+  <meta property="og:locale" content="devops">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2024-02-20T11:28:05+09:00">
 <title>Kubernetes_Object_Table | Mung Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -20,6 +22,9 @@
   <script defer src="/devops.search.min.7c7350b91b49a37b5db17eeb30d789508663d425145da0dbfbebbc7cc60931f4.js" integrity="sha256-fHNQuRtJo3tdsX7rMNeJUIZj1CUUXaDb&#43;&#43;u8fMYJMfQ=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -50,7 +55,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                 
+                   
 
 <ul class="book-languages">
   <li>
@@ -65,6 +70,10 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
       <li>
@@ -123,8 +132,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-801d5d1866a46a16c0782881d41229a4" class="toggle"  />
-    <label for="section-801d5d1866a46a16c0782881d41229a4" class="flex justify-between">
+    <input type="checkbox" id="section-ab33f98ec482c8bc16f6f3aadd72961c" class="toggle"  />
+    <label for="section-ab33f98ec482c8bc16f6f3aadd72961c" class="flex justify-between">
       <a role="button" class="">CI/CD 배포 입문</a>
     </label>
   
@@ -232,8 +241,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c5b7d507618bef21daeb5f927f7ec27b" class="toggle"  />
-    <label for="section-c5b7d507618bef21daeb5f927f7ec27b" class="flex justify-between">
+    <input type="checkbox" id="section-7acb0652a4b3ec3e86a5d34ca37c0bd1" class="toggle"  />
+    <label for="section-7acb0652a4b3ec3e86a5d34ca37c0bd1" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
   
@@ -336,8 +345,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="toggle"  />
-    <label for="section-56eb593fbeb96bb79b838c0ea2af4bc6" class="flex justify-between">
+    <input type="checkbox" id="section-8fc86ab93e770996b2a42d54bb94a951" class="toggle"  />
+    <label for="section-8fc86ab93e770996b2a42d54bb94a951" class="flex justify-between">
       <a role="button" class="">Git</a>
     </label>
   
@@ -414,8 +423,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-88e82c90b0cd3699ff5025428c7eb95a" class="toggle" checked />
-    <label for="section-88e82c90b0cd3699ff5025428c7eb95a" class="flex justify-between">
+    <input type="checkbox" id="section-5f7f8f111f73dbb7707958fc3e6a0a67" class="toggle" checked />
+    <label for="section-5f7f8f111f73dbb7707958fc3e6a0a67" class="flex justify-between">
       <a role="button" class="">Kubernetes</a>
     </label>
   
@@ -539,8 +548,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="toggle"  />
-    <label for="section-dcaffd84d1ea6b9dbc5428438c445ae2" class="flex justify-between">
+    <input type="checkbox" id="section-fe7868a478c068e2b228e3f91670cbc2" class="toggle"  />
+    <label for="section-fe7868a478c068e2b228e3f91670cbc2" class="flex justify-between">
       <a role="button" class="">CKA</a>
     </label>
   
@@ -1832,7 +1841,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="book-comments">
 <div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     

@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# OpenStack Ussuri : Swift # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | ----------------------- | metadata agent | ----------------------- | Neutron Server | ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Swift # # Swift는 우리가 흔히 사용하는 네이버 클라우드, 구글 드라이브와 같은 오브젝트 스토리지 서비스 입니다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="OpenStack Ussuri : Swift">
+  <meta property="og:description" content="# OpenStack Ussuri : Swift # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | ----------------------- | metadata agent | ----------------------- | Neutron Server | ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Swift # # Swift는 우리가 흔히 사용하는 네이버 클라우드, 구글 드라이브와 같은 오브젝트 스토리지 서비스 입니다.">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>OpenStack Ussuri : Swift | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+  <link rel="alternate" hreflang="cloud" href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" title="OpenStack Ussuri : Swift">
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.34a613df353d3b485a7c05de0392c29761057436e2df030fbd36d12724653ffd.js" integrity="sha256-NKYT3zU9O0hafAXeA5LCl2EFdDbi3wMPvTbRJyRlP/0=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                     
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SAP</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7dc3eb908953303803f4193c0d409a2" class="toggle"  />
+    <label for="section-f7dc3eb908953303803f4193c0d409a2" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42d84c30d8f3d130306756fa5df08a34" class="toggle"  />
+    <label for="section-42d84c30d8f3d130306756fa5df08a34" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-efc7b5b26e46f695a867fcc035ec86af" class="toggle"  />
+    <label for="section-efc7b5b26e46f695a867fcc035ec86af" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-80c97e49a653d732ddd3a245f2036c82" class="toggle"  />
+    <label for="section-80c97e49a653d732ddd3a245f2036c82" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ae77cdd55cab53ffc4d769b15c6773" class="toggle"  />
+    <label for="section-13ae77cdd55cab53ffc4d769b15c6773" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03900401de566084325d318cf786250d" class="toggle"  />
+    <label for="section-03900401de566084325d318cf786250d" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fce2d58e539681754720cea0ca25c5a" class="toggle"  />
+    <label for="section-8fce2d58e539681754720cea0ca25c5a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/OpenStack/OpenStack/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-978308dfbf79cbac8bade6ee008b9803" class="toggle"  />
+    <label for="section-978308dfbf79cbac8bade6ee008b9803" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2bee225828f4ab6a6713a17886d53c4c" class="toggle"  />
+    <label for="section-2bee225828f4ab6a6713a17886d53c4c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="toggle"  />
+    <label for="section-a5e7f0308c0fb71e05bae6cf86deb59c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="toggle"  />
+    <label for="section-14c5e6f4a0c4b822f7ed2df8b37a55f0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Trove/" class="">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8312694bbaf6fa051d7c9dc3e36012cf" class="toggle"  />
+    <label for="section-8312694bbaf6fa051d7c9dc3e36012cf" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca1eff58cd5bca6157d8d342ea4e132c" class="toggle"  />
+    <label for="section-ca1eff58cd5bca6157d8d342ea4e132c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2cc4dc9995e9f9cb5684091431361d22" class="toggle"  />
+    <label for="section-2cc4dc9995e9f9cb5684091431361d22" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStack/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1918f9d76cde54090f90336203c289d6" class="toggle" checked />
+    <label for="section-1918f9d76cde54090f90336203c289d6" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c2c13699fcac8c2273b9192d15ca3e0" class="toggle"  />
+    <label for="section-9c2c13699fcac8c2273b9192d15ca3e0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="toggle"  />
+    <label for="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4315e737bb69dd0391eb5dd9bf36d62c" class="toggle"  />
+    <label for="section-4315e737bb69dd0391eb5dd9bf36d62c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-597c2799205b827d5c7ab71a2d402882" class="toggle"  />
+    <label for="section-597c2799205b827d5c7ab71a2d402882" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-42dbab293af4648ec92e892d864865cb" class="toggle"  />
+    <label for="section-42dbab293af4648ec92e892d864865cb" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a1339544015f56c1506abcddaab9b3f3" class="toggle"  />
+    <label for="section-a1339544015f56c1506abcddaab9b3f3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-06/" class="">OpenStack Ussuri : Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a979c54687057f4f76d7c019e7596a87" class="toggle"  />
+    <label for="section-a979c54687057f4f76d7c019e7596a87" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c706afb8aa1555379e017ad43bace477" class="toggle"  />
+    <label for="section-c706afb8aa1555379e017ad43bace477" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f74c2a46724970d36791c6781d2ff7e3" class="toggle" checked />
+    <label for="section-f74c2a46724970d36791c6781d2ff7e3" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09/" class="active">OpenStack Ussuri : Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6303b6db54e205267dc3549a8f26dd0" class="toggle"  />
+    <label for="section-d6303b6db54e205267dc3549a8f26dd0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7a231284edd65906e160494c2ee8e8be" class="toggle"  />
+    <label for="section-7a231284edd65906e160494c2ee8e8be" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2999e43c9febc21006bd9b8feac3e37a" class="toggle"  />
+    <label for="section-2999e43c9febc21006bd9b8feac3e37a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-11/" class="">OpenStack Ussuri : Gnocch</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b682d7a4fa2d7036138e84d857e66a60" class="toggle"  />
+    <label for="section-b682d7a4fa2d7036138e84d857e66a60" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-12/" class="">OpenStack Ussuri : Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-93b9fe20970a7f5cba4ed9da335ddb40" class="toggle"  />
+    <label for="section-93b9fe20970a7f5cba4ed9da335ddb40" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="toggle"  />
+    <label for="section-6a0a1b44578b713a0441b5ac7e7c83c9" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="toggle"  />
+    <label for="section-dafb5ecf0327528dc127a5a92e2c3c7f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-15/" class="">OpenStack Ussuri : Rally</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-72877fd1d0dc0d4d08adecfd34ad2947" class="toggle"  />
+    <label for="section-72877fd1d0dc0d4d08adecfd34ad2947" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-16/" class="">OpenStack Ussuri : Manila</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="toggle"  />
+    <label for="section-52f6a4a920b8eed4bc2bb6bb79ff116f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Devstack/" class="">DevStack</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-136f8be1d19ed1e5809de99a5152dadc" class="toggle"  />
+    <label for="section-136f8be1d19ed1e5809de99a5152dadc" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/Packstack/" class="">Packstack</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>OpenStack Ussuri : Swift</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading"></a></li>
+    <li><a href="#openstack-ussuri--swift"><strong>OpenStack Ussuri : Swift</strong></a></li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--swift-1"><strong>OpenStack Ussuri : Swift</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#network-node-swift-proxy-설치"><strong>Network Node Swift-Proxy 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a>
+      <ul>
+        <li><a href="#swift-stoage-node-설치"><strong>Swift Stoage Node 설치</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-11"></a></li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a>
+      <ul>
+        <li><a href="#확인"><strong>확인</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-14"></a></li>
+    <li><a href="#heading-15"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<h1 id="openstack-ussuri--swift">
+  <strong>OpenStack Ussuri : Swift</strong>
+  <a class="anchor" href="#openstack-ussuri--swift">#</a>
+</h1>
+<h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span> -----------------------         -----------------------        -----------------------
+</span></span><span style="display:flex;"><span>|  [ Controller Node ]  |       |    [ Compute Node ]   |      |   [ Network Node ]    | 
+</span></span><span style="display:flex;"><span>|                       |       |        Libvirt        |      |     Open vSwitch      |
+</span></span><span style="display:flex;"><span>| MariaDB    RabbitMQ   |       |      Nova compute     |      |       L2 Agent        |
+</span></span><span style="display:flex;"><span>| Memcached  Keystone   |       |      Open vSwitch     |      |       L3 Agent        |
+</span></span><span style="display:flex;"><span>| httpd      Cinder API |       |       L2 Agent        |      |     metadata agent    |
+</span></span><span style="display:flex;"><span>| Nova-API   Compute    |       |      Cinder-LVM       |      |      Swift-proxy      |
+</span></span><span style="display:flex;"><span>| L2 agent   L3 agent   |       |          NFS          |        -----------------------
+</span></span><span style="display:flex;"><span>| metadata agent        |        ----------------------- 
+</span></span><span style="display:flex;"><span>| Neutron Server        |        
+</span></span><span style="display:flex;"><span> -----------------------   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> ---------------------------------       
+</span></span><span style="display:flex;"><span>|     [ Storage Node 1, 2, 3 ]    |     
+</span></span><span style="display:flex;"><span>|                                 | 
+</span></span><span style="display:flex;"><span>|      Swift-account-auditor      |
+</span></span><span style="display:flex;"><span>|      Swift-account-replicator   |
+</span></span><span style="display:flex;"><span>|      Swift-account              |
+</span></span><span style="display:flex;"><span>|      Swift-container-auditor    |
+</span></span><span style="display:flex;"><span>|      Swift-container-replicator |
+</span></span><span style="display:flex;"><span>|      Swift-container-updater    |
+</span></span><span style="display:flex;"><span>|      Swift-container            |
+</span></span><span style="display:flex;"><span>|      Swift-object-auditor       |
+</span></span><span style="display:flex;"><span>|      Swift-object-replicator    |
+</span></span><span style="display:flex;"><span>|      Swift-object-updater       |
+</span></span><span style="display:flex;"><span>|      Swift-swift-object         |
+</span></span><span style="display:flex;"><span> ---------------------------------
+</span></span></code></pre></div><h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<h2 id="openstack-ussuri--swift-1">
+  <strong>OpenStack Ussuri : Swift</strong>
+  <a class="anchor" href="#openstack-ussuri--swift-1">#</a>
+</h2>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<ul>
+<li><strong>Swift는 우리가 흔히 사용하는 네이버 클라우드, 구글 드라이브와 같은 오브젝트 스토리지 서비스 입니다.</strong></li>
+<li><strong>Swift 설치는 network, Storage 순으로 이루어집니다.</strong></li>
+<li><strong>Swift*에 대한 설명은 
+  <a href="https://mung0001.github.io/docs/study/openstack/Swift/">Swift</a>을 참조해주세요.</strong></li>
+</ul>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack user create --domain default --project service --password qwer1234 swift
+</span></span><span style="display:flex;"><span>+--------------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field               | Value                            |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| default_project_id  | b470c69e28db47cdbfc81e06cc67f627 |
+</span></span><span style="display:flex;"><span>| domain_id           | default                          |
+</span></span><span style="display:flex;"><span>| enabled             | True                             |
+</span></span><span style="display:flex;"><span>| id                  | dd2f0225406249b195e4feff91eca393 |
+</span></span><span style="display:flex;"><span>| name                | swift                            |
+</span></span><span style="display:flex;"><span>| options             | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>| password_expires_at | None                             |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack role add --project service --user swift admin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack service create --name swift --description &#34;OpenStack Object Storage&#34; object-store
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | OpenStack Object Storage         |
+</span></span><span style="display:flex;"><span>| enabled     | True                             |
+</span></span><span style="display:flex;"><span>| id          | d9d7bc4b99774d3ba701e2eae93edfe2 |
+</span></span><span style="display:flex;"><span>| name        | swift                            |
+</span></span><span style="display:flex;"><span>| type        | object-store                     |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne object-store public http://network:8080/v1/AUTH_%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                              |
+</span></span><span style="display:flex;"><span>+--------------+------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                               |
+</span></span><span style="display:flex;"><span>| id           | a70e1ac16a9144529ea49132cd7dd39e   |
+</span></span><span style="display:flex;"><span>| interface    | public                             |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                          |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                          |
+</span></span><span style="display:flex;"><span>| service_id   | d9d7bc4b99774d3ba701e2eae93edfe2   |
+</span></span><span style="display:flex;"><span>| service_name | swift                              |
+</span></span><span style="display:flex;"><span>| service_type | object-store                       |
+</span></span><span style="display:flex;"><span>| url          | http://network:8080/v1/AUTH_%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne object-store internal http://network:8080/v1/AUTH_%\(tenant_id\)s
+</span></span><span style="display:flex;"><span>+--------------+------------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                              |
+</span></span><span style="display:flex;"><span>+--------------+------------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                               |
+</span></span><span style="display:flex;"><span>| id           | 6b5ea7b028f94035aef5601cf35d3a29   |
+</span></span><span style="display:flex;"><span>| interface    | internal                           |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                          |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                          |
+</span></span><span style="display:flex;"><span>| service_id   | d9d7bc4b99774d3ba701e2eae93edfe2   |
+</span></span><span style="display:flex;"><span>| service_name | swift                              |
+</span></span><span style="display:flex;"><span>| service_type | object-store                       |
+</span></span><span style="display:flex;"><span>| url          | http://network:8080/v1/AUTH_%(tenant_id)s |
+</span></span><span style="display:flex;"><span>+--------------+------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne object-store admin http://network:8080/v1
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                            |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                             |
+</span></span><span style="display:flex;"><span>| id           | 08c18a5313f642d59de980f51666f830 |
+</span></span><span style="display:flex;"><span>| interface    | admin                            |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                        |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                        |
+</span></span><span style="display:flex;"><span>| service_id   | d9d7bc4b99774d3ba701e2eae93edfe2 |
+</span></span><span style="display:flex;"><span>| service_name | swift                            |
+</span></span><span style="display:flex;"><span>| service_type | object-store                     |
+</span></span><span style="display:flex;"><span>| url          | http://network:8080/v1                  |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span></code></pre></div><h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<h3 id="network-node-swift-proxy-설치">
+  <strong>Network Node Swift-Proxy 설치</strong>
+  <a class="anchor" href="#network-node-swift-proxy-%ec%84%a4%ec%b9%98">#</a>
+</h3>
+<p> </p>
+<h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ network&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-swift-proxy python3-memcached openssh-clients
+</span></span><span style="display:flex;"><span># swift-proxy 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/swift/proxy-server.conf
+</span></span><span style="display:flex;"><span>[filter:cache]
+</span></span><span style="display:flex;"><span>use = egg:swift#memcache
+</span></span><span style="display:flex;"><span>memcache_servers = controller:11211
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[filter:authtoken]
+</span></span><span style="display:flex;"><span>paste.filter_factory = keystonemiddleware.auth_token:filter_factory
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># admin_tenant_name = %SERVICE_TENANT_NAME%
+</span></span><span style="display:flex;"><span># admin_user = %SERVICE_USER%
+</span></span><span style="display:flex;"><span># admin_password = %SERVICE_PASSWORD%
+</span></span><span style="display:flex;"><span># auth_host = 127.0.0.1
+</span></span><span style="display:flex;"><span># auth_port = 35357
+</span></span><span style="display:flex;"><span># auth_protocol = http
+</span></span><span style="display:flex;"><span># signing_dir = /tmp/keystone-signing-swift
+</span></span><span style="display:flex;"><span># 주석처리 후, 하단의 아래의 항모들을 추가합니다.합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = swift
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>delay_auth_decision = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; vi /etc/swift/swift.conf
+</span></span><span style="display:flex;"><span>[swift-hash]
+</span></span><span style="display:flex;"><span>swift_hash_path_suffix = swift_shared_path
+</span></span><span style="display:flex;"><span>swift_hash_path_prefix = swift_shared_path
+</span></span><span style="display:flex;"><span># 파일 안에 내용들을 삭제 후, 생성합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/account.builder create 12 3 1
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/container.builder create 12 3 1
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/object.builder create 12 3 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/account.builder add r0z0-10.10.10.50:6202/device 100
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/container.builder add r0z0-10.10.10.50:6201/device 100
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/object.builder add r0z0-10.10.10.50:6200/device 100
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/account.builder add r1z1-10.10.10.51:6202/device 100
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/container.builder add r1z1-10.10.10.51:6201/device 100
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/object.builder add r1z1-10.10.10.51:6200/device 100
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/account.builder add r2z2-10.10.10.52:6202/device 100
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/container.builder add r2z2-10.10.10.52:6201/device 100
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/object.builder add r2z2-10.10.10.52:6200/device 100
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/account.builder rebalance
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/container.builder rebalance
+</span></span><span style="display:flex;"><span>$ network&gt; swift-ring-builder /etc/swift/object.builder rebalance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; chown swift. /etc/swift/*.gz
+</span></span><span style="display:flex;"><span>$ network&gt; systemctl enable --now openstack-swift-proxy
+</span></span><span style="display:flex;"><span>$ network&gt; firewall-cmd --add-port=8080/tcp --permanent
+</span></span><span style="display:flex;"><span>$ network&gt; firewall-cmd --reload
+</span></span></code></pre></div><h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-10">
+  
+  <a class="anchor" href="#heading-10">#</a>
+</h1>
+<h2 id="swift-stoage-node-설치">
+  <strong>Swift Stoage Node 설치</strong>
+  <a class="anchor" href="#swift-stoage-node-%ec%84%a4%ec%b9%98">#</a>
+</h2>
+<h1 id="heading-11">
+  
+  <a class="anchor" href="#heading-11">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ storage all&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-swift-account openstack-swift-container openstack-swift-object openstack-selinux xfsprogs rsync rsync-daemon openssh-clients
+</span></span><span style="display:flex;"><span># swift 밒 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; mkfs.xfs -i size=1024 -s size=4096 /dev/sdb1
+</span></span><span style="display:flex;"><span>$ storage all&gt; mkdir -p /srv/node/device
+</span></span><span style="display:flex;"><span>$ storage all&gt; mount -o noatime,nodiratime /dev/sdb1 /srv/node/device
+</span></span><span style="display:flex;"><span>$ storage all&gt; chown -R swift. /srv/node
+</span></span><span style="display:flex;"><span># 하드 디스크를 임포트 후, XFS로 포맷을 진행합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; vi /etc/fstab
+</span></span><span style="display:flex;"><span>/dev/sdb1               /srv/node/device       xfs     noatime,nodiratime 0 0
+</span></span><span style="display:flex;"><span># 설정을 fstab의 등록합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ network&gt; scp /etc/swift/*.gz storage1:/etc/swift/
+</span></span><span style="display:flex;"><span>$ network&gt; scp /etc/swift/*.gz storage2:/etc/swift/
+</span></span><span style="display:flex;"><span>$ network&gt; scp /etc/swift/*.gz storage3:/etc/swift/
+</span></span><span style="display:flex;"><span># 설정을 복사합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; chown swift. /etc/swift/*.gz
+</span></span><span style="display:flex;"><span>$ storage all&gt; vi /etc/swift/swift.conf
+</span></span><span style="display:flex;"><span>[swift-hash]
+</span></span><span style="display:flex;"><span>swift_hash_path_suffix = swift_shared_path
+</span></span><span style="display:flex;"><span>swift_hash_path_prefix = swift_shared_path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; vi /etc/swift/account-server.conf
+</span></span><span style="display:flex;"><span>bind_ip = 0.0.0.0
+</span></span><span style="display:flex;"><span>bind_port = 6202
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; vi /etc/swift/container-server.conf
+</span></span><span style="display:flex;"><span>bind_ip = 0.0.0.0
+</span></span><span style="display:flex;"><span>bind_port = 6201
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; vi /etc/swift/object-server.conf
+</span></span><span style="display:flex;"><span>bind_ip = 0.0.0.0
+</span></span><span style="display:flex;"><span>bind_port = 6200
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; vi /etc/rsyncd.conf
+</span></span><span style="display:flex;"><span>pid file = /var/run/rsyncd.pid
+</span></span><span style="display:flex;"><span>log file = /var/log/rsyncd.log
+</span></span><span style="display:flex;"><span>uid = swift
+</span></span><span style="display:flex;"><span>gid = swift
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pid file = /var/run/rsyncd.pid
+</span></span><span style="display:flex;"><span>log file = /var/log/rsyncd.log
+</span></span><span style="display:flex;"><span>uid = swift
+</span></span><span style="display:flex;"><span>gid = swift
+</span></span><span style="display:flex;"><span>address = storage1 or storage2 or storage3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[account]
+</span></span><span style="display:flex;"><span>path            = /srv/node
+</span></span><span style="display:flex;"><span>read only       = false
+</span></span><span style="display:flex;"><span>write only      = no
+</span></span><span style="display:flex;"><span>list            = yes
+</span></span><span style="display:flex;"><span>incoming chmod  = 0644
+</span></span><span style="display:flex;"><span>outgoing chmod  = 0644
+</span></span><span style="display:flex;"><span>max connections = 25
+</span></span><span style="display:flex;"><span>lock file =     /var/lock/account.lock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[container]
+</span></span><span style="display:flex;"><span>path            = /srv/node
+</span></span><span style="display:flex;"><span>read only       = false
+</span></span><span style="display:flex;"><span>write only      = no
+</span></span><span style="display:flex;"><span>list            = yes
+</span></span><span style="display:flex;"><span>incoming chmod  = 0644
+</span></span><span style="display:flex;"><span>outgoing chmod  = 0644
+</span></span><span style="display:flex;"><span>max connections = 25
+</span></span><span style="display:flex;"><span>lock file =     /var/lock/container.lock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[object]
+</span></span><span style="display:flex;"><span>path            = /srv/node
+</span></span><span style="display:flex;"><span>read only       = false
+</span></span><span style="display:flex;"><span>write only      = no
+</span></span><span style="display:flex;"><span>list            = yes
+</span></span><span style="display:flex;"><span>incoming chmod  = 0644
+</span></span><span style="display:flex;"><span>outgoing chmod  = 0644
+</span></span><span style="display:flex;"><span>max connections = 25
+</span></span><span style="display:flex;"><span>lock file =     /var/lock/object.lock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[swift_server]
+</span></span><span style="display:flex;"><span>path            = /etc/swift
+</span></span><span style="display:flex;"><span>read only       = true
+</span></span><span style="display:flex;"><span>write only      = no
+</span></span><span style="display:flex;"><span>list            = yes
+</span></span><span style="display:flex;"><span>incoming chmod  = 0644
+</span></span><span style="display:flex;"><span>outgoing chmod  = 0644
+</span></span><span style="display:flex;"><span>max connections = 5
+</span></span><span style="display:flex;"><span>lock file =     /var/lock/swift_server.lock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; semanage fcontext -a -t swift_data_t /srv/node/device
+</span></span><span style="display:flex;"><span>$ storage all&gt; restorecon /srv/node/device
+</span></span><span style="display:flex;"><span>$ storage all&gt; firewall-cmd --add-port=<span style="color:#75715e">{</span><span style="color:#ae81ff">873</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span><span style="color:#f92672">,</span><span style="color:#ae81ff">6200</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span><span style="color:#f92672">,</span><span style="color:#ae81ff">6201</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span><span style="color:#f92672">,</span><span style="color:#ae81ff">6202</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span><span style="color:#75715e">}</span> --permanent
+</span></span><span style="display:flex;"><span>$ storage all&gt; firewall-cmd --reload
+</span></span><span style="display:flex;"><span># SELinux 및 방화벽을 설정합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ storage all&gt; systemctl enable --now rsyncd \
+</span></span><span style="display:flex;"><span>openstack-swift-account-auditor \
+</span></span><span style="display:flex;"><span>openstack-swift-account-replicator \
+</span></span><span style="display:flex;"><span>openstack-swift-account \
+</span></span><span style="display:flex;"><span>openstack-swift-container-auditor \
+</span></span><span style="display:flex;"><span>openstack-swift-container-replicator \
+</span></span><span style="display:flex;"><span>openstack-swift-container-updater \
+</span></span><span style="display:flex;"><span>openstack-swift-container \
+</span></span><span style="display:flex;"><span>openstack-swift-object-auditor \
+</span></span><span style="display:flex;"><span>openstack-swift-object-replicator \
+</span></span><span style="display:flex;"><span>openstack-swift-object-updater \
+</span></span><span style="display:flex;"><span>openstack-swift-object
+</span></span><span style="display:flex;"><span># swift 서비스를 등록 및 시작합니다.
+</span></span></code></pre></div><h1 id="heading-12">
+  
+  <a class="anchor" href="#heading-12">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-13">
+  
+  <a class="anchor" href="#heading-13">#</a>
+</h1>
+<h2 id="확인">
+  <strong>확인</strong>
+  <a class="anchor" href="#%ed%99%95%ec%9d%b8">#</a>
+</h2>
+<h1 id="heading-14">
+  
+  <a class="anchor" href="#heading-14">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install python3-openstackclient python3-keystoneclient python3-swiftclient
+</span></span><span style="display:flex;"><span># swift 사용을 위해 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack project create --domain default --description &#34;Swift Service Project&#34; swiftservice
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | Swift Service Project            |
+</span></span><span style="display:flex;"><span>| domain_id   | default                          |
+</span></span><span style="display:flex;"><span>| enabled     | True                             |
+</span></span><span style="display:flex;"><span>| id          | ab658f35464e49b7a3df626e09feab91 |
+</span></span><span style="display:flex;"><span>| is_domain   | False                            |
+</span></span><span style="display:flex;"><span>| name        | swiftservice                     |
+</span></span><span style="display:flex;"><span>| options     | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>| parent_id   | default                          |
+</span></span><span style="display:flex;"><span>| tags        | []                               |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack role create SwiftOperator
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | None                             |
+</span></span><span style="display:flex;"><span>| domain_id   | None                             |
+</span></span><span style="display:flex;"><span>| id          | 3818d26e54244c1ba5d0481e9ad44e6e |
+</span></span><span style="display:flex;"><span>| name        | SwiftOperator                    |
+</span></span><span style="display:flex;"><span>| options     | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack user create --domain default --project swiftservice --password qwer1234 swiftuser01
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field               | Value                            |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| default_project_id  | ab658f35464e49b7a3df626e09feab91 |
+</span></span><span style="display:flex;"><span>| domain_id           | default                          |
+</span></span><span style="display:flex;"><span>| enabled             | True                             |
+</span></span><span style="display:flex;"><span>| id                  | 2ac2c69fd55a4bef95b2a8b728f131a7 |
+</span></span><span style="display:flex;"><span>| name                | swiftuser01                      |
+</span></span><span style="display:flex;"><span>| options             | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>| password_expires_at | None                             |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack role add --project swiftservice --user swiftuser01 SwiftOperator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; vi ~/swift
+</span></span><span style="display:flex;"><span>export OS_PROJECT_DOMAIN_NAME=default
+</span></span><span style="display:flex;"><span>export OS_USER_DOMAIN_NAME=default
+</span></span><span style="display:flex;"><span>export OS_PROJECT_NAME=swiftservice
+</span></span><span style="display:flex;"><span>export OS_USERNAME=swiftuser01
+</span></span><span style="display:flex;"><span>export OS_PASSWORD=qwer1234
+</span></span><span style="display:flex;"><span>export OS_AUTH_URL=http://controller:5000/v3
+</span></span><span style="display:flex;"><span>export OS_IDENTITY_API_VERSION=3
+</span></span><span style="display:flex;"><span>export PS1=&#39;[\u@\h \W(swift)]\$ &#39;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; chmod 600 ~/swift
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; source ~/swift
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; echo &#34;source ~/swift &#34; &gt;&gt; ~/.bash_profile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; swift stat
+</span></span><span style="display:flex;"><span>               Account: AUTH_ab658f35464e49b7a3df626e09feab91
+</span></span><span style="display:flex;"><span>            Containers: 0
+</span></span><span style="display:flex;"><span>               Objects: 0
+</span></span><span style="display:flex;"><span>                 Bytes: 0
+</span></span><span style="display:flex;"><span>          Content-Type: text/plain; charset=utf-8
+</span></span><span style="display:flex;"><span>           X-Timestamp: 1597360203.35834
+</span></span><span style="display:flex;"><span>       X-Put-Timestamp: 1597360203.35834
+</span></span><span style="display:flex;"><span>                  Vary: Accept
+</span></span><span style="display:flex;"><span>            X-Trans-Id: tx09982b0a02ac4b7eac244-005f35c849
+</span></span><span style="display:flex;"><span>X-Openstack-Request-Id: tx09982b0a02ac4b7eac244-005f35c849
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; openstack container create test
+</span></span><span style="display:flex;"><span>+---------------------------------------+-----------+------------------------------------+
+</span></span><span style="display:flex;"><span>| account                               | container | x-trans-id                         |
+</span></span><span style="display:flex;"><span>+---------------------------------------+-----------+------------------------------------+
+</span></span><span style="display:flex;"><span>| AUTH_ab658f35464e49b7a3df626e09feab91 | test      | txce00712612794927965f7-005f35c864 |
+</span></span><span style="display:flex;"><span>+---------------------------------------+-----------+------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; openstack container list
+</span></span><span style="display:flex;"><span>+------+
+</span></span><span style="display:flex;"><span>| Name |
+</span></span><span style="display:flex;"><span>+------+
+</span></span><span style="display:flex;"><span>| test |
+</span></span><span style="display:flex;"><span>+------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; openstack object create testfile.txt  test
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; openstack object list test
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; rm testfile.txt
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; openstack object save test testfile.txt
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; ll testfile.txt
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; openstack object delete test testfile.txt
+</span></span><span style="display:flex;"><span>$ controller ~(swift)&gt; openstack object list test
+</span></span></code></pre></div><h1 id="heading-15">
+  
+  <a class="anchor" href="#heading-15">#</a>
+</h1>
+<p> </p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-09.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading"></a></li>
+    <li><a href="#openstack-ussuri--swift"><strong>OpenStack Ussuri : Swift</strong></a></li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--swift-1"><strong>OpenStack Ussuri : Swift</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a></li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#network-node-swift-proxy-설치"><strong>Network Node Swift-Proxy 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+    <li><a href="#heading-9"></a></li>
+    <li><a href="#heading-10"></a>
+      <ul>
+        <li><a href="#swift-stoage-node-설치"><strong>Swift Stoage Node 설치</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-11"></a></li>
+    <li><a href="#heading-12"></a></li>
+    <li><a href="#heading-13"></a>
+      <ul>
+        <li><a href="#확인"><strong>확인</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-14"></a></li>
+    <li><a href="#heading-15"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

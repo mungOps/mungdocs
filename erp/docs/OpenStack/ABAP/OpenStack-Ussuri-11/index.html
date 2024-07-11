@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OpenStack Ussuri : Gnocch # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi | ----------------------- ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Gnnoch # # Gnnoch # # Gnocchi service 및 User 생성 # $ controller ~(keystone)&gt; openstack user create --domain default --project service --password qwer1234 gnocchi &#43;---------------------&#43;----------------------------------&#43; | Field | Value | &#43;---------------------&#43;----------------------------------&#43; | default_project_id | b470c69e28db47cdbfc81e06cc67f627 | | domain_id | default | | enabled | True | | id | 3217be4917454641994660bd1f3ea007 | | name | gnocchi | | options | {} | | password_expires_at | None | &#43;---------------------&#43;----------------------------------&#43; $ controller ~(keystone)&gt; openstack role add --project service --user gnocchi admin $ controller ~(keystone)&gt; openstack service create --name gnocchi --description &#34;Metric Service&#34; metric -------------------------------------------------&#43; | Field | Value | &#43;-------------&#43;----------------------------------&#43; | description | Metric Service | | enabled | True | | id | 6ac9ec31386f4291b582bd5b504ac485 | | name | gnocchi | | type | metric | &#43;-------------&#43;----------------------------------&#43; $ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric public http://controller:8041 &#43;--------------&#43;----------------------------------&#43; | Field | Value | &#43;--------------&#43;----------------------------------&#43; | enabled | True | | id | 12f4410ed82240b0b1340d48b0627612 | | interface | public | | region | RegionOne | | region_id | RegionOne | | service_id | 6ac9ec31386f4291b582bd5b504ac485 | | service_name | gnocchi | | service_type | metric | | url | http://controller:8041 | &#43;-------------------------------------------------&#43; $ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric internal http://controller:8041 &#43;--------------&#43;----------------------------------&#43; | Field | Value | &#43;--------------&#43;----------------------------------&#43; | enabled | True | | id | 70f43453f93b407e94d2dd11ddce7260 | | interface | internal | | region | RegionOne | | region_id | RegionOne | | service_id | 6ac9ec31386f4291b582bd5b504ac485 | | service_name | gnocchi | | service_type | metric | | url | http://controller:8041 | &#43;--------------&#43;----------------------------------&#43; $ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric admin http://controller:8041 &#43;--------------&#43;----------------------------------&#43; | Field | Value | &#43;--------------&#43;----------------------------------&#43; | enabled | True | | id | bb9a955359fd4af18599913465f46958 | | interface | admin | | region | RegionOne | | region_id | RegionOne | | service_id | 6ac9ec31386f4291b582bd5b504ac485 | | service_name | gnocchi | | service_type | metric | | url | http://controller:8041 | &#43;--------------&#43;----------------------------------&#43; # Gnocchi 유저의 DB를 생성합니다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-11/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="OpenStack Ussuri : Gnocch">
+  <meta property="og:description" content="OpenStack Ussuri : Gnocch # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi | ----------------------- ----------------------- --------------------------------- | [ Storage Node 1, 2, 3 ] | | | | Swift-account-auditor | | Swift-account-replicator | | Swift-account | | Swift-container-auditor | | Swift-container-replicator | | Swift-container-updater | | Swift-container | | Swift-object-auditor | | Swift-object-replicator | | Swift-object-updater | | Swift-swift-object | --------------------------------- # OpenStack Ussuri : Gnnoch # # Gnnoch # # Gnocchi service 및 User 생성 # $ controller ~(keystone)&gt; openstack user create --domain default --project service --password qwer1234 gnocchi &#43;---------------------&#43;----------------------------------&#43; | Field | Value | &#43;---------------------&#43;----------------------------------&#43; | default_project_id | b470c69e28db47cdbfc81e06cc67f627 | | domain_id | default | | enabled | True | | id | 3217be4917454641994660bd1f3ea007 | | name | gnocchi | | options | {} | | password_expires_at | None | &#43;---------------------&#43;----------------------------------&#43; $ controller ~(keystone)&gt; openstack role add --project service --user gnocchi admin $ controller ~(keystone)&gt; openstack service create --name gnocchi --description &#34;Metric Service&#34; metric -------------------------------------------------&#43; | Field | Value | &#43;-------------&#43;----------------------------------&#43; | description | Metric Service | | enabled | True | | id | 6ac9ec31386f4291b582bd5b504ac485 | | name | gnocchi | | type | metric | &#43;-------------&#43;----------------------------------&#43; $ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric public http://controller:8041 &#43;--------------&#43;----------------------------------&#43; | Field | Value | &#43;--------------&#43;----------------------------------&#43; | enabled | True | | id | 12f4410ed82240b0b1340d48b0627612 | | interface | public | | region | RegionOne | | region_id | RegionOne | | service_id | 6ac9ec31386f4291b582bd5b504ac485 | | service_name | gnocchi | | service_type | metric | | url | http://controller:8041 | &#43;-------------------------------------------------&#43; $ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric internal http://controller:8041 &#43;--------------&#43;----------------------------------&#43; | Field | Value | &#43;--------------&#43;----------------------------------&#43; | enabled | True | | id | 70f43453f93b407e94d2dd11ddce7260 | | interface | internal | | region | RegionOne | | region_id | RegionOne | | service_id | 6ac9ec31386f4291b582bd5b504ac485 | | service_name | gnocchi | | service_type | metric | | url | http://controller:8041 | &#43;--------------&#43;----------------------------------&#43; $ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric admin http://controller:8041 &#43;--------------&#43;----------------------------------&#43; | Field | Value | &#43;--------------&#43;----------------------------------&#43; | enabled | True | | id | bb9a955359fd4af18599913465f46958 | | interface | admin | | region | RegionOne | | region_id | RegionOne | | service_id | 6ac9ec31386f4291b582bd5b504ac485 | | service_name | gnocchi | | service_type | metric | | url | http://controller:8041 | &#43;--------------&#43;----------------------------------&#43; # Gnocchi 유저의 DB를 생성합니다.">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>OpenStack Ussuri : Gnocch | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.34a613df353d3b485a7c05de0392c29761057436e2df030fbd36d12724653ffd.js" integrity="sha256-NKYT3zU9O0hafAXeA5LCl2EFdDbi3wMPvTbRJyRlP/0=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                   
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SAP</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3c4c8bd6bdf9f59ffe238da4472fc10f" class="toggle"  />
+    <label for="section-3c4c8bd6bdf9f59ffe238da4472fc10f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-80c427f1dac700202af3be94374e2a6a" class="toggle"  />
+    <label for="section-80c427f1dac700202af3be94374e2a6a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45e267ef9903eb1e742da234601aa49d" class="toggle"  />
+    <label for="section-45e267ef9903eb1e742da234601aa49d" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6150ddc4f31ae0bcdd32476e72fe4d67" class="toggle"  />
+    <label for="section-6150ddc4f31ae0bcdd32476e72fe4d67" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1266c68acfb75bc1cd91661ae928b6ef" class="toggle"  />
+    <label for="section-1266c68acfb75bc1cd91661ae928b6ef" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48a8fe1f7d6fa79e10574916c4b73926" class="toggle"  />
+    <label for="section-48a8fe1f7d6fa79e10574916c4b73926" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-110bb53bd893ad5809b3431b909701d2" class="toggle"  />
+    <label for="section-110bb53bd893ad5809b3431b909701d2" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/OpenStack/Module/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ed043e44e8086fcac574f5172b57657" class="toggle"  />
+    <label for="section-7ed043e44e8086fcac574f5172b57657" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bba7f34201c12b2f56808a9169e62309" class="toggle"  />
+    <label for="section-bba7f34201c12b2f56808a9169e62309" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ff05cd17159f02ef64f6d77bd24b38f4" class="toggle"  />
+    <label for="section-ff05cd17159f02ef64f6d77bd24b38f4" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e4197ec471349537fe61f066137989c" class="toggle"  />
+    <label for="section-8e4197ec471349537fe61f066137989c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Trove/" class="">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4e3df5b1bdab0e221bdfc75127afb38b" class="toggle"  />
+    <label for="section-4e3df5b1bdab0e221bdfc75127afb38b" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2676521bc0f9a095fe7307778cf2303b" class="toggle"  />
+    <label for="section-2676521bc0f9a095fe7307778cf2303b" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c79536466ca9ad0bb77496009fe8230" class="toggle"  />
+    <label for="section-1c79536466ca9ad0bb77496009fe8230" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-160a5e8853e9e819ad654c235bd36e74" class="toggle" checked />
+    <label for="section-160a5e8853e9e819ad654c235bd36e74" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56b6a6f130803a7d1387d0b9ac095d3a" class="toggle"  />
+    <label for="section-56b6a6f130803a7d1387d0b9ac095d3a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b091f4035a77345c705ffeb9053611e1" class="toggle"  />
+    <label for="section-b091f4035a77345c705ffeb9053611e1" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d70b5524e6da683804c1bf58c73055e4" class="toggle"  />
+    <label for="section-d70b5524e6da683804c1bf58c73055e4" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3ccacf05b57b0a3edb8370f0322fcef0" class="toggle"  />
+    <label for="section-3ccacf05b57b0a3edb8370f0322fcef0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-772693fcd60c1b6a9dd8cdfbf1ad114a" class="toggle"  />
+    <label for="section-772693fcd60c1b6a9dd8cdfbf1ad114a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27304e8d4df629995610c605c3da57b1" class="toggle"  />
+    <label for="section-27304e8d4df629995610c605c3da57b1" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-06/" class="">OpenStack Ussuri : Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5232f2f4a4d6a7be1464cbfaf2af39d0" class="toggle"  />
+    <label for="section-5232f2f4a4d6a7be1464cbfaf2af39d0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f57820cbbf03a98cb8b36a501df666af" class="toggle"  />
+    <label for="section-f57820cbbf03a98cb8b36a501df666af" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bb9e1ff607404fb45d2c2648e83d363" class="toggle"  />
+    <label for="section-5bb9e1ff607404fb45d2c2648e83d363" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-09/" class="">OpenStack Ussuri : Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a4d569a1e4a51821459cf818170ffc17" class="toggle"  />
+    <label for="section-a4d569a1e4a51821459cf818170ffc17" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eddda901a8a322471e86b4314f2bb232" class="toggle"  />
+    <label for="section-eddda901a8a322471e86b4314f2bb232" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf577a01aeb955e855c7d398ae6a312" class="toggle" checked />
+    <label for="section-7bf577a01aeb955e855c7d398ae6a312" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-11/" class="active">OpenStack Ussuri : Gnocch</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-77ce41b051e440c778d5d4720729f158" class="toggle"  />
+    <label for="section-77ce41b051e440c778d5d4720729f158" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-12/" class="">OpenStack Ussuri : Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-573aa4a231d20ffa172927646e902f33" class="toggle"  />
+    <label for="section-573aa4a231d20ffa172927646e902f33" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f68f71ed4633a9d5478653aae708afa4" class="toggle"  />
+    <label for="section-f68f71ed4633a9d5478653aae708afa4" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-53371d7b92b55313a38e13b6b75e8d94" class="toggle"  />
+    <label for="section-53371d7b92b55313a38e13b6b75e8d94" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-15/" class="">OpenStack Ussuri : Rally</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df7e12dea58d82be7989ad4da0f1d323" class="toggle"  />
+    <label for="section-df7e12dea58d82be7989ad4da0f1d323" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-16/" class="">OpenStack Ussuri : Manila</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-08fc222feca460976f38a245f9bf475f" class="toggle"  />
+    <label for="section-08fc222feca460976f38a245f9bf475f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/Devstack/" class="">DevStack</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6ddc2ba51bb5363d54eb3683532ac09c" class="toggle"  />
+    <label for="section-6ddc2ba51bb5363d54eb3683532ac09c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/Packstack/" class="">Packstack</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>OpenStack Ussuri : Gnocch</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--gnocch"><strong>OpenStack Ussuri : Gnocch</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--gnnoch"><strong>OpenStack Ussuri : Gnnoch</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#gnocchi-service-및-user-생성"><strong>Gnocchi service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#gnocchi-유저의-db를-생성합니다"><strong>Gnocchi 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#controller-node-gnoochi-설치"><strong>controller node Gnoochi 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="openstack-ussuri--gnocch">
+  <strong>OpenStack Ussuri : Gnocch</strong>
+  <a class="anchor" href="#openstack-ussuri--gnocch">#</a>
+</h1>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span> -----------------------         -----------------------        -----------------------
+</span></span><span style="display:flex;"><span>|  [ Controller Node ]  |       |    [ Compute Node ]   |      |   [ Network Node ]    | 
+</span></span><span style="display:flex;"><span>|                       |       |        Libvirt        |      |     Open vSwitch      |
+</span></span><span style="display:flex;"><span>| MariaDB    RabbitMQ   |       |      Nova compute     |      |       L2 Agent        |
+</span></span><span style="display:flex;"><span>| Memcached  Keystone   |       |      Open vSwitch     |      |       L3 Agent        |
+</span></span><span style="display:flex;"><span>| httpd      Cinder API |       |       L2 Agent        |      |     metadata agent    |
+</span></span><span style="display:flex;"><span>| Nova-API   Compute    |       |      Cinder-LVM       |      |      Swift-proxy      |
+</span></span><span style="display:flex;"><span>| L2 agent   L3 agent   |       |          NFS          |      |       Heat API        |
+</span></span><span style="display:flex;"><span>| metadata agent        |        -----------------------       |        API-CFN        |
+</span></span><span style="display:flex;"><span>| Neutron Server        |                                      |       Heat Engine     |
+</span></span><span style="display:flex;"><span>| Gnocchi               |                                       ----------------------- 
+</span></span><span style="display:flex;"><span> -----------------------                                        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> ---------------------------------       
+</span></span><span style="display:flex;"><span>|     [ Storage Node 1, 2, 3 ]    |     
+</span></span><span style="display:flex;"><span>|                                 | 
+</span></span><span style="display:flex;"><span>|      Swift-account-auditor      |
+</span></span><span style="display:flex;"><span>|      Swift-account-replicator   |
+</span></span><span style="display:flex;"><span>|      Swift-account              |
+</span></span><span style="display:flex;"><span>|      Swift-container-auditor    |
+</span></span><span style="display:flex;"><span>|      Swift-container-replicator |
+</span></span><span style="display:flex;"><span>|      Swift-container-updater    |
+</span></span><span style="display:flex;"><span>|      Swift-container            |
+</span></span><span style="display:flex;"><span>|      Swift-object-auditor       |
+</span></span><span style="display:flex;"><span>|      Swift-object-replicator    |
+</span></span><span style="display:flex;"><span>|      Swift-object-updater       |
+</span></span><span style="display:flex;"><span>|      Swift-swift-object         |
+</span></span><span style="display:flex;"><span> ---------------------------------
+</span></span></code></pre></div><h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<h2 id="openstack-ussuri--gnnoch">
+  <strong>OpenStack Ussuri : Gnnoch</strong>
+  <a class="anchor" href="#openstack-ussuri--gnnoch">#</a>
+</h2>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<ul>
+<li><strong>Gnnoch</strong></li>
+</ul>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<h3 id="gnocchi-service-및-user-생성">
+  <strong>Gnocchi service 및 User 생성</strong>
+  <a class="anchor" href="#gnocchi-service-%eb%b0%8f-user-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack user create --domain default --project service --password qwer1234 gnocchi
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field               | Value                            |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| default_project_id  | b470c69e28db47cdbfc81e06cc67f627 |
+</span></span><span style="display:flex;"><span>| domain_id           | default                          |
+</span></span><span style="display:flex;"><span>| enabled             | True                             |
+</span></span><span style="display:flex;"><span>| id                  | 3217be4917454641994660bd1f3ea007 |
+</span></span><span style="display:flex;"><span>| name                | gnocchi                          |
+</span></span><span style="display:flex;"><span>| options             | <span style="color:#75715e">{}</span>                               |
+</span></span><span style="display:flex;"><span>| password_expires_at | None                             |
+</span></span><span style="display:flex;"><span>+---------------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack role add --project service --user gnocchi admin
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack service create --name gnocchi --description &#34;Metric Service&#34; metric
+</span></span><span style="display:flex;"><span>-------------------------------------------------+
+</span></span><span style="display:flex;"><span>| Field       | Value                            |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| description | Metric Service                   |
+</span></span><span style="display:flex;"><span>| enabled     | True                             |
+</span></span><span style="display:flex;"><span>| id          | 6ac9ec31386f4291b582bd5b504ac485 |
+</span></span><span style="display:flex;"><span>| name        | gnocchi                          |
+</span></span><span style="display:flex;"><span>| type        | metric                           |
+</span></span><span style="display:flex;"><span>+-------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric public http://controller:8041
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                            |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                             |
+</span></span><span style="display:flex;"><span>| id           | 12f4410ed82240b0b1340d48b0627612 |
+</span></span><span style="display:flex;"><span>| interface    | public                           |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                        |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                        |
+</span></span><span style="display:flex;"><span>| service_id   | 6ac9ec31386f4291b582bd5b504ac485 |
+</span></span><span style="display:flex;"><span>| service_name | gnocchi                          |
+</span></span><span style="display:flex;"><span>| service_type | metric                           |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8041           |
+</span></span><span style="display:flex;"><span>+-------------------------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric internal http://controller:8041
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                            |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                             |
+</span></span><span style="display:flex;"><span>| id           | 70f43453f93b407e94d2dd11ddce7260 |
+</span></span><span style="display:flex;"><span>| interface    | internal                         |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                        |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                        |
+</span></span><span style="display:flex;"><span>| service_id   | 6ac9ec31386f4291b582bd5b504ac485 |
+</span></span><span style="display:flex;"><span>| service_name | gnocchi                          |
+</span></span><span style="display:flex;"><span>| service_type | metric                           |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8041           |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; openstack endpoint create --region RegionOne metric admin http://controller:8041
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| Field        | Value                            |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span><span style="display:flex;"><span>| enabled      | True                             |
+</span></span><span style="display:flex;"><span>| id           | bb9a955359fd4af18599913465f46958 |
+</span></span><span style="display:flex;"><span>| interface    | admin                            |
+</span></span><span style="display:flex;"><span>| region       | RegionOne                        |
+</span></span><span style="display:flex;"><span>| region_id    | RegionOne                        |
+</span></span><span style="display:flex;"><span>| service_id   | 6ac9ec31386f4291b582bd5b504ac485 |
+</span></span><span style="display:flex;"><span>| service_name | gnocchi                          |
+</span></span><span style="display:flex;"><span>| service_type | metric                           |
+</span></span><span style="display:flex;"><span>| url          | http://controller:8041           |
+</span></span><span style="display:flex;"><span>+--------------+----------------------------------+
+</span></span></code></pre></div><h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<h3 id="gnocchi-유저의-db를-생성합니다">
+  <strong>Gnocchi 유저의 DB를 생성합니다.</strong>
+  <a class="anchor" href="#gnocchi-%ec%9c%a0%ec%a0%80%ec%9d%98-db%eb%a5%bc-%ec%83%9d%ec%84%b1%ed%95%a9%eb%8b%88%eb%8b%a4">#</a>
+</h3>
+<h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; mysql -u root -p
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; create database gnocchi;  
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on gnocchi.* to gnocchi@&#39;localhost&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on gnocchi.* to gnocchi@&#39;%&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; flush privileges; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; exit;
+</span></span></code></pre></div><h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<h3 id="controller-node-gnoochi-설치">
+  <strong>controller node Gnoochi 설치</strong>
+  <a class="anchor" href="#controller-node-gnoochi-%ec%84%a4%ec%b9%98">#</a>
+</h3>
+<h1 id="heading-9">
+  
+  <a class="anchor" href="#heading-9">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-gnocchi-api openstack-gnocchi-metricd python3-gnocchiclient
+</span></span><span style="display:flex;"><span># gnoochi 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; vi /etc/gnocchi/gnocchi.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>log_dir = /var/log/gnocchi
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[api]
+</span></span><span style="display:flex;"><span>auth_mode = keystone
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[database]
+</span></span><span style="display:flex;"><span>backend = sqlalchemy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[indexer]
+</span></span><span style="display:flex;"><span>url = mysql+pymysql://gnocchi:qwer1234@controller/gnocchi
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[storage]
+</span></span><span style="display:flex;"><span>driver = file
+</span></span><span style="display:flex;"><span>file_basepath = /var/lib/gnocchi
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[keystone_authtoken]
+</span></span><span style="display:flex;"><span>www_authenticate_uri = http://controller:5000
+</span></span><span style="display:flex;"><span>auth_url = http://controller:5000
+</span></span><span style="display:flex;"><span>memcached_servers = controller:11211
+</span></span><span style="display:flex;"><span>auth_type = password
+</span></span><span style="display:flex;"><span>project_domain_name = default
+</span></span><span style="display:flex;"><span>user_domain_name = default
+</span></span><span style="display:flex;"><span>project_name = service
+</span></span><span style="display:flex;"><span>username = gnocchi
+</span></span><span style="display:flex;"><span>password = qwer1234
+</span></span><span style="display:flex;"><span>service_token_roles_required = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; vi /etc/httpd/conf.d/10-gnocchi_wsgi.conf
+</span></span><span style="display:flex;"><span>Listen 8041
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:8041&gt;
+</span></span><span style="display:flex;"><span>  &lt;Directory /usr/bin&gt;
+</span></span><span style="display:flex;"><span>    AllowOverride None
+</span></span><span style="display:flex;"><span>    Require all granted
+</span></span><span style="display:flex;"><span>  &lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  CustomLog /var/log/httpd/gnocchi_wsgi_access.log combined
+</span></span><span style="display:flex;"><span>  ErrorLog /var/log/httpd/gnocchi_wsgi_error.log
+</span></span><span style="display:flex;"><span>  SetEnvIf X-Forwarded-Proto https HTTPS=1
+</span></span><span style="display:flex;"><span>  WSGIApplicationGroup %<span style="color:#75715e">{</span><span style="color:#a6e22e">GLOBAL</span><span style="color:#75715e">}</span>
+</span></span><span style="display:flex;"><span>  WSGIDaemonProcess gnocchi display-name=gnocchi_wsgi user=gnocchi group=gnocchi processes=6 threads=6
+</span></span><span style="display:flex;"><span>  WSGIProcessGroup gnocchi
+</span></span><span style="display:flex;"><span>  WSGIScriptAlias / /usr/bin/gnocchi-api
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span># 새로 생성합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; su -s /bin/bash gnocchi -c &#34;gnocchi-upgrade&#34;
+</span></span><span style="display:flex;"><span>$ controller&gt; systemctl enable --now openstack-gnocchi-metricd
+</span></span><span style="display:flex;"><span>$ controller&gt; systemctl restart httpd
+</span></span><span style="display:flex;"><span># gnocchi DB를 import 시킨 후 서비스를 등록합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller&gt; semanage port -a -t http_port_t -p tcp 8041
+</span></span><span style="display:flex;"><span>$ controller&gt; firewall-cmd --add-port=8041/tcp --permanent
+</span></span><span style="display:flex;"><span>$ controller&gt; firewall-cmd --reload
+</span></span><span style="display:flex;"><span># SELinux 및 방화벽을 설정합니다.
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/OpenStack/ABAP/OpenStack-Ussuri-11.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--gnocch"><strong>OpenStack Ussuri : Gnocch</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--gnnoch"><strong>OpenStack Ussuri : Gnnoch</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#gnocchi-service-및-user-생성"><strong>Gnocchi service 및 User 생성</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#gnocchi-유저의-db를-생성합니다"><strong>Gnocchi 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a></li>
+    <li><a href="#heading-8"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#controller-node-gnoochi-설치"><strong>controller node Gnoochi 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-9"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

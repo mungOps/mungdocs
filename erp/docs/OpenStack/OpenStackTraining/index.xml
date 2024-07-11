@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenStack Training on Mung Book</title>
+    <link>http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/</link>
+    <description>Recent content in OpenStack Training on Mung Book</description>
+    <generator>Hugo</generator>
+    <language>erp</language>
+    <atom:link href="http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenStack Ussuri : Overview</title>
+      <link>http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/</guid>
+      <description> OpenStack Ussuri : Overview # # OpenStack Ussuri : Overview # # # OpenStack Ussuri 설치는 위의 그림과 표에 맞춰 설치가 진행됩니다. minimal 기본 설치는 keystone, glance, nova, neutron, cinder, horizon이며 여기서는 가능한 모든 서비스를 설치하도록 하겠습니다. # OS HOST NAME CPU/thead RAM DISK Network Interface-1 Network Interface-2 CentOS8 controller 4/8 6144 100G Nat host1 CentOS8 network 2/4 2048 40G Nat host1 CentOS8 compute 4/8 4096 40G host1 CentOS8 storage1 1/2 1024 50G host1 CentOS8 storage2 1/2 1024 50G host1 CentOS8 storage3 1/2 1024 50G host1 # Service Code Name Description Identity Service Keystone User Management Compute Service Nova Virtual Machine Management Image Service Glance Manages Virtual image like kernel image or disk image Dashboard Horizon Provides GUI console via Web browser Object Storage Swift Provides Cloud Storage Block Storage Cinder Storage Management for Virtual Machine Network Service Neutron Virtual Networking Management Orchestration Service Heat Provides Orchestration function for Virtual Machine Metering Service Ceilometer Provides the function of Usage measurement for accounting Database Service Trove Database resource Management Data Processing Service Sahara Provides Data Processing function Bare Metal Provisioning Ironic Provides Bare Metal Provisioning function Messaging Service Zaqar Provides Messaging Service function Shared File System Manila Provides File Sharing Service DNS Service Designate Provides DNS Server Service Key Manager Service Barbican Provides Key Management Service # </description>
+    </item>
+    <item>
+      <title>OpenStack Ussuri : 환경설정</title>
+      <link>http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/</guid>
+      <description>OpenStack Ussuri : 기본 환경설정 # # ----------------------- | [ Controller Node ] | | | | MariaDB RabbitMQ | | Memcached | ----------------------- # OpenStack Ussuri : 기본 환경설정 # # 앞 기본 환경설정을 모든 노드에서 진행한 후, DB, RabbitMQ, Memcached는 controller에서만 설치를 진행합니다. $ all&amp;gt; $ controller&amp;gt; $ controller ~(keystone)&amp;gt; $ compute&amp;gt; $ network&amp;gt; # 위와 같은 호스트를 주의헤 주세요 ! # (keystone)은 keystone 설치 후 인증 받은 터미널입니다.</description>
+    </item>
+  </channel>
+</rss>

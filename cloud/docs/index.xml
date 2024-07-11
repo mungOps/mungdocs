@@ -4,7 +4,8 @@
     <title>Docs on Mung Book</title>
     <link>http://mungdocs.kro.kr/cloud/docs/</link>
     <description>Recent content in Docs on Mung Book</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>cloud</language><atom:link href="http://mungdocs.kro.kr/cloud/docs/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>cloud</language>
+    <atom:link href="http://mungdocs.kro.kr/cloud/docs/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

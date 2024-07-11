@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DNS Server # DNS (Domain Name System) # DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.
+www.mungdocs.kro.kr을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.
+위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.
+즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/Linux/DNS/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="DNS Server">
+  <meta property="og:description" content="DNS Server # DNS (Domain Name System) # DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.
+www.mungdocs.kro.kr을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.
+위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.
+즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>DNS Server | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+  <link rel="alternate" hreflang="system" href="http://localhost:1313/system/docs/Linux/DNS/" title="DNS Server">
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.302960a922547094039bacb224c325023d3ab8a51606914b2f88f43a7f41db7f.js" integrity="sha256-MClgqSJUcJQDm6yyJMMlAj06uKUWBpFLL4j0On9B238=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                     
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/docs/Linux/DNS/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a68c092c45ceccf44a2c18ae7e482e04" class="toggle"  />
+    <label for="section-a68c092c45ceccf44a2c18ae7e482e04" class="flex justify-between">
+      <a role="button" class="">Hardware</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Hardware/CPU/" class="">What is CPU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Hardware/DISK/" class="">What is Disk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Hardware/board/" class="">What is M/B</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Hardware/NIC/" class="">What is NIC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Hardware/Memory/" class="">What is RAM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Hardware/RC/" class="">What is RC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52a19f941dcfe66de6ed1cd418a84103" class="toggle" checked />
+    <label for="section-52a19f941dcfe66de6ed1cd418a84103" class="flex justify-between">
+      <a role="button" class="">System / Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/DHCP/" class="">DHCP Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/HTTPS/" class="">HTTPS Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/ISCSI/" class="">ISCSI Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/Linux/" class="">Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/Linux00/" class="">Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/NFS/" class="">NFS Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/SMB/" class="">SMB Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/Linux/DNS/" class="active">DNS Server</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>DNS Server</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#dns-server">DNS Server</a>
+          <ul>
+            <li><a href="#dns-domain-name-system">DNS (Domain Name System)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="dns-server">
+  DNS Server
+  <a class="anchor" href="#dns-server">#</a>
+</h2>
+<hr>
+<p> </p>
+<h3 id="dns-domain-name-system">
+  DNS (Domain Name System)
+  <a class="anchor" href="#dns-domain-name-system">#</a>
+</h3>
+<p> </p>
+<ul>
+<li>
+<p>DNS란 도메인 네임 시스템으로 웹사이트의 IP 주소와 도메인 주소를 이어주는 전화번호부와 유사한 역할을 한다.</p>
+</li>
+<li>
+<p>
+  <a href="https://www.mungdocs.kro.kr">www.mungdocs.kro.kr</a>을 입력하면 DNS는 해당 사이트의 올바른 IP 주소를 찾는 역할을 수행하며, 해당 주소를 사용하여 원본 서버 또는 CDN edge 서버와 통신하여 웹 사이트 정보에 엑세스 한다.</p>
+</li>
+<li>
+<p>위와 관련된 과정은 DNS쿼리에 응답하는 전용 시스템인 DNS에서 발생한다.</p>
+</li>
+<li>
+<p>즉, DNS는 웹 사이트의 데이터가 저장되어 있는 호스팅 서버라고 할 수 있으며, 각 회선에 연결된 컴퓨터, 장치의 IP주소가 할당되어 있고, 이 주소를 실제 웹사이트 주소라 할 수 있으며, DNS는 이와 같은 IP주소를 저장해 두었다가, 인터넷 사용자들이 요청하면 연결해주는 역할을 수행한다.</p>
+</li>
+</ul>
+<br>
+<br>
+서비스 | 도메인 주소 | IP 주소
+Daum | daum.net | 203.133.167.81
+Naver | naver.com | 223.130.200.104
+google | google.com | 142.250.207.14
+<br>
+```
+C:\Users\mung>ping mungdocs.kro.kr
+<p>Ping 
+  <a href="https://www.mungdocs.github.io">www.mungdocs.github.io</a> [185.199.108.153] 32바이트 데이터 사용:
+185.199.108.153의 응답: 바이트=32 시간=31ms TTL=52
+185.199.108.153의 응답: 바이트=32 시간=61ms TTL=52</p>
+<pre tabindex="0"><code>- 현재 블로그의 IP 주소는 210.130.195.200 인걸 확인할 수 있다.
+
+- 위와 같이 IP 주소를 브라우저에게 제공하면 해당 서버에서 홈페이지를 제공하는 식으로 동작하며, 이는 사람이 보기에는 불편하기 때문에, 전화번호부와 같이 접근하기 쉽게 만든 시스템이다.
+
+&lt;br&gt;
+&lt;br&gt;
+### 도메인 접속과정
+#
+1. 도메인 주소 www.mungdocs.kro.kr를 입력하면 도메인 주소를 가지고 있는 네임서버에 접속
+2. 네임서버에 접속한 해당 도메인과 연결된 IP정보(185.199.108.153)을 확인하고 IP를 사용자 PC에 전달
+3. 사용자 PC는 전달받은 서버의 IP주소로 접속
+4. 서버의 IP로 연결된 브라우저에 서버의 내용(홈페이지)를 출력
+
+
+
+
+DNS Server
+
+&amp;nbsp;
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+---
+
+---
+
+1. Reference
+   1. https://www.cloudflare.com/ko-kr/learning/dns/what-is-a-dns-server/
+   2. https://gentlysallim.com/dns%EB%9E%80-%EB%AD%90%EA%B3%A0-%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%EB%9E%80-%EB%AD%94%EC%A7%80-%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/
+</code></pre></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/Linux/DNS.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#dns-server">DNS Server</a>
+          <ul>
+            <li><a href="#dns-domain-name-system">DNS (Domain Name System)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

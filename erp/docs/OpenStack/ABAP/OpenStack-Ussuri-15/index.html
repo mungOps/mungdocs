@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OpenStack Ussuri : Rally # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi Trove API | | Designate Services | | Barbican API | ----------------------- | Rally | ----------------------- # OpenStack Ussuri : Rally # # Rally는 오픈스택 소스를 GUI 환경으로 보여주는 서비스입니다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-15/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="OpenStack Ussuri : Rally">
+  <meta property="og:description" content="OpenStack Ussuri : Rally # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi Trove API | | Designate Services | | Barbican API | ----------------------- | Rally | ----------------------- # OpenStack Ussuri : Rally # # Rally는 오픈스택 소스를 GUI 환경으로 보여주는 서비스입니다.">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>OpenStack Ussuri : Rally | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.34a613df353d3b485a7c05de0392c29761057436e2df030fbd36d12724653ffd.js" integrity="sha256-NKYT3zU9O0hafAXeA5LCl2EFdDbi3wMPvTbRJyRlP/0=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                   
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SAP</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3c4c8bd6bdf9f59ffe238da4472fc10f" class="toggle"  />
+    <label for="section-3c4c8bd6bdf9f59ffe238da4472fc10f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-80c427f1dac700202af3be94374e2a6a" class="toggle"  />
+    <label for="section-80c427f1dac700202af3be94374e2a6a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45e267ef9903eb1e742da234601aa49d" class="toggle"  />
+    <label for="section-45e267ef9903eb1e742da234601aa49d" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6150ddc4f31ae0bcdd32476e72fe4d67" class="toggle"  />
+    <label for="section-6150ddc4f31ae0bcdd32476e72fe4d67" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1266c68acfb75bc1cd91661ae928b6ef" class="toggle"  />
+    <label for="section-1266c68acfb75bc1cd91661ae928b6ef" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48a8fe1f7d6fa79e10574916c4b73926" class="toggle"  />
+    <label for="section-48a8fe1f7d6fa79e10574916c4b73926" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-110bb53bd893ad5809b3431b909701d2" class="toggle"  />
+    <label for="section-110bb53bd893ad5809b3431b909701d2" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/OpenStack/Module/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ed043e44e8086fcac574f5172b57657" class="toggle"  />
+    <label for="section-7ed043e44e8086fcac574f5172b57657" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bba7f34201c12b2f56808a9169e62309" class="toggle"  />
+    <label for="section-bba7f34201c12b2f56808a9169e62309" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ff05cd17159f02ef64f6d77bd24b38f4" class="toggle"  />
+    <label for="section-ff05cd17159f02ef64f6d77bd24b38f4" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e4197ec471349537fe61f066137989c" class="toggle"  />
+    <label for="section-8e4197ec471349537fe61f066137989c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Trove/" class="">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4e3df5b1bdab0e221bdfc75127afb38b" class="toggle"  />
+    <label for="section-4e3df5b1bdab0e221bdfc75127afb38b" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2676521bc0f9a095fe7307778cf2303b" class="toggle"  />
+    <label for="section-2676521bc0f9a095fe7307778cf2303b" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c79536466ca9ad0bb77496009fe8230" class="toggle"  />
+    <label for="section-1c79536466ca9ad0bb77496009fe8230" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-160a5e8853e9e819ad654c235bd36e74" class="toggle" checked />
+    <label for="section-160a5e8853e9e819ad654c235bd36e74" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56b6a6f130803a7d1387d0b9ac095d3a" class="toggle"  />
+    <label for="section-56b6a6f130803a7d1387d0b9ac095d3a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b091f4035a77345c705ffeb9053611e1" class="toggle"  />
+    <label for="section-b091f4035a77345c705ffeb9053611e1" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d70b5524e6da683804c1bf58c73055e4" class="toggle"  />
+    <label for="section-d70b5524e6da683804c1bf58c73055e4" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-03/" class="">OpenStack Ussuri : Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3ccacf05b57b0a3edb8370f0322fcef0" class="toggle"  />
+    <label for="section-3ccacf05b57b0a3edb8370f0322fcef0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-04/" class="">OpenStack Ussuri : Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-772693fcd60c1b6a9dd8cdfbf1ad114a" class="toggle"  />
+    <label for="section-772693fcd60c1b6a9dd8cdfbf1ad114a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-05/" class="">OpenStack Ussuri : Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27304e8d4df629995610c605c3da57b1" class="toggle"  />
+    <label for="section-27304e8d4df629995610c605c3da57b1" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-06/" class="">OpenStack Ussuri : Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5232f2f4a4d6a7be1464cbfaf2af39d0" class="toggle"  />
+    <label for="section-5232f2f4a4d6a7be1464cbfaf2af39d0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-07/" class="">OpenStack Ussuri : Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f57820cbbf03a98cb8b36a501df666af" class="toggle"  />
+    <label for="section-f57820cbbf03a98cb8b36a501df666af" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-08/" class="">OpenStack Ussuri : Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bb9e1ff607404fb45d2c2648e83d363" class="toggle"  />
+    <label for="section-5bb9e1ff607404fb45d2c2648e83d363" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-09/" class="">OpenStack Ussuri : Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a4d569a1e4a51821459cf818170ffc17" class="toggle"  />
+    <label for="section-a4d569a1e4a51821459cf818170ffc17" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-10/" class="">OpenStack Ussuri : Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eddda901a8a322471e86b4314f2bb232" class="toggle"  />
+    <label for="section-eddda901a8a322471e86b4314f2bb232" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/Openstack-stein/" class="">Openstack Stain Manual 설치</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf577a01aeb955e855c7d398ae6a312" class="toggle"  />
+    <label for="section-7bf577a01aeb955e855c7d398ae6a312" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-11/" class="">OpenStack Ussuri : Gnocch</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-77ce41b051e440c778d5d4720729f158" class="toggle"  />
+    <label for="section-77ce41b051e440c778d5d4720729f158" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-12/" class="">OpenStack Ussuri : Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-573aa4a231d20ffa172927646e902f33" class="toggle"  />
+    <label for="section-573aa4a231d20ffa172927646e902f33" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-13/" class="">OpenStack Ussuri : Designate</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f68f71ed4633a9d5478653aae708afa4" class="toggle"  />
+    <label for="section-f68f71ed4633a9d5478653aae708afa4" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-14/" class="">OpenStack Ussuri : Barbican</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-53371d7b92b55313a38e13b6b75e8d94" class="toggle" checked />
+    <label for="section-53371d7b92b55313a38e13b6b75e8d94" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-15/" class="active">OpenStack Ussuri : Rally</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df7e12dea58d82be7989ad4da0f1d323" class="toggle"  />
+    <label for="section-df7e12dea58d82be7989ad4da0f1d323" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/OpenStack-Ussuri-16/" class="">OpenStack Ussuri : Manila</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-08fc222feca460976f38a245f9bf475f" class="toggle"  />
+    <label for="section-08fc222feca460976f38a245f9bf475f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/Devstack/" class="">DevStack</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6ddc2ba51bb5363d54eb3683532ac09c" class="toggle"  />
+    <label for="section-6ddc2ba51bb5363d54eb3683532ac09c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/ABAP/Packstack/" class="">Packstack</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>OpenStack Ussuri : Rally</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--rally"><strong>OpenStack Ussuri : Rally</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--rally-1"><strong>OpenStack Ussuri : Rally</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#rally-유저의-db를-생성합니다"><strong>Rally 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#rally-설치"><strong>Rally 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="openstack-ussuri--rally">
+  <strong>OpenStack Ussuri : Rally</strong>
+  <a class="anchor" href="#openstack-ussuri--rally">#</a>
+</h1>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span> -----------------------         -----------------------        -----------------------
+</span></span><span style="display:flex;"><span>|  [ Controller Node ]  |       |    [ Compute Node ]   |      |   [ Network Node ]    | 
+</span></span><span style="display:flex;"><span>|                       |       |        Libvirt        |      |     Open vSwitch      |
+</span></span><span style="display:flex;"><span>| MariaDB    RabbitMQ   |       |      Nova compute     |      |       L2 Agent        |
+</span></span><span style="display:flex;"><span>| Memcached  Keystone   |       |      Open vSwitch     |      |       L3 Agent        |
+</span></span><span style="display:flex;"><span>| httpd      Cinder API |       |       L2 Agent        |      |     metadata agent    |
+</span></span><span style="display:flex;"><span>| Nova-API   Compute    |       |      Cinder-LVM       |      |      Swift-proxy      |
+</span></span><span style="display:flex;"><span>| L2 agent   L3 agent   |       |          NFS          |      |       Heat API        |
+</span></span><span style="display:flex;"><span>| metadata agent        |        -----------------------       |        API-CFN        |
+</span></span><span style="display:flex;"><span>| Neutron Server        |                                      |      Heat Engine      |
+</span></span><span style="display:flex;"><span>| Gnocchi    Trove API  |                                      |   Designate Services  |
+</span></span><span style="display:flex;"><span>| Barbican API          |                                       -----------------------
+</span></span><span style="display:flex;"><span>| Rally                 |
+</span></span><span style="display:flex;"><span> -----------------------
+</span></span></code></pre></div><h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<h2 id="openstack-ussuri--rally-1">
+  <strong>OpenStack Ussuri : Rally</strong>
+  <a class="anchor" href="#openstack-ussuri--rally-1">#</a>
+</h2>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<ul>
+<li><strong>Rally는 오픈스택 소스를 GUI 환경으로 보여주는 서비스입니다.</strong></li>
+<li><strong>Rally의 자세한 설명은 
+  <a href="/erp/">Rally</a>를 참조해주세요.</strong></li>
+</ul>
+<h1 id="heading-3">
+  
+  <a class="anchor" href="#heading-3">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-4">
+  
+  <a class="anchor" href="#heading-4">#</a>
+</h1>
+<h3 id="rally-유저의-db를-생성합니다">
+  <strong>Rally 유저의 DB를 생성합니다.</strong>
+  <a class="anchor" href="#rally-%ec%9c%a0%ec%a0%80%ec%9d%98-db%eb%a5%bc-%ec%83%9d%ec%84%b1%ed%95%a9%eb%8b%88%eb%8b%a4">#</a>
+</h3>
+<h1 id="heading-5">
+  
+  <a class="anchor" href="#heading-5">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller&gt; mysql -u root -p
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; create database rally;  
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on Rally.* to rally@&#39;localhost&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; grant all privileges on Rally.* to rally@&#39;%&#39; identified by &#39;qwer1234&#39;; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; flush privileges; 
+</span></span><span style="display:flex;"><span>$ MariaDB&gt; exit;
+</span></span></code></pre></div><h1 id="heading-6">
+  
+  <a class="anchor" href="#heading-6">#</a>
+</h1>
+<p> </p>
+<h1 id="heading-7">
+  
+  <a class="anchor" href="#heading-7">#</a>
+</h1>
+<h3 id="rally-설치">
+  <strong>Rally 설치</strong>
+  <a class="anchor" href="#rally-%ec%84%a4%ec%b9%98">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tpl" data-lang="tpl"><span style="display:flex;"><span>$ controller ~(keystone)&gt; dnf --enablerepo=centos-openstack-ussuri,powertools,epel -y install openstack-rally openstack-rally-plugins python3-fixtures
+</span></span><span style="display:flex;"><span># Rally 서비스 및 관련 모듈을 설치합니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; vi /etc/rally/rally.conf
+</span></span><span style="display:flex;"><span>[DEFAULT]
+</span></span><span style="display:flex;"><span>log_file = rally.log
+</span></span><span style="display:flex;"><span>log_dir = /var/log/rally
+</span></span><span style="display:flex;"><span>connection = mysql+pymysql://rally:qwer1234@controller/rally
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; mkdir /var/log/rally
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; rally db create
+</span></span><span style="display:flex;"><span># log 파일을 저장할 폴더를 만들고 db를 임포트 시킵니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; rally deployment create --fromenv --name=my_cloud
+</span></span><span style="display:flex;"><span>+--------------------------------------+----------------------------+----------+------------------+--------+
+</span></span><span style="display:flex;"><span>| uuid                                 | created_at                 | name     | status           | active |
+</span></span><span style="display:flex;"><span>+--------------------------------------+----------------------------+----------+------------------+--------+
+</span></span><span style="display:flex;"><span>| 35f9c79c-a47e-49d3-af88-b06b6020b92a | 2020-08-16T09:16:23.793238 | my_cloud | deploy-&gt;finished |        |
+</span></span><span style="display:flex;"><span>+--------------------------------------+----------------------------+----------+------------------+--------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; source ~/.rally/openrc
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; rally deployment show my_cloud
+</span></span><span style="display:flex;"><span>+---------------------------+----------+----------+-------------+-------------+---------------+
+</span></span><span style="display:flex;"><span>| auth_url                  | username | password | tenant_name | region_name | endpoint_type |
+</span></span><span style="display:flex;"><span>+---------------------------+----------+----------+-------------+-------------+---------------+
+</span></span><span style="display:flex;"><span>| http://controller:5000/v3 | admin    | ***      | admin       |             | None          |
+</span></span><span style="display:flex;"><span>+---------------------------+----------+----------+-------------+-------------+---------------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; rally deployment check
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>Platform openstack:
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Available services:
+</span></span><span style="display:flex;"><span>+-------------+----------------+-----------+
+</span></span><span style="display:flex;"><span>| Service     | Service Type   | Status    |
+</span></span><span style="display:flex;"><span>+-------------+----------------+-----------+
+</span></span><span style="display:flex;"><span>| __unknown__ | placement      | Available |
+</span></span><span style="display:flex;"><span>| barbican    | key-manager    | Available |
+</span></span><span style="display:flex;"><span>| cinder      | volumev3       | Available |
+</span></span><span style="display:flex;"><span>| cloud       | cloudformation | Available |
+</span></span><span style="display:flex;"><span>| glance      | image          | Available |
+</span></span><span style="display:flex;"><span>| gnocchi     | metric         | Available |
+</span></span><span style="display:flex;"><span>| heat        | orchestration  | Available |
+</span></span><span style="display:flex;"><span>| keystone    | identity       | Available |
+</span></span><span style="display:flex;"><span>| neutron     | network        | Available |
+</span></span><span style="display:flex;"><span>| nova        | compute        | Available |
+</span></span><span style="display:flex;"><span>| swift       | object-store   | Available |
+</span></span><span style="display:flex;"><span>| trove       | database       | Available |
+</span></span><span style="display:flex;"><span>+-------------+----------------+-----------+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; vi ~/boot-and-delete.json     
+</span></span><span style="display:flex;"><span><span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NovaServers.boot_and_delete_server&#34;</span><span style="color:#f92672">:</span> <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;args&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;flavor&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;m1.small&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;image&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ubuntu1804&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;force_delete&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;runner&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;constant&#34;</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;times&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;concurrency&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;context&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">}</span>
+</span></span><span style="display:flex;"><span>$ controller ~(keystone)&gt; rally task start ~/boot-and-delete.json
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>Preparing input task
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Task is:
+</span></span><span style="display:flex;"><span><span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NovaServers.boot_and_delete_server&#34;</span><span style="color:#f92672">:</span> <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;args&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;flavor&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;m1.small&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;image&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ubuntu1804&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;force_delete&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;runner&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;constant&#34;</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;times&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;concurrency&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">}</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;context&#34;</span><span style="color:#f92672">:</span> <span style="color:#75715e">{}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Task syntax is correct :)
+</span></span><span style="display:flex;"><span>Running Rally version 3.0.0
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>Task  887a0d20-37ad-4351-aeca-00f646634552: started
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>....
+</span></span><span style="display:flex;"><span>....
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>Task 887a0d20-37ad-4351-aeca-00f646634552 has 0 error(s)
+</span></span><span style="display:flex;"><span>--------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+-----------------------------------------------------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>|                                                 Response Times (sec)                                                  |
+</span></span><span style="display:flex;"><span>+--------------------+-----------+--------------+--------------+--------------+-----------+-----------+---------+-------+
+</span></span><span style="display:flex;"><span>| Action             | Min (sec) | Median (sec) | 90%ile (sec) | 95%ile (sec) | Max (sec) | Avg (sec) | Success | Count |
+</span></span><span style="display:flex;"><span>+--------------------+-----------+--------------+--------------+--------------+-----------+-----------+---------+-------+
+</span></span><span style="display:flex;"><span>| nova.boot_server   | 4.466     | 5.409        | 34.472       | 40.002       | 45.533    | 14.471    | 100.0%  | 10    |
+</span></span><span style="display:flex;"><span>| nova.delete_server | 2.412     | 2.736        | 13.708       | 15.417       | 17.127    | 6.352     | 100.0%  | 10    |
+</span></span><span style="display:flex;"><span>| total              | 6.922     | 12.091       | 40.809       | 44.416       | 48.023    | 20.823    | 100.0%  | 10    |
+</span></span><span style="display:flex;"><span>|  -&gt; duration       | 5.922     | 11.091       | 39.809       | 43.416       | 47.023    | 19.823    | 100.0%  | 10    |
+</span></span><span style="display:flex;"><span>|  -&gt; idle_duration  | 1.0       | 1.0          | 1.0          | 1.0          | 1.0       | 1.0       | 100.0%  | 10    |
+</span></span><span style="display:flex;"><span>+--------------------+-----------+--------------+--------------+--------------+-----------+-----------+---------+-------+
+</span></span><span style="display:flex;"><span>Load duration: 108.251619
+</span></span><span style="display:flex;"><span>Full duration: 134.177109
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>HINTS:
+</span></span><span style="display:flex;"><span>* To plot HTML graphics with this data, run:
+</span></span><span style="display:flex;"><span>        rally task report 887a0d20-37ad-4351-aeca-00f646634552 --out output.html
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>* To generate a JUnit report, run:
+</span></span><span style="display:flex;"><span>        rally task export 887a0d20-37ad-4351-aeca-00f646634552 --type junit-xml --to output.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>* To get raw JSON output of task results, run:
+</span></span><span style="display:flex;"><span>        rally task report 887a0d20-37ad-4351-aeca-00f646634552 --json --out output.json
+</span></span></code></pre></div><h1 id="heading-8">
+  
+  <a class="anchor" href="#heading-8">#</a>
+</h1>
+<p> </p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/OpenStack/ABAP/OpenStack-Ussuri-15.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#openstack-ussuri--rally"><strong>OpenStack Ussuri : Rally</strong></a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#heading-1"></a>
+      <ul>
+        <li><a href="#openstack-ussuri--rally-1"><strong>OpenStack Ussuri : Rally</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2"></a></li>
+    <li><a href="#heading-3"></a></li>
+    <li><a href="#heading-4"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#rally-유저의-db를-생성합니다"><strong>Rally 유저의 DB를 생성합니다.</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-5"></a></li>
+    <li><a href="#heading-6"></a></li>
+    <li><a href="#heading-7"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#rally-설치"><strong>Rally 설치</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-8"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

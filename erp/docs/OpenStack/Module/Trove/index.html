@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="erp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content=" 데이터베이스 서비스 : Trove # Trove는 관계형 데이터베이스 기능을 활용 클라우드 사용자와 데이터 베이스 관리자는 필요에 따라 Trove를 통해 데이터베이스 인스턴스를 제공, 관리 서비스 # Trove의 논리 아키텍처 # # # 구성요소 역할 python-troveclient 클라이언트에서 콘솔로 trove-api를 실행할 수 있게 지원 trove-api RESTful API 방식의 JSON을 지원, Trove인스턴스를 관리하고 프로비저닝 trove-taskmanager 인스턴스 프로비저닝을 지원, 라이프 사이클 관리 및 운영하는 작업을 수행 trove-conductor 호스트에서 실행되는 서비스로 호스트 정보를 업데이트 및 게스트 인스턴스 메시지를 수신 trove-guestagent 게스트 인스턴스 안에서 실행, 데이터 베이스 작업을 실행, 관리 ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/erp/docs/OpenStack/Module/Trove/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="Trove">
+  <meta property="og:description" content=" 데이터베이스 서비스 : Trove # Trove는 관계형 데이터베이스 기능을 활용 클라우드 사용자와 데이터 베이스 관리자는 필요에 따라 Trove를 통해 데이터베이스 인스턴스를 제공, 관리 서비스 # Trove의 논리 아키텍처 # # # 구성요소 역할 python-troveclient 클라이언트에서 콘솔로 trove-api를 실행할 수 있게 지원 trove-api RESTful API 방식의 JSON을 지원, Trove인스턴스를 관리하고 프로비저닝 trove-taskmanager 인스턴스 프로비저닝을 지원, 라이프 사이클 관리 및 운영하는 작업을 수행 trove-conductor 호스트에서 실행되는 서비스로 호스트 정보를 업데이트 및 게스트 인스턴스 메시지를 수신 trove-guestagent 게스트 인스턴스 안에서 실행, 데이터 베이스 작업을 실행, 관리 ">
+  <meta property="og:locale" content="erp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Trove | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/erp.search.min.34a613df353d3b485a7c05de0392c29761057436e2df030fbd36d12724653ffd.js" integrity="sha256-NKYT3zU9O0hafAXeA5LCl2EFdDbi3wMPvTbRJyRlP/0=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                   
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> ERP
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/devops/"> DevOps </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SAP</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3c4c8bd6bdf9f59ffe238da4472fc10f" class="toggle" checked />
+    <label for="section-3c4c8bd6bdf9f59ffe238da4472fc10f" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/" class="">OpenStack docs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-80c427f1dac700202af3be94374e2a6a" class="toggle"  />
+    <label for="section-80c427f1dac700202af3be94374e2a6a" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/openstack/" class="">OpenStack 개요</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45e267ef9903eb1e742da234601aa49d" class="toggle"  />
+    <label for="section-45e267ef9903eb1e742da234601aa49d" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Keystone/" class="">Keystone</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6150ddc4f31ae0bcdd32476e72fe4d67" class="toggle"  />
+    <label for="section-6150ddc4f31ae0bcdd32476e72fe4d67" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Glance/" class="">Glance</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1266c68acfb75bc1cd91661ae928b6ef" class="toggle"  />
+    <label for="section-1266c68acfb75bc1cd91661ae928b6ef" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Nova/" class="">Nova</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48a8fe1f7d6fa79e10574916c4b73926" class="toggle"  />
+    <label for="section-48a8fe1f7d6fa79e10574916c4b73926" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Neutron/" class="">Neutron</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-110bb53bd893ad5809b3431b909701d2" class="toggle"  />
+    <label for="section-110bb53bd893ad5809b3431b909701d2" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Cinder/" class="">Cinder</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/erp/docs/OpenStack/Module/Ceilometer/" class="">Ceilometer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ed043e44e8086fcac574f5172b57657" class="toggle"  />
+    <label for="section-7ed043e44e8086fcac574f5172b57657" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Horizon/" class="">Horizon</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bba7f34201c12b2f56808a9169e62309" class="toggle"  />
+    <label for="section-bba7f34201c12b2f56808a9169e62309" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Swift/" class="">Swift</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ff05cd17159f02ef64f6d77bd24b38f4" class="toggle"  />
+    <label for="section-ff05cd17159f02ef64f6d77bd24b38f4" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Heat/" class="">Heat</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e4197ec471349537fe61f066137989c" class="toggle" checked />
+    <label for="section-8e4197ec471349537fe61f066137989c" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Trove/" class="active">Trove</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4e3df5b1bdab0e221bdfc75127afb38b" class="toggle"  />
+    <label for="section-4e3df5b1bdab0e221bdfc75127afb38b" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Sahara/" class="">Sahara</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2676521bc0f9a095fe7307778cf2303b" class="toggle"  />
+    <label for="section-2676521bc0f9a095fe7307778cf2303b" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Ironic/" class="">Ironic</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c79536466ca9ad0bb77496009fe8230" class="toggle"  />
+    <label for="section-1c79536466ca9ad0bb77496009fe8230" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/Module/Service/" class="">Service</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1918f9d76cde54090f90336203c289d6" class="toggle"  />
+    <label for="section-1918f9d76cde54090f90336203c289d6" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/" class="">OpenStack Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c2c13699fcac8c2273b9192d15ca3e0" class="toggle"  />
+    <label for="section-9c2c13699fcac8c2273b9192d15ca3e0" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/" class="">OpenStack Ussuri : Overview</a>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="toggle"  />
+    <label for="section-b65fb1c14976b6fb68b0c16f5e1e6e01" class="flex justify-between">
+      <a href="/erp/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-02/" class="">OpenStack Ussuri : 환경설정</a>
+    </label>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Trove</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#데이터베이스-서비스--trove"><strong>데이터베이스 서비스 : Trove</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove의-논리-아키텍처"><strong>Trove의 논리 아키텍처</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="데이터베이스-서비스--trove">
+  <strong>데이터베이스 서비스 : Trove</strong>
+  <a class="anchor" href="#%eb%8d%b0%ec%9d%b4%ed%84%b0%eb%b2%a0%ec%9d%b4%ec%8a%a4-%ec%84%9c%eb%b9%84%ec%8a%a4--trove">#</a>
+</h2>
+<hr>
+<ul>
+<li><strong>Trove는 관계형 데이터베이스 기능을 활용</strong></li>
+<li><strong>클라우드 사용자와 데이터 베이스 관리자는 필요에 따라 Trove를 통해 데이터베이스 인스턴스를 제공, 관리 서비스</strong></li>
+</ul>
+<h1 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h1>
+<h3 id="trove의-논리-아키텍처">
+  <strong>Trove의 논리 아키텍처</strong>
+  <a class="anchor" href="#trove%ec%9d%98-%eb%85%bc%eb%a6%ac-%ec%95%84%ed%82%a4%ed%85%8d%ec%b2%98">#</a>
+</h3>
+<h1 id="heading-1">
+  
+  <a class="anchor" href="#heading-1">#</a>
+</h1>
+<p>
+  <img src="/images/Openstack/Trove/Trove01.png" alt="Trove" /></p>
+<h1 id="heading-2">
+  
+  <a class="anchor" href="#heading-2">#</a>
+</h1>
+<table>
+<thead>
+<tr>
+<th>구성요소</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>python-troveclient</td>
+<td>클라이언트에서 콘솔로 trove-api를 실행할 수 있게 지원</td>
+</tr>
+<tr>
+<td>trove-api</td>
+<td>RESTful API 방식의 JSON을 지원, Trove인스턴스를 관리하고 프로비저닝</td>
+</tr>
+<tr>
+<td>trove-taskmanager</td>
+<td>인스턴스 프로비저닝을 지원, 라이프 사이클 관리 및 운영하는 작업을 수행</td>
+</tr>
+<tr>
+<td>trove-conductor</td>
+<td>호스트에서 실행되는 서비스로 호스트 정보를 업데이트 및 게스트 인스턴스 메시지를 수신</td>
+</tr>
+<tr>
+<td>trove-guestagent</td>
+<td>게스트 인스턴스 안에서 실행, 데이터 베이스 작업을 실행, 관리</td>
+</tr>
+</tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Erp/docs/OpenStack/Module/Trove.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#데이터베이스-서비스--trove"><strong>데이터베이스 서비스 : Trove</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#trove의-논리-아키텍처"><strong>Trove의 논리 아키텍처</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#heading-2"></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
