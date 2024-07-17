@@ -3,16 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://mungdocs.kro.kr/erp/docs/ERP/ERP/erp00/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/docs/ERP/ERP/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/docs/ERP/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/docs/SAP/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/docs/SAP/ABAP/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/docs/SAP/Module/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/categories/</loc>
     <xhtml:link
@@ -57,6 +63,7 @@
                 />
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/docs/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"
@@ -89,6 +96,7 @@
                 />
   </url><url>
     <loc>http://mungdocs.kro.kr/erp/</loc>
+    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"
