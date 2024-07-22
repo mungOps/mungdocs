@@ -23,6 +23,8 @@
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/</loc>
     <lastmod>2024-02-20T11:28:05+09:00</lastmod>
   </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/k8s/</loc>
+  </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/with-toc/</loc>
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
   </url><url>
@@ -106,6 +108,8 @@
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/</loc>
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/</loc>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Git/Git/git99/</loc>
     <lastmod>2024-05-26T16:32:01+09:00</lastmod>

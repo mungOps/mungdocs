@@ -54,7 +54,7 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</guid>
-      <description>Kubernetes Service # CNI (Container Network Interface) # f ## **Service Network** Service는 파드들을 통해 실행되고 있는 애플리케이션을 네트워크에 노출(expose)시키는 가상의 컴포넌트 쿠버네티스 내부의 다양한 객체들이 애플리케이션 및 다른 외부의 애플리케이션이나 사용자와 연결될 수 있도록 도와주는 브릿지 역할을 수행 이와 같은 Service가 별도로 필요한 이유는 파드들의 반영속적인(ephemeral) 특성을 가지고 있기 때문이며, 파드들은 일회성 자원으로 언제든 다른 노드로 옮겨지거나 삭제될 수 있으며, 이로인해 새로이 생성될 때마다 새로운 내부 IP를 받게 되므로, 이것만으로 클러스터 내/외부와 통신을 계속 유지하기는 어렵다.</description>
+      <description>Kubernetes Service # CNI (Container Network Interface) # Service Network # Service는 파드들을 통해 실행되고 있는 애플리케이션을 네트워크에 노출(expose)시키는 가상의 컴포넌트 쿠버네티스 내부의 다양한 객체들이 애플리케이션 및 다른 외부의 애플리케이션이나 사용자와 연결될 수 있도록 도와주는 브릿지 역할을 수행 이와 같은 Service가 별도로 필요한 이유는 파드들의 반영속적인(ephemeral) 특성을 가지고 있기 때문이며, 파드들은 일회성 자원으로 언제든 다른 노드로 옮겨지거나 삭제될 수 있으며, 이로인해 새로이 생성될 때마다 새로운 내부 IP를 받게 되므로, 이것만으로 클러스터 내/외부와 통신을 계속 유지하기는 어렵다.</description>
     </item>
     <item>
       <title>Kubernetes_Object_Table</title>
