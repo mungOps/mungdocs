@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Velero on Mungs Book</title>
+    <link>http://localhost:1313/devops/docs/Kubernetes/Kubernetes/6.-BR/copy-copy-7/</link>
+    <description>Recent content in Velero on Mungs Book</description>
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://localhost:1313/devops/docs/Kubernetes/Kubernetes/6.-BR/copy-copy-7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> install</title>
+      <link>http://localhost:1313/devops/docs/Kubernetes/Kubernetes/6.-BR/copy-copy-7/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/devops/docs/Kubernetes/Kubernetes/6.-BR/copy-copy-7/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://localhost:1313/devops/docs/Kubernetes/Kubernetes/6.-BR/copy-copy-7/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/devops/docs/Kubernetes/Kubernetes/6.-BR/copy-copy-7/file0/</guid>
+      <description>aaa</description>
+    </item>
+  </channel>
+</rss>

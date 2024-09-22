@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction on Mung Book</title>
+    <title>Introduction on Mungs Book</title>
     <link>http://mungdocs.kro.kr/devops/</link>
-    <description>Recent content in Introduction on Mung Book</description>
+    <description>Recent content in Introduction on Mungs Book</description>
     <generator>Hugo</generator>
     <language>devops</language>
     <atom:link href="http://mungdocs.kro.kr/devops/index.xml" rel="self" type="application/rss+xml" />
@@ -61,7 +61,7 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/k8s/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/k8s/</guid>
-      <description> Kubernetes # Kubernetes # # </description>
+      <description>Kubernetes # Kubernetes # ctrl # timedatectl set-timezone Asia/Seoul apt -y install nginx libnginx-mod-stream echo &amp;#39; stream { upstream k8s-api { server 1.0.0.200:6443; } server { listen 6443; proxy_pass k8s-api; } } &amp;#39; &amp;gt;&amp;gt; /etc/nginx/nginx.conf unlink /etc/nginx/sites-enabled/default systemctl enable --now nginx curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo &amp;#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&amp;#34; | tee /etc/apt/sources.list.d/kubernetes.list apt update apt -y install kubectl mkdir -p $HOME/.kube wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml # install kubectl bash apt -y install bash-completion source /usr/share/bash-completion/bash_completion kubectl completion bash | tee /etc/bash_completion.</description>
     </item>
     <item>
       <title>1. 학습목표</title>
@@ -78,6 +78,13 @@
       <description>GIT # Git Branch 이란? # Branch란 독립적인 이력 관리 영역을 의미&#xA;Branch이란 특정지점의 커밋에서 분기 해서 커밋을 이어 나가는 모습이 마치 나무의 가지가 뻗어 나가는것과 비슷하다고하여 붙여진 이름 브랜치를 사용하면 저장소를 따로 만들 필요 없이 한 저장소 안에서 기능추가,디버그, 테스트등의 작업을 동시에 할 수 있으며, 저장소 를 안정적이면서도 유연하게 운영이 가능&#xA;Git Merge 이란? # 다른 브랜치의 작업내용을 현재 작업 중인브 랜치에 병합할때 git merge를 사용 단, git merge를 사용하면 자동으로 병합되지만, 충돌이 발생시에는 사용자가 직접 충돌을 해결해야 됨 Fast-forward Merge # 특징</description>
     </item>
     <item>
+      <title>Kubeadm Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
       <title>With ToC</title>
       <link>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/with-toc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -92,6 +99,132 @@
       <description>암호화의 기술과 역사 # 암호화의 역사 # 시대 기간 특징 종류 고대 고대 - 19세기 말 수동 암호 사용 (단순, 문자 대입하여 암호화) Scytale, Caesar, Vigenere, Beaufort 등 근대 1900 - 1940년대 기계 암호 사용 (복잡한 기계를 이용하여 암호화) Enigma, M-209 등 현대 1950년대 - 현재 샤뇬의 &amp;ldquo;암호학의 수학적 배경&amp;rdquo; 발표 이후 시작, 컴퓨터 암호 사용 (컴퓨터 연산을 이용하여 암호화) DES, SEED, Rijindael, RSA, ECC, KCDSA 등 고대에는 외교, 군사 등의 한정적인 분야의 사용되었으나, 현대에는 인터넷, 전자상거래 등이 발달하면서 전반적인 분야의 대한 보안(암호화)의 기능이 중요시 되기 시작했다.</description>
     </item>
     <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/10.-CIMS/Harbor/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/10.-CIMS/Harbor/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Elasticsearch/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Elasticsearch/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Fluentd/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Fluentd/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Kibana/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Kibana/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/12.CI/CD/ArgoCD/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/12.CI/CD/ArgoCD/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/13.-MCM/Karmada/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/13.-MCM/Karmada/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/MetalLB/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/MetalLB/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Nginx/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Nginx/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/Helm/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/Helm/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/OpenLens/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/OpenLens/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/5.-CNS/Rook/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/5.-CNS/Rook/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/6.-BR/Velero/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/6.-BR/Velero/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/7.-Mesh/Istio/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/7.-Mesh/Istio/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/8.-AMS/Keycloak/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/8.-AMS/Keycloak/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/9.-KMS/Vault/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/9.-KMS/Vault/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/99.-ETC/0/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/99.-ETC/0/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
       <title>1. Cluster Architecture 문제풀이</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -104,6 +237,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/</guid>
       <description>Docker # Docker 기본 명령어 # 컨테이너 생성 # $ docker run [OPTION] NAME[:TAG|@DIGEST] OPTION 특징 -d, &amp;ndash;detach 백그라운드에서 실행합니다. -i, &amp;ndash;interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, &amp;ndash;tty 할당된 tty를 사용하여 실행합니다. &amp;ndash;name 컨테이너에 이름을 할당합니다. -e, &amp;ndash;env 컨테이너 내에서 사용할 환경 변수를 설정합니다. &amp;ndash;rm 컨테이너가 종료되면 자동으로 삭제합니다. &amp;ndash;network 컨테이너가 사용할 네트워크를 지정합니다. &amp;ndash;publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. &amp;ndash;volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</description>
+    </item>
+    <item>
+      <title>Kubeadm install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/</guid>
+      <description>aaa</description>
     </item>
     <item>
       <title>2. Docker Registry</title>
@@ -202,6 +342,132 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</guid>
       <description>Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &amp;lt;pod-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &amp;lt;replicaset-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &amp;lt;deployment-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &amp;lt;service-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: selector: &amp;lt;selector-key&amp;gt;: &amp;lt;selector-value&amp;gt; ports: - protocol: TCP port: &amp;lt;service-port&amp;gt; targetPort: &amp;lt;target-port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/10.-CIMS/Harbor/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/10.-CIMS/Harbor/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Elasticsearch/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Elasticsearch/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Fluentd/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Fluentd/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Kibana/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Kibana/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/12.CI/CD/ArgoCD/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/12.CI/CD/ArgoCD/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/13.-MCM/Karmada/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/13.-MCM/Karmada/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/MetalLB/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/MetalLB/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Nginx/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Nginx/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/Helm/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/Helm/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/OpenLens/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/OpenLens/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/5.-CNS/Rook/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/5.-CNS/Rook/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/6.-BR/Velero/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/6.-BR/Velero/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/7.-Mesh/Istio/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/7.-Mesh/Istio/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/8.-AMS/Keycloak/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/8.-AMS/Keycloak/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/9.-KMS/Vault/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/9.-KMS/Vault/file0/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/99.-ETC/0/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/99.-ETC/0/file0/</guid>
+      <description>aaa</description>
     </item>
   </channel>
 </rss>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CI/CD on Mung Book</title>
+    <title>CI/CD on Mungs Book</title>
     <link>http://mungdocs.kro.kr/devops/docs/CICD/</link>
-    <description>Recent content in CI/CD on Mung Book</description>
+    <description>Recent content in CI/CD on Mungs Book</description>
     <generator>Hugo</generator>
     <language>devops</language>
     <atom:link href="http://mungdocs.kro.kr/devops/docs/CICD/index.xml" rel="self" type="application/rss+xml" />

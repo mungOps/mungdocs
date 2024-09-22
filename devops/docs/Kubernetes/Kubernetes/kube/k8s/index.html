@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kubernetes # Kubernetes # ctrl # timedatectl set-timezone Asia/Seoul apt -y install nginx libnginx-mod-stream echo &#39; stream { upstream k8s-api { server 1.0.0.200:6443; } server { listen 6443; proxy_pass k8s-api; } } &#39; &gt;&gt; /etc/nginx/nginx.conf unlink /etc/nginx/sites-enabled/default systemctl enable --now nginx curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo &#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34; | tee /etc/apt/sources.list.d/kubernetes.list apt update apt -y install kubectl mkdir -p $HOME/.kube wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml # install kubectl bash apt -y install bash-completion source /usr/share/bash-completion/bash_completion kubectl completion bash | tee /etc/bash_completion.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/devops/docs/Kubernetes/Kubernetes/kube/k8s/">
+  <meta property="og:site_name" content="Mung Book">
+  <meta property="og:title" content="1. Kubernetes_환경구성">
+  <meta property="og:description" content="Kubernetes # Kubernetes # ctrl # timedatectl set-timezone Asia/Seoul apt -y install nginx libnginx-mod-stream echo &#39; stream { upstream k8s-api { server 1.0.0.200:6443; } server { listen 6443; proxy_pass k8s-api; } } &#39; &gt;&gt; /etc/nginx/nginx.conf unlink /etc/nginx/sites-enabled/default systemctl enable --now nginx curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo &#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34; | tee /etc/apt/sources.list.d/kubernetes.list apt update apt -y install kubectl mkdir -p $HOME/.kube wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml # install kubectl bash apt -y install bash-completion source /usr/share/bash-completion/bash_completion kubectl completion bash | tee /etc/bash_completion.">
+  <meta property="og:locale" content="devops">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>1. Kubernetes_환경구성 | Mung Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.785db9f718ad0920adb493de1d393decf1455ea3877b02f5a7c8ea04824a74d4.js" integrity="sha256-eF259xitCSCttJPeHTk97PFFXqOHewL1p8jqBIJKdNQ=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mung Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+                   
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/erp/"> ERP </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/programing/"> Programing </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CI/CD</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ab33f98ec482c8bc16f6f3aadd72961c" class="toggle"  />
+    <label for="section-ab33f98ec482c8bc16f6f3aadd72961c" class="flex justify-between">
+      <a role="button" class="">CI/CD 배포 입문</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Docker</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7acb0652a4b3ec3e86a5d34ca37c0bd1" class="toggle"  />
+    <label for="section-7acb0652a4b3ec3e86a5d34ca37c0bd1" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker00/" class="">0. Docker&amp; Container</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker01/" class="">1. Docker 기본 명령어</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker02/" class="">2. Docker Registry</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker03/" class="">3. Dockerfile&amp; Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker04/" class="">4. Docker 실습</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Git</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fc86ab93e770996b2a42d54bb94a951" class="toggle"  />
+    <label for="section-8fc86ab93e770996b2a42d54bb94a951" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git03/" class="">3. Git Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git99/" class="">99. Git 명령어 요약정리</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Kubernetes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5f7f8f111f73dbb7707958fc3e6a0a67" class="toggle"  />
+    <label for="section-5f7f8f111f73dbb7707958fc3e6a0a67" class="flex justify-between">
+      <a role="button" class="">Kubernetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s00/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s01/" class="">1. Kubernetes Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s03/" class="">3. Workload&amp; Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s04/" class="">4. Node Mangament</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s05/" class="">5. ConfigMap&amp; Secret</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s06/" class="">6. Service</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s99/" class="">Kubernetes_Object_Table</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b317e8cc322a846d37a4fed156efb834" class="toggle" checked />
+    <label for="section-b317e8cc322a846d37a4fed156efb834" class="flex justify-between">
+      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Install</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cebf3a80af055f6b81ecf6c3ad5bb721" class="toggle" checked />
+    <label for="section-cebf3a80af055f6b81ecf6c3ad5bb721" class="flex justify-between">
+      <a role="button" class="">Kubernetes_Study</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/kube/k8s/" class="active">1. Kubernetes_환경구성</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fe7868a478c068e2b228e3f91670cbc2" class="toggle"  />
+    <label for="section-fe7868a478c068e2b228e3f91670cbc2" class="flex justify-between">
+      <a role="button" class="">CKA</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA/" class="">0. CKA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA00/" class="">1. Cluster Architecture 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA01/" class="">2. Installation &amp; Configuration 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA02/" class="">3. Workloads&amp; Scheduling 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA03/" class="">4. Service&amp; Networking 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA04/" class="">5. Storage 문제풀이</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/CKA/CKA05/" class="">6. TroubleShooting 문제풀이</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84d98a3533ef01a56645ec9393b2db81" class="toggle"  />
+    <label for="section-84d98a3533ef01a56645ec9393b2db81" class="flex justify-between">
+      <a role="button" class="">Kubernetes_Study</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/kube/k8s/" class="">1. Kubernetes_환경구성</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>1. Kubernetes_환경구성</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes">Kubernetes</a>
+      <ul>
+        <li><a href="#kubernetes-1">Kubernetes</a>
+          <ul>
+            <li><a href="#ctrl"><strong>ctrl</strong></a></li>
+            <li><a href="#controlplan"><strong>controlplan</strong></a></li>
+            <li><a href="#dataplan"><strong>dataplan</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="kubernetes">
+  Kubernetes
+  <a class="anchor" href="#kubernetes">#</a>
+</h1>
+<hr>
+<p>
+  <img src="/static/images/k8s/kube/kube_install.png" alt="" /></p>
+<h2 id="kubernetes-1">
+  Kubernetes
+  <a class="anchor" href="#kubernetes-1">#</a>
+</h2>
+<h3 id="ctrl">
+  <strong>ctrl</strong>
+  <a class="anchor" href="#ctrl">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>timedatectl set-timezone Asia/Seoul
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt -y install nginx libnginx-mod-stream
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">stream {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    upstream k8s-api {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        server 1.0.0.200:6443;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    server {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        listen 6443;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        proxy_pass k8s-api;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>  &gt;&gt; /etc/nginx/nginx.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>unlink /etc/nginx/sites-enabled/default
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl enable --now nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34;</span> | tee /etc/apt/sources.list.d/kubernetes.list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt -y install kubectl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p $HOME/.kube
+</span></span><span style="display:flex;"><span>wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># install kubectl bash</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt -y install bash-completion
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>source /usr/share/bash-completion/bash_completion
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl completion bash | tee /etc/bash_completion.d/kubectl &gt; /dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;alias k=kubectl&#39;</span> &gt;&gt;~/.bashrc
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;complete -o default -F __start_kubectl k&#39;</span> &gt;&gt;~/.bashrc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exec bash
+</span></span></code></pre></div><br>
+<br>
+<br>
+<h3 id="controlplan">
+  <strong>controlplan</strong>
+  <a class="anchor" href="#controlplan">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>timedatectl set-timezone Asia/Seoul
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt -y install haproxy keepalived containerd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Frontend for Kubernetes API
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">frontend kubernetes-api
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    bind 1.0.0.200:6443  # CP VIP와 포트를 바인딩
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    default_backend kube_apiserver
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Backend for Kubernetes API
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">backend kube_apiserver
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    balance roundrobin  # 또는 preferred server 방식
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    server cp0 1.0.0.201:6443 check
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> &gt;&gt; /etc/haproxy/haproxy.cfg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">global_defs {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   router_id LVS_MASTER / LVS_SLAVE
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">vrrp_instance VI_1 {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    state MASTER
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    interface ens19  # Network interface to bind the VIP
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    virtual_router_id 51
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    priority 101  # Higher priority for Master
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    advert_int 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    authentication {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        auth_type PASS
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        auth_pass 1234
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    virtual_ipaddress {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        1.0.0.200  # Virtual IP to be shared
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> &gt;&gt; /etc/keepalived/keepalived.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl enable --now haproxy keepalived
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>timedatectl set-timezone Asia/Seoul
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt -y install containerd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir /etc/containerd
+</span></span><span style="display:flex;"><span>containerd config default | tee /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#34;s|^\( *sandbox_image *= *\).*|\1\&#34;registry.k8s.io/pause:3.9\&#34;|&#34;</span> /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#34;s|^\( *SystemdCgroup *= *\).*|\1true|&#34;</span> /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl enable --now containerd.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat &gt; /etc/sysctl.d/99-k8s-cri.conf <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.bridge.bridge-nf-call-iptables=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.bridge.bridge-nf-call-ip6tables=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.ipv4.ip_forward=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>modprobe overlay; modprobe br_netfilter
+</span></span><span style="display:flex;"><span>echo -e overlay<span style="color:#ae81ff">\\</span>nbr_netfilter &gt; /etc/modules-load.d/k8s.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">1</span> &gt; /proc/sys/net/ipv4/ip_forward
+</span></span><span style="display:flex;"><span>sysctl -p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>swapoff -a
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;/\/swap.img/s/^/#/&#39;</span> /etc/fstab
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># disable apparmor profiles below</span>
+</span></span><span style="display:flex;"><span>apparmor_parser -R /etc/apparmor.d/runc
+</span></span><span style="display:flex;"><span>apparmor_parser -R /etc/apparmor.d/crun
+</span></span><span style="display:flex;"><span>ln -s /etc/apparmor.d/runc /etc/apparmor.d/disable/
+</span></span><span style="display:flex;"><span>ln -s /etc/apparmor.d/crun /etc/apparmor.d/disable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34;</span> | tee /etc/apt/sources.list.d/kubernetes.list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt -y install kubeadm kubelet kubectl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubeadm init --control-plane-endpoint<span style="color:#f92672">=</span>ctrl-main --apiserver-advertise-address<span style="color:#f92672">=</span>9.9.9.201 --pod-network-cidr<span style="color:#f92672">=</span>192.168.0.0/16 --cri-socket<span style="color:#f92672">=</span>unix:///run/containerd/containerd.sock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>scp /etc/kubernetes/admin.conf ohc@ctrl:/tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubeadm init --control-plane-endpoint<span style="color:#f92672">=</span>ctrl --apiserver-advertise-address<span style="color:#f92672">=</span>10.1.61.170 --pod-network-cidr<span style="color:#f92672">=</span>192.168.0.0/16 --cri-socket<span style="color:#f92672">=</span>unix:///run/containerd/containerd.sock
+</span></span></code></pre></div><h3 id="dataplan">
+  <strong>dataplan</strong>
+  <a class="anchor" href="#dataplan">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>timedatectl set-timezone Asia/Seoul
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt -y install containerd
+</span></span><span style="display:flex;"><span>mkdir /etc/containerd
+</span></span><span style="display:flex;"><span>containerd config default | tee /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#34;s|^\( *sandbox_image *= *\).*|\1\&#34;registry.k8s.io/pause:3.9\&#34;|&#34;</span> /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#34;s|^\( *SystemdCgroup *= *\).*|\1true|&#34;</span> /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl enable --now containerd.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat &gt; /etc/sysctl.d/99-k8s-cri.conf <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.bridge.bridge-nf-call-iptables=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.bridge.bridge-nf-call-ip6tables=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.ipv4.ip_forward=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">1</span> &gt; /proc/sys/net/ipv4/ip_forward
+</span></span><span style="display:flex;"><span>sysctl -p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>modprobe overlay; modprobe br_netfilter
+</span></span><span style="display:flex;"><span>echo -e overlay<span style="color:#ae81ff">\\</span>nbr_netfilter &gt; /etc/modules-load.d/k8s.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>swapoff -a
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;/\/swap.img/s/^/#/&#39;</span> /etc/fstab
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># disable apparmor profiles below</span>
+</span></span><span style="display:flex;"><span>apparmor_parser -R /etc/apparmor.d/runc
+</span></span><span style="display:flex;"><span>apparmor_parser -R /etc/apparmor.d/crun
+</span></span><span style="display:flex;"><span>ln -s /etc/apparmor.d/runc /etc/apparmor.d/disable/
+</span></span><span style="display:flex;"><span>ln -s /etc/apparmor.d/crun /etc/apparmor.d/disable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34;</span> | tee /etc/apt/sources.list.d/kubernetes.list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt -y install kubeadm kubelet kubectl
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/Kubernetes/kube/k8s.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes">Kubernetes</a>
+      <ul>
+        <li><a href="#kubernetes-1">Kubernetes</a>
+          <ul>
+            <li><a href="#ctrl"><strong>ctrl</strong></a></li>
+            <li><a href="#controlplan"><strong>controlplan</strong></a></li>
+            <li><a href="#dataplan"><strong>dataplan</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Key Management Service on Mungs Book</title>
+    <link>http://localhost:1313/devops/docs/Kubernetes/Kubernetes/copy-copy-12/</link>
+    <description>Recent content in Key Management Service on Mungs Book</description>
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://localhost:1313/devops/docs/Kubernetes/Kubernetes/copy-copy-12/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

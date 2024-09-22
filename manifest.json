@@ -1,6 +1,6 @@
 {
-  "name": "Mung Book",
-  "short_name": "Mung Book",
+  "name": "Mungs Book",
+  "short_name": "Mungs Book",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

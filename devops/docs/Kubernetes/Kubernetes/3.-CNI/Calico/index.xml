@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Calico on Mungs Book</title>
+    <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/</link>
+    <description>Recent content in Calico on Mungs Book</description>
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> install</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file1/</guid>
+      <description>aaa</description>
+    </item>
+    <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file0/</guid>
+      <description>aaa</description>
+    </item>
+  </channel>
+</rss>

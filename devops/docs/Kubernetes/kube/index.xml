@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubernetes_Study on Mung Book</title>
+    <title>Kubernetes_Study on Mungs Book</title>
     <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/</link>
-    <description>Recent content in Kubernetes_Study on Mung Book</description>
+    <description>Recent content in Kubernetes_Study on Mungs Book</description>
     <generator>Hugo</generator>
     <language>devops</language>
     <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/index.xml" rel="self" type="application/rss+xml" />
@@ -12,7 +12,7 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/k8s/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/k8s/</guid>
-      <description> Kubernetes # Kubernetes # # </description>
+      <description>Kubernetes # Kubernetes # ctrl # timedatectl set-timezone Asia/Seoul apt -y install nginx libnginx-mod-stream echo &amp;#39; stream { upstream k8s-api { server 1.0.0.200:6443; } server { listen 6443; proxy_pass k8s-api; } } &amp;#39; &amp;gt;&amp;gt; /etc/nginx/nginx.conf unlink /etc/nginx/sites-enabled/default systemctl enable --now nginx curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo &amp;#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&amp;#34; | tee /etc/apt/sources.list.d/kubernetes.list apt update apt -y install kubectl mkdir -p $HOME/.kube wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml # install kubectl bash apt -y install bash-completion source /usr/share/bash-completion/bash_completion kubectl completion bash | tee /etc/bash_completion.</description>
     </item>
   </channel>
 </rss>
