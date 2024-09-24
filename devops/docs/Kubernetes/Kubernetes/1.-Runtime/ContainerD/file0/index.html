@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="aaa">
+<meta name="description" content="ContainerD # Containerd는 Docker 사에서 moby project 와 함께 발표하여 CNCF 에 기증한 오픈소스입니다.
+ContainerD 2022년 4월 Docker engine이 쿠버네티스에서 사용중단을 발표한 후, 높은 점유율을 이루고 있습니다.
+간단하게 기존에 사용하던 Docker engine을 사용하지 않고 ContainerD를 사용 하게된 이유를 정리하자면 쿠버네티스는 여러 컨테이너 런타임과 통신할 수 있도록 하는 CRI라는 표준 인터페이스를 설계함.
+Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인터페이스와 맞지 않았음.
+이를 해결하기 위해 dockershim이라는 어댑터 컴포넌트를 개발하였음.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content=" Concept">
-  <meta property="og:description" content="aaa">
+  <meta property="og:description" content="ContainerD # Containerd는 Docker 사에서 moby project 와 함께 발표하여 CNCF 에 기증한 오픈소스입니다.
+ContainerD 2022년 4월 Docker engine이 쿠버네티스에서 사용중단을 발표한 후, 높은 점유율을 이루고 있습니다.
+간단하게 기존에 사용하던 Docker engine을 사용하지 않고 ContainerD를 사용 하게된 이유를 정리하자면 쿠버네티스는 여러 컨테이너 런타임과 통신할 수 있도록 하는 CRI라는 표준 인터페이스를 설계함.
+Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인터페이스와 맞지 않았음.
+이를 해결하기 위해 dockershim이라는 어댑터 컴포넌트를 개발하였음.">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -19,7 +27,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.1339d01316df4e7e8a3c0124497d3a84fdaf6b627412cb1f3817539ba81d0d9b.js" integrity="sha256-EznQExbfTn6KPAEkSX06hP2va2J0EssfOBdTm6gdDZs=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -73,7 +81,7 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
       </li>
       
       <li>
@@ -89,11 +97,11 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -550,7 +558,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-b317e8cc322a846d37a4fed156efb834" class="toggle" checked />
     <label for="section-b317e8cc322a846d37a4fed156efb834" class="flex justify-between">
-      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Install</a>
+      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Training</a>
     </label>
   
 
@@ -569,6 +577,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/" class="">Manger Node</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -614,7 +635,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class=""> install</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class="active"> Concept</a>
   
 
         </li>
@@ -627,7 +648,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class="active"> Concept</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class=""> install</a>
   
 
         </li>
@@ -696,6 +717,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/" class="">Kubeadm install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file2/" class="">Kubeadm update</a>
   
 
         </li>
@@ -1963,7 +1997,20 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#containerd"><strong>ContainerD</strong></a>
+          <ul>
+            <li><a href="#docker-engine-vs-containerd"><strong>Docker Engine vs ContainerD</strong></a></li>
+            <li><a href="#references"><strong>References</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1974,7 +2021,136 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>aaa</p>
+  <article class="markdown"><h2 id="containerd">
+  <strong>ContainerD</strong>
+  <a class="anchor" href="#containerd">#</a>
+</h2>
+<div style="text-align: center;">
+    <img src="https://containerd.io/img/logos/navbar-dark-logo.png" alt="image.png" style="width: 400px; height: auto;">
+</div>
+<ul>
+<li>
+<p>Containerd는 Docker 사에서 moby project 와 함께  발표하여  CNCF 에 기증한  오픈소스입니다.</p>
+</li>
+<li>
+<p>ContainerD 2022년 4월 Docker engine이 쿠버네티스에서 사용중단을 발표한 후, 높은 점유율을 이루고 있습니다.</p>
+</li>
+</ul>
+<br>
+<ul>
+<li>간단하게 기존에 사용하던 <strong>Docker engine을 사용하지 않고 ContainerD를 사용 하게된 이유</strong>를 정리하자면
+<ol>
+<li>
+<p>쿠버네티스는 여러 컨테이너 런타임과 통신할 수 있도록 하는 CRI라는 표준 인터페이스를 설계함.</p>
+</li>
+<li>
+<p><strong>Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인터페이스와 맞지 않았음.</strong></p>
+</li>
+<li>
+<p>이를 해결하기 위해 dockershim이라는 어댑터 컴포넌트를 개발하였음.</p>
+</li>
+<li>
+<p>이 쉼의 존재는 kubelet 자체에 많은 불필요한 복잡성을 도입했고, 일부 통합은 이 쉼 때문에 Docker에 대해 일관성 없게 구현되었으며, 이로 인해 유지 관리 부담이 증가하게 됨.</p>
+</li>
+</ol>
+</li>
+</ul>
+<div style="text-align: center;">
+    <img src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202206/092600-704/%EC%98%A4%EA%B0%80%EB%8B%89%EC%B5%9C%EC%A2%85.png" alt="image.png" style="width: 1200px; height: auto;">
+</div>
+<ol start="5">
+<li>이처럼 벤더 특정 코드(특정 제품인 Docker에 종속적인 코드)를 유지 관리하는 것은 쿠버네티스의 오픈 소스 철학에 부합하지 않았고, 2022년 4월 v1.24에서 완전한 제거를 발표하였음.</li>
+</ol>
+<br>
+<hr>
+<br>
+<br>
+<div style="text-align: center;">
+    <img src="https://velog.velcdn.com/images/rockwellvinca/post/bd8e84a8-79a9-42df-9cbc-acb87c11f322/image.png" alt="image.png" style="width: 1200px; height: auto;">
+</div>
+<ul>
+<li>
+<p>그렇다고, ContainerD가 Docker와 완전히 다른 것이 아닌 게, <strong>containerD는 도커를 컨테이너 런타임으로 사용할 때 내부적으로 사용되는 컨테이너 런타임 기술로, 이젠 이러한 기술을 도커에서 빼서 containerd만 따로 사용하는 것</strong>입니다.</p>
+</li>
+<li>
+<p>즉, 현재는 <strong>Docker에서 컨테이너 런타임을 분리하여 ContainerD를 사용</strong>하고, 여전히 관련 <strong>이미지 개발 등은 Docker을 사용하는 것</strong>입니다.</p>
+</li>
+<li>
+<p>Docker Engine, ContainerD에 간단 비교는 아래를 참고해주세요.</p>
+</li>
+</ul>
+<br>
+<br>
+<h3 id="docker-engine-vs-containerd">
+  <strong>Docker Engine vs ContainerD</strong>
+  <a class="anchor" href="#docker-engine-vs-containerd">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>특성</th>
+<th>Docker Engine</th>
+<th>ContainerD</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>설명</strong></td>
+<td>Docker의 전체 컨테이너 관리 플랫폼</td>
+<td>경량화된 컨테이너 런타임</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>주요 기능</strong></td>
+<td>이미지 빌드, 배포, 컨테이너 실행</td>
+<td>컨테이너 실행, 이미지 관리</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>API</strong></td>
+<td>Docker API 제공</td>
+<td>CRI (Container Runtime Interface) 지원</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>설치 및 설정</strong></td>
+<td>복잡한 설치 및 설정</td>
+<td>비교적 간단한 설치 및 설정</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>부하</strong></td>
+<td>상대적으로 높은 리소스 소모</td>
+<td>더 경량화되어 리소스 효율성 높음</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>의존성</strong></td>
+<td>여러 추가 도구 (예: Docker Compose) 필요</td>
+<td>Kubernetes에서 직접 사용 가능</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>주요 사용 사례</strong></td>
+<td>개발 및 테스트 환경</td>
+<td>프로덕션 환경, 특히 Kubernetes에서 사용</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<hr>
+<h3 id="references">
+  <strong>References</strong>
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li>
+  <a href="https://velog.io/@rockwellvinca/kubernetes-%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EC%9D%98-%EB%8F%84%EC%BB%A4-%EC%A7%80%EC%9B%90-%EB%8C%80%ED%95%9C-%EB%AA%A8%EB%93%A0-%EA%B2%83">[kubernetes] ☸️쿠버네티스의 도커 지원 중단에 대한 모든 것
+</a></li>
+</ul>
 </article>
  
       
@@ -2049,7 +2225,20 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#containerd"><strong>ContainerD</strong></a>
+          <ul>
+            <li><a href="#docker-engine-vs-containerd"><strong>Docker Engine vs ContainerD</strong></a></li>
+            <li><a href="#references"><strong>References</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

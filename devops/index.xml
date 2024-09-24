@@ -8,6 +8,13 @@
     <language>devops</language>
     <atom:link href="http://mungdocs.kro.kr/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title> Concept</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/</guid>
+      <description>ContainerD # Containerd는 Docker 사에서 moby project 와 함께 발표하여 CNCF 에 기증한 오픈소스입니다.&#xA;ContainerD 2022년 4월 Docker engine이 쿠버네티스에서 사용중단을 발표한 후, 높은 점유율을 이루고 있습니다.&#xA;간단하게 기존에 사용하던 Docker engine을 사용하지 않고 ContainerD를 사용 하게된 이유를 정리하자면 쿠버네티스는 여러 컨테이너 런타임과 통신할 수 있도록 하는 CRI라는 표준 인터페이스를 설계함.&#xA;Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인터페이스와 맞지 않았음.&#xA;이를 해결하기 위해 dockershim이라는 어댑터 컴포넌트를 개발하였음.</description>
+    </item>
+    <item>
       <title>0. CKA</title>
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -82,7 +89,14 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file0/</guid>
-      <description>aaa</description>
+      <description>Kubeadm # Kubeadm은 쿠버네티스 클러스터 생성을 위한 &amp;ldquo;빠른 경로&amp;quot;의 모범 사례로 kubeadm init 및 kubeadm join 을 제공하도록 만들어진 도구&#xA;쿠버네티스는 분산 시스템 관리 도구로, 컨테이너화된 애플리케이션을 효율적으로 배포, 관리, 확장할 수 있게 해주지만, 초기 설정 및 유지 관리 작업은 복잡할 수 있으며, 이를 간편하게 해주기 위한 프로비저닝 툴 중 하나가 kubeadm&#xA;kubeadm은 실행 가능한 최소 클러스터를 시작하고 실행하는 데 필요한 작업을 수행&#xA;설계 상, 시스템 프로비저닝이 아닌 부트스트랩(bootstrapping)만 다룬다.</description>
+    </item>
+    <item>
+      <title>Manger Node</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/</guid>
+      <description>Kubernets Manager Node # Kubernets Manager Node # Manager Node는 노드는 클러스터에 대한 요청을 수신하고 분배하는 역할을 하는 로드 밸런서 역할을 하는 서버를 의미합니다.&#xA;일반적으로 NGINX, HAProxy와 같은 프록시 서버를 사용하며, 여기서는 Nginx로 구성합니다.&#xA;해당 노드의 주 역할은 아래와 같습니다.&#xA;역할 설명 예시 요청 라우팅 클라이언트의 API 요청을 적절한 서비스나 백엔드 노드로 전달합니다. NGINX가 클라이언트 요청을 받아 특정 서비스로 라우팅합니다. 예를 들어, /api/users 요청은 사용자 서비스로 전달됩니다. 로드 밸런싱 요청을 여러 백엔드 노드에 균등하게 분배하여 성능을 최적화합니다.</description>
     </item>
     <item>
       <title>With ToC</title>
@@ -103,7 +117,7 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/</guid>
-      <description>aaa</description>
+      <description>ContainerD Install # ContainerD 환경구성 # # CRI를 사용하기 위한 네트워크 설정 # net.bridge.bridge-nf-call-iptables: 브리징된 네트워크 인터페이스에서 트래픽을 iptables를 통해 필터링 할 수 있도록 허용 # net.bridge.bridge-nf-call-ip6tables: IPv6 네트워크에서도 브리지된 트래픽을 ip6tables를 통해 필터링할 수 있도록 허용 # net.ipv4.ip_forward: IP 포워딩을 활성화 $ cat &amp;gt; /etc/sysctl.d/99-k8s-cri.conf &amp;lt;&amp;lt;EOF net.bridge.bridge-nf-call-iptables=1 net.bridge.bridge-nf-call-ip6tables=1 net.ipv4.ip_forward=1 EOF # 변경사항 적용 $ sysctl --system # OverlayFS: 파일 시스템을 로드하여 컨테이너의 파일 시스템을 효율적으로 관리 # br_netfilter: 브리지 네트워크 트래픽을 iptables로 전달할 수 있도록 하는 모듈 $ modprobe overlay; modprobe br_netfilter $ echo -e overlay\\nbr_netfilter &amp;gt; /etc/modules-load.</description>
     </item>
     <item>
       <title> install</title>
@@ -243,7 +257,14 @@
       <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/</guid>
-      <description>aaa</description>
+      <description>Kubeadm Install # kubeadm을 설치하기 위한 환경은 전 인덱스를 참고 부탁드립니다. # 쿠버네티스 패키지 저장소에서 GPG 키를 다운로드 $ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg # 쿠버네티스 저장소를 추가 $ echo &amp;#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&amp;#34; | tee /etc/apt/sources.list.d/kubernetes.list # 패키지 목록 업데이트 $ apt update # kubeadm kubelet kubectl Install $ apt -y install kubeadm kubelet kubectl 명령어 설명 주요 기능 및 역할 예시 kubeadm 쿠버네티스 클러스터를 초기화하고 관리하는 도구입니다.</description>
+    </item>
+    <item>
+      <title>Kubeadm update</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file2/</guid>
+      <description> Kubeadm update # 차후 작성예정 # </description>
     </item>
     <item>
       <title>2. Docker Registry</title>
@@ -342,13 +363,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</guid>
       <description>Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &amp;lt;pod-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &amp;lt;replicaset-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &amp;lt;deployment-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: replicas: &amp;lt;number-of-replicas&amp;gt; selector: matchLabels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; template: metadata: labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: containers: - name: &amp;lt;container-name&amp;gt; image: &amp;lt;container-image&amp;gt; ports: - containerPort: &amp;lt;port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &amp;lt;service-name&amp;gt; labels: &amp;lt;key&amp;gt;: &amp;lt;value&amp;gt; spec: selector: &amp;lt;selector-key&amp;gt;: &amp;lt;selector-value&amp;gt; ports: - protocol: TCP port: &amp;lt;service-port&amp;gt; targetPort: &amp;lt;target-port&amp;gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.</description>
-    </item>
-    <item>
-      <title> Concept</title>
-      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/</guid>
-      <description>aaa</description>
     </item>
     <item>
       <title> Concept</title>

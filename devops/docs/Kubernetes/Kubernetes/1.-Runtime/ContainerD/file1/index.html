@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="aaa">
+<meta name="description" content="ContainerD Install # ContainerD 환경구성 # # CRI를 사용하기 위한 네트워크 설정 # net.bridge.bridge-nf-call-iptables: 브리징된 네트워크 인터페이스에서 트래픽을 iptables를 통해 필터링 할 수 있도록 허용 # net.bridge.bridge-nf-call-ip6tables: IPv6 네트워크에서도 브리지된 트래픽을 ip6tables를 통해 필터링할 수 있도록 허용 # net.ipv4.ip_forward: IP 포워딩을 활성화 $ cat &gt; /etc/sysctl.d/99-k8s-cri.conf &lt;&lt;EOF net.bridge.bridge-nf-call-iptables=1 net.bridge.bridge-nf-call-ip6tables=1 net.ipv4.ip_forward=1 EOF # 변경사항 적용 $ sysctl --system # OverlayFS: 파일 시스템을 로드하여 컨테이너의 파일 시스템을 효율적으로 관리 # br_netfilter: 브리지 네트워크 트래픽을 iptables로 전달할 수 있도록 하는 모듈 $ modprobe overlay; modprobe br_netfilter $ echo -e overlay\\nbr_netfilter &gt; /etc/modules-load.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content=" install">
-  <meta property="og:description" content="aaa">
+  <meta property="og:description" content="ContainerD Install # ContainerD 환경구성 # # CRI를 사용하기 위한 네트워크 설정 # net.bridge.bridge-nf-call-iptables: 브리징된 네트워크 인터페이스에서 트래픽을 iptables를 통해 필터링 할 수 있도록 허용 # net.bridge.bridge-nf-call-ip6tables: IPv6 네트워크에서도 브리지된 트래픽을 ip6tables를 통해 필터링할 수 있도록 허용 # net.ipv4.ip_forward: IP 포워딩을 활성화 $ cat &gt; /etc/sysctl.d/99-k8s-cri.conf &lt;&lt;EOF net.bridge.bridge-nf-call-iptables=1 net.bridge.bridge-nf-call-ip6tables=1 net.ipv4.ip_forward=1 EOF # 변경사항 적용 $ sysctl --system # OverlayFS: 파일 시스템을 로드하여 컨테이너의 파일 시스템을 효율적으로 관리 # br_netfilter: 브리지 네트워크 트래픽을 iptables로 전달할 수 있도록 하는 모듈 $ modprobe overlay; modprobe br_netfilter $ echo -e overlay\\nbr_netfilter &gt; /etc/modules-load.">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -19,7 +19,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.1339d01316df4e7e8a3c0124497d3a84fdaf6b627412cb1f3817539ba81d0d9b.js" integrity="sha256-EznQExbfTn6KPAEkSX06hP2va2J0EssfOBdTm6gdDZs=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -73,7 +73,7 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
       </li>
       
       <li>
@@ -89,11 +89,11 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -550,7 +550,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-b317e8cc322a846d37a4fed156efb834" class="toggle" checked />
     <label for="section-b317e8cc322a846d37a4fed156efb834" class="flex justify-between">
-      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Install</a>
+      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Training</a>
     </label>
   
 
@@ -569,6 +569,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/" class="">Manger Node</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -614,7 +627,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class="active"> install</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class=""> Concept</a>
   
 
         </li>
@@ -627,7 +640,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class=""> Concept</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class="active"> install</a>
   
 
         </li>
@@ -696,6 +709,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/" class="">Kubeadm install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file2/" class="">Kubeadm update</a>
   
 
         </li>
@@ -1963,7 +1989,21 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#containerd-install"><strong>ContainerD Install</strong></a>
+          <ul>
+            <li><a href="#containerd-환경구성"><strong>ContainerD 환경구성</strong></a></li>
+            <li><a href="#containerd-설치"><strong>ContainerD 설치</strong></a></li>
+            <li><a href="#containerd-config-정리"><strong>container.d config 정리</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1974,7 +2014,202 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>aaa</p>
+  <article class="markdown"><h2 id="containerd-install">
+  <strong>ContainerD Install</strong>
+  <a class="anchor" href="#containerd-install">#</a>
+</h2>
+<hr>
+<h3 id="containerd-환경구성">
+  <strong>ContainerD 환경구성</strong>
+  <a class="anchor" href="#containerd-%ed%99%98%ea%b2%bd%ea%b5%ac%ec%84%b1">#</a>
+</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># CRI를 사용하기 위한 네트워크 설정</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># net.bridge.bridge-nf-call-iptables: 브리징된 네트워크 인터페이스에서 트래픽을 iptables를 통해 필터링 할 수 있도록 허용</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># net.bridge.bridge-nf-call-ip6tables: IPv6 네트워크에서도 브리지된 트래픽을 ip6tables를 통해 필터링할 수 있도록 허용</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># net.ipv4.ip_forward: IP 포워딩을 활성화</span>
+</span></span><span style="display:flex;"><span>$ cat &gt; /etc/sysctl.d/99-k8s-cri.conf <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.bridge.bridge-nf-call-iptables=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.bridge.bridge-nf-call-ip6tables=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">net.ipv4.ip_forward=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 변경사항 적용</span>
+</span></span><span style="display:flex;"><span>$ sysctl --system
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># OverlayFS: 파일 시스템을 로드하여 컨테이너의 파일 시스템을 효율적으로 관리</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># br_netfilter: 브리지 네트워크 트래픽을 iptables로 전달할 수 있도록 하는 모듈</span>
+</span></span><span style="display:flex;"><span>$ modprobe overlay; modprobe br_netfilter
+</span></span><span style="display:flex;"><span>$ echo -e overlay<span style="color:#ae81ff">\\</span>nbr_netfilter &gt; /etc/modules-load.d/k8s.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># iptables 백엔드를 iptables-legacy로 전환</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 쿠버네티스는 일부 환경에서 iptables-legacy 백엔드와 더 잘 호환되기 때문에 이를 설정</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># iptables-legacy: 전통적인 iptables</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># iptables-nft: nftables 기반의 iptables 구현</span>
+</span></span><span style="display:flex;"><span>$ update-alternatives --config iptables
+</span></span><span style="display:flex;"><span>There are <span style="color:#ae81ff">2</span> choices <span style="color:#66d9ef">for</span> the alternative iptables <span style="color:#f92672">(</span>providing /usr/sbin/iptables<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Selection    Path                       Priority   Status
+</span></span><span style="display:flex;"><span>------------------------------------------------------------
+</span></span><span style="display:flex;"><span>* <span style="color:#ae81ff">0</span>            /usr/sbin/iptables-nft      <span style="color:#ae81ff">20</span>        auto mode
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>            /usr/sbin/iptables-legacy   <span style="color:#ae81ff">10</span>        manual mode
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">2</span>            /usr/sbin/iptables-nft      <span style="color:#ae81ff">20</span>        manual mode
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Press &lt;enter&gt; to keep the current choice<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>, or type selection number: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>update-alternatives: using /usr/sbin/iptables-legacy to provide /usr/sbin/iptables <span style="color:#f92672">(</span>iptables<span style="color:#f92672">)</span> in manual mode
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># swap off</span>
+</span></span><span style="display:flex;"><span>$ swapoff -a
+</span></span><span style="display:flex;"><span>$ sed -i <span style="color:#e6db74">&#39;/\/swap.img/s/^/#/&#39;</span> /etc/fstab
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># apparmor 프로파일 비활성화</span>
+</span></span><span style="display:flex;"><span>$ apparmor_parser -R /etc/apparmor.d/runc
+</span></span><span style="display:flex;"><span>$ apparmor_parser -R /etc/apparmor.d/crun
+</span></span><span style="display:flex;"><span>$ ln -s /etc/apparmor.d/runc /etc/apparmor.d/disable/
+</span></span><span style="display:flex;"><span>$ ln -s /etc/apparmor.d/crun /etc/apparmor.d/disable/
+</span></span></code></pre></div><br>
+<br>
+<h3 id="containerd-설치">
+  <strong>ContainerD 설치</strong>
+  <a class="anchor" href="#containerd-%ec%84%a4%ec%b9%98">#</a>
+</h3>
+<hr>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># ContainerD를 설치합니다.</span>
+</span></span><span style="display:flex;"><span>$ apt -y install containerd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ContainerD의 디렉터리를 생성합니다.</span>
+</span></span><span style="display:flex;"><span>$ mkdir /etc/containerd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ContinerD의 기본 설정파일을 생성합니다.</span>
+</span></span><span style="display:flex;"><span>$ containerd config default | tee /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sandbox_image 버전을 설정합니다.</span>
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#34;s|^\( *sandbox_image *= *\).*|\1\&#34;registry.k8s.io/pause:3.9\&#34;|&#34;</span> /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cgroup의 사용여부를 수정합니다.</span>
+</span></span><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#34;s|^\( *SystemdCgroup *= *\).*|\1true|&#34;</span> /etc/containerd/config.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 설정적용</span>
+</span></span><span style="display:flex;"><span>$ systemctl restart containerd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 설치확인</span>
+</span></span><span style="display:flex;"><span>$ containerd -version
+</span></span><span style="display:flex;"><span>containerd github.com/containerd/containerd 1.7.12
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ systemctl status containerd
+</span></span><span style="display:flex;"><span>● containerd.service - containerd container runtime
+</span></span><span style="display:flex;"><span>     Loaded: loaded <span style="color:#f92672">(</span>/usr/lib/systemd/system/containerd.service; enabled; preset:&gt;
+</span></span><span style="display:flex;"><span>     Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> since Mon 2024-09-23 09:31:59 UTC; 8min ago
+</span></span><span style="display:flex;"><span>       Docs: https://containerd.io
+</span></span><span style="display:flex;"><span>    Process: <span style="color:#ae81ff">1416</span> ExecStartPre<span style="color:#f92672">=</span>/sbin/modprobe overlay <span style="color:#f92672">(</span>code<span style="color:#f92672">=</span>exited, status<span style="color:#f92672">=</span>0/SUCC&gt;
+</span></span><span style="display:flex;"><span>   Main PID: <span style="color:#ae81ff">1418</span> <span style="color:#f92672">(</span>containerd<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      Tasks: <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>     Memory: 13.3M <span style="color:#f92672">(</span>peak: 14.9M<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        CPU: 1.004s
+</span></span><span style="display:flex;"><span>     CGroup: /system.slice/containerd.service
+</span></span></code></pre></div><br>
+<br>
+<h3 id="containerd-config-정리">
+  <strong>container.d config 정리</strong>
+  <a class="anchor" href="#containerd-config-%ec%a0%95%eb%a6%ac">#</a>
+</h3>
+<br>
+<table>
+<thead>
+<tr>
+<th>섹션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disabled_plugins</code></td>
+<td>비활성화된 플러그인 목록을 정의합니다.</td>
+</tr>
+<tr>
+<td><code>imports</code></td>
+<td>가져올 플러그인 목록을 정의합니다.</td>
+</tr>
+<tr>
+<td><code>oom_score</code></td>
+<td>OOM(Out-Of-Memory) 점수를 설정하여 우선 순위를 결정합니다.</td>
+</tr>
+<tr>
+<td><code>root</code></td>
+<td>Containerd의 루트 디렉토리를 설정합니다.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>상태 정보를 저장할 디렉토리 위치를 설정합니다.</td>
+</tr>
+<tr>
+<td><code>cgroup</code></td>
+<td>cgroup 설정 경로를 지정합니다.</td>
+</tr>
+<tr>
+<td><code>debug</code></td>
+<td>디버깅 설정 (주소, 포맷, 레벨 등)과 관련된 옵션입니다.</td>
+</tr>
+<tr>
+<td><code>grpc</code></td>
+<td>GRPC 서버 설정 (소켓 주소, 메시지 크기 제한 등)을 지정합니다.</td>
+</tr>
+<tr>
+<td><code>metrics</code></td>
+<td>메트릭 수집을 위한 설정입니다.</td>
+</tr>
+<tr>
+<td><code>plugins</code></td>
+<td>다양한 Containerd 플러그인의 설정을 정의합니다.</td>
+</tr>
+<tr>
+<td><code>plugins.&quot;io.containerd.gc.v1.scheduler&quot;</code></td>
+<td>가비지 컬렉션 스케줄러의 설정입니다.</td>
+</tr>
+<tr>
+<td><code>plugins.&quot;io.containerd.grpc.v1.cri&quot;</code></td>
+<td>CRI(Container Runtime Interface) 관련 설정입니다.</td>
+</tr>
+<tr>
+<td><code>plugins.&quot;io.containerd.grpc.v1.cri&quot;.cni</code></td>
+<td>CNI(Container Network Interface) 설정입니다.</td>
+</tr>
+<tr>
+<td><code>plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd</code></td>
+<td>Containerd 자체 설정을 정의합니다.</td>
+</tr>
+<tr>
+<td><code>plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry</code></td>
+<td>이미지 레지스트리와 관련된 설정입니다.</td>
+</tr>
+<tr>
+<td><code>plugins.&quot;io.containerd.runtime.v1.linux&quot;</code></td>
+<td>Linux 런타임 설정입니다.</td>
+</tr>
+<tr>
+<td><code>plugins.&quot;io.containerd.snapshotter.v1.overlayfs&quot;</code></td>
+<td>OverlayFS 스냅샷터 설정입니다.</td>
+</tr>
+<tr>
+<td><code>stream_processors</code></td>
+<td>스트림 프로세서 관련 설정을 정의합니다.</td>
+</tr>
+<tr>
+<td><code>timeouts</code></td>
+<td>Containerd 내부에서 다양한 작업의 타임아웃을 정의합니다.</td>
+</tr>
+<tr>
+<td><code>ttrpc</code></td>
+<td>TTRPC 관련 설정입니다.</td>
+</tr>
+</tbody>
+</table>
 </article>
  
       
@@ -2049,7 +2284,21 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#containerd-install"><strong>ContainerD Install</strong></a>
+          <ul>
+            <li><a href="#containerd-환경구성"><strong>ContainerD 환경구성</strong></a></li>
+            <li><a href="#containerd-설치"><strong>ContainerD 설치</strong></a></li>
+            <li><a href="#containerd-config-정리"><strong>container.d config 정리</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

@@ -7,5 +7,12 @@
     <generator>Hugo</generator>
     <language>devops</language>
     <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Manger Node</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/</guid>
+      <description>Kubernets Manager Node # Kubernets Manager Node # Manager Node는 노드는 클러스터에 대한 요청을 수신하고 분배하는 역할을 하는 로드 밸런서 역할을 하는 서버를 의미합니다.&#xA;일반적으로 NGINX, HAProxy와 같은 프록시 서버를 사용하며, 여기서는 Nginx로 구성합니다.&#xA;해당 노드의 주 역할은 아래와 같습니다.&#xA;역할 설명 예시 요청 라우팅 클라이언트의 API 요청을 적절한 서비스나 백엔드 노드로 전달합니다. NGINX가 클라이언트 요청을 받아 특정 서비스로 라우팅합니다. 예를 들어, /api/users 요청은 사용자 서비스로 전달됩니다. 로드 밸런싱 요청을 여러 백엔드 노드에 균등하게 분배하여 성능을 최적화합니다.</description>
+    </item>
   </channel>
 </rss>

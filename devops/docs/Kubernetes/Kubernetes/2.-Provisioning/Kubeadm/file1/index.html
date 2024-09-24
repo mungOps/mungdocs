@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="aaa">
+<meta name="description" content="Kubeadm Install # kubeadm을 설치하기 위한 환경은 전 인덱스를 참고 부탁드립니다. # 쿠버네티스 패키지 저장소에서 GPG 키를 다운로드 $ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg # 쿠버네티스 저장소를 추가 $ echo &#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34; | tee /etc/apt/sources.list.d/kubernetes.list # 패키지 목록 업데이트 $ apt update # kubeadm kubelet kubectl Install $ apt -y install kubeadm kubelet kubectl 명령어 설명 주요 기능 및 역할 예시 kubeadm 쿠버네티스 클러스터를 초기화하고 관리하는 도구입니다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Kubeadm install">
-  <meta property="og:description" content="aaa">
+  <meta property="og:description" content="Kubeadm Install # kubeadm을 설치하기 위한 환경은 전 인덱스를 참고 부탁드립니다. # 쿠버네티스 패키지 저장소에서 GPG 키를 다운로드 $ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg # 쿠버네티스 저장소를 추가 $ echo &#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34; | tee /etc/apt/sources.list.d/kubernetes.list # 패키지 목록 업데이트 $ apt update # kubeadm kubelet kubectl Install $ apt -y install kubeadm kubelet kubectl 명령어 설명 주요 기능 및 역할 예시 kubeadm 쿠버네티스 클러스터를 초기화하고 관리하는 도구입니다.">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -19,7 +19,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.1339d01316df4e7e8a3c0124497d3a84fdaf6b627412cb1f3817539ba81d0d9b.js" integrity="sha256-EznQExbfTn6KPAEkSX06hP2va2J0EssfOBdTm6gdDZs=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -73,7 +73,7 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
       </li>
       
       <li>
@@ -89,11 +89,11 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -550,7 +550,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-b317e8cc322a846d37a4fed156efb834" class="toggle" checked />
     <label for="section-b317e8cc322a846d37a4fed156efb834" class="flex justify-between">
-      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Install</a>
+      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Training</a>
     </label>
   
 
@@ -569,6 +569,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/" class="">Manger Node</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -614,7 +627,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class=""> install</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class=""> Concept</a>
   
 
         </li>
@@ -627,7 +640,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class=""> Concept</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class=""> install</a>
   
 
         </li>
@@ -696,6 +709,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/" class="active">Kubeadm install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file2/" class="">Kubeadm update</a>
   
 
         </li>
@@ -1963,7 +1989,15 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#kubeadm-install"><strong>Kubeadm Install</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1974,7 +2008,59 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>aaa</p>
+  <article class="markdown"><h2 id="kubeadm-install">
+  <strong>Kubeadm Install</strong>
+  <a class="anchor" href="#kubeadm-install">#</a>
+</h2>
+<hr>
+<br>
+<ul>
+<li>kubeadm을 설치하기 위한 환경은 
+  <a href="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/">전 인덱스</a>를 참고 부탁드립니다.</li>
+</ul>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 쿠버네티스 패키지 저장소에서 GPG 키를 다운로드</span>
+</span></span><span style="display:flex;"><span>$ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 쿠버네티스 저장소를 추가</span>
+</span></span><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34;</span> | tee /etc/apt/sources.list.d/kubernetes.list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 패키지 목록 업데이트</span>
+</span></span><span style="display:flex;"><span>$ apt update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubeadm kubelet kubectl Install</span>
+</span></span><span style="display:flex;"><span>$ apt -y install kubeadm kubelet kubectl
+</span></span></code></pre></div><br>
+<table>
+<thead>
+<tr>
+<th>명령어</th>
+<th>설명</th>
+<th>주요 기능 및 역할</th>
+<th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>kubeadm</strong></td>
+<td>쿠버네티스 클러스터를 초기화하고 관리하는 도구입니다.</td>
+<td>클러스터 초기화, 클러스터 업그레이드, 인증서 관리, 토큰 관리</td>
+<td><code>kubeadm initkubeadm join</code></td>
+</tr>
+<tr>
+<td><strong>kubelet</strong></td>
+<td>각 노드에서 실행되는 주요 에이전트로, 컨테이너의 상태를 관리하는 역할을 수행합니다.</td>
+<td>컨테이너 생성 및 관리, Pod 상태 확인 및 보고- 노드 상태 확인</td>
+<td><code>/etc/systemd/system/kubelet.service</code>로 실행</td>
+</tr>
+<tr>
+<td><strong>kubectl</strong></td>
+<td>쿠버네티스 클러스터를 관리하고 조작하기 위한 CLI(Command Line Interface) 도구입니다.</td>
+<td>리소스 조회 및 관리, 애플리케이션 배포 및 업데이트, 로그 확인</td>
+<td><code>kubectl get podskubectl apply -f deployment.yaml</code></td>
+</tr>
+</tbody>
+</table>
 </article>
  
       
@@ -2049,7 +2135,15 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#kubeadm-install"><strong>Kubeadm Install</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

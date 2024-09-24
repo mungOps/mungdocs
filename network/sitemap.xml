@@ -10,8 +10,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/categories/"
+                hreflang="devops"
+                href="http://mungdocs.kro.kr/devops/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="database"
+                href="http://mungdocs.kro.kr/database/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -25,18 +30,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="database"
-                href="http://mungdocs.kro.kr/database/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="programing"
                 href="http://mungdocs.kro.kr/programing/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="erp"
+                href="http://mungdocs.kro.kr/erp/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -52,8 +52,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/"
+                hreflang="devops"
+                href="http://mungdocs.kro.kr/devops/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="database"
+                href="http://mungdocs.kro.kr/database/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -67,18 +72,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="database"
-                href="http://mungdocs.kro.kr/database/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="programing"
                 href="http://mungdocs.kro.kr/programing/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="erp"
+                href="http://mungdocs.kro.kr/erp/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -94,8 +94,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/tags/"
+                hreflang="devops"
+                href="http://mungdocs.kro.kr/devops/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="database"
+                href="http://mungdocs.kro.kr/database/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -109,18 +114,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="database"
-                href="http://mungdocs.kro.kr/database/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="programing"
                 href="http://mungdocs.kro.kr/programing/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="erp"
+                href="http://mungdocs.kro.kr/erp/tags/"
                 />
     <xhtml:link
                 rel="alternate"

@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="aaa">
+<meta name="description" content="Kubeadm # Kubeadm은 쿠버네티스 클러스터 생성을 위한 &ldquo;빠른 경로&quot;의 모범 사례로 kubeadm init 및 kubeadm join 을 제공하도록 만들어진 도구
+쿠버네티스는 분산 시스템 관리 도구로, 컨테이너화된 애플리케이션을 효율적으로 배포, 관리, 확장할 수 있게 해주지만, 초기 설정 및 유지 관리 작업은 복잡할 수 있으며, 이를 간편하게 해주기 위한 프로비저닝 툴 중 하나가 kubeadm
+kubeadm은 실행 가능한 최소 클러스터를 시작하고 실행하는 데 필요한 작업을 수행
+설계 상, 시스템 프로비저닝이 아닌 부트스트랩(bootstrapping)만 다룬다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file0/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Kubeadm Concept">
-  <meta property="og:description" content="aaa">
+  <meta property="og:description" content="Kubeadm # Kubeadm은 쿠버네티스 클러스터 생성을 위한 “빠른 경로&#34;의 모범 사례로 kubeadm init 및 kubeadm join 을 제공하도록 만들어진 도구
+쿠버네티스는 분산 시스템 관리 도구로, 컨테이너화된 애플리케이션을 효율적으로 배포, 관리, 확장할 수 있게 해주지만, 초기 설정 및 유지 관리 작업은 복잡할 수 있으며, 이를 간편하게 해주기 위한 프로비저닝 툴 중 하나가 kubeadm
+kubeadm은 실행 가능한 최소 클러스터를 시작하고 실행하는 데 필요한 작업을 수행
+설계 상, 시스템 프로비저닝이 아닌 부트스트랩(bootstrapping)만 다룬다.">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -19,7 +25,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.1339d01316df4e7e8a3c0124497d3a84fdaf6b627412cb1f3817539ba81d0d9b.js" integrity="sha256-EznQExbfTn6KPAEkSX06hP2va2J0EssfOBdTm6gdDZs=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -73,7 +79,7 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
+        <a href="http://mungdocs.kro.kr/database/"> Database </a>
       </li>
       
       <li>
@@ -89,11 +95,11 @@ https://github.com/alex-shpak/hugo-book
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
+        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -550,7 +556,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-b317e8cc322a846d37a4fed156efb834" class="toggle" checked />
     <label for="section-b317e8cc322a846d37a4fed156efb834" class="flex justify-between">
-      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Install</a>
+      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Training</a>
     </label>
   
 
@@ -569,6 +575,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/" class="">Manger Node</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -614,7 +633,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class=""> install</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class=""> Concept</a>
   
 
         </li>
@@ -627,7 +646,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class=""> Concept</a>
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class=""> install</a>
   
 
         </li>
@@ -696,6 +715,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/" class="">Kubeadm install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file2/" class="">Kubeadm update</a>
   
 
         </li>
@@ -1963,7 +1995,20 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#kubeadm"><strong>Kubeadm</strong></a>
+          <ul>
+            <li><a href="#kubeadm-명령어"><strong>Kubeadm 명령어</strong></a></li>
+            <li><a href="#references"><strong>References</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1974,7 +2019,112 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>aaa</p>
+  <article class="markdown"><h2 id="kubeadm">
+  <strong>Kubeadm</strong>
+  <a class="anchor" href="#kubeadm">#</a>
+</h2>
+<hr>
+<br>
+<div style="text-align: center;">
+    <img src="https://kubernetes.io/images/kubeadm-stacked-color.png" alt="image.png" style="width: 200px; height: auto;">
+</div>
+<ul>
+<li>
+<p>Kubeadm은 쿠버네티스 클러스터 생성을 위한 &ldquo;빠른 경로&quot;의 모범 사례로 <strong>kubeadm init 및 kubeadm join 을 제공하도록 만들어진 도구</strong></p>
+</li>
+<li>
+<p>쿠버네티스는 분산 시스템 관리 도구로, 컨테이너화된 애플리케이션을 효율적으로 배포, 관리, 확장할 수 있게 해주지만, 초기 설정 및 유지 관리 작업은 복잡할 수 있으며, 이를 간편하게 해주기 위한 프로비저닝 툴 중 하나가 kubeadm</p>
+</li>
+<li>
+<p>kubeadm은 실행 가능한 최소 클러스터를 시작하고 실행하는 데 필요한 작업을 수행</p>
+</li>
+<li>
+<p>설계 상, 시스템 프로비저닝이 아닌 부트스트랩(bootstrapping)만 다룬다.</p>
+</li>
+<li>
+<p>즉, 대시보드, 모니터링 솔루션 및 클라우드별 애드온과 같은 다양한 있으면 좋은(nice-to-have) 애드온을 설치하는 것은 범위에 포함되지 않는다.</p>
+</li>
+</ul>
+<br>
+<br>
+<h3 id="kubeadm-명령어">
+  <strong>Kubeadm 명령어</strong>
+  <a class="anchor" href="#kubeadm-%eb%aa%85%eb%a0%b9%ec%96%b4">#</a>
+</h3>
+<hr>
+<br>
+<table>
+<thead>
+<tr>
+<th><strong>명령어</strong></th>
+<th><strong>설명</strong></th>
+<th><strong>예시</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubeadm init</code></td>
+<td>쿠버네티스 컨트롤 플레인 노드를 부트스트랩합니다.</td>
+<td><code>kubeadm init --pod-network-cidr=10.244.0.0/16</code></td>
+</tr>
+<tr>
+<td><code>kubeadm join</code></td>
+<td>워커 노드를 부트스트랩하고 클러스터에 조인시킵니다.</td>
+<td><code>kubeadm join &lt;master-ip&gt;:&lt;port&gt; --token &lt;token&gt; --discovery-token-ca-cert-hash &lt;hash&gt;</code></td>
+</tr>
+<tr>
+<td><code>kubeadm upgrade</code></td>
+<td>현재 클러스터를 새로운 버전으로 업그레이드합니다.</td>
+<td><code>kubeadm upgrade apply v1.20.0</code></td>
+</tr>
+<tr>
+<td><code>kubeadm config</code></td>
+<td>클러스터 초기화 및 업그레이드 시 설정 구성을 관리합니다.</td>
+<td><code>kubeadm config print init-defaults</code></td>
+</tr>
+<tr>
+<td><code>kubeadm token</code></td>
+<td><code>kubeadm join</code> 명령어에 필요한 토큰을 생성하거나 관리합니다.</td>
+<td><code>kubeadm token create --print-join-command</code></td>
+</tr>
+<tr>
+<td><code>kubeadm reset</code></td>
+<td><code>kubeadm init</code> 또는 <code>kubeadm join</code>으로 인한 변경 사항을 모두 되돌립니다.</td>
+<td><code>kubeadm reset</code></td>
+</tr>
+<tr>
+<td><code>kubeadm certs</code></td>
+<td>쿠버네티스 인증서를 관리합니다.</td>
+<td><code>kubeadm certs renew all</code></td>
+</tr>
+<tr>
+<td><code>kubeadm kubeconfig</code></td>
+<td>쿠버네티스 클러스터의 kubeconfig 파일을 관리합니다.</td>
+<td><code>kubeadm kubeconfig user</code></td>
+</tr>
+<tr>
+<td><code>kubeadm version</code></td>
+<td>kubeadm의 현재 버전을 출력합니다.</td>
+<td><code>kubeadm version</code></td>
+</tr>
+<tr>
+<td><code>kubeadm alpha</code></td>
+<td>미리 보기 기능으로 커뮤니티 피드백을 위해 제공되는 실험적 기능을 실행합니다.</td>
+<td><code>kubeadm alpha certs renew</code></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<hr>
+<h3 id="references">
+  <strong>References</strong>
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li>
+  <a href="https://kubernetes.io/ko/docs/reference/setup-tools/kubeadm/">Kubeadm</a></li>
+</ul>
 </article>
  
       
@@ -2049,7 +2199,20 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#kubeadm"><strong>Kubeadm</strong></a>
+          <ul>
+            <li><a href="#kubeadm-명령어"><strong>Kubeadm 명령어</strong></a></li>
+            <li><a href="#references"><strong>References</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

@@ -9,9 +9,14 @@
   </sitemap>
   
   <sitemap>
-    <loc>http://mungdocs.kro.kr/erp/sitemap.xml</loc>
+    <loc>http://mungdocs.kro.kr/devops/sitemap.xml</loc>
     
-      <lastmod>2024-07-11T13:45:07+09:00</lastmod>
+      <lastmod>2024-09-22T11:15:33+09:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>http://mungdocs.kro.kr/database/sitemap.xml</loc>
     
   </sitemap>
   
@@ -35,21 +40,16 @@
   </sitemap>
   
   <sitemap>
-    <loc>http://mungdocs.kro.kr/database/sitemap.xml</loc>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>http://mungdocs.kro.kr/devops/sitemap.xml</loc>
-    
-      <lastmod>2024-09-22T11:15:33+09:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
     <loc>http://mungdocs.kro.kr/programing/sitemap.xml</loc>
     
       <lastmod>2023-11-27T21:32:06+09:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>http://mungdocs.kro.kr/erp/sitemap.xml</loc>
+    
+      <lastmod>2024-07-11T13:45:07+09:00</lastmod>
     
   </sitemap>
   
