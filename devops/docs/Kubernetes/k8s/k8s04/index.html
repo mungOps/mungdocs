@@ -3,7 +3,87 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" Kubernetes # Node Mangament # # Taints # taint는 특정 POD들을 노드로부터 배제하는 역할을 수행 노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링 $ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt; NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행 NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제 Node Affinity # Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법 POD 스펙에서 노드 어피니티 규칙의 지정이 가능 Concept Command Option Example Taints kubectl taint node --key, --value kubectl taint node node-1 key1=value1:NoSchedule --effect kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute Node Affinity Node Affinity in Pod Spec nodeAffinity See Pod YAML example below kubectl label nodes kubectl label nodes node-1 key1=value1 kubectl get nodes --show-labels ">
+<meta name="description" content="
+  Kubernetes
+  #
+
+
+
+  Node Mangament
+  #
+
+
+  
+  #
+
+
+  Taints
+  #
+
+
+
+taint는 특정 POD들을 노드로부터 배제하는 역할을 수행
+노드에 특정한 key-Vaule 값을 통해 테인즈를 걸고, 허용 조건에 맞춘 POD만을 해당 노드에 스케줄링
+
+$ kubectl taint node &lt;노드이름&gt; &lt;키&gt;=&lt;값&gt;:&lt;효과&gt;
+
+NoSchedule: 해당 노드에는 일반적으로 스케줄링 진행 X / 이미 실행중인 노드 영향 X
+PreferNoSchedule: 일반적인 상황에서 스케줄링이 되지 않으나, 다른 노드가 없을 때는 스케줄링 진행
+NoExecute: 노드에 있는 모든(실행중인 노드 포함)에 대해 영향을 미치며, 만약 해당 테인트에 맞지 않는 모든 노드를 삭제
+
+
+
+
+  Node Affinity
+  #
+
+
+
+Node Affinity란 특정 노드에만 스케줄링 되도록 노드 레이블을 기반으로 제어하는 방법
+POD 스펙에서 노드 어피니티 규칙의 지정이 가능
+
+
+  
+      
+          Concept
+          Command
+          Option
+          Example
+      
+  
+  
+      
+          Taints
+          kubectl taint node
+          --key, --value
+          kubectl taint node node-1 key1=value1:NoSchedule
+      
+      
+          
+          
+          --effect
+          kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute
+      
+      
+          Node Affinity
+          Node Affinity in Pod Spec
+          nodeAffinity
+          See Pod YAML example below
+      
+      
+          
+          kubectl label nodes
+          
+          kubectl label nodes node-1 key1=value1
+      
+      
+          
+          kubectl get nodes --show-labels
+          
+          
+      
+  
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/">
@@ -13,7 +93,6 @@
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-02-27T15:35:48+09:00">
 <title>4. Node Mangament | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +101,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +131,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +162,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2058,46 +2126,46 @@ https://github.com/alex-shpak/hugo-book
 <li>POD 스펙에서 노드 어피니티 규칙의 지정이 가능</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>Concept</th>
-<th>Command</th>
-<th>Option</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Taints</td>
-<td><code>kubectl taint node</code></td>
-<td><code>--key</code>, <code>--value</code></td>
-<td><code>kubectl taint node node-1 key1=value1:NoSchedule</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code>--effect</code></td>
-<td><code>kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute</code></td>
-</tr>
-<tr>
-<td>Node Affinity</td>
-<td>Node Affinity in Pod Spec</td>
-<td><code>nodeAffinity</code></td>
-<td>See Pod YAML example below</td>
-</tr>
-<tr>
-<td></td>
-<td><code>kubectl label nodes</code></td>
-<td></td>
-<td><code>kubectl label nodes node-1 key1=value1</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>kubectl get nodes --show-labels</code></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Concept</th>
+          <th style="text-align: left">Command</th>
+          <th style="text-align: left">Option</th>
+          <th style="text-align: left">Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Taints</td>
+          <td style="text-align: left"><code>kubectl taint node</code></td>
+          <td style="text-align: left"><code>--key</code>, <code>--value</code></td>
+          <td style="text-align: left"><code>kubectl taint node node-1 key1=value1:NoSchedule</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>--effect</code></td>
+          <td style="text-align: left"><code>kubectl taint node node-1 key1=value1:NoSchedule --effect=NoExecute</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Node Affinity</td>
+          <td style="text-align: left">Node Affinity in Pod Spec</td>
+          <td style="text-align: left"><code>nodeAffinity</code></td>
+          <td style="text-align: left">See Pod YAML example below</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>kubectl label nodes</code></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>kubectl label nodes node-1 key1=value1</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>kubectl get nodes --show-labels</code></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
 </table>
 </article>
  
@@ -2106,15 +2174,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/8098ff8b4b7c699ecaad9406844e289c00b2cb8a" title='Last modified by mungOps | February 27, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 27, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

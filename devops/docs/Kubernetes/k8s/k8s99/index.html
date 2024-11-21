@@ -3,17 +3,1050 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &lt;pod-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &lt;replicaset-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &lt;deployment-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &lt;service-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: selector: &lt;selector-key&gt;: &lt;selector-value&gt; ports: - protocol: TCP port: &lt;service-port&gt; targetPort: &lt;target-port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.">
+<meta name="description" content="
+  Kubernetes Object
+  #
+
+
+
+  애플리케이션의 실행
+  #
+
+
+  Pod
+  #
+
+
+
+  
+    apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  containers:
+  - name: &lt;container-name&gt;
+    image: &lt;container-image&gt;
+    ports:
+    - containerPort: &lt;port&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (Pod)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          Pod의 이름을 지정
+      
+      
+          - labels
+          Pod에 부여되는 레이블을 정의
+      
+      
+          spec
+          Pod의 구성을 정의하는 블록
+      
+      
+          - containers
+          Pod에서 실행될 컨테이너 목록
+      
+      
+          - - name
+          컨테이너의 이름을 지정
+      
+      
+          - - image
+          사용할 컨테이너 이미지를 지정
+      
+      
+          - - ports
+          컨테이너가 오픈할 포트를 정의
+      
+  
+
+
+  
+
+
+
+
+
+
+  ReplicaSet
+  #
+
+
+
+  
+    apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: &lt;replicaset-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  replicas: &lt;number-of-replicas&gt;
+  selector:
+    matchLabels:
+      &lt;key&gt;: &lt;value&gt;
+  template:
+    metadata:
+      labels:
+        &lt;key&gt;: &lt;value&gt;
+    spec:
+      containers:
+      - name: &lt;container-name&gt;
+        image: &lt;container-image&gt;
+        ports:
+        - containerPort: &lt;port&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (ReplicaSet)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          ReplicaSet의 이름을 지정
+      
+      
+          - labels
+          ReplicaSet에 부여되는 레이블을 정의
+      
+      
+          spec
+          ReplicaSet의 구성을 정의하는 블록
+      
+      
+          - replicas
+          복제할 Pod의 수를 지정
+      
+      
+          - selector
+          Pod를 선택하기 위한 레이블 선택기를 지정
+      
+      
+          - - matchLabels
+          Pod를 선택할 때 사용할 레이블을 지정
+      
+      
+          - - matchExpressions
+          레이블 선택을 위한 표현식을 지정
+      
+  
+
+
+  
+
+
+
+
+
+
+  Deployment
+  #
+
+
+
+  
+    apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &lt;deployment-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  replicas: &lt;number-of-replicas&gt;
+  selector:
+    matchLabels:
+      &lt;key&gt;: &lt;value&gt;
+  template:
+    metadata:
+      labels:
+        &lt;key&gt;: &lt;value&gt;
+    spec:
+      containers:
+      - name: &lt;container-name&gt;
+        image: &lt;container-image&gt;
+        ports:
+        - containerPort: &lt;port&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (Deployment)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          Deployment의 이름을 지정
+      
+      
+          - labels
+          Deployment에 부여되는 레이블을 정의
+      
+      
+          spec
+          Deployment의 구성을 정의하는 블록
+      
+      
+          - replicas
+          복제할 Pod의 수를 지정
+      
+      
+          - selector
+          Pod를 선택하기 위한 레이블 선택기를 지정
+      
+      
+          - - matchLabels
+          Pod를 선택할 때 사용할 레이블을 지정
+      
+      
+          - - matchExpressions
+          레이블 선택을 위한 표현식을 지정
+      
+      
+          - template
+          새로운 Pod를 생성하기 위한 템플릿을 지정
+      
+      
+          - - metadata
+          템플릿 Pod의 메타데이터를 정의
+      
+      
+          - - spec
+          템플릿 Pod의 구성을 정의
+      
+  
+
+
+  
+
+
+
+
+
+
+  네트워크의 관리
+  #
+
+
+  Service
+  #
+
+
+
+  
+    apiVersion: v1
+kind: Service
+metadata:
+  name: &lt;service-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  selector:
+    &lt;selector-key&gt;: &lt;selector-value&gt;
+  ports:
+    - protocol: TCP
+      port: &lt;service-port&gt;
+      targetPort: &lt;target-port&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (Service)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          Service의 이름을 지정
+      
+      
+          - labels
+          Service에 부여되는 레이블을 정의
+      
+      
+          spec
+          Service의 구성을 정의하는 블록
+      
+      
+          - selector
+          해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정
+      
+      
+          - ports
+          서비스가 오픈할 포트를 정의
+      
+  
+
+
+  
+
+
+
+
+
+
+
+  
+    
+  Ingress
+  #
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: &lt;ingress-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  rules:
+  - host: &lt;host-name&gt;
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: &lt;backend-service-name&gt;
+            port:
+              number: &lt;backend-service-port&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (Ingress)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          Ingress의 이름을 지정
+      
+      
+          - labels
+          Ingress에 부여되는 레이블을 정의
+      
+      
+          spec
+          Ingress의 구성을 정의하는 블록
+      
+      
+          - rules
+          Ingress 규칙을 정의
+      
+      
+          - - host
+          호스트 이름을 지정
+      
+      
+          - - http
+          HTTP 경로 및 백엔드 서비스를 지정
+      
+  
+
+
+  
+
+
+
+
+
+
+  애플리케이션 설정 정보의 관리
+  #
+
+
+  nampspace
+  #
+
+
+
+  
+    apiVersion: v1
+kind: Namespace
+metadata:
+  name: &lt;namespace-name&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (Namespace)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          Namespace의 이름을 지정
+      
+      
+          - labels
+          Namespace에 부여되는 레이블을 정의
+      
+  
+
+
+  
+
+
+
+
+
+
+  ConfigMap
+  #
+
+
+
+  
+    apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: &lt;configmap-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+data:
+  key1: value1
+  key2: value2
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (ConfigMap)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          ConfigMap의 이름을 지정
+      
+      
+          - labels
+          ConfigMap에 부여되는 레이블을 정의
+      
+      
+          data
+          설정 데이터를 키-값 쌍으로 정의
+      
+  
+
+
+  
+
+
+
+
+
+
+  Secrets
+  #
+
+
+
+  
+    apiVersion: v1
+kind: Secret
+metadata:
+  name: &lt;secret-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+data:
+  &lt;key&gt;: &lt;base64-encoded-value&gt;
+type: Opaque
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (Secret)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          Secret의 이름을 지정
+      
+      
+          - labels
+          Secret에 부여되는 레이블을 정의
+      
+      
+          data
+          암호화된 데이터를 키-값 쌍으로 정의
+      
+      
+          type
+          Secret 유형을 나타내며, 주로 Opaque 등이 사용됨
+      
+  
+
+
+  
+
+
+
+
+
+
+  배치 잡의 관리
+  #
+
+
+  Job
+  #
+
+
+
+  
+    apiVersion: batch/v1
+kind: Job
+metadata:
+  name: &lt;job-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  template:
+    metadata:
+      labels:
+        &lt;key&gt;: &lt;value&gt;
+    spec:
+      containers:
+      - name: &lt;container-name&gt;
+        image: &lt;container-image&gt;
+        ports:
+        - containerPort: &lt;port&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (Job)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          Job의 이름을 지정
+      
+      
+          - labels
+          Job에 부여되는 레이블을 정의
+      
+      
+          spec
+          Job의 구성을 정의하는 블록
+      
+      
+          - template
+          작업을 수행할 Pod의 템플릿을 지정
+      
+      
+          - - metadata
+          템플릿 Pod의 메타데이터를 정의
+      
+      
+          - - spec
+          템플릿 Pod의 구성을 정의
+      
+  
+
+
+  
+
+
+
+
+
+
+  CronJob
+  #
+
+
+
+  
+    apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: &lt;cronjob-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  schedule: &lt;cron-schedule&gt;
+  jobTemplate:
+    metadata:
+      labels:
+        &lt;key&gt;: &lt;value&gt;
+    spec:
+      template:
+        metadata:
+          labels:
+            &lt;key&gt;: &lt;value&gt;
+        spec:
+          containers:
+          - name: &lt;container-name&gt;
+            image: &lt;container-image&gt;
+            ports:
+            - containerPort: &lt;port&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (CronJob)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          CronJob의 이름을 지정
+      
+      
+          - labels
+          CronJob에 부여되는 레이블을 정의
+      
+      
+          spec
+          CronJob의 구성을 정의하는 블록
+      
+      
+          - schedule
+          크론잡의 실행 스케줄을 지정
+      
+      
+          - jobTemplate
+          크론잡이 생성하는 Job의 템플릿을 지정
+      
+      
+          - - metadata
+          템플릿 Job의 메타데이터를 정의
+      
+      
+          - - spec
+          템플릿 Job의 구성을 정의
+      
+  
+
+
+  
+
+
+
+
+
+
+  볼륨
+  #
+
+
+  StorageClass
+  #
+
+
+
+  
+    apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: &lt;storageclass-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  provisioner: kubernetes.io/aws-ebs
+  parameters:
+    type: gp2
+  reclaimPolicy: Retain
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (StorageClass)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          StorageClass의 이름을 지정
+      
+      
+          - labels
+          StorageClass에 부여되는 레이블을 정의
+      
+      
+          spec
+          StorageClass의 구성을 정의하는 블록
+      
+      
+          - provisioner
+          스토리지 프로비저너를 지정
+      
+      
+          - parameters
+          스토리지 클래스의 매개변수를 지정
+      
+      
+          - - type
+          스토리지의 유형을 지정
+      
+      
+          - reclaimPolicy
+          PV 재사용 정책을 지정 (Retain, Delete 중 선택)
+      
+  
+
+
+  
+
+
+
+
+
+
+  PersistentVolume
+  #
+
+
+
+  
+    apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: &lt;pv-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  capacity:
+    storage: &lt;storage-capacity&gt;
+  accessModes:
+    - &lt;access-mode&gt;
+  storageClassName: &lt;storage-class-name&gt;
+  hostPath:
+    path: &lt;host-path&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (PersistentVolume)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          PV의 이름을 지정
+      
+      
+          - labels
+          PV에 부여되는 레이블을 정의
+      
+      
+          spec
+          PV의 구성을 정의하는 블록
+      
+      
+          - capacity
+          PV의 용량을 지정
+      
+      
+          - accessModes
+          PV에 접근할 수 있는 모드를 지정
+      
+      
+          - storageClassName
+          PV에 할당된 스토리지 클래스의 이름을 지정
+      
+      
+          - hostPath
+          호스트 머신의 파일 시스템 경로를 지정 (hostPath 볼륨 유형의 경우)
+      
+  
+
+
+  
+
+
+
+
+
+
+
+  
+    
+  PersistentVolumeClaim
+  #
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: &lt;pvc-name&gt;
+  labels:
+    &lt;key&gt;: &lt;value&gt;
+spec:
+  accessModes:
+    - &lt;access-mode&gt;
+  resources:
+    requests:
+      storage: &lt;storage-capacity&gt;
+
+  
+
+  
+    
+  
+      
+          필드
+          설명
+      
+  
+  
+      
+          apiVersion
+          쿠버네티스 API의 버전을 지정
+      
+      
+          kind
+          리소스의 유형을 지정 (PersistentVolumeClaim)
+      
+      
+          metadata
+          리소스의 메타데이터를 포함하는 블록
+      
+      
+          - name
+          PVC의 이름을 지정
+      
+      
+          - labels
+          PVC에 부여되는 레이블을 정의
+      
+      
+          spec
+          PVC의 구성을 정의하는 블록
+      
+      
+          - accessModes
+          PVC에 요청되는 접근 모드를 지정
+      
+      
+          - resources
+          PVC에 요청되는 용량을 지정
+      
+  
+
+
+
+
+  
+
+
+
+
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Kubernetes_Object_Table">
-  <meta property="og:description" content="Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &lt;pod-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &lt;replicaset-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &lt;deployment-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &lt;service-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: selector: &lt;selector-key&gt;: &lt;selector-value&gt; ports: - protocol: TCP port: &lt;service-port&gt; targetPort: &lt;target-port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.">
+  <meta property="og:description" content=" Kubernetes Object # 애플리케이션의 실행 # Pod # apiVersion: v1 kind: Pod metadata: name: &lt;pod-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Pod) metadata 리소스의 메타데이터를 포함하는 블록 - name Pod의 이름을 지정 - labels Pod에 부여되는 레이블을 정의 spec Pod의 구성을 정의하는 블록 - containers Pod에서 실행될 컨테이너 목록 - - name 컨테이너의 이름을 지정 - - image 사용할 컨테이너 이미지를 지정 - - ports 컨테이너가 오픈할 포트를 정의 ReplicaSet # apiVersion: apps/v1 kind: ReplicaSet metadata: name: &lt;replicaset-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ReplicaSet) metadata 리소스의 메타데이터를 포함하는 블록 - name ReplicaSet의 이름을 지정 - labels ReplicaSet에 부여되는 레이블을 정의 spec ReplicaSet의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 Deployment # apiVersion: apps/v1 kind: Deployment metadata: name: &lt;deployment-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: replicas: &lt;number-of-replicas&gt; selector: matchLabels: &lt;key&gt;: &lt;value&gt; template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Deployment) metadata 리소스의 메타데이터를 포함하는 블록 - name Deployment의 이름을 지정 - labels Deployment에 부여되는 레이블을 정의 spec Deployment의 구성을 정의하는 블록 - replicas 복제할 Pod의 수를 지정 - selector Pod를 선택하기 위한 레이블 선택기를 지정 - - matchLabels Pod를 선택할 때 사용할 레이블을 지정 - - matchExpressions 레이블 선택을 위한 표현식을 지정 - template 새로운 Pod를 생성하기 위한 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 네트워크의 관리 # Service # apiVersion: v1 kind: Service metadata: name: &lt;service-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: selector: &lt;selector-key&gt;: &lt;selector-value&gt; ports: - protocol: TCP port: &lt;service-port&gt; targetPort: &lt;target-port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Service) metadata 리소스의 메타데이터를 포함하는 블록 - name Service의 이름을 지정 - labels Service에 부여되는 레이블을 정의 spec Service의 구성을 정의하는 블록 - selector 해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정 - ports 서비스가 오픈할 포트를 정의 Ingress # apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: &lt;ingress-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: rules: - host: &lt;host-name&gt; http: paths: - path: / pathType: Prefix backend: service: name: &lt;backend-service-name&gt; port: number: &lt;backend-service-port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Ingress) metadata 리소스의 메타데이터를 포함하는 블록 - name Ingress의 이름을 지정 - labels Ingress에 부여되는 레이블을 정의 spec Ingress의 구성을 정의하는 블록 - rules Ingress 규칙을 정의 - - host 호스트 이름을 지정 - - http HTTP 경로 및 백엔드 서비스를 지정 애플리케이션 설정 정보의 관리 # nampspace # apiVersion: v1 kind: Namespace metadata: name: &lt;namespace-name&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Namespace) metadata 리소스의 메타데이터를 포함하는 블록 - name Namespace의 이름을 지정 - labels Namespace에 부여되는 레이블을 정의 ConfigMap # apiVersion: v1 kind: ConfigMap metadata: name: &lt;configmap-name&gt; labels: &lt;key&gt;: &lt;value&gt; data: key1: value1 key2: value2 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (ConfigMap) metadata 리소스의 메타데이터를 포함하는 블록 - name ConfigMap의 이름을 지정 - labels ConfigMap에 부여되는 레이블을 정의 data 설정 데이터를 키-값 쌍으로 정의 Secrets # apiVersion: v1 kind: Secret metadata: name: &lt;secret-name&gt; labels: &lt;key&gt;: &lt;value&gt; data: &lt;key&gt;: &lt;base64-encoded-value&gt; type: Opaque 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Secret) metadata 리소스의 메타데이터를 포함하는 블록 - name Secret의 이름을 지정 - labels Secret에 부여되는 레이블을 정의 data 암호화된 데이터를 키-값 쌍으로 정의 type Secret 유형을 나타내며, 주로 Opaque 등이 사용됨 배치 잡의 관리 # Job # apiVersion: batch/v1 kind: Job metadata: name: &lt;job-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (Job) metadata 리소스의 메타데이터를 포함하는 블록 - name Job의 이름을 지정 - labels Job에 부여되는 레이블을 정의 spec Job의 구성을 정의하는 블록 - template 작업을 수행할 Pod의 템플릿을 지정 - - metadata 템플릿 Pod의 메타데이터를 정의 - - spec 템플릿 Pod의 구성을 정의 CronJob # apiVersion: batch/v1beta1 kind: CronJob metadata: name: &lt;cronjob-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: schedule: &lt;cron-schedule&gt; jobTemplate: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: template: metadata: labels: &lt;key&gt;: &lt;value&gt; spec: containers: - name: &lt;container-name&gt; image: &lt;container-image&gt; ports: - containerPort: &lt;port&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (CronJob) metadata 리소스의 메타데이터를 포함하는 블록 - name CronJob의 이름을 지정 - labels CronJob에 부여되는 레이블을 정의 spec CronJob의 구성을 정의하는 블록 - schedule 크론잡의 실행 스케줄을 지정 - jobTemplate 크론잡이 생성하는 Job의 템플릿을 지정 - - metadata 템플릿 Job의 메타데이터를 정의 - - spec 템플릿 Job의 구성을 정의 볼륨 # StorageClass # apiVersion: storage.k8s.io/v1 kind: StorageClass metadata: name: &lt;storageclass-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: provisioner: kubernetes.io/aws-ebs parameters: type: gp2 reclaimPolicy: Retain 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (StorageClass) metadata 리소스의 메타데이터를 포함하는 블록 - name StorageClass의 이름을 지정 - labels StorageClass에 부여되는 레이블을 정의 spec StorageClass의 구성을 정의하는 블록 - provisioner 스토리지 프로비저너를 지정 - parameters 스토리지 클래스의 매개변수를 지정 - - type 스토리지의 유형을 지정 - reclaimPolicy PV 재사용 정책을 지정 (Retain, Delete 중 선택) PersistentVolume # apiVersion: v1 kind: PersistentVolume metadata: name: &lt;pv-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: capacity: storage: &lt;storage-capacity&gt; accessModes: - &lt;access-mode&gt; storageClassName: &lt;storage-class-name&gt; hostPath: path: &lt;host-path&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (PersistentVolume) metadata 리소스의 메타데이터를 포함하는 블록 - name PV의 이름을 지정 - labels PV에 부여되는 레이블을 정의 spec PV의 구성을 정의하는 블록 - capacity PV의 용량을 지정 - accessModes PV에 접근할 수 있는 모드를 지정 - storageClassName PV에 할당된 스토리지 클래스의 이름을 지정 - hostPath 호스트 머신의 파일 시스템 경로를 지정 (hostPath 볼륨 유형의 경우) PersistentVolumeClaim # apiVersion: v1 kind: PersistentVolumeClaim metadata: name: &lt;pvc-name&gt; labels: &lt;key&gt;: &lt;value&gt; spec: accessModes: - &lt;access-mode&gt; resources: requests: storage: &lt;storage-capacity&gt; 필드 설명 apiVersion 쿠버네티스 API의 버전을 지정 kind 리소스의 유형을 지정 (PersistentVolumeClaim) metadata 리소스의 메타데이터를 포함하는 블록 - name PVC의 이름을 지정 - labels PVC에 부여되는 레이블을 정의 spec PVC의 구성을 정의하는 블록 - accessModes PVC에 요청되는 접근 모드를 지정 - resources PVC에 요청되는 용량을 지정 ">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-02-20T11:28:05+09:00">
 <title>Kubernetes_Object_Table | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +1055,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +1085,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +1116,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2083,54 +3105,54 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (Pod)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>Pod의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>Pod에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>Pod의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- containers</td>
-<td>Pod에서 실행될 컨테이너 목록</td>
-</tr>
-<tr>
-<td>- - name</td>
-<td>컨테이너의 이름을 지정</td>
-</tr>
-<tr>
-<td>- - image</td>
-<td>사용할 컨테이너 이미지를 지정</td>
-</tr>
-<tr>
-<td>- - ports</td>
-<td>컨테이너가 오픈할 포트를 정의</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (Pod)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">Pod의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">Pod에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">Pod의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- containers</td>
+          <td style="text-align: left">Pod에서 실행될 컨테이너 목록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - name</td>
+          <td style="text-align: left">컨테이너의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - image</td>
+          <td style="text-align: left">사용할 컨테이너 이미지를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - ports</td>
+          <td style="text-align: left">컨테이너가 오픈할 포트를 정의</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2172,54 +3194,54 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (ReplicaSet)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>ReplicaSet의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>ReplicaSet에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>ReplicaSet의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- replicas</td>
-<td>복제할 Pod의 수를 지정</td>
-</tr>
-<tr>
-<td>- selector</td>
-<td>Pod를 선택하기 위한 레이블 선택기를 지정</td>
-</tr>
-<tr>
-<td>- - matchLabels</td>
-<td>Pod를 선택할 때 사용할 레이블을 지정</td>
-</tr>
-<tr>
-<td>- - matchExpressions</td>
-<td>레이블 선택을 위한 표현식을 지정</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (ReplicaSet)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">ReplicaSet의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">ReplicaSet에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">ReplicaSet의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- replicas</td>
+          <td style="text-align: left">복제할 Pod의 수를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- selector</td>
+          <td style="text-align: left">Pod를 선택하기 위한 레이블 선택기를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - matchLabels</td>
+          <td style="text-align: left">Pod를 선택할 때 사용할 레이블을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - matchExpressions</td>
+          <td style="text-align: left">레이블 선택을 위한 표현식을 지정</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2261,66 +3283,66 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (Deployment)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>Deployment의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>Deployment에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>Deployment의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- replicas</td>
-<td>복제할 Pod의 수를 지정</td>
-</tr>
-<tr>
-<td>- selector</td>
-<td>Pod를 선택하기 위한 레이블 선택기를 지정</td>
-</tr>
-<tr>
-<td>- - matchLabels</td>
-<td>Pod를 선택할 때 사용할 레이블을 지정</td>
-</tr>
-<tr>
-<td>- - matchExpressions</td>
-<td>레이블 선택을 위한 표현식을 지정</td>
-</tr>
-<tr>
-<td>- template</td>
-<td>새로운 Pod를 생성하기 위한 템플릿을 지정</td>
-</tr>
-<tr>
-<td>- - metadata</td>
-<td>템플릿 Pod의 메타데이터를 정의</td>
-</tr>
-<tr>
-<td>- - spec</td>
-<td>템플릿 Pod의 구성을 정의</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (Deployment)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">Deployment의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">Deployment에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">Deployment의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- replicas</td>
+          <td style="text-align: left">복제할 Pod의 수를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- selector</td>
+          <td style="text-align: left">Pod를 선택하기 위한 레이블 선택기를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - matchLabels</td>
+          <td style="text-align: left">Pod를 선택할 때 사용할 레이블을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - matchExpressions</td>
+          <td style="text-align: left">레이블 선택을 위한 표현식을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- template</td>
+          <td style="text-align: left">새로운 Pod를 생성하기 위한 템플릿을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - metadata</td>
+          <td style="text-align: left">템플릿 Pod의 메타데이터를 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - spec</td>
+          <td style="text-align: left">템플릿 Pod의 구성을 정의</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2358,46 +3380,46 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (Service)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>Service의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>Service에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>Service의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- selector</td>
-<td>해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정</td>
-</tr>
-<tr>
-<td>- ports</td>
-<td>서비스가 오픈할 포트를 정의</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (Service)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">Service의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">Service에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">Service의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- selector</td>
+          <td style="text-align: left">해당 서비스에 연결될 Pod를 선택하기 위한 레이블 선택기를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- ports</td>
+          <td style="text-align: left">서비스가 오픈할 포트를 정의</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2436,50 +3458,50 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (Ingress)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>Ingress의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>Ingress에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>Ingress의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- rules</td>
-<td>Ingress 규칙을 정의</td>
-</tr>
-<tr>
-<td>- - host</td>
-<td>호스트 이름을 지정</td>
-</tr>
-<tr>
-<td>- - http</td>
-<td>HTTP 경로 및 백엔드 서비스를 지정</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (Ingress)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">Ingress의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">Ingress에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">Ingress의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- rules</td>
+          <td style="text-align: left">Ingress 규칙을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - host</td>
+          <td style="text-align: left">호스트 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - http</td>
+          <td style="text-align: left">HTTP 경로 및 백엔드 서비스를 지정</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2508,34 +3530,34 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (Namespace)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>Namespace의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>Namespace에 부여되는 레이블을 정의</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (Namespace)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">Namespace의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">Namespace에 부여되는 레이블을 정의</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2565,38 +3587,38 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (ConfigMap)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>ConfigMap의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>ConfigMap에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>data</td>
-<td>설정 데이터를 키-값 쌍으로 정의</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (ConfigMap)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">ConfigMap의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">ConfigMap에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">data</td>
+          <td style="text-align: left">설정 데이터를 키-값 쌍으로 정의</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2626,42 +3648,42 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (Secret)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>Secret의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>Secret에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>data</td>
-<td>암호화된 데이터를 키-값 쌍으로 정의</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Secret 유형을 나타내며, 주로 Opaque 등이 사용됨</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (Secret)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">Secret의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">Secret에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">data</td>
+          <td style="text-align: left">암호화된 데이터를 키-값 쌍으로 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">type</td>
+          <td style="text-align: left">Secret 유형을 나타내며, 주로 Opaque 등이 사용됨</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2703,50 +3725,50 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (Job)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>Job의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>Job에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>Job의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- template</td>
-<td>작업을 수행할 Pod의 템플릿을 지정</td>
-</tr>
-<tr>
-<td>- - metadata</td>
-<td>템플릿 Pod의 메타데이터를 정의</td>
-</tr>
-<tr>
-<td>- - spec</td>
-<td>템플릿 Pod의 구성을 정의</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (Job)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">Job의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">Job에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">Job의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- template</td>
+          <td style="text-align: left">작업을 수행할 Pod의 템플릿을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - metadata</td>
+          <td style="text-align: left">템플릿 Pod의 메타데이터를 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - spec</td>
+          <td style="text-align: left">템플릿 Pod의 구성을 정의</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2790,54 +3812,54 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (CronJob)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>CronJob의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>CronJob에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>CronJob의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- schedule</td>
-<td>크론잡의 실행 스케줄을 지정</td>
-</tr>
-<tr>
-<td>- jobTemplate</td>
-<td>크론잡이 생성하는 Job의 템플릿을 지정</td>
-</tr>
-<tr>
-<td>- - metadata</td>
-<td>템플릿 Job의 메타데이터를 정의</td>
-</tr>
-<tr>
-<td>- - spec</td>
-<td>템플릿 Job의 구성을 정의</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (CronJob)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">CronJob의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">CronJob에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">CronJob의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- schedule</td>
+          <td style="text-align: left">크론잡의 실행 스케줄을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- jobTemplate</td>
+          <td style="text-align: left">크론잡이 생성하는 Job의 템플릿을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - metadata</td>
+          <td style="text-align: left">템플릿 Job의 메타데이터를 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - spec</td>
+          <td style="text-align: left">템플릿 Job의 구성을 정의</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2873,54 +3895,54 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (StorageClass)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>StorageClass의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>StorageClass에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>StorageClass의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- provisioner</td>
-<td>스토리지 프로비저너를 지정</td>
-</tr>
-<tr>
-<td>- parameters</td>
-<td>스토리지 클래스의 매개변수를 지정</td>
-</tr>
-<tr>
-<td>- - type</td>
-<td>스토리지의 유형을 지정</td>
-</tr>
-<tr>
-<td>- reclaimPolicy</td>
-<td>PV 재사용 정책을 지정 (Retain, Delete 중 선택)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (StorageClass)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">StorageClass의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">StorageClass에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">StorageClass의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- provisioner</td>
+          <td style="text-align: left">스토리지 프로비저너를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- parameters</td>
+          <td style="text-align: left">스토리지 클래스의 매개변수를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- - type</td>
+          <td style="text-align: left">스토리지의 유형을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- reclaimPolicy</td>
+          <td style="text-align: left">PV 재사용 정책을 지정 (Retain, Delete 중 선택)</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -2955,54 +3977,54 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (PersistentVolume)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>PV의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>PV에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>PV의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- capacity</td>
-<td>PV의 용량을 지정</td>
-</tr>
-<tr>
-<td>- accessModes</td>
-<td>PV에 접근할 수 있는 모드를 지정</td>
-</tr>
-<tr>
-<td>- storageClassName</td>
-<td>PV에 할당된 스토리지 클래스의 이름을 지정</td>
-</tr>
-<tr>
-<td>- hostPath</td>
-<td>호스트 머신의 파일 시스템 경로를 지정 (hostPath 볼륨 유형의 경우)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (PersistentVolume)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">PV의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">PV에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">PV의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- capacity</td>
+          <td style="text-align: left">PV의 용량을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- accessModes</td>
+          <td style="text-align: left">PV에 접근할 수 있는 모드를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- storageClassName</td>
+          <td style="text-align: left">PV에 할당된 스토리지 클래스의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- hostPath</td>
+          <td style="text-align: left">호스트 머신의 파일 시스템 경로를 지정 (hostPath 볼륨 유형의 경우)</td>
+      </tr>
+  </tbody>
 </table>
 
   </div>
@@ -3035,46 +4057,46 @@ https://github.com/alex-shpak/hugo-book
 
   <div class="flex-even markdown-inner">
     <table>
-<thead>
-<tr>
-<th>필드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiVersion</td>
-<td>쿠버네티스 API의 버전을 지정</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>리소스의 유형을 지정 (PersistentVolumeClaim)</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>리소스의 메타데이터를 포함하는 블록</td>
-</tr>
-<tr>
-<td>- name</td>
-<td>PVC의 이름을 지정</td>
-</tr>
-<tr>
-<td>- labels</td>
-<td>PVC에 부여되는 레이블을 정의</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>PVC의 구성을 정의하는 블록</td>
-</tr>
-<tr>
-<td>- accessModes</td>
-<td>PVC에 요청되는 접근 모드를 지정</td>
-</tr>
-<tr>
-<td>- resources</td>
-<td>PVC에 요청되는 용량을 지정</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">apiVersion</td>
+          <td style="text-align: left">쿠버네티스 API의 버전을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">kind</td>
+          <td style="text-align: left">리소스의 유형을 지정 (PersistentVolumeClaim)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">metadata</td>
+          <td style="text-align: left">리소스의 메타데이터를 포함하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- name</td>
+          <td style="text-align: left">PVC의 이름을 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- labels</td>
+          <td style="text-align: left">PVC에 부여되는 레이블을 정의</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">spec</td>
+          <td style="text-align: left">PVC의 구성을 정의하는 블록</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- accessModes</td>
+          <td style="text-align: left">PVC에 요청되는 접근 모드를 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- resources</td>
+          <td style="text-align: left">PVC에 요청되는 용량을 지정</td>
+      </tr>
+  </tbody>
 </table>
 <br>
 <br>
@@ -3091,15 +4113,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/ef3d055e77625f16ab804f9b48168bb35090f78b" title='Last modified by mungOps | February 20, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 20, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

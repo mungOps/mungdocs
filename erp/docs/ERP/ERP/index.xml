@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ERP on Mungs Book</title>
-    <link>http://mungdocs.kro.kr/erp/docs/ERP/ERP/</link>
+    <link>http://localhost:1313/erp/docs/ERP/ERP/</link>
     <description>Recent content in ERP on Mungs Book</description>
     <generator>Hugo</generator>
     <language>erp</language>
-    <atom:link href="http://mungdocs.kro.kr/erp/docs/ERP/ERP/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/erp/docs/ERP/ERP/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0. ERP이란</title>
-      <link>http://mungdocs.kro.kr/erp/docs/ERP/ERP/erp00/</link>
+      <link>http://localhost:1313/erp/docs/ERP/ERP/erp00/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://mungdocs.kro.kr/erp/docs/ERP/ERP/erp00/</guid>
-      <description> ERP # ERP란 Enterprise Resource Planning (전사적 자원관리)를 의미한다. 주로 기업내의 모든 업무 기능들이 조화롭게 발휘할 수 있도록 지원하는 어플리케이션들의 총 집합으로 차세대 업무시스템 (통합 정보시스템)을 의미한다. ERP의 출발은 초기 MRP (Mastered Requirement Plainning)에서 진화되었으며, 점차 업무 기능들이 늘어나며 현재도 끊임없이 IT기술과 함께 발전하는 분야이다. </description>
+      <guid>http://localhost:1313/erp/docs/ERP/ERP/erp00/</guid>
+      <description>&lt;h2 id=&#34;erp&#34;&gt;&#xA;  &lt;strong&gt;ERP&lt;/strong&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#erp&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;br&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;ERP란 Enterprise Resource Planning (전사적 자원관리)를 의미&lt;/strong&gt;한다.&lt;/li&gt;&#xA;&lt;li&gt;주로 기업내의 모든 업무 기능들이 조화롭게 발휘할 수 있도록 지원하는 &lt;span style=&#39;background-color: #dcffe4&#39;&gt;&lt;strong&gt;어플리케이션들의 총 집합&lt;/strong&gt;&lt;/span&gt;으로 차세대 업무시스템 (통합 정보시스템)을 의미한다.&lt;/li&gt;&#xA;&lt;li&gt;ERP의 출발은 초기 MRP (Mastered Requirement Plainning)에서 진화되었으며, 점차 업무 기능들이 늘어나며 현재도 끊임없이 IT기술과 함께 발전하는 분야이다.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

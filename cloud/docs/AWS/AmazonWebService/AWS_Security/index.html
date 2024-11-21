@@ -3,17 +3,95 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS Security # # 기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다. # AWS가 제공하는 기본적인 보안 서비스 # AWS 제공 서비스 서비스 개요 통신 경로 암호화 AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다.">
+<meta name="description" content="
+  AWS Security
+  #
+
+
+
+  
+  #
+
+
+기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다.
+
+
+  
+  #
+
+
+AWS가 제공하는 기본적인 보안 서비스
+
+
+  
+  #
+
+
+  
+      
+          AWS 제공 서비스
+          서비스 개요
+      
+  
+  
+      
+          통신 경로 암호화
+          AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다.
+      
+      
+          Security Group&amp; NetworkACL
+          인스턴스들의 보안 그룹과 서브넷들의 통신 허가/ 거부 설정을 하는 네트워크 ACL을 사용해 예상하지 못하는 통신을 사전차단합니다.
+      
+      
+          Identity and Access Management( IAM )
+          사용자의 역할을 분리하고 최소한의 권한만을 부여하여 보안을 유지합니다.
+      
+      
+          Multi Factor Authentication ( MFA )
+          AWS 계정 또는 IAM 계정에 일회성 비밀번호 인증을 추가합니다.
+      
+      
+          Virtual Private Cloud ( VPC )
+          퍼블릭 클라우드에 프라이빗 환경을 구축합니다. 다른 거점에서 VPN으로 접속할 수도 있습니다.
+      
+      
+          Direct Connect ( 전용선 연결 )
+          On Premise 환경에서 AWS 전용선을 통해 직접 연결하여 데이터 도청, 변조 등의 위험을 줄일 수 있습니다.
+      
+      
+          데이터 암호화
+          EBS, S3, Glacier, Redshift, RDS에 저장하고 있는 데이터 또는 객체를 암호화할 수 있습니다.
+      
+      
+          Hardware Security Module ( CloudHSM )
+          암호화 키를 안전하게 저장하고 관리합니다.
+      
+      
+          Trusted Advisor
+          AWS 지원이 제공하는 서비스 중에 하나로, 각종 서비스의 설정과 운용 상황을 확인해서 개선할 부분을 제공해줍니다.
+      
+  
+
+
+  
+  #
+
+
+  Amazon Inspector
+  #
+
+
+
+  ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AmazonWebService/AWS_Security/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="AWS Security">
-  <meta property="og:description" content="AWS Security # # 기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다. # AWS가 제공하는 기본적인 보안 서비스 # AWS 제공 서비스 서비스 개요 통신 경로 암호화 AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다.">
+  <meta property="og:description" content=" AWS Security # # 기본적으로 AWS의 보안적 요소는 설비, 인프라 등과 관련된 물리적인 부분과 네트워크 인프라 등은 AWS가 책임을 지고 보안 대책을 수행합니다. 이러한 인프라 위의 OS, 애플리케이션, 네트워크 설정, 계정 관리 등은 사용자가 책임을 져야 하는 공유 책임 모델의 구조를 띄고 있습니다. # AWS가 제공하는 기본적인 보안 서비스 # AWS 제공 서비스 서비스 개요 통신 경로 암호화 AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다. Security Group&amp; NetworkACL 인스턴스들의 보안 그룹과 서브넷들의 통신 허가/ 거부 설정을 하는 네트워크 ACL을 사용해 예상하지 못하는 통신을 사전차단합니다. Identity and Access Management( IAM ) 사용자의 역할을 분리하고 최소한의 권한만을 부여하여 보안을 유지합니다. Multi Factor Authentication ( MFA ) AWS 계정 또는 IAM 계정에 일회성 비밀번호 인증을 추가합니다. Virtual Private Cloud ( VPC ) 퍼블릭 클라우드에 프라이빗 환경을 구축합니다. 다른 거점에서 VPN으로 접속할 수도 있습니다. Direct Connect ( 전용선 연결 ) On Premise 환경에서 AWS 전용선을 통해 직접 연결하여 데이터 도청, 변조 등의 위험을 줄일 수 있습니다. 데이터 암호화 EBS, S3, Glacier, Redshift, RDS에 저장하고 있는 데이터 또는 객체를 암호화할 수 있습니다. Hardware Security Module ( CloudHSM ) 암호화 키를 안전하게 저장하고 관리합니다. Trusted Advisor AWS 지원이 제공하는 서비스 중에 하나로, 각종 서비스의 설정과 운용 상황을 확인해서 개선할 부분을 제공해줍니다. # Amazon Inspector # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>AWS Security | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +100,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +130,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +161,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2005,50 +2072,50 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#heading-2">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>AWS 제공 서비스</th>
-<th>서비스 개요</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>통신 경로 암호화</td>
-<td>AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다.</td>
-</tr>
-<tr>
-<td>Security Group&amp; NetworkACL</td>
-<td>인스턴스들의 보안 그룹과 서브넷들의 통신 허가/ 거부 설정을 하는 네트워크 ACL을 사용해 예상하지 못하는 통신을 사전차단합니다.</td>
-</tr>
-<tr>
-<td>Identity and Access Management( IAM )</td>
-<td>사용자의 역할을 분리하고 최소한의 권한만을 부여하여 보안을 유지합니다.</td>
-</tr>
-<tr>
-<td>Multi Factor Authentication ( MFA )</td>
-<td>AWS 계정 또는 IAM 계정에 일회성 비밀번호 인증을 추가합니다.</td>
-</tr>
-<tr>
-<td>Virtual Private Cloud ( VPC )</td>
-<td>퍼블릭 클라우드에 프라이빗 환경을 구축합니다. 다른 거점에서 VPN으로 접속할 수도 있습니다.</td>
-</tr>
-<tr>
-<td>Direct Connect ( 전용선 연결 )</td>
-<td>On Premise 환경에서 AWS 전용선을 통해 직접 연결하여 데이터 도청, 변조 등의 위험을 줄일 수 있습니다.</td>
-</tr>
-<tr>
-<td>데이터 암호화</td>
-<td>EBS, S3, Glacier, Redshift, RDS에 저장하고 있는 데이터 또는 객체를 암호화할 수 있습니다.</td>
-</tr>
-<tr>
-<td>Hardware Security Module ( CloudHSM )</td>
-<td>암호화 키를 안전하게 저장하고 관리합니다.</td>
-</tr>
-<tr>
-<td>Trusted Advisor</td>
-<td>AWS 지원이 제공하는 서비스 중에 하나로, 각종 서비스의 설정과 운용 상황을 확인해서 개선할 부분을 제공해줍니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">AWS 제공 서비스</th>
+          <th style="text-align: left">서비스 개요</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">통신 경로 암호화</td>
+          <td style="text-align: left">AWS 매니지먼트 콘솔로의 접속 또는 API를 사용할 때 HTTPS를 사용해 데이터를 암호화합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Security Group&amp; NetworkACL</td>
+          <td style="text-align: left">인스턴스들의 보안 그룹과 서브넷들의 통신 허가/ 거부 설정을 하는 네트워크 ACL을 사용해 예상하지 못하는 통신을 사전차단합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Identity and Access Management( IAM )</td>
+          <td style="text-align: left">사용자의 역할을 분리하고 최소한의 권한만을 부여하여 보안을 유지합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Multi Factor Authentication ( MFA )</td>
+          <td style="text-align: left">AWS 계정 또는 IAM 계정에 일회성 비밀번호 인증을 추가합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Virtual Private Cloud ( VPC )</td>
+          <td style="text-align: left">퍼블릭 클라우드에 프라이빗 환경을 구축합니다. 다른 거점에서 VPN으로 접속할 수도 있습니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Direct Connect ( 전용선 연결 )</td>
+          <td style="text-align: left">On Premise 환경에서 AWS 전용선을 통해 직접 연결하여 데이터 도청, 변조 등의 위험을 줄일 수 있습니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">데이터 암호화</td>
+          <td style="text-align: left">EBS, S3, Glacier, Redshift, RDS에 저장하고 있는 데이터 또는 객체를 암호화할 수 있습니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Hardware Security Module ( CloudHSM )</td>
+          <td style="text-align: left">암호화 키를 안전하게 저장하고 관리합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Trusted Advisor</td>
+          <td style="text-align: left">AWS 지원이 제공하는 서비스 중에 하나로, 각종 서비스의 설정과 운용 상황을 확인해서 개선할 부분을 제공해줍니다.</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-3">
   
@@ -2533,15 +2600,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

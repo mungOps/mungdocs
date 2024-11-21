@@ -3,14 +3,55 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS 란? # # Amazon Web Services ( AWS ) # # AWS # AWS는 Amazon에서 제공하는 클라우드 서비스로, 네트워크를 기반으로 가상 컴퓨터와 스토리지를 비롯한 다양한 서비스를 제공 합니다. # Cloud Computing 와 AWS # # AWS에 대해 공부하기 앞서, 우리는 Cloud Computing이 무엇이고, 어떠한 개념에 대해 알고 있어야 합니다. 그 이유는 AWS가 클라우드 컴퓨티 그 자체이기 때문이죠.
+<meta name="description" content="
+  AWS 란?
+  #
+
+
+  
+  #
+
+
+
+  Amazon Web Services ( AWS )
+  #
+
+
+  
+  #
+
+
+  AWS
+  #
+
+
+AWS는 Amazon에서 제공하는 클라우드 서비스로, 네트워크를 기반으로 가상 컴퓨터와 스토리지를 비롯한 다양한 서비스를 제공 합니다.
+
+
+  
+  #
+
+ 
+
+  Cloud Computing 와 AWS
+  #
+
+
+  
+  #
+
+
+
+AWS에 대해 공부하기 앞서, 우리는 Cloud Computing이 무엇이고, 어떠한 개념에 대해 알고 있어야 합니다. 그 이유는 AWS가 클라우드 컴퓨티 그 자체이기 때문이죠.
+
+
 클라우드 컴퓨팅 ( Cloud Computing : 이하 클라우드 )은 컴퓨터 리소스의 이용 형태로, 클라우드는 컴퓨터의 계산 리소스, 스토리지, 애플리케이션 처리를 네트워크 기반 서비스로 제공하는 것을 뜻 합니다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AmazonWebService/AWS%EB%9E%80/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="CloudComputing과 AWS">
-  <meta property="og:description" content="AWS 란? # # Amazon Web Services ( AWS ) # # AWS # AWS는 Amazon에서 제공하는 클라우드 서비스로, 네트워크를 기반으로 가상 컴퓨터와 스토리지를 비롯한 다양한 서비스를 제공 합니다. # Cloud Computing 와 AWS # # AWS에 대해 공부하기 앞서, 우리는 Cloud Computing이 무엇이고, 어떠한 개념에 대해 알고 있어야 합니다. 그 이유는 AWS가 클라우드 컴퓨티 그 자체이기 때문이죠.
+  <meta property="og:description" content=" AWS 란? # # Amazon Web Services ( AWS ) # # AWS # AWS는 Amazon에서 제공하는 클라우드 서비스로, 네트워크를 기반으로 가상 컴퓨터와 스토리지를 비롯한 다양한 서비스를 제공 합니다. # Cloud Computing 와 AWS # # AWS에 대해 공부하기 앞서, 우리는 Cloud Computing이 무엇이고, 어떠한 개념에 대해 알고 있어야 합니다. 그 이유는 AWS가 클라우드 컴퓨티 그 자체이기 때문이죠.
 클라우드 컴퓨팅 ( Cloud Computing : 이하 클라우드 )은 컴퓨터 리소스의 이용 형태로, 클라우드는 컴퓨터의 계산 리소스, 스토리지, 애플리케이션 처리를 네트워크 기반 서비스로 제공하는 것을 뜻 합니다.">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
@@ -23,9 +64,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -56,7 +94,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -87,14 +125,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2221,30 +2251,30 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>이와 마찬가지로 사용하고 있는 서버를 추가하거나, 크기를 변경할 때도 동일합니다. On Premise의 경우는 시간과 비용이 들어가지만, 서버의 성능을 Scale Up하거나 이와 반대되는 경우, 혹은 서버자체를 새로 구매해야할 때, Public 상에서는 버튼 하나로 변경 및 추가 구매가 가능합니다.</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th><strong>Option</strong></th>
-<th><strong>On Premises</strong></th>
-<th><strong>Public</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>비용</td>
-<td>초기에 모두 필요함</td>
-<td>초기 비용은 따로 필요 없으며, 종량제 과금에 따라 비용이 분산되어 발생</td>
-</tr>
-<tr>
-<td>서버 조달 기간</td>
-<td>몇 주- 몇달</td>
-<td>몇 분</td>
-</tr>
-<tr>
-<td>서버 추가/ 변경</td>
-<td>시간과 비용이 들어감</td>
-<td>추가/ 변경과 관련된 비용이 필요하지 않음</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>Option</strong></th>
+          <th style="text-align: left"><strong>On Premises</strong></th>
+          <th style="text-align: left"><strong>Public</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">비용</td>
+          <td style="text-align: left">초기에 모두 필요함</td>
+          <td style="text-align: left">초기 비용은 따로 필요 없으며, 종량제 과금에 따라 비용이 분산되어 발생</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">서버 조달 기간</td>
+          <td style="text-align: left">몇 주- 몇달</td>
+          <td style="text-align: left">몇 분</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">서버 추가/ 변경</td>
+          <td style="text-align: left">시간과 비용이 들어감</td>
+          <td style="text-align: left">추가/ 변경과 관련된 비용이 필요하지 않음</td>
+      </tr>
+  </tbody>
 </table>
 </li>
 </ul>
@@ -2359,46 +2389,46 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>옵션</th>
-<th>공용 서버</th>
-<th>전용 서버</th>
-<th>가상 전용 서버</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>사용 형태</td>
-<td>1대의 물리 서버를 분할해서 사용</td>
-<td>1대의 물리 서버 점유</td>
-<td>1대의 물리 서버 위에 있는 가상 서버를 점유</td>
-</tr>
-<tr>
-<td>비용</td>
-<td>적음</td>
-<td>높음</td>
-<td>중간</td>
-</tr>
-<tr>
-<td>자유도</td>
-<td>거의 없음</td>
-<td>높음</td>
-<td>높음</td>
-</tr>
-<tr>
-<td>보안</td>
-<td>관리 불가능</td>
-<td>관리 가능</td>
-<td>관리 가능</td>
-</tr>
-<tr>
-<td>다른 사용자의 영향</td>
-<td>높음</td>
-<td>없음</td>
-<td>거의 없음</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">옵션</th>
+          <th style="text-align: left">공용 서버</th>
+          <th style="text-align: left">전용 서버</th>
+          <th style="text-align: left">가상 전용 서버</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">사용 형태</td>
+          <td style="text-align: left">1대의 물리 서버를 분할해서 사용</td>
+          <td style="text-align: left">1대의 물리 서버 점유</td>
+          <td style="text-align: left">1대의 물리 서버 위에 있는 가상 서버를 점유</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">비용</td>
+          <td style="text-align: left">적음</td>
+          <td style="text-align: left">높음</td>
+          <td style="text-align: left">중간</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">자유도</td>
+          <td style="text-align: left">거의 없음</td>
+          <td style="text-align: left">높음</td>
+          <td style="text-align: left">높음</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">보안</td>
+          <td style="text-align: left">관리 불가능</td>
+          <td style="text-align: left">관리 가능</td>
+          <td style="text-align: left">관리 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">다른 사용자의 영향</td>
+          <td style="text-align: left">높음</td>
+          <td style="text-align: left">없음</td>
+          <td style="text-align: left">거의 없음</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-29">
   

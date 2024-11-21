@@ -3,17 +3,607 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Docker # Docker 기본 명령어 # 컨테이너 생성 # $ docker run [OPTION] NAME[:TAG|@DIGEST] OPTION 특징 -d, &ndash;detach 백그라운드에서 실행합니다. -i, &ndash;interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, &ndash;tty 할당된 tty를 사용하여 실행합니다. &ndash;name 컨테이너에 이름을 할당합니다. -e, &ndash;env 컨테이너 내에서 사용할 환경 변수를 설정합니다. &ndash;rm 컨테이너가 종료되면 자동으로 삭제합니다. &ndash;network 컨테이너가 사용할 네트워크를 지정합니다. &ndash;publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. &ndash;volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.">
+<meta name="description" content="
+  Docker
+  #
+
+
+
+
+
+  Docker 기본 명령어
+  #
+
+
+
+
+  컨테이너 생성
+  #
+
+$ docker run [OPTION] NAME[:TAG|@DIGEST]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -d, &ndash;detach
+          백그라운드에서 실행합니다.
+      
+      
+          -i, &ndash;interactive
+          상호적으로 실행하며, 표준 입력을 유지합니다.
+      
+      
+          -t, &ndash;tty
+          할당된 tty를 사용하여 실행합니다.
+      
+      
+          &ndash;name
+          컨테이너에 이름을 할당합니다.
+      
+      
+          -e, &ndash;env
+          컨테이너 내에서 사용할 환경 변수를 설정합니다.
+      
+      
+          &ndash;rm
+          컨테이너가 종료되면 자동으로 삭제합니다.
+      
+      
+          &ndash;network
+          컨테이너가 사용할 네트워크를 지정합니다.
+      
+      
+          &ndash;publish, -p
+          호스트와 컨테이너 간의 포트 매핑을 설정합니다.
+      
+      
+          &ndash;volume, -v
+          호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  Network 생성
+  #
+
+$ docker network create [OPTIONS] NETWORK
+
+  
+      
+          옵션
+          설명
+      
+  
+  
+      
+          -d
+          네트워크 드라이버 지정 (기본값: bridge)
+      
+      
+          &ndash;subnet
+          네트워크의 서브넷 설정
+      
+      
+          &ndash;gateway
+          네트워크의 게이트웨이 IP 설정
+      
+      
+          &ndash;ip-range
+          네트워크의 IP 범위 설정
+      
+      
+          &ndash;attachable
+          기존 네트워크에 컨테이너 연결 허용
+      
+      
+          &ndash;internal
+          외부에서의 네트워크 접근 제한
+      
+      
+          &ndash;label
+          네트워크에 메타데이터 설정
+      
+      
+          &ndash;opt
+          드라이버별 옵션 설정
+      
+      
+          &ndash;ipv6
+          IPv6 지원 활성화
+      
+      
+          &ndash;ipam-driver
+          IP 주소 관리 드라이버 지정
+      
+      
+          &ndash;ipam-opt
+          IP 주소 관리 옵션 설정
+      
+      
+          &ndash;attachable
+          기존 네트워크에 컨테이너 연결 허용
+      
+      
+          &ndash;internal
+          외부에서의 네트워크 접근 제한
+      
+      
+          &ndash;ingress
+          인그레스 네트워크 생성
+      
+      
+          &ndash;ingress-opt
+          인그레스 옵션 설정
+      
+  
+
+
+
+
+  volume 생성
+  #
+
+$ docker volume create [OPTIONS] STORAGE
+
+  
+      
+          옵션
+          설명
+      
+  
+  
+      
+          &ndash;storage-driver
+          사용할 스토리지 드라이버 설정
+      
+      
+          &ndash;volume-driver
+          사용할 볼륨 드라이버 설정
+      
+      
+          &ndash;add-registry
+          이미지를 가져올 도커 레지스트리 추가
+      
+      
+          &ndash;disable-content-trust
+          이미지에 대한 콘텐츠 신뢰 기능 비활성화
+      
+      
+          &ndash;icc
+          컨테이너 간 통신 허용 여부 설정
+      
+      
+          &ndash;live-restore
+          도커 데몬 재시작 시 컨테이너 자동 복구 설정
+      
+      
+          &ndash;log-driver
+          로깅 드라이버 설정
+      
+      
+          &ndash;log-level
+          로깅 레벨 설정
+      
+      
+          &ndash;storage-opt
+          스토리지 드라이버 옵션 설정
+      
+      
+          &ndash;selinux-enabled
+          SELinux 지원 여부 설정
+      
+      
+          &ndash;storage-opt
+          스토리지 드라이버 옵션 설정
+      
+      
+          &ndash;tls
+          TLS 보안 연결 설정
+      
+      
+          &ndash;tlscacert
+          TLS CA 인증서 파일 경로 설정
+      
+      
+          &ndash;tlscert
+          TLS 인증서 파일 경로 설정
+      
+      
+          &ndash;tlskey
+          TLS 키 파일 경로 설정
+      
+      
+          &ndash;tlsverify
+          TLS 연결 검증 설정
+      
+  
+
+
+
+
+  컨테니어 시작
+  #
+
+$ docker start [OPTION]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -d, &ndash;detach
+          백그라운드에서 실행합니다.
+      
+      
+          -i, &ndash;interactive
+          상호적으로 실행하며, 표준 입력을 유지합니다.
+      
+      
+          -t, &ndash;tty
+          할당된 tty를 사용하여 실행합니다.
+      
+      
+          &ndash;name
+          컨테이너에 이름을 할당합니다.
+      
+      
+          -e, &ndash;env
+          컨테이너 내에서 사용할 환경 변수를 설정합니다.
+      
+      
+          &ndash;rm
+          컨테이너가 종료되면 자동으로 삭제합니다.
+      
+      
+          &ndash;network
+          컨테이너가 사용할 네트워크를 지정합니다.
+      
+      
+          &ndash;publish, -p
+          호스트와 컨테이너 간의 포트 매핑을 설정합니다.
+      
+      
+          &ndash;volume, -v
+          호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  컨테이너 목록 확인
+  #
+
+$ docker ps [OPTION]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -a, &ndash;all
+          모든 컨테이너를 출력합니다. (종료된 컨테이너 포함)
+      
+      
+          -q, &ndash;quiet
+          컨테이너 ID만 출력합니다.
+      
+      
+          &ndash;no-trunc
+          출력을 자르지 않고 전체 정보를 표시합니다.
+      
+      
+          -n, &ndash;last n
+          최근 n개의 컨테이너만 표시합니다.
+      
+      
+          -s, &ndash;size
+          각 컨테이너의 크기 정보를 표시합니다.
+      
+      
+          &ndash;format
+          사용자 지정 포맷으로 출력합니다.
+      
+      
+          &ndash;filter
+          필터를 적용하여 특정 조건을 만족하는 컨테이너만 표시합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  컨테이너 중지
+  #
+
+$ docker stop [OPTIONS] CONTAINER [CONTAINER...]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -t, &ndash;time
+          정지 프로세스에 대한 타임아웃(초)을 설정합니다. 기본값은 10초입니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  컨테이너 제거
+  #
+
+$ docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -f, &ndash;force
+          실행 중인 컨테이너를 강제로 중지하고 제거합니다.
+      
+      
+          -v, &ndash;volumes
+          컨테이너와 관련된 볼륨을 함께 제거합니다.
+      
+      
+          &ndash;link
+          컨테이너를 다른 컨테이너에 연결한 경우 해당 연결을 제거합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  이미지 확인
+  #
+
+$ docker images [OPTIONS] [REPOSITORY[:TAG]]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -a, &ndash;all
+          모든 이미지를 표시합니다.
+      
+      
+          &ndash;digests
+          각 이미지의 다이제스트 정보를 표시합니다.
+      
+      
+          &ndash;format
+          사용자 지정 포맷으로 출력합니다.
+      
+      
+          &ndash;no-trunc
+          출력을 자르지 않고 전체 정보를 표시합니다.
+      
+      
+          -q, &ndash;quiet
+          이미지 ID만 출력합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  이미지 다운로드
+  #
+
+$ docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -a, &ndash;all-tags
+          이미지의 모든 태그를 가져옵니다.
+      
+      
+          &ndash;disable-content-trust
+          이미지의 내용 신뢰 기능을 비활성화합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  이미지 삭제
+  #
+
+$ docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+
+
+  컨테이너 접속
+  #
+
+$ docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -d, &ndash;detach
+          백그라운드에서 실행합니다.
+      
+      
+          -i, &ndash;interactive
+          상호적으로 실행하며, 표준 입력을 유지합니다.
+      
+      
+          &ndash;env
+          컨테이너 내에서 사용할 환경 변수를 설정합니다.
+      
+      
+          &ndash;user
+          명령을 실행할 사용자 또는 UID를 지정합니다.
+      
+      
+          &ndash;workdir
+          명령을 실행할 작업 디렉토리를 지정합니다.
+      
+      
+          &ndash;tty
+          할당된 tty를 사용하여 실행합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  컨테이너 로그 확인
+  #
+
+$ docker logs [OPTIONS] CONTAINER
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          &ndash;details
+          로그 항목의 추가 세부 정보를 표시합니다.
+      
+      
+          -f, &ndash;follow
+          실시간으로 로그를 출력하며, 계속해서 갱신됩니다.
+      
+      
+          &ndash;since
+          특정 시간 이후의 로그만 표시합니다.
+      
+      
+          &ndash;tail
+          지정된 개수의 최근 로그 항목만 표시합니다.
+      
+      
+          -t, &ndash;timestamps
+          로그 항목에 타임스탬프를 표시합니다.
+      
+      
+          &ndash;until
+          특정 시간 이전의 로그만 표시합니다.
+      
+      
+          &ndash;help
+          도움말을 표시합니다.
+      
+  
+
+
+
+
+  이미지 생성
+  #
+
+$ docker commit [OPTION] [CONTAINER] [NAME]
+
+  
+      
+          OPTION
+          특징
+      
+  
+  
+      
+          -a, &ndash;author
+          커미트한 사용자를 지정합니다.
+      
+      
+          -c, &ndash;change
+          이미지 생성 시 Dockerfile 형식으로 변경을 추가합니다.
+      
+      
+          -m, &ndash;message
+          커밋에 대한 설명 또는 메시지를 추가합니다.
+      
+      
+          -p, &ndash;pause
+          커밋 시 컨테이너를 일시 중지합니다.
+      
+  
+
+
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="1. Docker 기본 명령어">
-  <meta property="og:description" content="Docker # Docker 기본 명령어 # 컨테이너 생성 # $ docker run [OPTION] NAME[:TAG|@DIGEST] OPTION 특징 -d, –detach 백그라운드에서 실행합니다. -i, –interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, –tty 할당된 tty를 사용하여 실행합니다. –name 컨테이너에 이름을 할당합니다. -e, –env 컨테이너 내에서 사용할 환경 변수를 설정합니다. –rm 컨테이너가 종료되면 자동으로 삭제합니다. –network 컨테이너가 사용할 네트워크를 지정합니다. –publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. –volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.">
+  <meta property="og:description" content=" Docker # Docker 기본 명령어 # 컨테이너 생성 # $ docker run [OPTION] NAME[:TAG|@DIGEST] OPTION 특징 -d, –detach 백그라운드에서 실행합니다. -i, –interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, –tty 할당된 tty를 사용하여 실행합니다. –name 컨테이너에 이름을 할당합니다. -e, –env 컨테이너 내에서 사용할 환경 변수를 설정합니다. –rm 컨테이너가 종료되면 자동으로 삭제합니다. –network 컨테이너가 사용할 네트워크를 지정합니다. –publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. –volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다. –help 도움말을 표시합니다. Network 생성 # $ docker network create [OPTIONS] NETWORK 옵션 설명 -d 네트워크 드라이버 지정 (기본값: bridge) –subnet 네트워크의 서브넷 설정 –gateway 네트워크의 게이트웨이 IP 설정 –ip-range 네트워크의 IP 범위 설정 –attachable 기존 네트워크에 컨테이너 연결 허용 –internal 외부에서의 네트워크 접근 제한 –label 네트워크에 메타데이터 설정 –opt 드라이버별 옵션 설정 –ipv6 IPv6 지원 활성화 –ipam-driver IP 주소 관리 드라이버 지정 –ipam-opt IP 주소 관리 옵션 설정 –attachable 기존 네트워크에 컨테이너 연결 허용 –internal 외부에서의 네트워크 접근 제한 –ingress 인그레스 네트워크 생성 –ingress-opt 인그레스 옵션 설정 volume 생성 # $ docker volume create [OPTIONS] STORAGE 옵션 설명 –storage-driver 사용할 스토리지 드라이버 설정 –volume-driver 사용할 볼륨 드라이버 설정 –add-registry 이미지를 가져올 도커 레지스트리 추가 –disable-content-trust 이미지에 대한 콘텐츠 신뢰 기능 비활성화 –icc 컨테이너 간 통신 허용 여부 설정 –live-restore 도커 데몬 재시작 시 컨테이너 자동 복구 설정 –log-driver 로깅 드라이버 설정 –log-level 로깅 레벨 설정 –storage-opt 스토리지 드라이버 옵션 설정 –selinux-enabled SELinux 지원 여부 설정 –storage-opt 스토리지 드라이버 옵션 설정 –tls TLS 보안 연결 설정 –tlscacert TLS CA 인증서 파일 경로 설정 –tlscert TLS 인증서 파일 경로 설정 –tlskey TLS 키 파일 경로 설정 –tlsverify TLS 연결 검증 설정 컨테니어 시작 # $ docker start [OPTION] OPTION 특징 -d, –detach 백그라운드에서 실행합니다. -i, –interactive 상호적으로 실행하며, 표준 입력을 유지합니다. -t, –tty 할당된 tty를 사용하여 실행합니다. –name 컨테이너에 이름을 할당합니다. -e, –env 컨테이너 내에서 사용할 환경 변수를 설정합니다. –rm 컨테이너가 종료되면 자동으로 삭제합니다. –network 컨테이너가 사용할 네트워크를 지정합니다. –publish, -p 호스트와 컨테이너 간의 포트 매핑을 설정합니다. –volume, -v 호스트와 컨테이너 간의 볼륨 매핑을 설정합니다. –help 도움말을 표시합니다. 컨테이너 목록 확인 # $ docker ps [OPTION] OPTION 특징 -a, –all 모든 컨테이너를 출력합니다. (종료된 컨테이너 포함) -q, –quiet 컨테이너 ID만 출력합니다. –no-trunc 출력을 자르지 않고 전체 정보를 표시합니다. -n, –last n 최근 n개의 컨테이너만 표시합니다. -s, –size 각 컨테이너의 크기 정보를 표시합니다. –format 사용자 지정 포맷으로 출력합니다. –filter 필터를 적용하여 특정 조건을 만족하는 컨테이너만 표시합니다. –help 도움말을 표시합니다. 컨테이너 중지 # $ docker stop [OPTIONS] CONTAINER [CONTAINER...] OPTION 특징 -t, –time 정지 프로세스에 대한 타임아웃(초)을 설정합니다. 기본값은 10초입니다. –help 도움말을 표시합니다. 컨테이너 제거 # $ docker rm [OPTIONS] CONTAINER [CONTAINER...] OPTION 특징 -f, –force 실행 중인 컨테이너를 강제로 중지하고 제거합니다. -v, –volumes 컨테이너와 관련된 볼륨을 함께 제거합니다. –link 컨테이너를 다른 컨테이너에 연결한 경우 해당 연결을 제거합니다. –help 도움말을 표시합니다. 이미지 확인 # $ docker images [OPTIONS] [REPOSITORY[:TAG]] OPTION 특징 -a, –all 모든 이미지를 표시합니다. –digests 각 이미지의 다이제스트 정보를 표시합니다. –format 사용자 지정 포맷으로 출력합니다. –no-trunc 출력을 자르지 않고 전체 정보를 표시합니다. -q, –quiet 이미지 ID만 출력합니다. –help 도움말을 표시합니다. 이미지 다운로드 # $ docker pull [OPTIONS] NAME[:TAG|@DIGEST] OPTION 특징 -a, –all-tags 이미지의 모든 태그를 가져옵니다. –disable-content-trust 이미지의 내용 신뢰 기능을 비활성화합니다. –help 도움말을 표시합니다. 이미지 삭제 # $ docker rmi [OPTIONS] IMAGE [IMAGE...] 컨테이너 접속 # $ docker exec [OPTIONS] CONTAINER COMMAND [ARG...] OPTION 특징 -d, –detach 백그라운드에서 실행합니다. -i, –interactive 상호적으로 실행하며, 표준 입력을 유지합니다. –env 컨테이너 내에서 사용할 환경 변수를 설정합니다. –user 명령을 실행할 사용자 또는 UID를 지정합니다. –workdir 명령을 실행할 작업 디렉토리를 지정합니다. –tty 할당된 tty를 사용하여 실행합니다. –help 도움말을 표시합니다. 컨테이너 로그 확인 # $ docker logs [OPTIONS] CONTAINER OPTION 특징 –details 로그 항목의 추가 세부 정보를 표시합니다. -f, –follow 실시간으로 로그를 출력하며, 계속해서 갱신됩니다. –since 특정 시간 이후의 로그만 표시합니다. –tail 지정된 개수의 최근 로그 항목만 표시합니다. -t, –timestamps 로그 항목에 타임스탬프를 표시합니다. –until 특정 시간 이전의 로그만 표시합니다. –help 도움말을 표시합니다. 이미지 생성 # $ docker commit [OPTION] [CONTAINER] [NAME] OPTION 특징 -a, –author 커미트한 사용자를 지정합니다. -c, –change 이미지 생성 시 Dockerfile 형식으로 변경을 추가합니다. -m, –message 커밋에 대한 설명 또는 메시지를 추가합니다. -p, –pause 커밋 시 컨테이너를 일시 중지합니다. ">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-01-22T16:31:30+09:00">
 <title>1. Docker 기본 명령어 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +612,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +642,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +673,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2044,54 +2623,54 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker run <span style="color:#f92672">[</span>OPTION<span style="color:#f92672">]</span> NAME<span style="color:#f92672">[</span>:TAG|@DIGEST<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d, &ndash;detach</td>
-<td>백그라운드에서 실행합니다.</td>
-</tr>
-<tr>
-<td>-i, &ndash;interactive</td>
-<td>상호적으로 실행하며, 표준 입력을 유지합니다.</td>
-</tr>
-<tr>
-<td>-t, &ndash;tty</td>
-<td>할당된 tty를 사용하여 실행합니다.</td>
-</tr>
-<tr>
-<td>&ndash;name</td>
-<td>컨테이너에 이름을 할당합니다.</td>
-</tr>
-<tr>
-<td>-e, &ndash;env</td>
-<td>컨테이너 내에서 사용할 환경 변수를 설정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;rm</td>
-<td>컨테이너가 종료되면 자동으로 삭제합니다.</td>
-</tr>
-<tr>
-<td>&ndash;network</td>
-<td>컨테이너가 사용할 네트워크를 지정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;publish, -p</td>
-<td>호스트와 컨테이너 간의 포트 매핑을 설정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;volume, -v</td>
-<td>호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-d, &ndash;detach</td>
+          <td style="text-align: left">백그라운드에서 실행합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-i, &ndash;interactive</td>
+          <td style="text-align: left">상호적으로 실행하며, 표준 입력을 유지합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-t, &ndash;tty</td>
+          <td style="text-align: left">할당된 tty를 사용하여 실행합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;name</td>
+          <td style="text-align: left">컨테이너에 이름을 할당합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-e, &ndash;env</td>
+          <td style="text-align: left">컨테이너 내에서 사용할 환경 변수를 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;rm</td>
+          <td style="text-align: left">컨테이너가 종료되면 자동으로 삭제합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;network</td>
+          <td style="text-align: left">컨테이너가 사용할 네트워크를 지정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;publish, -p</td>
+          <td style="text-align: left">호스트와 컨테이너 간의 포트 매핑을 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;volume, -v</td>
+          <td style="text-align: left">호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2101,74 +2680,74 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker network create <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> NETWORK
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>옵션</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d</td>
-<td>네트워크 드라이버 지정 (기본값: bridge)</td>
-</tr>
-<tr>
-<td>&ndash;subnet</td>
-<td>네트워크의 서브넷 설정</td>
-</tr>
-<tr>
-<td>&ndash;gateway</td>
-<td>네트워크의 게이트웨이 IP 설정</td>
-</tr>
-<tr>
-<td>&ndash;ip-range</td>
-<td>네트워크의 IP 범위 설정</td>
-</tr>
-<tr>
-<td>&ndash;attachable</td>
-<td>기존 네트워크에 컨테이너 연결 허용</td>
-</tr>
-<tr>
-<td>&ndash;internal</td>
-<td>외부에서의 네트워크 접근 제한</td>
-</tr>
-<tr>
-<td>&ndash;label</td>
-<td>네트워크에 메타데이터 설정</td>
-</tr>
-<tr>
-<td>&ndash;opt</td>
-<td>드라이버별 옵션 설정</td>
-</tr>
-<tr>
-<td>&ndash;ipv6</td>
-<td>IPv6 지원 활성화</td>
-</tr>
-<tr>
-<td>&ndash;ipam-driver</td>
-<td>IP 주소 관리 드라이버 지정</td>
-</tr>
-<tr>
-<td>&ndash;ipam-opt</td>
-<td>IP 주소 관리 옵션 설정</td>
-</tr>
-<tr>
-<td>&ndash;attachable</td>
-<td>기존 네트워크에 컨테이너 연결 허용</td>
-</tr>
-<tr>
-<td>&ndash;internal</td>
-<td>외부에서의 네트워크 접근 제한</td>
-</tr>
-<tr>
-<td>&ndash;ingress</td>
-<td>인그레스 네트워크 생성</td>
-</tr>
-<tr>
-<td>&ndash;ingress-opt</td>
-<td>인그레스 옵션 설정</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">옵션</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-d</td>
+          <td style="text-align: left">네트워크 드라이버 지정 (기본값: bridge)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;subnet</td>
+          <td style="text-align: left">네트워크의 서브넷 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;gateway</td>
+          <td style="text-align: left">네트워크의 게이트웨이 IP 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;ip-range</td>
+          <td style="text-align: left">네트워크의 IP 범위 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;attachable</td>
+          <td style="text-align: left">기존 네트워크에 컨테이너 연결 허용</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;internal</td>
+          <td style="text-align: left">외부에서의 네트워크 접근 제한</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;label</td>
+          <td style="text-align: left">네트워크에 메타데이터 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;opt</td>
+          <td style="text-align: left">드라이버별 옵션 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;ipv6</td>
+          <td style="text-align: left">IPv6 지원 활성화</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;ipam-driver</td>
+          <td style="text-align: left">IP 주소 관리 드라이버 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;ipam-opt</td>
+          <td style="text-align: left">IP 주소 관리 옵션 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;attachable</td>
+          <td style="text-align: left">기존 네트워크에 컨테이너 연결 허용</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;internal</td>
+          <td style="text-align: left">외부에서의 네트워크 접근 제한</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;ingress</td>
+          <td style="text-align: left">인그레스 네트워크 생성</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;ingress-opt</td>
+          <td style="text-align: left">인그레스 옵션 설정</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2178,78 +2757,78 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker volume create <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> STORAGE
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>옵션</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&ndash;storage-driver</td>
-<td>사용할 스토리지 드라이버 설정</td>
-</tr>
-<tr>
-<td>&ndash;volume-driver</td>
-<td>사용할 볼륨 드라이버 설정</td>
-</tr>
-<tr>
-<td>&ndash;add-registry</td>
-<td>이미지를 가져올 도커 레지스트리 추가</td>
-</tr>
-<tr>
-<td>&ndash;disable-content-trust</td>
-<td>이미지에 대한 콘텐츠 신뢰 기능 비활성화</td>
-</tr>
-<tr>
-<td>&ndash;icc</td>
-<td>컨테이너 간 통신 허용 여부 설정</td>
-</tr>
-<tr>
-<td>&ndash;live-restore</td>
-<td>도커 데몬 재시작 시 컨테이너 자동 복구 설정</td>
-</tr>
-<tr>
-<td>&ndash;log-driver</td>
-<td>로깅 드라이버 설정</td>
-</tr>
-<tr>
-<td>&ndash;log-level</td>
-<td>로깅 레벨 설정</td>
-</tr>
-<tr>
-<td>&ndash;storage-opt</td>
-<td>스토리지 드라이버 옵션 설정</td>
-</tr>
-<tr>
-<td>&ndash;selinux-enabled</td>
-<td>SELinux 지원 여부 설정</td>
-</tr>
-<tr>
-<td>&ndash;storage-opt</td>
-<td>스토리지 드라이버 옵션 설정</td>
-</tr>
-<tr>
-<td>&ndash;tls</td>
-<td>TLS 보안 연결 설정</td>
-</tr>
-<tr>
-<td>&ndash;tlscacert</td>
-<td>TLS CA 인증서 파일 경로 설정</td>
-</tr>
-<tr>
-<td>&ndash;tlscert</td>
-<td>TLS 인증서 파일 경로 설정</td>
-</tr>
-<tr>
-<td>&ndash;tlskey</td>
-<td>TLS 키 파일 경로 설정</td>
-</tr>
-<tr>
-<td>&ndash;tlsverify</td>
-<td>TLS 연결 검증 설정</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">옵션</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">&ndash;storage-driver</td>
+          <td style="text-align: left">사용할 스토리지 드라이버 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;volume-driver</td>
+          <td style="text-align: left">사용할 볼륨 드라이버 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;add-registry</td>
+          <td style="text-align: left">이미지를 가져올 도커 레지스트리 추가</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;disable-content-trust</td>
+          <td style="text-align: left">이미지에 대한 콘텐츠 신뢰 기능 비활성화</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;icc</td>
+          <td style="text-align: left">컨테이너 간 통신 허용 여부 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;live-restore</td>
+          <td style="text-align: left">도커 데몬 재시작 시 컨테이너 자동 복구 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;log-driver</td>
+          <td style="text-align: left">로깅 드라이버 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;log-level</td>
+          <td style="text-align: left">로깅 레벨 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;storage-opt</td>
+          <td style="text-align: left">스토리지 드라이버 옵션 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;selinux-enabled</td>
+          <td style="text-align: left">SELinux 지원 여부 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;storage-opt</td>
+          <td style="text-align: left">스토리지 드라이버 옵션 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;tls</td>
+          <td style="text-align: left">TLS 보안 연결 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;tlscacert</td>
+          <td style="text-align: left">TLS CA 인증서 파일 경로 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;tlscert</td>
+          <td style="text-align: left">TLS 인증서 파일 경로 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;tlskey</td>
+          <td style="text-align: left">TLS 키 파일 경로 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;tlsverify</td>
+          <td style="text-align: left">TLS 연결 검증 설정</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2259,54 +2838,54 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker start <span style="color:#f92672">[</span>OPTION<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d, &ndash;detach</td>
-<td>백그라운드에서 실행합니다.</td>
-</tr>
-<tr>
-<td>-i, &ndash;interactive</td>
-<td>상호적으로 실행하며, 표준 입력을 유지합니다.</td>
-</tr>
-<tr>
-<td>-t, &ndash;tty</td>
-<td>할당된 tty를 사용하여 실행합니다.</td>
-</tr>
-<tr>
-<td>&ndash;name</td>
-<td>컨테이너에 이름을 할당합니다.</td>
-</tr>
-<tr>
-<td>-e, &ndash;env</td>
-<td>컨테이너 내에서 사용할 환경 변수를 설정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;rm</td>
-<td>컨테이너가 종료되면 자동으로 삭제합니다.</td>
-</tr>
-<tr>
-<td>&ndash;network</td>
-<td>컨테이너가 사용할 네트워크를 지정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;publish, -p</td>
-<td>호스트와 컨테이너 간의 포트 매핑을 설정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;volume, -v</td>
-<td>호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-d, &ndash;detach</td>
+          <td style="text-align: left">백그라운드에서 실행합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-i, &ndash;interactive</td>
+          <td style="text-align: left">상호적으로 실행하며, 표준 입력을 유지합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-t, &ndash;tty</td>
+          <td style="text-align: left">할당된 tty를 사용하여 실행합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;name</td>
+          <td style="text-align: left">컨테이너에 이름을 할당합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-e, &ndash;env</td>
+          <td style="text-align: left">컨테이너 내에서 사용할 환경 변수를 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;rm</td>
+          <td style="text-align: left">컨테이너가 종료되면 자동으로 삭제합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;network</td>
+          <td style="text-align: left">컨테이너가 사용할 네트워크를 지정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;publish, -p</td>
+          <td style="text-align: left">호스트와 컨테이너 간의 포트 매핑을 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;volume, -v</td>
+          <td style="text-align: left">호스트와 컨테이너 간의 볼륨 매핑을 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2316,46 +2895,46 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker ps <span style="color:#f92672">[</span>OPTION<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a, &ndash;all</td>
-<td>모든 컨테이너를 출력합니다. (종료된 컨테이너 포함)</td>
-</tr>
-<tr>
-<td>-q, &ndash;quiet</td>
-<td>컨테이너 ID만 출력합니다.</td>
-</tr>
-<tr>
-<td>&ndash;no-trunc</td>
-<td>출력을 자르지 않고 전체 정보를 표시합니다.</td>
-</tr>
-<tr>
-<td>-n, &ndash;last n</td>
-<td>최근 n개의 컨테이너만 표시합니다.</td>
-</tr>
-<tr>
-<td>-s, &ndash;size</td>
-<td>각 컨테이너의 크기 정보를 표시합니다.</td>
-</tr>
-<tr>
-<td>&ndash;format</td>
-<td>사용자 지정 포맷으로 출력합니다.</td>
-</tr>
-<tr>
-<td>&ndash;filter</td>
-<td>필터를 적용하여 특정 조건을 만족하는 컨테이너만 표시합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-a, &ndash;all</td>
+          <td style="text-align: left">모든 컨테이너를 출력합니다. (종료된 컨테이너 포함)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-q, &ndash;quiet</td>
+          <td style="text-align: left">컨테이너 ID만 출력합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;no-trunc</td>
+          <td style="text-align: left">출력을 자르지 않고 전체 정보를 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-n, &ndash;last n</td>
+          <td style="text-align: left">최근 n개의 컨테이너만 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-s, &ndash;size</td>
+          <td style="text-align: left">각 컨테이너의 크기 정보를 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;format</td>
+          <td style="text-align: left">사용자 지정 포맷으로 출력합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;filter</td>
+          <td style="text-align: left">필터를 적용하여 특정 조건을 만족하는 컨테이너만 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2365,22 +2944,22 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker stop <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> CONTAINER <span style="color:#f92672">[</span>CONTAINER...<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-t, &ndash;time</td>
-<td>정지 프로세스에 대한 타임아웃(초)을 설정합니다. 기본값은 10초입니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-t, &ndash;time</td>
+          <td style="text-align: left">정지 프로세스에 대한 타임아웃(초)을 설정합니다. 기본값은 10초입니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2390,30 +2969,30 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker rm <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> CONTAINER <span style="color:#f92672">[</span>CONTAINER...<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-f, &ndash;force</td>
-<td>실행 중인 컨테이너를 강제로 중지하고 제거합니다.</td>
-</tr>
-<tr>
-<td>-v, &ndash;volumes</td>
-<td>컨테이너와 관련된 볼륨을 함께 제거합니다.</td>
-</tr>
-<tr>
-<td>&ndash;link</td>
-<td>컨테이너를 다른 컨테이너에 연결한 경우 해당 연결을 제거합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-f, &ndash;force</td>
+          <td style="text-align: left">실행 중인 컨테이너를 강제로 중지하고 제거합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-v, &ndash;volumes</td>
+          <td style="text-align: left">컨테이너와 관련된 볼륨을 함께 제거합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;link</td>
+          <td style="text-align: left">컨테이너를 다른 컨테이너에 연결한 경우 해당 연결을 제거합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2423,38 +3002,38 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker images <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>REPOSITORY<span style="color:#f92672">[</span>:TAG<span style="color:#f92672">]]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a, &ndash;all</td>
-<td>모든 이미지를 표시합니다.</td>
-</tr>
-<tr>
-<td>&ndash;digests</td>
-<td>각 이미지의 다이제스트 정보를 표시합니다.</td>
-</tr>
-<tr>
-<td>&ndash;format</td>
-<td>사용자 지정 포맷으로 출력합니다.</td>
-</tr>
-<tr>
-<td>&ndash;no-trunc</td>
-<td>출력을 자르지 않고 전체 정보를 표시합니다.</td>
-</tr>
-<tr>
-<td>-q, &ndash;quiet</td>
-<td>이미지 ID만 출력합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-a, &ndash;all</td>
+          <td style="text-align: left">모든 이미지를 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;digests</td>
+          <td style="text-align: left">각 이미지의 다이제스트 정보를 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;format</td>
+          <td style="text-align: left">사용자 지정 포맷으로 출력합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;no-trunc</td>
+          <td style="text-align: left">출력을 자르지 않고 전체 정보를 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-q, &ndash;quiet</td>
+          <td style="text-align: left">이미지 ID만 출력합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2464,26 +3043,26 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker pull <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> NAME<span style="color:#f92672">[</span>:TAG|@DIGEST<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a, &ndash;all-tags</td>
-<td>이미지의 모든 태그를 가져옵니다.</td>
-</tr>
-<tr>
-<td>&ndash;disable-content-trust</td>
-<td>이미지의 내용 신뢰 기능을 비활성화합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-a, &ndash;all-tags</td>
+          <td style="text-align: left">이미지의 모든 태그를 가져옵니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;disable-content-trust</td>
+          <td style="text-align: left">이미지의 내용 신뢰 기능을 비활성화합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2500,42 +3079,42 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker exec <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> CONTAINER COMMAND <span style="color:#f92672">[</span>ARG...<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d, &ndash;detach</td>
-<td>백그라운드에서 실행합니다.</td>
-</tr>
-<tr>
-<td>-i, &ndash;interactive</td>
-<td>상호적으로 실행하며, 표준 입력을 유지합니다.</td>
-</tr>
-<tr>
-<td>&ndash;env</td>
-<td>컨테이너 내에서 사용할 환경 변수를 설정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;user</td>
-<td>명령을 실행할 사용자 또는 UID를 지정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;workdir</td>
-<td>명령을 실행할 작업 디렉토리를 지정합니다.</td>
-</tr>
-<tr>
-<td>&ndash;tty</td>
-<td>할당된 tty를 사용하여 실행합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-d, &ndash;detach</td>
+          <td style="text-align: left">백그라운드에서 실행합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-i, &ndash;interactive</td>
+          <td style="text-align: left">상호적으로 실행하며, 표준 입력을 유지합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;env</td>
+          <td style="text-align: left">컨테이너 내에서 사용할 환경 변수를 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;user</td>
+          <td style="text-align: left">명령을 실행할 사용자 또는 UID를 지정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;workdir</td>
+          <td style="text-align: left">명령을 실행할 작업 디렉토리를 지정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;tty</td>
+          <td style="text-align: left">할당된 tty를 사용하여 실행합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2545,42 +3124,42 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker logs <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> CONTAINER
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&ndash;details</td>
-<td>로그 항목의 추가 세부 정보를 표시합니다.</td>
-</tr>
-<tr>
-<td>-f, &ndash;follow</td>
-<td>실시간으로 로그를 출력하며, 계속해서 갱신됩니다.</td>
-</tr>
-<tr>
-<td>&ndash;since</td>
-<td>특정 시간 이후의 로그만 표시합니다.</td>
-</tr>
-<tr>
-<td>&ndash;tail</td>
-<td>지정된 개수의 최근 로그 항목만 표시합니다.</td>
-</tr>
-<tr>
-<td>-t, &ndash;timestamps</td>
-<td>로그 항목에 타임스탬프를 표시합니다.</td>
-</tr>
-<tr>
-<td>&ndash;until</td>
-<td>특정 시간 이전의 로그만 표시합니다.</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말을 표시합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">&ndash;details</td>
+          <td style="text-align: left">로그 항목의 추가 세부 정보를 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-f, &ndash;follow</td>
+          <td style="text-align: left">실시간으로 로그를 출력하며, 계속해서 갱신됩니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;since</td>
+          <td style="text-align: left">특정 시간 이후의 로그만 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;tail</td>
+          <td style="text-align: left">지정된 개수의 최근 로그 항목만 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-t, &ndash;timestamps</td>
+          <td style="text-align: left">로그 항목에 타임스탬프를 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;until</td>
+          <td style="text-align: left">특정 시간 이전의 로그만 표시합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말을 표시합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2590,30 +3169,30 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker commit <span style="color:#f92672">[</span>OPTION<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>CONTAINER<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>NAME<span style="color:#f92672">]</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>OPTION</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a, &ndash;author</td>
-<td>커미트한 사용자를 지정합니다.</td>
-</tr>
-<tr>
-<td>-c, &ndash;change</td>
-<td>이미지 생성 시 Dockerfile 형식으로 변경을 추가합니다.</td>
-</tr>
-<tr>
-<td>-m, &ndash;message</td>
-<td>커밋에 대한 설명 또는 메시지를 추가합니다.</td>
-</tr>
-<tr>
-<td>-p, &ndash;pause</td>
-<td>커밋 시 컨테이너를 일시 중지합니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OPTION</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-a, &ndash;author</td>
+          <td style="text-align: left">커미트한 사용자를 지정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-c, &ndash;change</td>
+          <td style="text-align: left">이미지 생성 시 Dockerfile 형식으로 변경을 추가합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-m, &ndash;message</td>
+          <td style="text-align: left">커밋에 대한 설명 또는 메시지를 추가합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-p, &ndash;pause</td>
+          <td style="text-align: left">커밋 시 컨테이너를 일시 중지합니다.</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/></article>
@@ -2623,15 +3202,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/be102622b96847eeb4875599705eccb99cade2a2" title='Last modified by mungOps | January 22, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 22, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

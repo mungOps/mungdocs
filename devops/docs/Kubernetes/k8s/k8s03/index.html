@@ -3,23 +3,75 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes # Workload&amp; Scheduling # # Pod # Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 &ldquo;로컬호스트&rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
+<meta name="description" content="
+  Kubernetes
+  #
+
+
+
+  Workload&amp; Scheduling
+  #
+
+
+  
+  #
+
+
+  
+  Pod
+  #
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+Pod란 컨테이너를 표현하는  kubernetstis의 최소 단위 
+
+
+파드는 특유한  &ldquo;로컬호스트&rdquo; 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
+
+
 파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
-즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행
-POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용">
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/">
   <meta property="og:site_name" content="Mungs Book">
-  <meta property="og:title" content="3. Workload&amp; Scheduling">
-  <meta property="og:description" content="Kubernetes # Workload&amp; Scheduling # # Pod # Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 “로컬호스트” 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
+  <meta property="og:title" content="3. Workload& Scheduling">
+  <meta property="og:description" content=" Kubernetes # Workload&amp; Scheduling # # Pod # Pod란 컨테이너를 표현하는 kubernetstis의 최소 단위 파드는 특유한 “로컬호스트” 애플리케이션 모형 을 만들어. 상대적으로 밀접하게 결합되어진 상이한 애플리케이션 컨테이너들을 수용하는 역할을 수행
 파드 내 컨테이너는 IP 주소, 그리고 포트 스페이스를 공유 및 스케쥴링 되며 동일 노드 상의 컨텍스트를 공유하면서 동작
-즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행
-POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시 Replicaset, Deployment 사용">
+즉, POD는 다양한 목적에 맞게 App을 배포하고 관리 하는 역할을 수행">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-02-22T18:05:40+09:00">
 <title>3. Workload&amp; Scheduling | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -28,9 +80,6 @@ POD의 지속적인 배포, 오케스트레이션 역할 수행이 필요할 시
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -61,7 +110,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -92,14 +141,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2369,15 +2410,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/fd51269c1bdba185e98961252b1a552a2da86aad" title='Last modified by mungOps | February 22, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 22, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

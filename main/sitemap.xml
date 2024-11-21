@@ -3,7 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://mungdocs.kro.kr/docs/check/</loc>
-    <lastmod>2023-11-27T21:32:06+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/categories/</loc>
     <xhtml:link
@@ -33,22 +32,11 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="main"
                 href="http://mungdocs.kro.kr/categories/"
                 />
   </url><url>
     <loc>http://mungdocs.kro.kr/docs/</loc>
-    <lastmod>2023-11-27T21:32:06+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="devops"
@@ -66,22 +54,11 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/docs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/docs/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="main"
                 href="http://mungdocs.kro.kr/docs/"
                 />
   </url><url>
     <loc>http://mungdocs.kro.kr/</loc>
-    <lastmod>2024-05-22T19:13:46+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="devops"
@@ -106,16 +83,6 @@
                 rel="alternate"
                 hreflang="network"
                 href="http://mungdocs.kro.kr/network/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -148,16 +115,6 @@
                 rel="alternate"
                 hreflang="network"
                 href="http://mungdocs.kro.kr/network/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/tags/"
                 />
     <xhtml:link
                 rel="alternate"

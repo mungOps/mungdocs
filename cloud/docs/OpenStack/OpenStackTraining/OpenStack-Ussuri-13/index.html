@@ -3,17 +3,58 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="OpenStack Ussuri : Designate # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi Trove API | | Designate Services | ----------------------- ----------------------- # OpenStack Ussuri : Designate # # Designate는 OpenStack 서비스에서 DNS 서비스를 배포, 관리를 담당합니다.">
+<meta name="description" content="
+  OpenStack Ussuri : Designate
+  #
+
+
+  
+  #
+
+ -----------------------         -----------------------        -----------------------
+|  [ Controller Node ]  |       |    [ Compute Node ]   |      |   [ Network Node ]    | 
+|                       |       |        Libvirt        |      |     Open vSwitch      |
+| MariaDB    RabbitMQ   |       |      Nova compute     |      |       L2 Agent        |
+| Memcached  Keystone   |       |      Open vSwitch     |      |       L3 Agent        |
+| httpd      Cinder API |       |       L2 Agent        |      |     metadata agent    |
+| Nova-API   Compute    |       |      Cinder-LVM       |      |      Swift-proxy      |
+| L2 agent   L3 agent   |       |          NFS          |      |       Heat API        |
+| metadata agent        |        -----------------------       |        API-CFN        |
+| Neutron Server        |                                      |      Heat Engine      |
+| Gnocchi    Trove API  |                                      |   Designate Services  |
+ -----------------------                                        -----------------------
+
+  
+  #
+
+
+  OpenStack Ussuri : Designate
+  #
+
+
+  
+  #
+
+
+Designate는 OpenStack 서비스에서 DNS 서비스를 배포, 관리를 담당합니다.
+Desigante는 Network node의 설치를 진행하고, controller node의 API를 이용하겠습니다.
+Designate의 보다 자세한 설명은 
+  Designate를 참조해주세요.
+
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-13/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="OpenStack Ussuri : Designate">
-  <meta property="og:description" content="OpenStack Ussuri : Designate # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi Trove API | | Designate Services | ----------------------- ----------------------- # OpenStack Ussuri : Designate # # Designate는 OpenStack 서비스에서 DNS 서비스를 배포, 관리를 담당합니다.">
+  <meta property="og:description" content=" OpenStack Ussuri : Designate # # ----------------------- ----------------------- ----------------------- | [ Controller Node ] | | [ Compute Node ] | | [ Network Node ] | | | | Libvirt | | Open vSwitch | | MariaDB RabbitMQ | | Nova compute | | L2 Agent | | Memcached Keystone | | Open vSwitch | | L3 Agent | | httpd Cinder API | | L2 Agent | | metadata agent | | Nova-API Compute | | Cinder-LVM | | Swift-proxy | | L2 agent L3 agent | | NFS | | Heat API | | metadata agent | ----------------------- | API-CFN | | Neutron Server | | Heat Engine | | Gnocchi Trove API | | Designate Services | ----------------------- ----------------------- # OpenStack Ussuri : Designate # # Designate는 OpenStack 서비스에서 DNS 서비스를 배포, 관리를 담당합니다. Desigante는 Network node의 설치를 진행하고, controller node의 API를 이용하겠습니다. Designate의 보다 자세한 설명은 Designate를 참조해주세요. # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-21T11:31:26+09:00">
 <title>OpenStack Ussuri : Designate | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +63,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +93,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +124,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2246,15 +2276,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/605afe3de5159fb1bd376c0eb1ad21babbba213e" title='Last modified by mungOps | December 21, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 21, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

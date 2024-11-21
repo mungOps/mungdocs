@@ -3,23 +3,56 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="3장 Amazon Simple Storage Service와 Amazon Glacier Storage Service # # 3장의 목표 # 복원력을 갖춘 아키텍처 설계
-안정적이고/ 복원력을 갖춘 스로티리지를 선택한다. 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. 어떻게 고가용성 및 내결함성을 갖춘 아키텍처를 설계할지 결정한다. 성능이 뛰어난 아키텍처 정의
-성능이 뛰어난 스토리지 및 데이터베이스를 선택한다. 탄력성과 확장성을 갖춘 솔루션을 설계한다. 안전한 애플리케이션 및 아키텍처 설명
-어떻게 애플리케이션 티어를 보호할지 결정한다. 어떻게 데이터를 보호할지 결정한다. 비용에 최적화된 아키텍처 설게">
+<meta name="description" content="
+  3장 Amazon Simple Storage Service와 Amazon Glacier Storage Service
+  #
+
+
+
+  
+  #
+
+
+  3장의 목표
+  #
+
+
+
+복원력을 갖춘 아키텍처 설계
+
+안정적이고/ 복원력을 갖춘 스로티리지를 선택한다.
+어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다.
+어떻게 고가용성 및 내결함성을 갖춘 아키텍처를 설계할지 결정한다.
+
+
+
+성능이 뛰어난 아키텍처 정의
+
+성능이 뛰어난 스토리지 및 데이터베이스를 선택한다.
+탄력성과 확장성을 갖춘 솔루션을 설계한다.
+
+
+
+안전한 애플리케이션 및 아키텍처 설명
+
+어떻게 애플리케이션 티어를 보호할지 결정한다.
+어떻게 데이터를 보호할지 결정한다.
+
+
+
+비용에 최적화된 아키텍처 설게">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSSAA/SAA-3/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="3장 S3와 Glacier">
-  <meta property="og:description" content="3장 Amazon Simple Storage Service와 Amazon Glacier Storage Service # # 3장의 목표 # 복원력을 갖춘 아키텍처 설계
+  <meta property="og:description" content=" 3장 Amazon Simple Storage Service와 Amazon Glacier Storage Service # # 3장의 목표 # 복원력을 갖춘 아키텍처 설계
 안정적이고/ 복원력을 갖춘 스로티리지를 선택한다. 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. 어떻게 고가용성 및 내결함성을 갖춘 아키텍처를 설계할지 결정한다. 성능이 뛰어난 아키텍처 정의
 성능이 뛰어난 스토리지 및 데이터베이스를 선택한다. 탄력성과 확장성을 갖춘 솔루션을 설계한다. 안전한 애플리케이션 및 아키텍처 설명
 어떻게 애플리케이션 티어를 보호할지 결정한다. 어떻게 데이터를 보호할지 결정한다. 비용에 최적화된 아키텍처 설게">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>3장 S3와 Glacier | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -28,9 +61,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -61,7 +91,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -92,14 +122,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2123,25 +2145,25 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>차이점</th>
-<th>예시</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>블록 스토리지</td>
-<td>물리적 디스크를 개별 블록으로 나눠 데이터를 저장하고 파일 시스템으로 관리</td>
-<td>Window NTFS, Linux Btrfs, ext 등</td>
-</tr>
-<tr>
-<td>객체 스토리지</td>
-<td>구조화되지 않은 평면의 저장소에 데이터를 저장하여 무제한의 스토리지를 구현가능</td>
-<td>S3, swift 등</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">차이점</th>
+          <th style="text-align: left">예시</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">블록 스토리지</td>
+          <td style="text-align: left">물리적 디스크를 개별 블록으로 나눠 데이터를 저장하고 파일 시스템으로 관리</td>
+          <td style="text-align: left">Window NTFS, Linux Btrfs, ext 등</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">객체 스토리지</td>
+          <td style="text-align: left">구조화되지 않은 평면의 저장소에 데이터를 저장하여 무제한의 스토리지를 구현가능</td>
+          <td style="text-align: left">S3, swift 등</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>S3에 파일을 쓸 때는 2KB 메타 데이터가 함께 저장되며, 이 메타 데이터는 세부 정보를 구성하는 키로 만들어지며, 데이터 사용 권한과 파일 시스템처럼 보여지는 중첩 버킷 내 위치 정보 등이 저장된다.</strong></li>
@@ -2304,26 +2326,26 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>관련용어 설명</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>키워드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>내구성</td>
-<td>데이터가 손실되지 않을 확률</td>
-</tr>
-<tr>
-<td>가용성</td>
-<td>객체가 사용 가능한 기간</td>
-</tr>
-<tr>
-<td>지출가능 비용</td>
-<td>사용시 지불해야하는 가격</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">키워드</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">내구성</td>
+          <td style="text-align: left">데이터가 손실되지 않을 확률</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">가용성</td>
+          <td style="text-align: left">객체가 사용 가능한 기간</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">지출가능 비용</td>
+          <td style="text-align: left">사용시 지불해야하는 가격</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-17">
   
@@ -2360,31 +2382,31 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>S3 스토리지 안정성 보장 표준</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th> </th>
-<th>S3 Standard</th>
-<th>S3 Standard-IA</th>
-<th>S3 One Zone-IA</th>
-<th>RRS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>내구성보장</td>
-<td>99.999999999%</td>
-<td>99.999999999%</td>
-<td>99.9999999999%</td>
-<td>99.99%</td>
-</tr>
-<tr>
-<td>내결함성을 위한 동시 복제 시설 수</td>
-<td>2</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"> </th>
+          <th style="text-align: left">S3 Standard</th>
+          <th style="text-align: left">S3 Standard-IA</th>
+          <th style="text-align: left">S3 One Zone-IA</th>
+          <th style="text-align: left">RRS</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">내구성보장</td>
+          <td style="text-align: left">99.999999999%</td>
+          <td style="text-align: left">99.999999999%</td>
+          <td style="text-align: left">99.9999999999%</td>
+          <td style="text-align: left">99.99%</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">내결함성을 위한 동시 복제 시설 수</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-20">
   
@@ -2420,24 +2442,24 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>S3 스토리지 표준 가용성 보장</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th> </th>
-<th>S3 Standard</th>
-<th>S3 Standard-IA</th>
-<th>S3 One Zone-IA</th>
-<th>RRS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>가용성 보장</td>
-<td>99.99%</td>
-<td>99.9%</td>
-<td>99.5%</td>
-<td>99.99%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"> </th>
+          <th style="text-align: left">S3 Standard</th>
+          <th style="text-align: left">S3 Standard-IA</th>
+          <th style="text-align: left">S3 One Zone-IA</th>
+          <th style="text-align: left">RRS</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">가용성 보장</td>
+          <td style="text-align: left">99.99%</td>
+          <td style="text-align: left">99.9%</td>
+          <td style="text-align: left">99.5%</td>
+          <td style="text-align: left">99.99%</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-24">
   
@@ -2647,40 +2669,40 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>서울 리전 스토리지 요금 예시</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>클래스</th>
-<th>스토리지 용량</th>
-<th>요금/GB/월</th>
-<th>비용/ 월</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Standard</td>
-<td>20G</td>
-<td>$0.018</td>
-<td>$0.36</td>
-</tr>
-<tr>
-<td>Standard</td>
-<td>65G</td>
-<td>$0.0144</td>
-<td>$0.938</td>
-</tr>
-<tr>
-<td>Standard</td>
-<td>520G</td>
-<td>$0.005</td>
-<td>$2.6</td>
-</tr>
-<tr>
-<td>합계</td>
-<td> </td>
-<td> </td>
-<td>$3.398</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">클래스</th>
+          <th style="text-align: left">스토리지 용량</th>
+          <th style="text-align: left">요금/GB/월</th>
+          <th style="text-align: left">비용/ 월</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Standard</td>
+          <td style="text-align: left">20G</td>
+          <td style="text-align: left">$0.018</td>
+          <td style="text-align: left">$0.36</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Standard</td>
+          <td style="text-align: left">65G</td>
+          <td style="text-align: left">$0.0144</td>
+          <td style="text-align: left">$0.938</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Standard</td>
+          <td style="text-align: left">520G</td>
+          <td style="text-align: left">$0.005</td>
+          <td style="text-align: left">$2.6</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">합계</td>
+          <td style="text-align: left"> </td>
+          <td style="text-align: left"> </td>
+          <td style="text-align: left">$3.398</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>이 외에도 트래픽 관련 요금이 부과되며 기타 모든 요금에 대한 정보는 
@@ -2911,15 +2933,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

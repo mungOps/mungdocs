@@ -3,7 +3,205 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" OpenStack Ussuri : Overview # # OpenStack Ussuri : Overview # # # OpenStack Ussuri 설치는 위의 그림과 표에 맞춰 설치가 진행됩니다. minimal 기본 설치는 keystone, glance, nova, neutron, cinder, horizon이며 여기서는 가능한 모든 서비스를 설치하도록 하겠습니다. # OS HOST NAME CPU/thead RAM DISK Network Interface-1 Network Interface-2 CentOS8 controller 4/8 6144 100G Nat host1 CentOS8 network 2/4 2048 40G Nat host1 CentOS8 compute 4/8 4096 40G host1 CentOS8 storage1 1/2 1024 50G host1 CentOS8 storage2 1/2 1024 50G host1 CentOS8 storage3 1/2 1024 50G host1 # Service Code Name Description Identity Service Keystone User Management Compute Service Nova Virtual Machine Management Image Service Glance Manages Virtual image like kernel image or disk image Dashboard Horizon Provides GUI console via Web browser Object Storage Swift Provides Cloud Storage Block Storage Cinder Storage Management for Virtual Machine Network Service Neutron Virtual Networking Management Orchestration Service Heat Provides Orchestration function for Virtual Machine Metering Service Ceilometer Provides the function of Usage measurement for accounting Database Service Trove Database resource Management Data Processing Service Sahara Provides Data Processing function Bare Metal Provisioning Ironic Provides Bare Metal Provisioning function Messaging Service Zaqar Provides Messaging Service function Shared File System Manila Provides File Sharing Service DNS Service Designate Provides DNS Server Service Key Manager Service Barbican Provides Key Management Service # ">
+<meta name="description" content="
+  OpenStack Ussuri : Overview
+  #
+
+
+  
+  #
+
+
+  OpenStack Ussuri : Overview
+  #
+
+
+  
+  #
+
+
+  
+
+  
+  #
+
+
+OpenStack Ussuri 설치는 위의 그림과 표에 맞춰 설치가 진행됩니다.
+minimal 기본 설치는 keystone, glance, nova, neutron, cinder, horizon이며 여기서는 가능한 모든 서비스를 설치하도록 하겠습니다.
+
+
+  
+  #
+
+
+  
+      
+          OS
+          HOST NAME
+          CPU/thead
+          RAM
+          DISK
+          Network Interface-1
+          Network Interface-2
+      
+  
+  
+      
+          CentOS8
+          controller
+          4/8
+          6144
+          100G
+          Nat
+          host1
+      
+      
+          CentOS8
+          network
+          2/4
+          2048
+          40G
+          Nat
+          host1
+      
+      
+          CentOS8
+          compute
+          4/8
+          4096
+          40G
+           
+          host1
+      
+      
+          CentOS8
+          storage1
+          1/2
+          1024
+          50G
+           
+          host1
+      
+      
+          CentOS8
+          storage2
+          1/2
+          1024
+          50G
+           
+          host1
+      
+      
+          CentOS8
+          storage3
+          1/2
+          1024
+          50G
+           
+          host1
+      
+  
+
+
+  
+  #
+
+
+  
+      
+          Service
+          Code Name
+          Description
+      
+  
+  
+      
+          Identity Service
+          Keystone
+          User Management
+      
+      
+          Compute Service
+          Nova
+          Virtual Machine Management
+      
+      
+          Image Service
+          Glance
+          Manages Virtual image like kernel image or disk image
+      
+      
+          Dashboard
+          Horizon
+          Provides GUI console via Web browser
+      
+      
+          Object Storage
+          Swift
+          Provides Cloud Storage
+      
+      
+          Block Storage
+          Cinder
+          Storage Management for Virtual Machine
+      
+      
+          Network Service
+          Neutron
+          Virtual Networking Management
+      
+      
+          Orchestration Service
+          Heat
+          Provides Orchestration function for Virtual Machine
+      
+      
+          Metering Service
+          Ceilometer
+          Provides the function of Usage measurement for accounting
+      
+      
+          Database Service
+          Trove
+          Database resource Management
+      
+      
+          Data Processing Service
+          Sahara
+          Provides Data Processing function
+      
+      
+          Bare Metal Provisioning
+          Ironic
+          Provides Bare Metal Provisioning function
+      
+      
+          Messaging Service
+          Zaqar
+          Provides Messaging Service function
+      
+      
+          Shared File System
+          Manila
+          Provides File Sharing Service
+      
+      
+          DNS Service
+          Designate
+          Provides DNS Server Service
+      
+      
+          Key Manager Service
+          Barbican
+          Provides Key Management Service
+      
+  
+
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/OpenStack/OpenStackTraining/OpenStack-Ussuri-01/">
@@ -13,7 +211,6 @@
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-21T11:31:26+09:00">
 <title>OpenStack Ussuri : Overview | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +219,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +249,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +280,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -1899,168 +2085,168 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#heading-3">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>OS</th>
-<th>HOST NAME</th>
-<th>CPU/thead</th>
-<th>RAM</th>
-<th>DISK</th>
-<th>Network Interface-1</th>
-<th>Network Interface-2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CentOS8</td>
-<td>controller</td>
-<td>4/8</td>
-<td>6144</td>
-<td>100G</td>
-<td>Nat</td>
-<td>host1</td>
-</tr>
-<tr>
-<td>CentOS8</td>
-<td>network</td>
-<td>2/4</td>
-<td>2048</td>
-<td>40G</td>
-<td>Nat</td>
-<td>host1</td>
-</tr>
-<tr>
-<td>CentOS8</td>
-<td>compute</td>
-<td>4/8</td>
-<td>4096</td>
-<td>40G</td>
-<td> </td>
-<td>host1</td>
-</tr>
-<tr>
-<td>CentOS8</td>
-<td>storage1</td>
-<td>1/2</td>
-<td>1024</td>
-<td>50G</td>
-<td> </td>
-<td>host1</td>
-</tr>
-<tr>
-<td>CentOS8</td>
-<td>storage2</td>
-<td>1/2</td>
-<td>1024</td>
-<td>50G</td>
-<td> </td>
-<td>host1</td>
-</tr>
-<tr>
-<td>CentOS8</td>
-<td>storage3</td>
-<td>1/2</td>
-<td>1024</td>
-<td>50G</td>
-<td> </td>
-<td>host1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OS</th>
+          <th style="text-align: left">HOST NAME</th>
+          <th style="text-align: left">CPU/thead</th>
+          <th style="text-align: left">RAM</th>
+          <th style="text-align: left">DISK</th>
+          <th style="text-align: left">Network Interface-1</th>
+          <th style="text-align: left">Network Interface-2</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CentOS8</td>
+          <td style="text-align: left">controller</td>
+          <td style="text-align: left">4/8</td>
+          <td style="text-align: left">6144</td>
+          <td style="text-align: left">100G</td>
+          <td style="text-align: left">Nat</td>
+          <td style="text-align: left">host1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CentOS8</td>
+          <td style="text-align: left">network</td>
+          <td style="text-align: left">2/4</td>
+          <td style="text-align: left">2048</td>
+          <td style="text-align: left">40G</td>
+          <td style="text-align: left">Nat</td>
+          <td style="text-align: left">host1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CentOS8</td>
+          <td style="text-align: left">compute</td>
+          <td style="text-align: left">4/8</td>
+          <td style="text-align: left">4096</td>
+          <td style="text-align: left">40G</td>
+          <td style="text-align: left"> </td>
+          <td style="text-align: left">host1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CentOS8</td>
+          <td style="text-align: left">storage1</td>
+          <td style="text-align: left">1/2</td>
+          <td style="text-align: left">1024</td>
+          <td style="text-align: left">50G</td>
+          <td style="text-align: left"> </td>
+          <td style="text-align: left">host1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CentOS8</td>
+          <td style="text-align: left">storage2</td>
+          <td style="text-align: left">1/2</td>
+          <td style="text-align: left">1024</td>
+          <td style="text-align: left">50G</td>
+          <td style="text-align: left"> </td>
+          <td style="text-align: left">host1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CentOS8</td>
+          <td style="text-align: left">storage3</td>
+          <td style="text-align: left">1/2</td>
+          <td style="text-align: left">1024</td>
+          <td style="text-align: left">50G</td>
+          <td style="text-align: left"> </td>
+          <td style="text-align: left">host1</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-4">
   
   <a class="anchor" href="#heading-4">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>Service</th>
-<th>Code Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Identity Service</td>
-<td>Keystone</td>
-<td>User Management</td>
-</tr>
-<tr>
-<td>Compute Service</td>
-<td>Nova</td>
-<td>Virtual Machine Management</td>
-</tr>
-<tr>
-<td>Image Service</td>
-<td>Glance</td>
-<td>Manages Virtual image like kernel image or disk image</td>
-</tr>
-<tr>
-<td>Dashboard</td>
-<td>Horizon</td>
-<td>Provides GUI console via Web browser</td>
-</tr>
-<tr>
-<td>Object Storage</td>
-<td>Swift</td>
-<td>Provides Cloud Storage</td>
-</tr>
-<tr>
-<td>Block Storage</td>
-<td>Cinder</td>
-<td>Storage Management for Virtual Machine</td>
-</tr>
-<tr>
-<td>Network Service</td>
-<td>Neutron</td>
-<td>Virtual Networking Management</td>
-</tr>
-<tr>
-<td>Orchestration Service</td>
-<td>Heat</td>
-<td>Provides Orchestration function for Virtual Machine</td>
-</tr>
-<tr>
-<td>Metering Service</td>
-<td>Ceilometer</td>
-<td>Provides the function of Usage measurement for accounting</td>
-</tr>
-<tr>
-<td>Database Service</td>
-<td>Trove</td>
-<td>Database resource Management</td>
-</tr>
-<tr>
-<td>Data Processing Service</td>
-<td>Sahara</td>
-<td>Provides Data Processing function</td>
-</tr>
-<tr>
-<td>Bare Metal Provisioning</td>
-<td>Ironic</td>
-<td>Provides Bare Metal Provisioning function</td>
-</tr>
-<tr>
-<td>Messaging Service</td>
-<td>Zaqar</td>
-<td>Provides Messaging Service function</td>
-</tr>
-<tr>
-<td>Shared File System</td>
-<td>Manila</td>
-<td>Provides File Sharing Service</td>
-</tr>
-<tr>
-<td>DNS Service</td>
-<td>Designate</td>
-<td>Provides DNS Server Service</td>
-</tr>
-<tr>
-<td>Key Manager Service</td>
-<td>Barbican</td>
-<td>Provides Key Management Service</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Service</th>
+          <th style="text-align: left">Code Name</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Identity Service</td>
+          <td style="text-align: left">Keystone</td>
+          <td style="text-align: left">User Management</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Compute Service</td>
+          <td style="text-align: left">Nova</td>
+          <td style="text-align: left">Virtual Machine Management</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Image Service</td>
+          <td style="text-align: left">Glance</td>
+          <td style="text-align: left">Manages Virtual image like kernel image or disk image</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Dashboard</td>
+          <td style="text-align: left">Horizon</td>
+          <td style="text-align: left">Provides GUI console via Web browser</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Object Storage</td>
+          <td style="text-align: left">Swift</td>
+          <td style="text-align: left">Provides Cloud Storage</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Block Storage</td>
+          <td style="text-align: left">Cinder</td>
+          <td style="text-align: left">Storage Management for Virtual Machine</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Network Service</td>
+          <td style="text-align: left">Neutron</td>
+          <td style="text-align: left">Virtual Networking Management</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Orchestration Service</td>
+          <td style="text-align: left">Heat</td>
+          <td style="text-align: left">Provides Orchestration function for Virtual Machine</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Metering Service</td>
+          <td style="text-align: left">Ceilometer</td>
+          <td style="text-align: left">Provides the function of Usage measurement for accounting</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Database Service</td>
+          <td style="text-align: left">Trove</td>
+          <td style="text-align: left">Database resource Management</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Data Processing Service</td>
+          <td style="text-align: left">Sahara</td>
+          <td style="text-align: left">Provides Data Processing function</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Bare Metal Provisioning</td>
+          <td style="text-align: left">Ironic</td>
+          <td style="text-align: left">Provides Bare Metal Provisioning function</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Messaging Service</td>
+          <td style="text-align: left">Zaqar</td>
+          <td style="text-align: left">Provides Messaging Service function</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Shared File System</td>
+          <td style="text-align: left">Manila</td>
+          <td style="text-align: left">Provides File Sharing Service</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DNS Service</td>
+          <td style="text-align: left">Designate</td>
+          <td style="text-align: left">Provides DNS Server Service</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Key Manager Service</td>
+          <td style="text-align: left">Barbican</td>
+          <td style="text-align: left">Provides Key Management Service</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-5">
   
@@ -2074,15 +2260,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/605afe3de5159fb1bd376c0eb1ad21babbba213e" title='Last modified by mungOps | December 21, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 21, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

@@ -3,13 +3,92 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Requirements source # 기초 환경구성 # Role Hostname OS 커널 CPU Mem IP Manager ctrl Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Public 10.1.61.179 / Nat 7.7.7.254 ControlPlan cp0 Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Nat 7.7.7.100 DataPlan node0 Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Nat 7.7.7.110 매우 대충 그렸지만, 넓은 아량으로 이해 부탁드립니다. 😄 진도를 나아가며 점차 추가해나아갈 예정입니다. 기본설정 # NTP 설정 # # NTP를 설정합니다.">
+<meta name="description" content="
+  Requirements source
+  #
+
+
+
+  기초 환경구성
+  #
+
+
+
+    
+
+
+
+  
+      
+          Role
+          Hostname
+          OS
+          커널
+          CPU
+          Mem
+          IP
+      
+  
+  
+      
+          Manager
+          ctrl
+          Ubuntu 24.04.1 LTS
+          Linux 6.8.0-45-generic
+          1
+          2048M
+          Public 10.1.61.179 / Nat 7.7.7.254
+      
+      
+          ControlPlan
+          cp0
+          Ubuntu 24.04.1 LTS
+          Linux 6.8.0-45-generic
+          1
+          2048M
+          Nat 7.7.7.100
+      
+      
+          DataPlan
+          node0
+          Ubuntu 24.04.1 LTS
+          Linux 6.8.0-45-generic
+          1
+          2048M
+          Nat 7.7.7.110
+      
+  
+
+
+
+매우 대충 그렸지만, 넓은 아량으로 이해 부탁드립니다. 😄
+진도를 나아가며 점차 추가해나아갈 예정입니다.
+
+
+
+
+  기본설정
+  #
+
+
+
+
+
+  NTP 설정
+  #
+
+
+# NTP를 설정합니다.
+# NTP 서버가 있으면, 해당 서버로 시간대를 잡아두어도 좋습니다.
+$ timedatectl set-timezone Asia/Seoul
+
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Requirements source">
-  <meta property="og:description" content="Requirements source # 기초 환경구성 # Role Hostname OS 커널 CPU Mem IP Manager ctrl Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Public 10.1.61.179 / Nat 7.7.7.254 ControlPlan cp0 Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Nat 7.7.7.100 DataPlan node0 Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Nat 7.7.7.110 매우 대충 그렸지만, 넓은 아량으로 이해 부탁드립니다. 😄 진도를 나아가며 점차 추가해나아갈 예정입니다. 기본설정 # NTP 설정 # # NTP를 설정합니다.">
+  <meta property="og:description" content=" Requirements source # 기초 환경구성 # Role Hostname OS 커널 CPU Mem IP Manager ctrl Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Public 10.1.61.179 / Nat 7.7.7.254 ControlPlan cp0 Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Nat 7.7.7.100 DataPlan node0 Ubuntu 24.04.1 LTS Linux 6.8.0-45-generic 1 2048M Nat 7.7.7.110 매우 대충 그렸지만, 넓은 아량으로 이해 부탁드립니다. 😄 진도를 나아가며 점차 추가해나아갈 예정입니다. 기본설정 # NTP 설정 # # NTP를 설정합니다. # NTP 서버가 있으면, 해당 서버로 시간대를 잡아두어도 좋습니다. $ timedatectl set-timezone Asia/Seoul ">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="website">
 <title>Requirements source | Mungs Book</title>
@@ -20,9 +99,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <link rel="alternate" type="application/rss+xml" href="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/index.xml" title="Mungs Book" />
 <!--
 Made with Book Theme
@@ -54,7 +130,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -85,14 +161,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2028,46 +2096,46 @@ https://github.com/alex-shpak/hugo-book
 </div>
 <br>
 <table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Hostname</th>
-<th>OS</th>
-<th>커널</th>
-<th>CPU</th>
-<th>Mem</th>
-<th>IP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Manager</td>
-<td>ctrl</td>
-<td>Ubuntu 24.04.1 LTS</td>
-<td>Linux 6.8.0-45-generic</td>
-<td>1</td>
-<td>2048M</td>
-<td>Public 10.1.61.179 / Nat 7.7.7.254</td>
-</tr>
-<tr>
-<td>ControlPlan</td>
-<td>cp0</td>
-<td>Ubuntu 24.04.1 LTS</td>
-<td>Linux 6.8.0-45-generic</td>
-<td>1</td>
-<td>2048M</td>
-<td>Nat 7.7.7.100</td>
-</tr>
-<tr>
-<td>DataPlan</td>
-<td>node0</td>
-<td>Ubuntu 24.04.1 LTS</td>
-<td>Linux 6.8.0-45-generic</td>
-<td>1</td>
-<td>2048M</td>
-<td>Nat 7.7.7.110</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Role</th>
+          <th style="text-align: left">Hostname</th>
+          <th style="text-align: left">OS</th>
+          <th style="text-align: left">커널</th>
+          <th style="text-align: left">CPU</th>
+          <th style="text-align: left">Mem</th>
+          <th style="text-align: left">IP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Manager</td>
+          <td style="text-align: left">ctrl</td>
+          <td style="text-align: left">Ubuntu 24.04.1 LTS</td>
+          <td style="text-align: left">Linux 6.8.0-45-generic</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">2048M</td>
+          <td style="text-align: left">Public 10.1.61.179 / Nat 7.7.7.254</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ControlPlan</td>
+          <td style="text-align: left">cp0</td>
+          <td style="text-align: left">Ubuntu 24.04.1 LTS</td>
+          <td style="text-align: left">Linux 6.8.0-45-generic</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">2048M</td>
+          <td style="text-align: left">Nat 7.7.7.100</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DataPlan</td>
+          <td style="text-align: left">node0</td>
+          <td style="text-align: left">Ubuntu 24.04.1 LTS</td>
+          <td style="text-align: left">Linux 6.8.0-45-generic</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">2048M</td>
+          <td style="text-align: left">Nat 7.7.7.110</td>
+      </tr>
+  </tbody>
 </table>
 <br>
 <ul>
@@ -2100,15 +2168,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/0b272ace877ed883c3996124d874f6a892fb85c2" title='Last modified by mungOps | September 22, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>September 22, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

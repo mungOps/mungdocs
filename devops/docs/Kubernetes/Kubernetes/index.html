@@ -3,13 +3,66 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes Standard Architecture # 해당 섹션에는 2023 표준 아키텍처를 기준으로 필자의 주관을 참조여 구성됩니다. 설치순서 ( 순서는 필자의 주관으로 강제가 아님. ) # 각 컴포넌트 중, 색상으로 표시한 컴포넌트를 기준으로 설치됩니다. 1. Container Runtime # 툴: containerd, Docker 설명: 쿠버네티스가 컨테이너를 실행하는 런타임을 설치합니다. 가이드: 각 노드에 containerd 또는 Docker를 설치합니다. kubelet이 사용할 컨테이너 런타임을 설정합니다. 2. Cluster Provisioning # 툴: kubeadm, KubeSpray, Terraform 설명: 쿠버네티스 클러스터를 생성하고, 노드들을 구성합니다.">
+<meta name="description" content="
+  Kubernetes Standard Architecture
+  #
+
+
+ 
+
+    
+
+
+해당 섹션에는 2023 표준 아키텍처를 기준으로 필자의 주관을 참조여 구성됩니다.
+
+ 
+
+ 
+
+  설치순서 ( 순서는 필자의 주관으로 강제가 아님. )
+  #
+
+
+각 컴포넌트 중,  색상으로 표시한 컴포넌트를 기준으로 설치됩니다.
+
+ 
+
+  1. Container Runtime
+  #
+
+
+툴: containerd, Docker
+설명: 쿠버네티스가 컨테이너를 실행하는 런타임을 설치합니다.
+가이드:
+
+각 노드에 containerd 또는 Docker를 설치합니다.
+kubelet이 사용할 컨테이너 런타임을 설정합니다.
+
+
+
+ 
+
+  2. Cluster Provisioning
+  #
+
+
+툴:  kubeadm, KubeSpray, Terraform
+설명: 쿠버네티스 클러스터를 생성하고, 노드들을 구성합니다. 이 단계에서는 쿠버네티스 클러스터의 기본 인프라를 배포합니다.
+가이드:
+
+Kubeadm: kubeadm init 명령어를 사용하여 클러스터를 초기화합니다. 각 노드를 클러스터에 추가합니다.
+KubeSpray: Ansible을 사용하여 다중 노드 클러스터를 자동으로 배포합니다.
+Terraform: 인프라를 코드로 정의하여 클라우드 환경에서 쿠버네티스 클러스터를 프로비저닝합니다.
+
+
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Kubernetes Training">
-  <meta property="og:description" content="Kubernetes Standard Architecture # 해당 섹션에는 2023 표준 아키텍처를 기준으로 필자의 주관을 참조여 구성됩니다. 설치순서 ( 순서는 필자의 주관으로 강제가 아님. ) # 각 컴포넌트 중, 색상으로 표시한 컴포넌트를 기준으로 설치됩니다. 1. Container Runtime # 툴: containerd, Docker 설명: 쿠버네티스가 컨테이너를 실행하는 런타임을 설치합니다. 가이드: 각 노드에 containerd 또는 Docker를 설치합니다. kubelet이 사용할 컨테이너 런타임을 설정합니다. 2. Cluster Provisioning # 툴: kubeadm, KubeSpray, Terraform 설명: 쿠버네티스 클러스터를 생성하고, 노드들을 구성합니다.">
+  <meta property="og:description" content=" Kubernetes Standard Architecture # 해당 섹션에는 2023 표준 아키텍처를 기준으로 필자의 주관을 참조여 구성됩니다. 설치순서 ( 순서는 필자의 주관으로 강제가 아님. ) # 각 컴포넌트 중, 색상으로 표시한 컴포넌트를 기준으로 설치됩니다. 1. Container Runtime # 툴: containerd, Docker 설명: 쿠버네티스가 컨테이너를 실행하는 런타임을 설치합니다. 가이드: 각 노드에 containerd 또는 Docker를 설치합니다. kubelet이 사용할 컨테이너 런타임을 설정합니다. 2. Cluster Provisioning # 툴: kubeadm, KubeSpray, Terraform 설명: 쿠버네티스 클러스터를 생성하고, 노드들을 구성합니다. 이 단계에서는 쿠버네티스 클러스터의 기본 인프라를 배포합니다. 가이드: Kubeadm: kubeadm init 명령어를 사용하여 클러스터를 초기화합니다. 각 노드를 클러스터에 추가합니다. KubeSpray: Ansible을 사용하여 다중 노드 클러스터를 자동으로 배포합니다. Terraform: 인프라를 코드로 정의하여 클라우드 환경에서 쿠버네티스 클러스터를 프로비저닝합니다. ">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="website">
 <title>Kubernetes Training | Mungs Book</title>
@@ -20,9 +73,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <link rel="alternate" type="application/rss+xml" href="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/index.xml" title="Mungs Book" />
 <!--
 Made with Book Theme
@@ -54,7 +104,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -85,14 +135,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2249,15 +2291,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/0b272ace877ed883c3996124d874f6a892fb85c2" title='Last modified by mungOps | September 22, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>September 22, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

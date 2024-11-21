@@ -30,16 +30,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="database"
                 href="http://mungdocs.kro.kr/database/categories/"
                 />
@@ -72,16 +62,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="database"
                 href="http://mungdocs.kro.kr/database/"
                 />
@@ -111,16 +91,6 @@
                 rel="alternate"
                 hreflang="network"
                 href="http://mungdocs.kro.kr/network/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/tags/"
                 />
     <xhtml:link
                 rel="alternate"

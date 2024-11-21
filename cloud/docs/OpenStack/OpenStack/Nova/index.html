@@ -3,17 +3,88 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="가상의 서버를 생성하는 서비스 : Nova # # 가상의 서버를 생성하는 서비스 : Nova # # Nova는 compute 서비스의 핵심 compute 서비스란, 가상머신이 필요한 자원을 할당하고, 관리하는 서비스로 하이퍼바이저, 메시지 Queue, 인스턴스 접속을 하는 콘솔 등의 다양한 기능이 유기적으로 연결되어 가상 서버를 생성할 수 있는 시스템을 구성하는 시스템 # # Nova 서비스의 고려사항 # # 고려사항 설명 CPU compute 서비스가 동작할 호스트 시스템의 cpu가 기본적으로 자체 하드웨어 가상화를 지원이 필수 Hypervisor 서비스에 사용할 하이퍼바이저를 맞게 설정해야 하며, 기본적으로 사용하는 Hypervisor은 KVM/QEMU Storage compute 서비스를 통해 인스턴스가 생성되면서 시스템의 디스크 용량의 제한을 가할 수 있음, 이를 위해 넉넉한 공간이 필요 Overcommit 기본적으로 자원을 할당하는 경우 1:1이 아닌 CPU는 16:1, Memory는 1.">
+<meta name="description" content="
+  가상의 서버를 생성하는 서비스 : Nova
+  #
+
+
+
+  
+  #
+
+
+  가상의 서버를 생성하는 서비스 : Nova
+  #
+
+
+  
+  #
+
+
+Nova는 compute 서비스의 핵심
+compute 서비스란, 가상머신이 필요한 자원을 할당하고, 관리하는 서비스로 하이퍼바이저, 메시지 Queue, 인스턴스 접속을 하는 콘솔 등의 다양한 기능이 유기적으로 연결되어 가상 서버를 생성할 수 있는 시스템을 구성하는 시스템
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  Nova 서비스의 고려사항
+  #
+
+
+  
+  #
+
+
+  
+      
+          고려사항
+          설명
+      
+  
+  
+      
+          CPU
+          compute 서비스가 동작할 호스트 시스템의 cpu가 기본적으로 자체 하드웨어 가상화를 지원이 필수
+      
+      
+          Hypervisor
+          서비스에 사용할 하이퍼바이저를 맞게 설정해야 하며, 기본적으로 사용하는 Hypervisor은 KVM/QEMU
+      
+      
+          Storage
+          compute 서비스를 통해 인스턴스가 생성되면서 시스템의 디스크 용량의 제한을 가할 수 있음, 이를 위해 넉넉한 공간이 필요
+      
+      
+          Overcommit
+          기본적으로 자원을 할당하는 경우 1:1이 아닌 CPU는 16:1, Memory는 1.5:1로 할당 되어짐
+      
+      
+          네트워킹
+          생성된 인스턴스의 경우 nova가 독자적으로 구현하는 것이 아닌 다른 network 서비스를 연게해서 사용해야하며, 주로 Neutron 네트워크 서비스와 함께 사용
+      
+  
+
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/OpenStack/OpenStack/Nova/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Nova">
-  <meta property="og:description" content="가상의 서버를 생성하는 서비스 : Nova # # 가상의 서버를 생성하는 서비스 : Nova # # Nova는 compute 서비스의 핵심 compute 서비스란, 가상머신이 필요한 자원을 할당하고, 관리하는 서비스로 하이퍼바이저, 메시지 Queue, 인스턴스 접속을 하는 콘솔 등의 다양한 기능이 유기적으로 연결되어 가상 서버를 생성할 수 있는 시스템을 구성하는 시스템 # # Nova 서비스의 고려사항 # # 고려사항 설명 CPU compute 서비스가 동작할 호스트 시스템의 cpu가 기본적으로 자체 하드웨어 가상화를 지원이 필수 Hypervisor 서비스에 사용할 하이퍼바이저를 맞게 설정해야 하며, 기본적으로 사용하는 Hypervisor은 KVM/QEMU Storage compute 서비스를 통해 인스턴스가 생성되면서 시스템의 디스크 용량의 제한을 가할 수 있음, 이를 위해 넉넉한 공간이 필요 Overcommit 기본적으로 자원을 할당하는 경우 1:1이 아닌 CPU는 16:1, Memory는 1.">
+  <meta property="og:description" content=" 가상의 서버를 생성하는 서비스 : Nova # # 가상의 서버를 생성하는 서비스 : Nova # # Nova는 compute 서비스의 핵심 compute 서비스란, 가상머신이 필요한 자원을 할당하고, 관리하는 서비스로 하이퍼바이저, 메시지 Queue, 인스턴스 접속을 하는 콘솔 등의 다양한 기능이 유기적으로 연결되어 가상 서버를 생성할 수 있는 시스템을 구성하는 시스템 # # Nova 서비스의 고려사항 # # 고려사항 설명 CPU compute 서비스가 동작할 호스트 시스템의 cpu가 기본적으로 자체 하드웨어 가상화를 지원이 필수 Hypervisor 서비스에 사용할 하이퍼바이저를 맞게 설정해야 하며, 기본적으로 사용하는 Hypervisor은 KVM/QEMU Storage compute 서비스를 통해 인스턴스가 생성되면서 시스템의 디스크 용량의 제한을 가할 수 있음, 이를 위해 넉넉한 공간이 필요 Overcommit 기본적으로 자원을 할당하는 경우 1:1이 아닌 CPU는 16:1, Memory는 1.5:1로 할당 되어짐 네트워킹 생성된 인스턴스의 경우 nova가 독자적으로 구현하는 것이 아닌 다른 network 서비스를 연게해서 사용해야하며, 주로 Neutron 네트워크 서비스와 함께 사용 # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-21T11:31:26+09:00">
 <title>Nova | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +93,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +123,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +154,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -1939,34 +1999,34 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#heading-4">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>고려사항</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CPU</td>
-<td>compute 서비스가 동작할 호스트 시스템의 cpu가 기본적으로 자체 하드웨어 가상화를 지원이 필수</td>
-</tr>
-<tr>
-<td>Hypervisor</td>
-<td>서비스에 사용할 하이퍼바이저를 맞게 설정해야 하며, 기본적으로 사용하는 Hypervisor은 KVM/QEMU</td>
-</tr>
-<tr>
-<td>Storage</td>
-<td>compute 서비스를 통해 인스턴스가 생성되면서 시스템의 디스크 용량의 제한을 가할 수 있음, 이를 위해 넉넉한 공간이 필요</td>
-</tr>
-<tr>
-<td>Overcommit</td>
-<td>기본적으로 자원을 할당하는 경우 1:1이 아닌 CPU는 16:1, Memory는 1.5:1로 할당 되어짐</td>
-</tr>
-<tr>
-<td>네트워킹</td>
-<td>생성된 인스턴스의 경우 nova가 독자적으로 구현하는 것이 아닌 다른 network 서비스를 연게해서 사용해야하며, 주로 Neutron 네트워크 서비스와 함께 사용</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">고려사항</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CPU</td>
+          <td style="text-align: left">compute 서비스가 동작할 호스트 시스템의 cpu가 기본적으로 자체 하드웨어 가상화를 지원이 필수</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Hypervisor</td>
+          <td style="text-align: left">서비스에 사용할 하이퍼바이저를 맞게 설정해야 하며, 기본적으로 사용하는 Hypervisor은 KVM/QEMU</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Storage</td>
+          <td style="text-align: left">compute 서비스를 통해 인스턴스가 생성되면서 시스템의 디스크 용량의 제한을 가할 수 있음, 이를 위해 넉넉한 공간이 필요</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Overcommit</td>
+          <td style="text-align: left">기본적으로 자원을 할당하는 경우 1:1이 아닌 CPU는 16:1, Memory는 1.5:1로 할당 되어짐</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">네트워킹</td>
+          <td style="text-align: left">생성된 인스턴스의 경우 nova가 독자적으로 구현하는 것이 아닌 다른 network 서비스를 연게해서 사용해야하며, 주로 Neutron 네트워크 서비스와 함께 사용</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-5">
   
@@ -1992,50 +2052,50 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#heading-8">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>서비스</th>
-<th>역할</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>nova-api</td>
-<td>최종 사용자즈이 API콜을 통해 서비스 간 질의 응답을 담당</td>
-</tr>
-<tr>
-<td>nova-compute</td>
-<td>가상화 API를 이용하여 가상 머신 인스턴스를 생성하고 종료하는 역할을 수행</td>
-</tr>
-<tr>
-<td>nova-scheduler</td>
-<td>compute host가 다수인 경우 큐를 통해 받은 메시지를 누구에게 명령할 것인지를 결정</td>
-</tr>
-<tr>
-<td>nova-conductor</td>
-<td>코디네이션과 데이터베이스 쿼리를 지원하는 서버 데몬</td>
-</tr>
-<tr>
-<td>nova-cert</td>
-<td>X509 인증서에 대한 Nova Cert서비스를 제공하는 서버 데몬</td>
-</tr>
-<tr>
-<td>nova-consoleauth</td>
-<td>데몬, 콘솔 프록시를 제공하는 사용자에 대한 인증 토큰 제공</td>
-</tr>
-<tr>
-<td>Guest Agent</td>
-<td>실제 compute 시스템 상에 구축된 인스턴스로 Nova-compute 서비스에 의해 제어되어짐</td>
-</tr>
-<tr>
-<td>nova-api-metadata</td>
-<td>인스턴스의 메타데이터의 요청을 처리</td>
-</tr>
-<tr>
-<td>nova-novncproxy</td>
-<td>VNC 콘솔화면을 제공</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">서비스</th>
+          <th style="text-align: left">역할</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">nova-api</td>
+          <td style="text-align: left">최종 사용자즈이 API콜을 통해 서비스 간 질의 응답을 담당</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">nova-compute</td>
+          <td style="text-align: left">가상화 API를 이용하여 가상 머신 인스턴스를 생성하고 종료하는 역할을 수행</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">nova-scheduler</td>
+          <td style="text-align: left">compute host가 다수인 경우 큐를 통해 받은 메시지를 누구에게 명령할 것인지를 결정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">nova-conductor</td>
+          <td style="text-align: left">코디네이션과 데이터베이스 쿼리를 지원하는 서버 데몬</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">nova-cert</td>
+          <td style="text-align: left">X509 인증서에 대한 Nova Cert서비스를 제공하는 서버 데몬</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">nova-consoleauth</td>
+          <td style="text-align: left">데몬, 콘솔 프록시를 제공하는 사용자에 대한 인증 토큰 제공</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Guest Agent</td>
+          <td style="text-align: left">실제 compute 시스템 상에 구축된 인스턴스로 Nova-compute 서비스에 의해 제어되어짐</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">nova-api-metadata</td>
+          <td style="text-align: left">인스턴스의 메타데이터의 요청을 처리</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">nova-novncproxy</td>
+          <td style="text-align: left">VNC 콘솔화면을 제공</td>
+      </tr>
+  </tbody>
 </table>
 <p>nova-novaclient: nova REST API를 사용하는 클라이언트 프로그램
 nova-network | 인스턴스의 네트워크 기능을 수행
@@ -2090,15 +2150,6 @@ qemu-kvm | KVM 하이퍼바이저</p>
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/605afe3de5159fb1bd376c0eb1ad21babbba213e" title='Last modified by mungOps | December 21, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 21, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

@@ -3,23 +3,39 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Docker 와 Container # Docker의 등장배경 # Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
+<meta name="description" content="
+  Docker 와 Container
+  #
+
+
+
+  Docker의 등장배경
+  #
+
+
+
+Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
+
+
 이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.
+
+
 위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.
+
+
 dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/">
   <meta property="og:site_name" content="Mungs Book">
-  <meta property="og:title" content="0. Docker&amp; Container">
-  <meta property="og:description" content="Docker 와 Container # Docker의 등장배경 # Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
+  <meta property="og:title" content="0. Docker& Container">
+  <meta property="og:description" content=" Docker 와 Container # Docker의 등장배경 # Docker는 2013년에 dotCloud의 의해 2013년 PyCon에서 (The future of Linux Containers) 처음 데모 되었다.
 이는 오클랜드 항구에 들어오는 모든 컨테이너 선박을 보며, 한 서버에서다른 서버로 앱을 옮기는 것 보다, 지구 반대편으로 컨테이너를 옮기는 것이 더 쉽다라는 취지에서 개발됨.
 위 문제는 기존 가상화기술을 사용하면 가능했으나, 리소스의 수가 커지고 대규모의 관리가 증대됨에 따라 필요성이 대두되어짐.
 dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식이 문제라는 것을 인식했으며, 전체 운영 체제를 가상화하는 대신 애플리케이션과 해당 종속성만 가상화하는 것이 더 효율적이라 생각해었고, 이 것이 Container 의 개념으로 개발됨.">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-09-22T11:15:33+09:00">
 <title>0. Docker&amp; Container | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -28,9 +44,6 @@ dotCloud 팀은 가상화 자체가 문제가 아니라 가상화 사용 방식�
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -61,7 +74,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -92,14 +105,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2269,26 +2274,26 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>종류</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Volume</strong></td>
-<td>볼륨은 호스트 파일 시스템의 특별한 디렉토리나 Docker가 관리하는 볼륨 드라이버에 의해 생성되며, 컨테이너에 마운트되며, 볼륨은 컨테이너의 생명주기 동안 데이터를 유지하고, 여러 컨테이너 간에 데이터를 쉽게 공유하는 역할을 수행</td>
-</tr>
-<tr>
-<td><strong>Bind Mount</strong></td>
-<td>바인드 마운트는 호스트 머신의 파일 시스템 경로를 직접 컨테이너 경로에 마운트하는 방식</td>
-</tr>
-<tr>
-<td><strong>Tmpfs</strong></td>
-<td>컨테이너 내의 임시 파일 시스템으로, RAM을 기반으로 컨테이너의 실행 중에만 유지되며, 컨테이너가 종료되면 데이터가 손실</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">종류</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Volume</strong></td>
+          <td style="text-align: left">볼륨은 호스트 파일 시스템의 특별한 디렉토리나 Docker가 관리하는 볼륨 드라이버에 의해 생성되며, 컨테이너에 마운트되며, 볼륨은 컨테이너의 생명주기 동안 데이터를 유지하고, 여러 컨테이너 간에 데이터를 쉽게 공유하는 역할을 수행</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Bind Mount</strong></td>
+          <td style="text-align: left">바인드 마운트는 호스트 머신의 파일 시스템 경로를 직접 컨테이너 경로에 마운트하는 방식</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Tmpfs</strong></td>
+          <td style="text-align: left">컨테이너 내의 임시 파일 시스템으로, RAM을 기반으로 컨테이너의 실행 중에만 유지되며, 컨테이너가 종료되면 데이터가 손실</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2302,34 +2307,34 @@ https://github.com/alex-shpak/hugo-book
 <li>이는 아래의 네트워크 드라이버를 통해 지원</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>종류</th>
-<th>특징</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bridge</td>
-<td>브리지 드라이버를 사용하여 독립형 컨테이너에서 실행되는 애플리케이션 간에 통신 (기본 드라이버)</td>
-</tr>
-<tr>
-<td>host</td>
-<td>호스트 드라이버는 컨테이너와 호스트 사이의 네트워크 격리를 제거하고 호스트 네트워크를 직접 사용</td>
-</tr>
-<tr>
-<td>overlay</td>
-<td>오버레이 드라이버를 사용하여 여러 Docker 데몬을 함께 연결 (Docker Swarm)</td>
-</tr>
-<tr>
-<td>macvlan</td>
-<td>macvlan 드라이버를 사용하면 Docker 데몬이 MAC 주소를 통해 컨테이너로 트래픽을 라우팅할 수 있도록 MAC 주소를 컨테이너에 할당이 가능</td>
-</tr>
-<tr>
-<td>none</td>
-<td>네트워크 비활성화</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">종류</th>
+          <th style="text-align: left">특징</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">bridge</td>
+          <td style="text-align: left">브리지 드라이버를 사용하여 독립형 컨테이너에서 실행되는 애플리케이션 간에 통신 (기본 드라이버)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">host</td>
+          <td style="text-align: left">호스트 드라이버는 컨테이너와 호스트 사이의 네트워크 격리를 제거하고 호스트 네트워크를 직접 사용</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">overlay</td>
+          <td style="text-align: left">오버레이 드라이버를 사용하여 여러 Docker 데몬을 함께 연결 (Docker Swarm)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">macvlan</td>
+          <td style="text-align: left">macvlan 드라이버를 사용하면 Docker 데몬이 MAC 주소를 통해 컨테이너로 트래픽을 라우팅할 수 있도록 MAC 주소를 컨테이너에 할당이 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">네트워크 비활성화</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2360,15 +2365,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/0b272ace877ed883c3996124d874f6a892fb85c2" title='Last modified by mungOps | September 22, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>September 22, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

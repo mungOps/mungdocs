@@ -3,17 +3,178 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS DataBase # # Amazon RDS ( Relational Database Service ) # 분산 관계형 데이터베이스 MariaDB, MySQL, PostgreSQL, Oracle 등을 AWS에서 제공해주는 것 애플리케이션 내에서 관계형 데이터베이스의 설정, 운영, 스케일링을 단순케 하도록 설계된 클라우드 내에서 동작하는 웹 서비스 데이터베이스 소프트웨어 패치하거나 데이터베이스를 백업하거나 시점 복구를 활성화하는 것과 같은 복잡한 관리 프로세스들은 자동으로 관리 스토리지와 연산 자원들을 스케일링 하는 것은 하나의 API 호출로 수행이 가능 관계형 데이터베이스를 AWS 상에서 사용할 수 있도록 지원하는 서비스 생성 후 서비스를 이용하기만 되므로 SaaS에 해당 MySQL, MariaDB, Postgre SQL, Oracle, MS SQL, Aurora 사용 가능 DB 인스턴스에 대한 shell 지원 불가 및 OS 제어 불가능 ( AWS 관리 ) 백업, 소프트웨어 패치, 장애 감지 및 복구를 AWS가 관리 Storage 용량에 대하여 Auto Scaling MariaDB, MySQL, Aurora는 서로 호환이 가능 # # DB Instance # RDS의 기본 구성요소로서 클라우드에서 실행하는 격리된 데이터베이스 환경을 의미, 인스턴스 내에서는 여러 사용자가 만든 데이터베이스가 포함되며 엑세스할 여러 도구와 앱 사용 가능 DB 인스턴스도 EC2처럼 다양한 클래스를 가지고 있음 ( db.">
+<meta name="description" content="
+  AWS DataBase
+  #
+
+
+
+  
+  #
+
+
+  Amazon RDS ( Relational Database Service )
+  #
+
+
+  
+
+분산 관계형 데이터베이스
+MariaDB, MySQL, PostgreSQL, Oracle 등을 AWS에서 제공해주는 것
+애플리케이션 내에서 관계형 데이터베이스의 설정, 운영, 스케일링을 단순케 하도록 설계된 클라우드 내에서 동작하는 웹 서비스
+데이터베이스 소프트웨어 패치하거나 데이터베이스를 백업하거나 시점 복구를 활성화하는 것과 같은 복잡한 관리 프로세스들은 자동으로 관리
+스토리지와 연산 자원들을 스케일링 하는 것은 하나의 API 호출로 수행이 가능
+관계형 데이터베이스를 AWS 상에서 사용할 수 있도록 지원하는 서비스
+생성 후 서비스를 이용하기만 되므로 SaaS에 해당
+MySQL, MariaDB, Postgre SQL, Oracle, MS SQL, Aurora 사용 가능
+DB 인스턴스에 대한 shell 지원 불가 및 OS 제어 불가능 ( AWS 관리 )
+백업, 소프트웨어 패치, 장애 감지 및 복구를 AWS가 관리
+Storage 용량에 대하여 Auto Scaling
+MariaDB, MySQL, Aurora는 서로 호환이 가능
+
+
+  
+  #
+
+
+  
+  #
+
+
+  DB Instance
+  #
+
+
+RDS의 기본 구성요소로서 클라우드에서 실행하는 격리된 데이터베이스 환경을 의미, 인스턴스 내에서는 여러 사용자가 만든 데이터베이스가 포함되며 엑세스할 여러 도구와 앱 사용 가능
+DB 인스턴스도 EC2처럼 다양한 클래스를 가지고 있음 ( db.m5, db.r5 등 )
+RDS도 클라우드에서 실행되기 때문에 하나의 AZ에서 격리되어 인스턴스로서 실행
+
+
+  
+  #
+
+
+  DB Instance Storage
+  #
+
+
+데이터베이스의 유지를 위패 EBS를 사용하며 필요한 스토리지 용량에 맞춰 자동으로 데이터를 여러 EBS 볼륨에 나누어 저장
+스토리지의 유형
+범용 SSD: 대부분의 워크로드에서 사용하는 기본적인 스토리지
+프로비져닝 IOPS: 빠르고 일관적인 I/O 성능이 필요하고 일관적으로 낮은 지연시간이 요구될 경우 사용하는 스토리지 ( I/O input/ Output )
+마그네틱: 접속 빈도가 적은 워크로드에 적합한 스토리지
+
+
+  
+  #
+
+
+  Multi-AZ
+  #
+
+
+RDS는 Multi-AZ라는 기능을 통해 고가용성을 지원 ( 다수의 AZ에 DB 인스턴스를 둠으로써 하나 혹은 그 이상의 AZ가 파괴되어 서브시가 불가능 할 때를 대비 )
+기본 인스턴스가 수행해야할 작업( 백업, 스냅샷 생성 ) 등을 대신하여 수행함으로서 기본 인스턴스의 부담을 줄임
+RDS도 클라우드에서 실행되기 때문에 하나의 AZ에서 격리되어 인스턴스로서 실행
+기본 인스턴스에서 스냅샷을 캡쳐한 후 다른 AZ에 복원하여 ‘동기식’ 예비 복제본을 생성
+Active( AZ A )-Standby ( AZ B, C ) 구조를 형셩한 후 지속적으로 동기화
+‘ 예비 ‘ 복제본이기 때문에 읽기 및 쓰기 작업을 수행할 수 없음
+Multi-AZ를 사용하는 경우, 단일 AZ 배포에 비해 쓰기 및 저장 지연 시간이 길어질 수 있음 ( 동기화 문제 )
+
+
+  
+  #
+
+
+  Multi-AZ
+  #
+
+
+Multi-AZ를 활성화한 상태에서 DB 인스턴스에 문제가 발생하면 자동으로 다른 AZ의 예비 복제본 ( Standby )로 전환하며 서비스를 이어나감
+전환에 사용되는 시간은 60- 120초
+전환되는 상황
+가용 영역( AZ ) 중단
+기본 DB 인스턴스 오류
+DB 인스턴스 서버 유형 변경
+기본 DB 인스턴스 OS에서 소프트웨어 패치 실시
+장애 조치 재부팅( Failover ) 실시
+
+
+  DB Instance Storage
+  #
+
+
+데이터베이스의 유지를 위패 EBS를 사용하며 필요한 스토리지 용량에 맞춰 자동으로 데이터를 여러 EBS 볼륨에 나누어 저장
+
+
+  Read Replica
+  #
+
+
+읽기 전용의 복제본, 기본 DB 인스턴스가 읽기와 쓰기를 담당한다면 Read Replica는 읽기 작업만을 담당하여 마스터 DB 인스턴스의 부하를 줄임
+우선 DB
+마그네틱: 접속 빈도가 적은 워크로드에 적합한 스토리지
+
+
+  
+  #
+
+
+  Automated Backup
+  #
+
+
+RDS의 자동백업으로 개별 데이터베이스를 백업하는 것이 아닌 DB 인스턴스 전체를 백업하는 것
+매일매일 백업이 이루어지며, 기본 보존기간은 CLI로 생성시 1일&amp; 콘솔로 생성시 7일이며 최저 1일부터 35일 까지 가능
+특정시점을 지정하여 복원가능하며 복원 기간내로부터 최근 5분까지 특정시점을 지정하여 복원 가능
+사용자가 백업시간에 자동적으로 백업되며, 백업 중에는 스토리지 I/O가 일시적으로 중단될 수 있음 ( Multi-AZ 사용시 Standby에서 백업 실시 )
+전환되는 상황
+가용 영역( AZ ) 중단
+기본 DB 인스턴스 오류
+DB 인스턴스 서버 유형 변경
+기본 DB 인스턴스 OS에서 소프트웨어 패치 실시
+장애 조치 재부팅( Failover ) 실시
+
+
+  
+  #
+
+
+  Enhanced Monitoring
+  #
+
+
+RDS의 지표를 실시간으로 모니터링하는 ‘ 강화된＇ 모니터링
+모니터링 지표는 CloudWatchs Logs에 30일간 저장됨
+일반 모니터링과의 차이점은 Enhanced Monitoring은 인스턴스 내 에이전트를 통해 지표를 수집하는 반면, 일반 모니터링은 하이퍼바이저에서 수집 ( 최대 1초 단위 )
+
+
+  
+  #
+
+
+  RDS vs DB in EC2
+  #
+
+
+EC2 위에 데이터베이스를 직접 올리는 만큼 설정을 마음대로 변경할 수 있고, 커스터마이징 또한 가능
+RDS와는 반대로 백업과 패치 등 관리를 직접해야 함
+EC2에 설치하는 것이기에 SSH 접속 가능
+
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AmazonWebService/AWS_Database/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="AWS Database">
-  <meta property="og:description" content="AWS DataBase # # Amazon RDS ( Relational Database Service ) # 분산 관계형 데이터베이스 MariaDB, MySQL, PostgreSQL, Oracle 등을 AWS에서 제공해주는 것 애플리케이션 내에서 관계형 데이터베이스의 설정, 운영, 스케일링을 단순케 하도록 설계된 클라우드 내에서 동작하는 웹 서비스 데이터베이스 소프트웨어 패치하거나 데이터베이스를 백업하거나 시점 복구를 활성화하는 것과 같은 복잡한 관리 프로세스들은 자동으로 관리 스토리지와 연산 자원들을 스케일링 하는 것은 하나의 API 호출로 수행이 가능 관계형 데이터베이스를 AWS 상에서 사용할 수 있도록 지원하는 서비스 생성 후 서비스를 이용하기만 되므로 SaaS에 해당 MySQL, MariaDB, Postgre SQL, Oracle, MS SQL, Aurora 사용 가능 DB 인스턴스에 대한 shell 지원 불가 및 OS 제어 불가능 ( AWS 관리 ) 백업, 소프트웨어 패치, 장애 감지 및 복구를 AWS가 관리 Storage 용량에 대하여 Auto Scaling MariaDB, MySQL, Aurora는 서로 호환이 가능 # # DB Instance # RDS의 기본 구성요소로서 클라우드에서 실행하는 격리된 데이터베이스 환경을 의미, 인스턴스 내에서는 여러 사용자가 만든 데이터베이스가 포함되며 엑세스할 여러 도구와 앱 사용 가능 DB 인스턴스도 EC2처럼 다양한 클래스를 가지고 있음 ( db.">
+  <meta property="og:description" content=" AWS DataBase # # Amazon RDS ( Relational Database Service ) # 분산 관계형 데이터베이스 MariaDB, MySQL, PostgreSQL, Oracle 등을 AWS에서 제공해주는 것 애플리케이션 내에서 관계형 데이터베이스의 설정, 운영, 스케일링을 단순케 하도록 설계된 클라우드 내에서 동작하는 웹 서비스 데이터베이스 소프트웨어 패치하거나 데이터베이스를 백업하거나 시점 복구를 활성화하는 것과 같은 복잡한 관리 프로세스들은 자동으로 관리 스토리지와 연산 자원들을 스케일링 하는 것은 하나의 API 호출로 수행이 가능 관계형 데이터베이스를 AWS 상에서 사용할 수 있도록 지원하는 서비스 생성 후 서비스를 이용하기만 되므로 SaaS에 해당 MySQL, MariaDB, Postgre SQL, Oracle, MS SQL, Aurora 사용 가능 DB 인스턴스에 대한 shell 지원 불가 및 OS 제어 불가능 ( AWS 관리 ) 백업, 소프트웨어 패치, 장애 감지 및 복구를 AWS가 관리 Storage 용량에 대하여 Auto Scaling MariaDB, MySQL, Aurora는 서로 호환이 가능 # # DB Instance # RDS의 기본 구성요소로서 클라우드에서 실행하는 격리된 데이터베이스 환경을 의미, 인스턴스 내에서는 여러 사용자가 만든 데이터베이스가 포함되며 엑세스할 여러 도구와 앱 사용 가능 DB 인스턴스도 EC2처럼 다양한 클래스를 가지고 있음 ( db.m5, db.r5 등 ) RDS도 클라우드에서 실행되기 때문에 하나의 AZ에서 격리되어 인스턴스로서 실행 # DB Instance Storage # 데이터베이스의 유지를 위패 EBS를 사용하며 필요한 스토리지 용량에 맞춰 자동으로 데이터를 여러 EBS 볼륨에 나누어 저장 스토리지의 유형 범용 SSD: 대부분의 워크로드에서 사용하는 기본적인 스토리지 프로비져닝 IOPS: 빠르고 일관적인 I/O 성능이 필요하고 일관적으로 낮은 지연시간이 요구될 경우 사용하는 스토리지 ( I/O input/ Output ) 마그네틱: 접속 빈도가 적은 워크로드에 적합한 스토리지 # Multi-AZ # RDS는 Multi-AZ라는 기능을 통해 고가용성을 지원 ( 다수의 AZ에 DB 인스턴스를 둠으로써 하나 혹은 그 이상의 AZ가 파괴되어 서브시가 불가능 할 때를 대비 ) 기본 인스턴스가 수행해야할 작업( 백업, 스냅샷 생성 ) 등을 대신하여 수행함으로서 기본 인스턴스의 부담을 줄임 RDS도 클라우드에서 실행되기 때문에 하나의 AZ에서 격리되어 인스턴스로서 실행 기본 인스턴스에서 스냅샷을 캡쳐한 후 다른 AZ에 복원하여 ‘동기식’ 예비 복제본을 생성 Active( AZ A )-Standby ( AZ B, C ) 구조를 형셩한 후 지속적으로 동기화 ‘ 예비 ‘ 복제본이기 때문에 읽기 및 쓰기 작업을 수행할 수 없음 Multi-AZ를 사용하는 경우, 단일 AZ 배포에 비해 쓰기 및 저장 지연 시간이 길어질 수 있음 ( 동기화 문제 ) # Multi-AZ # Multi-AZ를 활성화한 상태에서 DB 인스턴스에 문제가 발생하면 자동으로 다른 AZ의 예비 복제본 ( Standby )로 전환하며 서비스를 이어나감 전환에 사용되는 시간은 60- 120초 전환되는 상황 가용 영역( AZ ) 중단 기본 DB 인스턴스 오류 DB 인스턴스 서버 유형 변경 기본 DB 인스턴스 OS에서 소프트웨어 패치 실시 장애 조치 재부팅( Failover ) 실시 DB Instance Storage # 데이터베이스의 유지를 위패 EBS를 사용하며 필요한 스토리지 용량에 맞춰 자동으로 데이터를 여러 EBS 볼륨에 나누어 저장 Read Replica # 읽기 전용의 복제본, 기본 DB 인스턴스가 읽기와 쓰기를 담당한다면 Read Replica는 읽기 작업만을 담당하여 마스터 DB 인스턴스의 부하를 줄임 우선 DB 마그네틱: 접속 빈도가 적은 워크로드에 적합한 스토리지 # Automated Backup # RDS의 자동백업으로 개별 데이터베이스를 백업하는 것이 아닌 DB 인스턴스 전체를 백업하는 것 매일매일 백업이 이루어지며, 기본 보존기간은 CLI로 생성시 1일&amp; 콘솔로 생성시 7일이며 최저 1일부터 35일 까지 가능 특정시점을 지정하여 복원가능하며 복원 기간내로부터 최근 5분까지 특정시점을 지정하여 복원 가능 사용자가 백업시간에 자동적으로 백업되며, 백업 중에는 스토리지 I/O가 일시적으로 중단될 수 있음 ( Multi-AZ 사용시 Standby에서 백업 실시 ) 전환되는 상황 가용 영역( AZ ) 중단 기본 DB 인스턴스 오류 DB 인스턴스 서버 유형 변경 기본 DB 인스턴스 OS에서 소프트웨어 패치 실시 장애 조치 재부팅( Failover ) 실시 # Enhanced Monitoring # RDS의 지표를 실시간으로 모니터링하는 ‘ 강화된＇ 모니터링 모니터링 지표는 CloudWatchs Logs에 30일간 저장됨 일반 모니터링과의 차이점은 Enhanced Monitoring은 인스턴스 내 에이전트를 통해 지표를 수집하는 반면, 일반 모니터링은 하이퍼바이저에서 수집 ( 최대 1초 단위 ) # RDS vs DB in EC2 # EC2 위에 데이터베이스를 직접 올리는 만큼 설정을 마음대로 변경할 수 있고, 커스터마이징 또한 가능 RDS와는 반대로 백업과 패치 등 관리를 직접해야 함 EC2에 설치하는 것이기에 SSH 접속 가능 # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>AWS Database | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +183,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +213,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +244,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2440,15 +2590,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

@@ -3,19 +3,62 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes # Kubernetes # # kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. # # Kubernets가 대두되는 이유 # # 위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.
-전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.">
+<meta name="description" content="
+  Kubernetes
+  #
+
+
+
+  Kubernetes
+  #
+
+
+  
+  #
+
+
+kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다.
+IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다.
+
+
+  
+  #
+
+
+  
+  #
+
+
+  Kubernets가 대두되는 이유
+  #
+
+
+  
+  #
+
+
+  
+
+
+위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.
+
+전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재
+가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.
+컨테이너 배포: 컨테이너와 VM은 유사하지만 격리 속성을 완화하여 애플리케이션 간에 운영체제(OS)를 공유하는 특징이 있으며, 프로세스단에서 작동하여 비교적 가볍다고 여겨지며, 기본 인프라와의 종속성을 끊어, 클라우드나 OS 배포본에 상관없이 이식이 가능한 장점을 가지고 있다.
+
+
+
+즉, Kubernetes는 컨테이너 배포를 보다 용이하게 관리할 수 있게 해주는 워크로드 관리 플랫폼으로, 현재 관련 기술의 표준으로 자리잡고 있다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s00/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="0. Kubernetes">
-  <meta property="og:description" content="Kubernetes # Kubernetes # # kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. # # Kubernets가 대두되는 이유 # # 위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.
-전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다.">
+  <meta property="og:description" content=" Kubernetes # Kubernetes # # kubernetes란 컨테이너화된 워크로드와 서비스를 관리하기 위한 확장가능한 오픈소스 플랫폼이라 할 수 있다. IaC기반으로 선언적 구성과 자동화의 용이하며, 빠르게 성장하는 생태계를 가지고 있다. # # Kubernets가 대두되는 이유 # # 위 그림은 Traditional Deployment (전통적인 배포), Virtualized Deployment (가상화 배포), Container Deployment(컨테이너 배포)로 나뉘어지고 있으며 각 배포들은 하기와 같은 특징들을 가지고 있다.
+전통적인 배포: 물리 서버에서 배포가 진행되며, 리소스의 한계를 전의할 방법이 없어 성능저하와 여러 장애를 유발 가능성이 존재 가상화 배포: 전통적인 배포에 해결책으로 물리서버 위에 가상화서버(별도의 격리)를 올려 리소스의 한계를 타파하고, 효율을 극대화시킨다. 컨테이너 배포: 컨테이너와 VM은 유사하지만 격리 속성을 완화하여 애플리케이션 간에 운영체제(OS)를 공유하는 특징이 있으며, 프로세스단에서 작동하여 비교적 가볍다고 여겨지며, 기본 인프라와의 종속성을 끊어, 클라우드나 OS 배포본에 상관없이 이식이 가능한 장점을 가지고 있다. 즉, Kubernetes는 컨테이너 배포를 보다 용이하게 관리할 수 있게 해주는 워크로드 관리 플랫폼으로, 현재 관련 기술의 표준으로 자리잡고 있다.">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-01-19T12:07:14+09:00">
 <title>0. Kubernetes | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -24,9 +67,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -57,7 +97,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -88,14 +128,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2419,15 +2451,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/315a1fb0195f86be2c344e9834e99daa603e2fe5" title='Last modified by mungOps | January 19, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

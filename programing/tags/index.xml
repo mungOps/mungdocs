@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Mungs Book</title>
-    <link>http://mungdocs.kro.kr/programing/tags/</link>
+    <link>http://localhost:1313/programing/tags/</link>
     <description>Recent content in Tags on Mungs Book</description>
     <generator>Hugo</generator>
     <language>programing</language>
-    <atom:link href="http://mungdocs.kro.kr/programing/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/programing/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

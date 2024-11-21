@@ -3,17 +3,302 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Docker # Dockerfile # Dockerfile # Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시 # # 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .">
+<meta name="description" content="
+  Docker
+  #
+
+
+
+  Dockerfile
+  #
+
+
+
+
+
+  Dockerfile
+  #
+
+
+  
+      
+          Instruction
+          설명
+      
+  
+  
+      
+          ADD
+          로컬 또는 원격 파일 및 디렉토리 추가
+      
+      
+          ARG
+          빌드 시간 변수 사용
+      
+      
+          CMD
+          기본 명령어 지정
+      
+      
+          COPY
+          파일 및 디렉토리 복사
+      
+      
+          ENTRYPOINT
+          기본 실행 파일 지정
+      
+      
+          ENV
+          환경 변수 설정
+      
+      
+          EXPOSE
+          응용 프로그램이 수신 대기 중인 포트 설명
+      
+      
+          FROM
+          기본 이미지에서 새 빌드 단계 생성
+      
+      
+          HEALTHCHECK
+          컨테이너의 시작 시간에 대한 건강 상태 확인
+      
+      
+          LABEL
+          이미지에 메타데이터 추가
+      
+      
+          MAINTAINER
+          이미지 작성자 지정
+      
+      
+          ONBUILD
+          이미지가 빌드에 사용될 때 지시
+      
+      
+          RUN
+          빌드 명령어 실행
+      
+      
+          SHELL
+          이미지의 기본 셸 설정
+      
+      
+          STOPSIGNAL
+          컨테이너 종료에 대한 시스템 콜 신호 지정
+      
+      
+          USER
+          사용자 및 그룹 ID 설정
+      
+      
+          VOLUME
+          볼륨 마운트 생성
+      
+      
+          WORKDIR
+          작업 디렉토리 변경
+      
+  
+
+
+
+
+  Dockerfile 예시
+  #
+
+# 기본 이미지로부터 빌드 스테이지 생성
+FROM ubuntu:latest
+
+# 로컬 또는 원격 파일 및 디렉토리 추가
+ADD ./app /app
+
+# 빌드 시간 변수 사용
+ARG version=1.0
+
+# 기본 명령어 지정
+CMD [&#34;./app/start.sh&#34;]
+
+# 파일 및 디렉토리 복사
+COPY ./config /config
+
+# 기본 실행 파일 지정
+ENTRYPOINT [&#34;/app/entrypoint.sh&#34;]
+
+# 환경 변수 설정
+ENV APP_HOME=/app
+
+# 응용 프로그램이 수신 대기 중인 포트 설명
+EXPOSE 8080
+
+# 건강 상태 확인
+HEALTHCHECK CMD curl --fail http://localhost:8080/ || exit 1
+
+# 이미지에 메타데이터 추가
+LABEL version=$version
+LABEL maintainer=&#34;Your Name &lt;your.email@example.com&gt;&#34;
+
+# 이미지 작성자 지정
+MAINTAINER Your Name &lt;your.email@example.com&gt;
+
+# 이미지가 빌드에 사용될 때 지시
+ONBUILD ADD . /app/src
+ONBUILD RUN /app/build.sh
+
+# 빌드 명령어 실행
+RUN apt-get update &amp;&amp; apt-get install -y \
+    package1 \
+    package2 \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# 이미지의 기본 셸 설정
+SHELL [&#34;/bin/bash&#34;, &#34;-c&#34;]
+
+# 컨테이너 종료에 대한 시스템 콜 신호 지정
+STOPSIGNAL SIGTERM
+
+# 사용자 및 그룹 ID 설정
+USER 1000:1000
+
+# 볼륨 마운트 생성
+VOLUME /app/data
+
+# 작업 디렉토리 변경
+WORKDIR /app
+
+
+
+  Docker compose
+  #
+
+version: &#39;3&#39;  # 도커 컴포즈 버전 지정
+
+services:  # 서비스 정의 시작
+  web:  # 서비스 이름
+    image: nginx:latest  # 도커 이미지 지정
+    ports:
+      - &#34;8080:80&#34;  # 호스트와 컨테이너 포트 매핑
+    volumes:
+      - ./web-content:/usr/share/nginx/html  # 볼륨 매핑
+    networks:
+      - frontend  # 네트워크 지정
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: example  # 환경 변수 설정
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  frontend:  # 사용자 정의 네트워크 정의
+  backend:
+
+volumes:
+  db-data:  # 사용자 정의 볼륨 정의
+
+  
+      
+          옵션
+          설명
+      
+  
+  
+      
+          -f, &ndash;file
+          컴포즈 설정 파일 지정 (기본값: docker-compose.yml)
+      
+      
+          -p, &ndash;project-name
+          프로젝트 이름 설정 (기본값: 디렉터리 이름)
+      
+      
+          -v, &ndash;verbose
+          자세한 출력 활성화
+      
+      
+          -q, &ndash;quiet
+          출력을 최소화
+      
+      
+          &ndash;log-level
+          로그 레벨 설정 (기본값: INFO)
+      
+      
+          &ndash;no-ansi
+          ANSI 제어 코드를 사용하지 않음
+      
+      
+          &ndash;version
+          버전 정보 출력
+      
+      
+          &ndash;help
+          도움말 출력
+      
+      
+          -H, &ndash;host
+          컴포즈 엔진에 연결할 Docker 호스트 설정
+      
+      
+          &ndash;compatibility
+          호환성 모드 활성화 (v3 이하의 구성 파일 사용)
+      
+      
+          &ndash;env-file
+          환경 파일에서 변수 지정
+      
+      
+          &ndash;project-directory
+          프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)
+      
+      
+          &ndash;compatibility
+          호환성 모드 활성화 (v3 이하의 구성 파일 사용)
+      
+      
+          &ndash;project-directory
+          프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)
+      
+      
+          &ndash;compatibility
+          호환성 모드 활성화 (v3 이하의 구성 파일 사용)
+      
+      
+          &ndash;project-directory
+          프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)
+      
+      
+          &ndash;compatibility
+          호환성 모드 활성화 (v3 이하의 구성 파일 사용)
+      
+      
+          &ndash;project-directory
+          프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)
+      
+      
+          &ndash;compatibility
+          호환성 모드 활성화 (v3 이하의 구성 파일 사용)
+      
+      
+          &ndash;project-directory
+          프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)
+      
+  
+
+
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/">
   <meta property="og:site_name" content="Mungs Book">
-  <meta property="og:title" content="3. Dockerfile&amp; Compose">
-  <meta property="og:description" content="Docker # Dockerfile # Dockerfile # Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시 # # 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD .">
+  <meta property="og:title" content="3. Dockerfile& Compose">
+  <meta property="og:description" content=" Docker # Dockerfile # Dockerfile # Instruction 설명 ADD 로컬 또는 원격 파일 및 디렉토리 추가 ARG 빌드 시간 변수 사용 CMD 기본 명령어 지정 COPY 파일 및 디렉토리 복사 ENTRYPOINT 기본 실행 파일 지정 ENV 환경 변수 설정 EXPOSE 응용 프로그램이 수신 대기 중인 포트 설명 FROM 기본 이미지에서 새 빌드 단계 생성 HEALTHCHECK 컨테이너의 시작 시간에 대한 건강 상태 확인 LABEL 이미지에 메타데이터 추가 MAINTAINER 이미지 작성자 지정 ONBUILD 이미지가 빌드에 사용될 때 지시 RUN 빌드 명령어 실행 SHELL 이미지의 기본 셸 설정 STOPSIGNAL 컨테이너 종료에 대한 시스템 콜 신호 지정 USER 사용자 및 그룹 ID 설정 VOLUME 볼륨 마운트 생성 WORKDIR 작업 디렉토리 변경 Dockerfile 예시 # # 기본 이미지로부터 빌드 스테이지 생성 FROM ubuntu:latest # 로컬 또는 원격 파일 및 디렉토리 추가 ADD ./app /app # 빌드 시간 변수 사용 ARG version=1.0 # 기본 명령어 지정 CMD [&#34;./app/start.sh&#34;] # 파일 및 디렉토리 복사 COPY ./config /config # 기본 실행 파일 지정 ENTRYPOINT [&#34;/app/entrypoint.sh&#34;] # 환경 변수 설정 ENV APP_HOME=/app # 응용 프로그램이 수신 대기 중인 포트 설명 EXPOSE 8080 # 건강 상태 확인 HEALTHCHECK CMD curl --fail http://localhost:8080/ || exit 1 # 이미지에 메타데이터 추가 LABEL version=$version LABEL maintainer=&#34;Your Name &lt;your.email@example.com&gt;&#34; # 이미지 작성자 지정 MAINTAINER Your Name &lt;your.email@example.com&gt; # 이미지가 빌드에 사용될 때 지시 ONBUILD ADD . /app/src ONBUILD RUN /app/build.sh # 빌드 명령어 실행 RUN apt-get update &amp;&amp; apt-get install -y \ package1 \ package2 \ &amp;&amp; rm -rf /var/lib/apt/lists/* # 이미지의 기본 셸 설정 SHELL [&#34;/bin/bash&#34;, &#34;-c&#34;] # 컨테이너 종료에 대한 시스템 콜 신호 지정 STOPSIGNAL SIGTERM # 사용자 및 그룹 ID 설정 USER 1000:1000 # 볼륨 마운트 생성 VOLUME /app/data # 작업 디렉토리 변경 WORKDIR /app Docker compose # version: &#39;3&#39; # 도커 컴포즈 버전 지정 services: # 서비스 정의 시작 web: # 서비스 이름 image: nginx:latest # 도커 이미지 지정 ports: - &#34;8080:80&#34; # 호스트와 컨테이너 포트 매핑 volumes: - ./web-content:/usr/share/nginx/html # 볼륨 매핑 networks: - frontend # 네트워크 지정 db: image: mysql:latest environment: MYSQL_ROOT_PASSWORD: example # 환경 변수 설정 volumes: - db-data:/var/lib/mysql networks: - backend networks: frontend: # 사용자 정의 네트워크 정의 backend: volumes: db-data: # 사용자 정의 볼륨 정의 옵션 설명 -f, –file 컴포즈 설정 파일 지정 (기본값: docker-compose.yml) -p, –project-name 프로젝트 이름 설정 (기본값: 디렉터리 이름) -v, –verbose 자세한 출력 활성화 -q, –quiet 출력을 최소화 –log-level 로그 레벨 설정 (기본값: INFO) –no-ansi ANSI 제어 코드를 사용하지 않음 –version 버전 정보 출력 –help 도움말 출력 -H, –host 컴포즈 엔진에 연결할 Docker 호스트 설정 –compatibility 호환성 모드 활성화 (v3 이하의 구성 파일 사용) –env-file 환경 파일에서 변수 지정 –project-directory 프로젝트 디렉터리 설정 (기본값: 현재 디렉터리) –compatibility 호환성 모드 활성화 (v3 이하의 구성 파일 사용) –project-directory 프로젝트 디렉터리 설정 (기본값: 현재 디렉터리) –compatibility 호환성 모드 활성화 (v3 이하의 구성 파일 사용) –project-directory 프로젝트 디렉터리 설정 (기본값: 현재 디렉터리) –compatibility 호환성 모드 활성화 (v3 이하의 구성 파일 사용) –project-directory 프로젝트 디렉터리 설정 (기본값: 현재 디렉터리) –compatibility 호환성 모드 활성화 (v3 이하의 구성 파일 사용) –project-directory 프로젝트 디렉터리 설정 (기본값: 현재 디렉터리) ">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-01-22T13:50:06+09:00">
 <title>3. Dockerfile&amp; Compose | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +307,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +337,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +368,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2031,86 +2305,86 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#dockerfile-1">#</a>
 </h3>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ADD</td>
-<td>로컬 또는 원격 파일 및 디렉토리 추가</td>
-</tr>
-<tr>
-<td>ARG</td>
-<td>빌드 시간 변수 사용</td>
-</tr>
-<tr>
-<td>CMD</td>
-<td>기본 명령어 지정</td>
-</tr>
-<tr>
-<td>COPY</td>
-<td>파일 및 디렉토리 복사</td>
-</tr>
-<tr>
-<td>ENTRYPOINT</td>
-<td>기본 실행 파일 지정</td>
-</tr>
-<tr>
-<td>ENV</td>
-<td>환경 변수 설정</td>
-</tr>
-<tr>
-<td>EXPOSE</td>
-<td>응용 프로그램이 수신 대기 중인 포트 설명</td>
-</tr>
-<tr>
-<td>FROM</td>
-<td>기본 이미지에서 새 빌드 단계 생성</td>
-</tr>
-<tr>
-<td>HEALTHCHECK</td>
-<td>컨테이너의 시작 시간에 대한 건강 상태 확인</td>
-</tr>
-<tr>
-<td>LABEL</td>
-<td>이미지에 메타데이터 추가</td>
-</tr>
-<tr>
-<td>MAINTAINER</td>
-<td>이미지 작성자 지정</td>
-</tr>
-<tr>
-<td>ONBUILD</td>
-<td>이미지가 빌드에 사용될 때 지시</td>
-</tr>
-<tr>
-<td>RUN</td>
-<td>빌드 명령어 실행</td>
-</tr>
-<tr>
-<td>SHELL</td>
-<td>이미지의 기본 셸 설정</td>
-</tr>
-<tr>
-<td>STOPSIGNAL</td>
-<td>컨테이너 종료에 대한 시스템 콜 신호 지정</td>
-</tr>
-<tr>
-<td>USER</td>
-<td>사용자 및 그룹 ID 설정</td>
-</tr>
-<tr>
-<td>VOLUME</td>
-<td>볼륨 마운트 생성</td>
-</tr>
-<tr>
-<td>WORKDIR</td>
-<td>작업 디렉토리 변경</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ADD</td>
+          <td style="text-align: left">로컬 또는 원격 파일 및 디렉토리 추가</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ARG</td>
+          <td style="text-align: left">빌드 시간 변수 사용</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CMD</td>
+          <td style="text-align: left">기본 명령어 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">COPY</td>
+          <td style="text-align: left">파일 및 디렉토리 복사</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ENTRYPOINT</td>
+          <td style="text-align: left">기본 실행 파일 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ENV</td>
+          <td style="text-align: left">환경 변수 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">EXPOSE</td>
+          <td style="text-align: left">응용 프로그램이 수신 대기 중인 포트 설명</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">FROM</td>
+          <td style="text-align: left">기본 이미지에서 새 빌드 단계 생성</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HEALTHCHECK</td>
+          <td style="text-align: left">컨테이너의 시작 시간에 대한 건강 상태 확인</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LABEL</td>
+          <td style="text-align: left">이미지에 메타데이터 추가</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">MAINTAINER</td>
+          <td style="text-align: left">이미지 작성자 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ONBUILD</td>
+          <td style="text-align: left">이미지가 빌드에 사용될 때 지시</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RUN</td>
+          <td style="text-align: left">빌드 명령어 실행</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SHELL</td>
+          <td style="text-align: left">이미지의 기본 셸 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">STOPSIGNAL</td>
+          <td style="text-align: left">컨테이너 종료에 대한 시스템 콜 신호 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">USER</td>
+          <td style="text-align: left">사용자 및 그룹 ID 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">VOLUME</td>
+          <td style="text-align: left">볼륨 마운트 생성</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">WORKDIR</td>
+          <td style="text-align: left">작업 디렉토리 변경</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/>
@@ -2210,94 +2484,94 @@ https://github.com/alex-shpak/hugo-book
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>volumes:<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  db-data:  <span style="color:#75715e"># 사용자 정의 볼륨 정의</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>옵션</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-f, &ndash;file</td>
-<td>컴포즈 설정 파일 지정 (기본값: docker-compose.yml)</td>
-</tr>
-<tr>
-<td>-p, &ndash;project-name</td>
-<td>프로젝트 이름 설정 (기본값: 디렉터리 이름)</td>
-</tr>
-<tr>
-<td>-v, &ndash;verbose</td>
-<td>자세한 출력 활성화</td>
-</tr>
-<tr>
-<td>-q, &ndash;quiet</td>
-<td>출력을 최소화</td>
-</tr>
-<tr>
-<td>&ndash;log-level</td>
-<td>로그 레벨 설정 (기본값: INFO)</td>
-</tr>
-<tr>
-<td>&ndash;no-ansi</td>
-<td>ANSI 제어 코드를 사용하지 않음</td>
-</tr>
-<tr>
-<td>&ndash;version</td>
-<td>버전 정보 출력</td>
-</tr>
-<tr>
-<td>&ndash;help</td>
-<td>도움말 출력</td>
-</tr>
-<tr>
-<td>-H, &ndash;host</td>
-<td>컴포즈 엔진에 연결할 Docker 호스트 설정</td>
-</tr>
-<tr>
-<td>&ndash;compatibility</td>
-<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
-</tr>
-<tr>
-<td>&ndash;env-file</td>
-<td>환경 파일에서 변수 지정</td>
-</tr>
-<tr>
-<td>&ndash;project-directory</td>
-<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
-</tr>
-<tr>
-<td>&ndash;compatibility</td>
-<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
-</tr>
-<tr>
-<td>&ndash;project-directory</td>
-<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
-</tr>
-<tr>
-<td>&ndash;compatibility</td>
-<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
-</tr>
-<tr>
-<td>&ndash;project-directory</td>
-<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
-</tr>
-<tr>
-<td>&ndash;compatibility</td>
-<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
-</tr>
-<tr>
-<td>&ndash;project-directory</td>
-<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
-</tr>
-<tr>
-<td>&ndash;compatibility</td>
-<td>호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
-</tr>
-<tr>
-<td>&ndash;project-directory</td>
-<td>프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">옵션</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-f, &ndash;file</td>
+          <td style="text-align: left">컴포즈 설정 파일 지정 (기본값: docker-compose.yml)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-p, &ndash;project-name</td>
+          <td style="text-align: left">프로젝트 이름 설정 (기본값: 디렉터리 이름)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-v, &ndash;verbose</td>
+          <td style="text-align: left">자세한 출력 활성화</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-q, &ndash;quiet</td>
+          <td style="text-align: left">출력을 최소화</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;log-level</td>
+          <td style="text-align: left">로그 레벨 설정 (기본값: INFO)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;no-ansi</td>
+          <td style="text-align: left">ANSI 제어 코드를 사용하지 않음</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;version</td>
+          <td style="text-align: left">버전 정보 출력</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;help</td>
+          <td style="text-align: left">도움말 출력</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-H, &ndash;host</td>
+          <td style="text-align: left">컴포즈 엔진에 연결할 Docker 호스트 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;compatibility</td>
+          <td style="text-align: left">호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;env-file</td>
+          <td style="text-align: left">환경 파일에서 변수 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;project-directory</td>
+          <td style="text-align: left">프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;compatibility</td>
+          <td style="text-align: left">호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;project-directory</td>
+          <td style="text-align: left">프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;compatibility</td>
+          <td style="text-align: left">호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;project-directory</td>
+          <td style="text-align: left">프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;compatibility</td>
+          <td style="text-align: left">호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;project-directory</td>
+          <td style="text-align: left">프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;compatibility</td>
+          <td style="text-align: left">호환성 모드 활성화 (v3 이하의 구성 파일 사용)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;project-directory</td>
+          <td style="text-align: left">프로젝트 디렉터리 설정 (기본값: 현재 디렉터리)</td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <br/></article>
@@ -2307,15 +2581,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/4a455153a1a31f6a3c554478eb09768dd4526337" title='Last modified by mungOps | January 22, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 22, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

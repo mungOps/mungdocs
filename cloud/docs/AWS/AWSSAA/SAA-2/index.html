@@ -3,17 +3,74 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="# 2장 Amazon Elastic Compute Cloud와 Amazon Elastic Block Store # # 2장의 목표 # 복원력은 갖춘 아키텍처 설계 안정적이고, 복원력을 갖춘 스토리지를 선택 어떻게 고가용성 및/ 또는 내결함성을 갖춘 아키텍처를 설계할지를 결정 # 성능이 뛰어난 아키텍처 정의 성능이 뛰어난 스토리지 및 데이터베이스를 선택 탄력성과 확장성을 갖춘 솔루션을 설계 # 안전한 애플리케이션 및 아키텍처 설명 어떻게 애플리케이션 티어를 보호할지를 결정 어떻게 데이터를 보호할지 결정 비용에 최적화된 아키텍처 설계 어떻게 비용에 최적화된 스토리지를 설계할지를 결정 어떻게 비용에 최적화된 컴퓨팅을 설계할지 결정 # # EC2 인스턴스 # # EC2는 물리 서버의 기능을 함축적으로 가상화한 실제 서버와 유사하게 작동">
+<meta name="description" content="
+  
+  #
+
+
+  2장 Amazon Elastic Compute Cloud와 Amazon Elastic Block Store
+  #
+
+
+  
+  #
+
+
+  2장의 목표
+  #
+
+
+복원력은 갖춘 아키텍처 설계
+
+안정적이고, 복원력을 갖춘 스토리지를 선택
+어떻게 고가용성 및/ 또는 내결함성을 갖춘 아키텍처를 설계할지를 결정
+
+
+
+
+  
+  #
+
+
+성능이 뛰어난 아키텍처 정의
+
+성능이 뛰어난 스토리지 및 데이터베이스를 선택
+탄력성과 확장성을 갖춘 솔루션을 설계
+
+
+
+
+  
+  #
+
+
+안전한 애플리케이션 및 아키텍처 설명
+
+어떻게 애플리케이션 티어를 보호할지를 결정
+어떻게 데이터를 보호할지 결정
+
+
+비용에 최적화된 아키텍처 설계
+
+어떻게 비용에 최적화된 스토리지를 설계할지를 결정
+어떻게 비용에 최적화된 컴퓨팅을 설계할지 결정
+
+
+
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSSAA/SAA-2/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="2장 EC2와 EBS">
-  <meta property="og:description" content="# 2장 Amazon Elastic Compute Cloud와 Amazon Elastic Block Store # # 2장의 목표 # 복원력은 갖춘 아키텍처 설계 안정적이고, 복원력을 갖춘 스토리지를 선택 어떻게 고가용성 및/ 또는 내결함성을 갖춘 아키텍처를 설계할지를 결정 # 성능이 뛰어난 아키텍처 정의 성능이 뛰어난 스토리지 및 데이터베이스를 선택 탄력성과 확장성을 갖춘 솔루션을 설계 # 안전한 애플리케이션 및 아키텍처 설명 어떻게 애플리케이션 티어를 보호할지를 결정 어떻게 데이터를 보호할지 결정 비용에 최적화된 아키텍처 설계 어떻게 비용에 최적화된 스토리지를 설계할지를 결정 어떻게 비용에 최적화된 컴퓨팅을 설계할지 결정 # # EC2 인스턴스 # # EC2는 물리 서버의 기능을 함축적으로 가상화한 실제 서버와 유사하게 작동">
+  <meta property="og:description" content=" # 2장 Amazon Elastic Compute Cloud와 Amazon Elastic Block Store # # 2장의 목표 # 복원력은 갖춘 아키텍처 설계 안정적이고, 복원력을 갖춘 스토리지를 선택 어떻게 고가용성 및/ 또는 내결함성을 갖춘 아키텍처를 설계할지를 결정 # 성능이 뛰어난 아키텍처 정의 성능이 뛰어난 스토리지 및 데이터베이스를 선택 탄력성과 확장성을 갖춘 솔루션을 설계 # 안전한 애플리케이션 및 아키텍처 설명 어떻게 애플리케이션 티어를 보호할지를 결정 어떻게 데이터를 보호할지 결정 비용에 최적화된 아키텍처 설계 어떻게 비용에 최적화된 스토리지를 설계할지를 결정 어떻게 비용에 최적화된 컴퓨팅을 설계할지 결정 # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>2장 EC2와 EBS | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +79,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +109,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +140,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2286,30 +2332,30 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>AMI의 종류</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>종류</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon 바른 시작 AMI</td>
-<td>자주 이용되는 Linux, Windows 등이 등록되어지고, 최신 버전으로 업데이트, 공식적으로 지원하는 이미지</td>
-</tr>
-<tr>
-<td>AWS Marketplace AMI AWS Marketplace</td>
-<td>AWS에서 공식적으로 지원하는 이미지이며, SAP, 시스코와 같은 공급업체가 제공 및 지원</td>
-</tr>
-<tr>
-<td>Community AMI</td>
-<td>100.000개 이상의 이미지가 제공디고 있으며, 특정한 요구에 맞게 커스터마이징 된 이미지</td>
-</tr>
-<tr>
-<td>Private AMI</td>
-<td>사용자가 자체 배포한 인스턴스에서 이미지를 생성해서 저장한 이미지, S3에 저장할 수 있으며, 이를 통해 As기능을 사용할 수 있다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">종류</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Amazon 바른 시작 AMI</td>
+          <td style="text-align: left">자주 이용되는 Linux, Windows 등이 등록되어지고, 최신 버전으로 업데이트, 공식적으로 지원하는 이미지</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">AWS Marketplace AMI AWS Marketplace</td>
+          <td style="text-align: left">AWS에서 공식적으로 지원하는 이미지이며, SAP, 시스코와 같은 공급업체가 제공 및 지원</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Community AMI</td>
+          <td style="text-align: left">100.000개 이상의 이미지가 제공디고 있으며, 특정한 요구에 맞게 커스터마이징 된 이미지</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Private AMI</td>
+          <td style="text-align: left">사용자가 자체 배포한 인스턴스에서 이미지를 생성해서 저장한 이미지, S3에 저장할 수 있으며, 이를 통해 As기능을 사용할 수 있다.</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-10">
   
@@ -2336,34 +2382,34 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>EC2 인스턴스 유형 패밀리와 최상위 명칭</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>인스턴스 유형 패밀리</th>
-<th>유형</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>범용</td>
-<td>T3, T2, M5, M4</td>
-</tr>
-<tr>
-<td>컴퓨팅 최적화</td>
-<td>C5, C4</td>
-</tr>
-<tr>
-<td>메모리 치적화</td>
-<td>X1e, X1, R5, R4, z1d</td>
-</tr>
-<tr>
-<td>가속화된 컴퓨팅</td>
-<td>P3, P2, G3, F1</td>
-</tr>
-<tr>
-<td>스토리지 최적화</td>
-<td>H1, l3,D2</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">인스턴스 유형 패밀리</th>
+          <th style="text-align: left">유형</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">범용</td>
+          <td style="text-align: left">T3, T2, M5, M4</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">컴퓨팅 최적화</td>
+          <td style="text-align: left">C5, C4</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">메모리 치적화</td>
+          <td style="text-align: left">X1e, X1, R5, R4, z1d</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">가속화된 컴퓨팅</td>
+          <td style="text-align: left">P3, P2, G3, F1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">스토리지 최적화</td>
+          <td style="text-align: left">H1, l3,D2</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-13">
   
@@ -2481,26 +2527,26 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>세 가지 모델 중에서 하나를 선택해 EC2 인스턴스를 구매해서 사용할 수 있다.</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>요금 모델</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>온 디맨드</td>
-<td>사용자가 사용한 만큼만 비용이 발생하게 구성</td>
-</tr>
-<tr>
-<td>예약</td>
-<td>미리 사용량을 할당받아 정해진 만큼 지불하며, 1, 3년으로 구성</td>
-</tr>
-<tr>
-<td>스팟</td>
-<td>특정 리전에서 실행되는 인스턴스 유형에 대해 사용자가 최대 입찰 요금을 입력해서 인스턴스를 사용</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">요금 모델</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">온 디맨드</td>
+          <td style="text-align: left">사용자가 사용한 만큼만 비용이 발생하게 구성</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">예약</td>
+          <td style="text-align: left">미리 사용량을 할당받아 정해진 만큼 지불하며, 1, 3년으로 구성</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">스팟</td>
+          <td style="text-align: left">특정 리전에서 실행되는 인스턴스 유형에 대해 사용자가 최대 입찰 요금을 입력해서 인스턴스를 사용</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-29">
   
@@ -2525,30 +2571,30 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>리소스 태그는 키/ 값으로 구성된다.</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>키</th>
-<th>값</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>production-server</td>
-<td>server1</td>
-</tr>
-<tr>
-<td>production-server</td>
-<td>security-grouop1</td>
-</tr>
-<tr>
-<td>staging-server</td>
-<td>server1</td>
-</tr>
-<tr>
-<td>test-server</td>
-<td>security-grouop1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">키</th>
+          <th style="text-align: left">값</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">production-server</td>
+          <td style="text-align: left">server1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">production-server</td>
+          <td style="text-align: left">security-grouop1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">staging-server</td>
+          <td style="text-align: left">server1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">test-server</td>
+          <td style="text-align: left">security-grouop1</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-32">
   
@@ -2617,30 +2663,30 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>EBS의 볼륨 유형</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>볼륨 타입</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>EBS 프로비저닝 된 IOPS SSD</td>
-<td>고성능 I/O 작업이 필요할 때 최대 32.000 IOPS와 최대 500MB/s 처리량을 제공한다.</td>
-</tr>
-<tr>
-<td>EBS 범용 SSD</td>
-<td>대다수 일반 서버 워크로드에서 사용되며, 이론적으로 짧은 징녀 시간 성능을 제공한다.</td>
-</tr>
-<tr>
-<td>처리량 최적화 HDD</td>
-<td>로그 처리와 빅 데이터 작업 등의 높은 처리량을 요구하는 워크로드에 적합한 성능을 저렴한 비용에 제공한다.</td>
-</tr>
-<tr>
-<td>콜드 HDD</td>
-<td>번번하게 엑세스하지 않는 대용량 작업에 콜드 HDD는 가장 낮은 가격에 제공한다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">볼륨 타입</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">EBS 프로비저닝 된 IOPS SSD</td>
+          <td style="text-align: left">고성능 I/O 작업이 필요할 때 최대 32.000 IOPS와 최대 500MB/s 처리량을 제공한다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">EBS 범용 SSD</td>
+          <td style="text-align: left">대다수 일반 서버 워크로드에서 사용되며, 이론적으로 짧은 징녀 시간 성능을 제공한다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">처리량 최적화 HDD</td>
+          <td style="text-align: left">로그 처리와 빅 데이터 작업 등의 높은 처리량을 요구하는 워크로드에 적합한 성능을 저렴한 비용에 제공한다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">콜드 HDD</td>
+          <td style="text-align: left">번번하게 엑세스하지 않는 대용량 작업에 콜드 HDD는 가장 낮은 가격에 제공한다.</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-41">
   
@@ -2716,26 +2762,26 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#heading-50">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>처음 주소</th>
-<th>끝 주소</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10.0.0.0</td>
-<td>10.255.255.255</td>
-</tr>
-<tr>
-<td>172.16.0.0</td>
-<td>172.31.255.255</td>
-</tr>
-<tr>
-<td>192.168.0.0</td>
-<td>192.168.255.255</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">처음 주소</th>
+          <th style="text-align: left">끝 주소</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">10.0.0.0</td>
+          <td style="text-align: left">10.255.255.255</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">172.16.0.0</td>
+          <td style="text-align: left">172.31.255.255</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">192.168.0.0</td>
+          <td style="text-align: left">192.168.255.255</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>프라이빗 서브넷으로 생성된 인스턴스는 서브넷 내부에서만 통신할 수 있고, 인터넷에는 직접 연결할 수 없다.</strong></li>
@@ -3090,15 +3136,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

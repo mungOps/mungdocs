@@ -3,17 +3,71 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="4장 Amazon Virtual Private Cloud # # 4장의 목표 # # 복원력을 갖춘 아키텍처 설계 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. # 안전한 어플리케이션 및 아키텍처 설계 단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다. 단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다. # # Virtual Private Cloud ( 이하 VPC ) # # VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다.">
+<meta name="description" content="
+  4장 Amazon Virtual Private Cloud
+  #
+
+
+
+  
+  #
+
+
+  4장의 목표
+  #
+
+
+  
+  #
+
+
+복원력을 갖춘 아키텍처 설계
+
+어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다.
+
+
+
+
+  
+  #
+
+
+안전한 어플리케이션 및 아키텍처 설계
+
+단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다.
+단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다.
+
+
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  Virtual Private Cloud ( 이하 VPC )
+  #
+
+
+  
+  #
+
+
+
+VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSSAA/SAA-4/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="4장 VPC">
-  <meta property="og:description" content="4장 Amazon Virtual Private Cloud # # 4장의 목표 # # 복원력을 갖춘 아키텍처 설계 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. # 안전한 어플리케이션 및 아키텍처 설계 단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다. 단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다. # # Virtual Private Cloud ( 이하 VPC ) # # VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다.">
+  <meta property="og:description" content=" 4장 Amazon Virtual Private Cloud # # 4장의 목표 # # 복원력을 갖춘 아키텍처 설계 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다. # 안전한 어플리케이션 및 아키텍처 설계 단일 VPC 어플리케이션을 위한 네트워킹 인프라르 정의한다. 단일 VPC 애플리케이션을 위한 네트워킹 인프라르 정의한다. # # Virtual Private Cloud ( 이하 VPC ) # # VPC란 EC2의 네트워크 계층으로, EC2 인스턴스를 비롯한 여러 AWS 서비스에 네트워크 리소스를 담을 수 있는 가상의 네트워크를 의미한다.">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>4장 VPC | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +76,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +106,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +137,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2368,26 +2411,26 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>주소 대역</th>
-<th>할당 IP 대역</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10.0.0.0</td>
-<td>10.255.255.255 ( 10.0.0.0/8 )</td>
-</tr>
-<tr>
-<td>172.16.0.0</td>
-<td>172.31.255.255 ( 172.16.0.0/12 )</td>
-</tr>
-<tr>
-<td>192.168.0.0</td>
-<td>192.168.255.255 ( 192.168.0.0/16 )</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">주소 대역</th>
+          <th style="text-align: left">할당 IP 대역</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">10.0.0.0</td>
+          <td style="text-align: left">10.255.255.255 ( 10.0.0.0/8 )</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">172.16.0.0</td>
+          <td style="text-align: left">172.31.255.255 ( 172.16.0.0/12 )</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">192.168.0.0</td>
+          <td style="text-align: left">192.168.255.255 ( 192.168.0.0/16 )</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-9">
   
@@ -2552,25 +2595,25 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>Subnet</th>
-<th>AZ</th>
-<th>Instance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>web-subnet1</td>
-<td>us-east-1a</td>
-<td>web1</td>
-</tr>
-<tr>
-<td>web-subnet2</td>
-<td>us-east-1b</td>
-<td>web2</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Subnet</th>
+          <th style="text-align: left">AZ</th>
+          <th style="text-align: left">Instance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">web-subnet1</td>
+          <td style="text-align: left">us-east-1a</td>
+          <td style="text-align: left">web1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">web-subnet2</td>
+          <td style="text-align: left">us-east-1b</td>
+          <td style="text-align: left">web2</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>위와 같이 만약 us-east-1a의 생성된 web1의 인스턴스의 문제가 발생하더라도, web2 인스턴스의 서브넷은 다른 AZ에 속해있기 때문에 무중단 서비스가 가능하다.</strong></li>
@@ -2798,22 +2841,22 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>인스턴스가 인터넷에 액세스하게 하려면 인터넷 게이트웨이를 가리키는 기본 라우팅을 생성해야 한다.</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>대상 주소</th>
-<th>대상</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>172.31.0.0/16</td>
-<td>LOCAL</td>
-</tr>
-<tr>
-<td>0.0.0.0/0</td>
-<td>igw-xxxxxxxxx</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">대상 주소</th>
+          <th style="text-align: left">대상</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">172.31.0.0/16</td>
+          <td style="text-align: left">LOCAL</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">igw-xxxxxxxxx</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>
@@ -2892,25 +2935,25 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p><strong>아래의 항목은 HTTP와 SSH의 예시이다.</strong></p>
 <table>
-<thead>
-<tr>
-<th>원본</th>
-<th>프로토콜</th>
-<th>포트 범위</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>151.123.231.2 ( 자기자신이 사용하고 있는 특정 IP )</td>
-<td>TCP ( SSH )</td>
-<td>22</td>
-</tr>
-<tr>
-<td>0.0.0.0/0 ( 모두 접속할 수 있어야 하므로 )</td>
-<td>HTTP</td>
-<td>80</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">원본</th>
+          <th style="text-align: left">프로토콜</th>
+          <th style="text-align: left">포트 범위</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">151.123.231.2 ( 자기자신이 사용하고 있는 특정 IP )</td>
+          <td style="text-align: left">TCP ( SSH )</td>
+          <td style="text-align: left">22</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">0.0.0.0/0 ( 모두 접속할 수 있어야 하므로 )</td>
+          <td style="text-align: left">HTTP</td>
+          <td style="text-align: left">80</td>
+      </tr>
+  </tbody>
 </table>
 </li>
 </ul>
@@ -2945,20 +2988,20 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>목적지 주소</th>
-<th>프로토콜</th>
-<th>포트 범위</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0.0.0.0/0</td>
-<td>모두</td>
-<td>모두</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">목적지 주소</th>
+          <th style="text-align: left">프로토콜</th>
+          <th style="text-align: left">포트 범위</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">모두</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-58">
   
@@ -3100,31 +3143,31 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>규칙번호</th>
-<th>프로토콜</th>
-<th>포트 범위</th>
-<th>출발 주소</th>
-<th>허용/ 거부</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100</td>
-<td>모두</td>
-<td>모두</td>
-<td>0.0.0.0/0</td>
-<td>ALLOW</td>
-</tr>
-<tr>
-<td>*</td>
-<td>모두</td>
-<td>모두</td>
-<td>0.0.0.0/0</td>
-<td>DENY</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">규칙번호</th>
+          <th style="text-align: left">프로토콜</th>
+          <th style="text-align: left">포트 범위</th>
+          <th style="text-align: left">출발 주소</th>
+          <th style="text-align: left">허용/ 거부</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">100</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">ALLOW</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">*</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">DENY</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>NACL 규칙은 규칙 번호의 오름차순으로 처리된다.</strong></li>
@@ -3162,31 +3205,31 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>규칙번호</th>
-<th>프로토콜</th>
-<th>포트 범위</th>
-<th>도착 주소</th>
-<th>허용/ 거부</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100</td>
-<td>모두</td>
-<td>모두</td>
-<td>0.0.0.0/0</td>
-<td>ALLOW</td>
-</tr>
-<tr>
-<td>*</td>
-<td>모두</td>
-<td>모두</td>
-<td>0.0.0.0/0</td>
-<td>DENY</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">규칙번호</th>
+          <th style="text-align: left">프로토콜</th>
+          <th style="text-align: left">포트 범위</th>
+          <th style="text-align: left">도착 주소</th>
+          <th style="text-align: left">허용/ 거부</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">100</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">ALLOW</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">*</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">모두</td>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">DENY</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>NACL은 상태 비저장이므로 응답 트래픽을 자동으로 허용하지 않기 때문에, 만약 인바운드에서 HTTPS의 트래픽을 허용한다면, 아웃바운드 규칙에서도 응답 트래픽을 명시적으로 허용해야한다.</strong></li>
@@ -3364,34 +3407,34 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>이름</th>
-<th>서브넷</th>
-<th>프라이빗 IP</th>
-<th>퍼블릭 IP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>EC2-1</td>
-<td>Private</td>
-<td>10.0.0.10</td>
-<td> </td>
-</tr>
-<tr>
-<td>EC2-2</td>
-<td>Private</td>
-<td>10.0.0.11</td>
-<td> </td>
-</tr>
-<tr>
-<td>NAT 디바이스</td>
-<td>Public</td>
-<td>10.0.1.10</td>
-<td>18.212.132.21</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">이름</th>
+          <th style="text-align: left">서브넷</th>
+          <th style="text-align: left">프라이빗 IP</th>
+          <th style="text-align: left">퍼블릭 IP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">EC2-1</td>
+          <td style="text-align: left">Private</td>
+          <td style="text-align: left">10.0.0.10</td>
+          <td style="text-align: left"> </td>
+      </tr>
+      <tr>
+          <td style="text-align: left">EC2-2</td>
+          <td style="text-align: left">Private</td>
+          <td style="text-align: left">10.0.0.11</td>
+          <td style="text-align: left"> </td>
+      </tr>
+      <tr>
+          <td style="text-align: left">NAT 디바이스</td>
+          <td style="text-align: left">Public</td>
+          <td style="text-align: left">10.0.1.10</td>
+          <td style="text-align: left">18.212.132.21</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-91">
   
@@ -3406,24 +3449,24 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>EC2-1, 2의 외부주소의 인터넷 호스트로 패킷을 전송하면 그 패킷은 먼저 NAT 디바이스로전달되고, NAT 디바이스에서는 아래와 같이 패킷을 변환한다.</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>원본 패킷의 원본 IP 주소</th>
-<th>원본 패킷의 대상 IP 주소</th>
-<th>&ndash;&gt; 변환 &ndash;&gt;</th>
-<th>변환 패킷의 원본 IP 주소</th>
-<th>변환 패킷의 대상 IP 주소</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>EC2-1 ( 10.0.0.10 )</td>
-<td>외부 주소</td>
-<td>&ndash;&gt; 변환 &ndash;&gt;</td>
-<td>NAT 디바이스 ( 10.0.1.10 )</td>
-<td>외부 주소</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">원본 패킷의 원본 IP 주소</th>
+          <th style="text-align: left">원본 패킷의 대상 IP 주소</th>
+          <th style="text-align: left">&ndash;&gt; 변환 &ndash;&gt;</th>
+          <th style="text-align: left">변환 패킷의 원본 IP 주소</th>
+          <th style="text-align: left">변환 패킷의 대상 IP 주소</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">EC2-1 ( 10.0.0.10 )</td>
+          <td style="text-align: left">외부 주소</td>
+          <td style="text-align: left">&ndash;&gt; 변환 &ndash;&gt;</td>
+          <td style="text-align: left">NAT 디바이스 ( 10.0.1.10 )</td>
+          <td style="text-align: left">외부 주소</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-93">
   
@@ -3438,24 +3481,24 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>내부 대역에서 NAT 디바이스와의 변환을 마치게 되면 하단과 같이 NAT 디바이스와 인터넷 게이트웨이로의 변환이 다시 한번 이루어진다.</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>원본 패킷의 원본 IP 주소</th>
-<th>원본 패킷의 대상 IP 주소</th>
-<th>&ndash;&gt; 변환 &ndash;&gt;</th>
-<th>변환 패킷의 원본 IP 주소</th>
-<th>변환 패킷의 대상 IP 주소</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NAT 디바이스 ( 10.0.1.10 )</td>
-<td>외부 주소</td>
-<td>&ndash;&gt; 변환 &ndash;&gt;</td>
-<td>NAT 디바이스 ( 18.212.132.21 )</td>
-<td>외부 주소</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">원본 패킷의 원본 IP 주소</th>
+          <th style="text-align: left">원본 패킷의 대상 IP 주소</th>
+          <th style="text-align: left">&ndash;&gt; 변환 &ndash;&gt;</th>
+          <th style="text-align: left">변환 패킷의 원본 IP 주소</th>
+          <th style="text-align: left">변환 패킷의 대상 IP 주소</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">NAT 디바이스 ( 10.0.1.10 )</td>
+          <td style="text-align: left">외부 주소</td>
+          <td style="text-align: left">&ndash;&gt; 변환 &ndash;&gt;</td>
+          <td style="text-align: left">NAT 디바이스 ( 18.212.132.21 )</td>
+          <td style="text-align: left">외부 주소</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>이와 같이 여러 인스턴스가 같은 NAT 디바이스를 사용할 수 있으므로 같은 퍼블릭 IP 주소를 공유해서 아웃 바운드에 연결할 수 있다.</strong></li>
@@ -3490,25 +3533,25 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>서브넷</th>
-<th>대상 주소</th>
-<th>대상</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>프라이빗</td>
-<td>0.0.0.0/0</td>
-<td>NAT 디바이스</td>
-</tr>
-<tr>
-<td>퍼블릭</td>
-<td>0.0.0.0/0</td>
-<td>igw-0e538022a0fddc318</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">서브넷</th>
+          <th style="text-align: left">대상 주소</th>
+          <th style="text-align: left">대상</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">프라이빗</td>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">NAT 디바이스</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">퍼블릭</td>
+          <td style="text-align: left">0.0.0.0/0</td>
+          <td style="text-align: left">igw-0e538022a0fddc318</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>위의 표는 프라이빗과 퍼블릿의 기본 라우팅을 나타낸다.</strong></li>
@@ -3642,25 +3685,25 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>원본 VPC CIDR</th>
-<th>대상 VPC CIDR</th>
-<th>대상</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10.0.0.0/16</td>
-<td>172.31.0.0/16</td>
-<td>pcx-xxxxxxxxxxx</td>
-</tr>
-<tr>
-<td>172.31.0.0/16</td>
-<td>10.0.0.0/16</td>
-<td>pcx-xxxxxxxxxxx</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">원본 VPC CIDR</th>
+          <th style="text-align: left">대상 VPC CIDR</th>
+          <th style="text-align: left">대상</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">10.0.0.0/16</td>
+          <td style="text-align: left">172.31.0.0/16</td>
+          <td style="text-align: left">pcx-xxxxxxxxxxx</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">172.31.0.0/16</td>
+          <td style="text-align: left">10.0.0.0/16</td>
+          <td style="text-align: left">pcx-xxxxxxxxxxx</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>위에 표는 라우팅이 서로 반대로 설정된 것은 양방향으로 트래픽을 허용한다는 의미이다.</strong></li>
@@ -3856,15 +3899,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

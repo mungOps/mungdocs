@@ -3,17 +3,146 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Openstack Stain Manual 설치 # # 1. 시스템 및 네트워크 구성 # 여기서는 Nat 네트워크를 외부, host1 대역을 내부로 사용하여 Openstack을 구축해보도록 하겠습니다. # 운영체제 및 네트워크 구성 Hypervisor : Vmware Workstation 15 OS : CentOS7 # 노드 구성 OS Hostname Network Interface Network Interface2 CPU RAM DISK CentOS7 controller Nat ( 192.168.10.100 ) HOST1 ( 10.10.10.10 ) 2cpu 4thread 8 RAm 30G CentOS7 natwork Nat ( 192.168.10.101 ) HOST1 ( 10.">
+<meta name="description" content="
+  Openstack Stain Manual 설치
+  #
+
+
+ 
+
+  
+  #
+
+
+  1. 시스템 및 네트워크 구성
+  #
+
+
+
+여기서는 Nat 네트워크를 외부, host1 대역을 내부로 사용하여 Openstack을 구축해보도록 하겠습니다.
+
+
+  
+  #
+
+
+운영체제 및 네트워크 구성
+
+Hypervisor : Vmware Workstation 15
+OS : CentOS7
+
+
+
+
+  
+  #
+
+
+노드 구성
+
+
+  
+      
+          OS
+          Hostname
+          Network Interface
+          Network Interface2
+          CPU
+          RAM
+          DISK
+      
+  
+  
+      
+          CentOS7
+          controller
+          Nat ( 192.168.10.100 )
+          HOST1 ( 10.10.10.10 )
+          2cpu 4thread
+          8 RAm
+          30G
+      
+      
+          CentOS7
+          natwork
+          Nat ( 192.168.10.101 )
+          HOST1 ( 10.10.10.20 )
+          1cpu 2thread
+          2 RAm
+          20G
+      
+      
+          CentOS7
+          compute
+          Nat ( 192.168.10.102 )
+          HOST1 ( 10.10.10.30 )
+          1cpu 4thread
+          4 RAm
+          100G
+      
+  
+
+
+  
+  #
+
+
+기본적인 업데이트 및 설정을 모든 노드에 진행합니다.
+
+$ yum -y update
+# 업데이트
+
+$ vi /etc/hosts
+10.10.10.10 controller
+10.10.10.20 network
+10.10.10.30 compute
+# known host 등록
+
+  
+  #
+
+
+설정이 완료되면 기본 구성을 모든 노드에 진행합니다.
+
+$ yum -y install chrony
+# 시간 동기화를 위한 chrony 설치
+
+$ vi /etc/chrony.conf
+
+#server 0.centos.pool.ntp.org iburst
+#server 1.centos.pool.ntp.org iburst
+#server 2.centos.pool.ntp.org iburst
+#server 3.centos.pool.ntp.org iburst
+server ntp1.jst.mfeed.ad.jp iburst
+server ntp2.jst.mfeed.ad.jp iburst
+server ntp3.jst.mfeed.ad.jp iburst
+
+allow 10.10.10.0/24
+# 시간동기화
+
+$ firewall-cmd --add-service=ntp --permanent
+$ firewall-cmd --reload
+# ntp 방화벽 허용 및 리로딩
+
+$ init 6
+# 시스템 재시작
+
+$ chronyc sources
+# 확인
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/OpenStack/OpenStackTraining/Openstack-stein/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Openstack Stain Manual 설치">
-  <meta property="og:description" content="Openstack Stain Manual 설치 # # 1. 시스템 및 네트워크 구성 # 여기서는 Nat 네트워크를 외부, host1 대역을 내부로 사용하여 Openstack을 구축해보도록 하겠습니다. # 운영체제 및 네트워크 구성 Hypervisor : Vmware Workstation 15 OS : CentOS7 # 노드 구성 OS Hostname Network Interface Network Interface2 CPU RAM DISK CentOS7 controller Nat ( 192.168.10.100 ) HOST1 ( 10.10.10.10 ) 2cpu 4thread 8 RAm 30G CentOS7 natwork Nat ( 192.168.10.101 ) HOST1 ( 10.">
+  <meta property="og:description" content=" Openstack Stain Manual 설치 # # 1. 시스템 및 네트워크 구성 # 여기서는 Nat 네트워크를 외부, host1 대역을 내부로 사용하여 Openstack을 구축해보도록 하겠습니다. # 운영체제 및 네트워크 구성 Hypervisor : Vmware Workstation 15 OS : CentOS7 # 노드 구성 OS Hostname Network Interface Network Interface2 CPU RAM DISK CentOS7 controller Nat ( 192.168.10.100 ) HOST1 ( 10.10.10.10 ) 2cpu 4thread 8 RAm 30G CentOS7 natwork Nat ( 192.168.10.101 ) HOST1 ( 10.10.10.20 ) 1cpu 2thread 2 RAm 20G CentOS7 compute Nat ( 192.168.10.102 ) HOST1 ( 10.10.10.30 ) 1cpu 4thread 4 RAm 100G # 기본적인 업데이트 및 설정을 모든 노드에 진행합니다. $ yum -y update # 업데이트 $ vi /etc/hosts 10.10.10.10 controller 10.10.10.20 network 10.10.10.30 compute # known host 등록 # 설정이 완료되면 기본 구성을 모든 노드에 진행합니다. $ yum -y install chrony # 시간 동기화를 위한 chrony 설치 $ vi /etc/chrony.conf #server 0.centos.pool.ntp.org iburst #server 1.centos.pool.ntp.org iburst #server 2.centos.pool.ntp.org iburst #server 3.centos.pool.ntp.org iburst server ntp1.jst.mfeed.ad.jp iburst server ntp2.jst.mfeed.ad.jp iburst server ntp3.jst.mfeed.ad.jp iburst allow 10.10.10.0/24 # 시간동기화 $ firewall-cmd --add-service=ntp --permanent $ firewall-cmd --reload # ntp 방화벽 허용 및 리로딩 $ init 6 # 시스템 재시작 $ chronyc sources # 확인 # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-21T11:31:26+09:00">
 <title>Openstack Stain Manual 설치 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +151,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +181,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +212,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2135,46 +2253,46 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>노드 구성</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>OS</th>
-<th>Hostname</th>
-<th>Network Interface</th>
-<th>Network Interface2</th>
-<th>CPU</th>
-<th>RAM</th>
-<th>DISK</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CentOS7</td>
-<td>controller</td>
-<td>Nat ( 192.168.10.100 )</td>
-<td>HOST1 ( 10.10.10.10 )</td>
-<td>2cpu 4thread</td>
-<td>8 RAm</td>
-<td>30G</td>
-</tr>
-<tr>
-<td>CentOS7</td>
-<td>natwork</td>
-<td>Nat ( 192.168.10.101 )</td>
-<td>HOST1 ( 10.10.10.20 )</td>
-<td>1cpu 2thread</td>
-<td>2 RAm</td>
-<td>20G</td>
-</tr>
-<tr>
-<td>CentOS7</td>
-<td>compute</td>
-<td>Nat ( 192.168.10.102 )</td>
-<td>HOST1 ( 10.10.10.30 )</td>
-<td>1cpu 4thread</td>
-<td>4 RAm</td>
-<td>100G</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OS</th>
+          <th style="text-align: left">Hostname</th>
+          <th style="text-align: left">Network Interface</th>
+          <th style="text-align: left">Network Interface2</th>
+          <th style="text-align: left">CPU</th>
+          <th style="text-align: left">RAM</th>
+          <th style="text-align: left">DISK</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CentOS7</td>
+          <td style="text-align: left">controller</td>
+          <td style="text-align: left">Nat ( 192.168.10.100 )</td>
+          <td style="text-align: left">HOST1 ( 10.10.10.10 )</td>
+          <td style="text-align: left">2cpu 4thread</td>
+          <td style="text-align: left">8 RAm</td>
+          <td style="text-align: left">30G</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CentOS7</td>
+          <td style="text-align: left">natwork</td>
+          <td style="text-align: left">Nat ( 192.168.10.101 )</td>
+          <td style="text-align: left">HOST1 ( 10.10.10.20 )</td>
+          <td style="text-align: left">1cpu 2thread</td>
+          <td style="text-align: left">2 RAm</td>
+          <td style="text-align: left">20G</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CentOS7</td>
+          <td style="text-align: left">compute</td>
+          <td style="text-align: left">Nat ( 192.168.10.102 )</td>
+          <td style="text-align: left">HOST1 ( 10.10.10.30 )</td>
+          <td style="text-align: left">1cpu 4thread</td>
+          <td style="text-align: left">4 RAm</td>
+          <td style="text-align: left">100G</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-3">
   
@@ -4769,15 +4887,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/605afe3de5159fb1bd376c0eb1ad21babbba213e" title='Last modified by mungOps | December 21, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 21, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

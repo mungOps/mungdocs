@@ -3,29 +3,350 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="GIT 명령어 요약정리 # Git 명령어는 git &#43;명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &ndash;옵션을 추가가 가능
+<meta name="description" content="
+  GIT 명령어 요약정리
+  #
+
+
+
+
+
+Git 명령어는 git &#43;명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 &ndash;옵션을 추가가 가능
+
+
 Git 작업영역: Working Directory, Staging Area, Repository
+
+
 Git 파일의상태: Modified,Staged,Commited
+
+
 브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨
+
+
 master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)
+
+
 HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능
-git init # 저장소(repository) 생성 git config user.name &#34;［작성자 이름］&#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user.">
+
+
+
+
+git init
+# 저장소(repository) 생성
+
+git config user.name &#34;［작성자 이름］&#34;
+# 사용자 이름 설정 --global 추가시 전역설정
+
+git config user.email &#34;［이메일 계정]&#34;
+# 사용자 이메일 설정 --global 추가시 전역설정
+
+git config --list
+# 저장소 설정 전체 출력
+
+git config ［설정 항목]
+# 해당 항목 설정 값 출력(예 : git config user.name)
+
+git help
+# 도움말
+
+
+
+
+
+git status
+# 저장소의 상태 정보 출력
+
+git add ［파일 이름 &amp; 디렉터리]
+# 해당 파일을 Staging Area에 update
+
+git add .
+# Working Directory 안에 추가，수정된 모든 파일을 Staging Area에 을리기
+
+git commit
+# 이력 저장，커밋
+
+git commit -m &#34;［메시지］&#34;
+# vim을 사용하지 않고 인라인으로 메시지를 추가하여 커밋
+
+git commit -am &#34;［메시지］&#34;
+# git add와 git commit을 한꺼번에 명령 (Untracked 파일은 제외)
+
+
+
+
+
+git status
+# 저장소 파일의 상태 출력
+
+git status -s
+# 저장소 파일 상태를 간략하게 표시
+
+git log
+# 저장소의 커밋 히스토리（로그，이력）를 출력
+
+git log --pretty=oneline
+# 로그 출력 시 커밋을 한 줄로 간략하게 표시 （--pretty 옵션 사용）
+
+git log --oneline
+# 로그 출력 시 커밋을 한 줄로 표시 （해시도 앞자리 7글자만 출력）
+
+git log --graph
+# 로그를 그래프 형태로 출력
+
+git show
+# 가장 최근 커밋의 상세 정보 출력
+
+git show ［커밋 해시］
+# 해당 커밋의 상세 정보 출력
+
+git show HEAD
+# HEAD가 참조하는 커밋의 상세 정보 출력
+
+git show HEAD〜n
+# HEAD를 기준으로 n단계 이전의 커밋 정보 출력
+
+
+
+
+
+- git diff는 각 파일의 변경사항을 비교하는 명령어
+git diff
+# 최근 커밋과 변경 사항이 발생한(Unstaged) 파일들의 내용 비교
+
+git diff --staged
+# 현재 스테이지된 변경사항을 출력
+
+git diff [commit hash1] [commit hash2]
+# commit1과 commit2를 비교
+
+
+
+
+
+git reset
+# Staging Area 의파일전체 를언스테이징 상태로 되돌리기
+
+git reset [파일이름(또는경로)]
+# 해당파일(또는경로)을 언스테이징 상태로 되돌리기
+
+
+
+
+
+
+git checkout은 HEAD의 참조를 변경하는 명령
+최신 커밋을 참조할 때 HEAD는 master를 간, 직접적으로 참조하고 있으며, HEAD는 master에서 떨어진 Detacghed 상태 또는 DetachedHEAD가 됨
+
+gitcheckout [커밋해시]
+# 해당커밋으로파일상태변경
+
+git checkout-:
+# HEAD가이전에참조했던커밋으로상태변경
+
+git checkout master
+# HEAD가master를참조
+
+git checkout HEAD~n
+# HEAD를기준으로 n단계이전커밋으로상태변경
+
+
+
+
+
+
+git reset은 커밋을 취소하는 명령어이지만, 해당 커밋이 삭제되는 것이 아닌 브런치의 포인터를 바꾸는 개념
+
+
+  
+      
+          
+          Working Dirtory
+          Stating Area
+          Repository
+      
+  
+  
+      
+          &ndash;hard
+          변경
+          변경
+          변경
+      
+      
+          &ndash;mixed (default)
+          유지
+          변경
+          변경
+      
+      
+          &ndash;soft
+          유지
+          유지
+          변경
+      
+  
+
+git reset [커밋주소]
+
+
+
+
+
+git remote
+# 현재 브랜치에 추가 된 원격 저장소 리스트 출력
+
+git remote -v (--verbose)
+# 현재 브랜치에 추가 된 원격 저장소 리스트 출력(주소포함)
+
+git remote add [원격저장소이름] [원격저장소주소]
+# 해당이름으로 원격저장소의 주소등록
+
+git remote rm [원격저장소이름]
+# 해당 원격 저장소를 삭제
+
+git push -u (--set-upstream-to) [원격 저장소 이름] [로컬 저장소의 브런치]
+# 로컬저장소의 브랜치가 원격저장소를 추적하도록 설정하고, 파일들을 원격저장소로 저장
+
+
+
+
+
+git push [원격 저장소 이름] [로컬 저장소 브런치]
+# 로컬 브런치의 변경사항을 원격 저장소 (레포지터리)에 Push (업로드)
+# upstream (-u) 설정 후, 원격 저장소, 로컬 저장소 브런치 생략이 가능
+
+git pull [원격 저장소 이름] [로컬 저장소 브런치]
+# 원격저장소의 정보를 현재 로컬브랜치에 병합 (fetch &#43; merge)
+# upstream (-u) 설정 후, 원격 저장소, 로컬 저장소 브런치 생략이 가능
+
+
+
+
+
+git tag
+# 로컬저장소의 모든 태그를 조회
+
+git tag [태그이름]
+# 현재 커밋에 태그를 생성(Lightweight 태그)
+
+git tag [태그이름] [커밋해시]
+# 해당 커밋에 태그를 생성 (Lightweight 태그)
+
+git tag -a [태그이름] -m &#34;[메시지]&#34; [커밋해시]
+# 메시지를 추가하여 태그 생성 (Annotated tag)
+
+git tag -am [태그이름] &#34;[메시지]&#34;
+# 현재 커밋에 메시지를 추가하여 태그 생성 (Annotated tag)
+
+git show [태그이름]
+# 해당 태그가 부착된 커밋의 상세정보 확인
+
+git push --tags
+# 생성된 전체태그를 원격 저장소에 푸시(=git push origin -tags)
+
+git push [태그이름]
+# 해당태그를 원격저장소에 푸시 (= git push origin &#34;[태그이름]&#34;)
+
+git tag -d [태그이름]
+# 해당 태그 삭제
+
+git push -d [태그이름]
+# 원격저장소에서 해당 태그 삭제
+
+
+
+
+
+
+git reset은 master의 참조를 특정 커밋으로 되돌리는 명령
+git revert는 특정 커밋을 취소하는 내용의 새로운 커밋을 만드는 명령
+
+git revert [커밋 해시]
+# 해당 커밋으로 되돌리기
+
+git revert -n (--no-edit) [커밋 해시]
+
+# 커밋 메시지 수정 없이 기본메시지로 되돌리기
+
+git revert n [커밋 해시]
+# 커밋 하지 않고 스테이징 상태로 되돌리기
+
+git revert [커밋 해시1]..[커밋 해시2]
+# 해당 구간 만큼 커밋 되돌리기, 커밋 해시1은 되돌려지지 않음
+
+
+
+
+
+git branch
+# 현재 브랜치 표시
+
+git branch --list
+# 브랜치 목록 표시
+
+git branch [브랜치이름]
+# 해당 브랜치이름으로 브랜치 생성
+
+git checkout [브랜치이름]
+git switch [브랜치이름]
+# 해당브랜치로전환
+
+git checkout -b [브랜치이름]
+git switch -c [브랜치이름]
+# 브랜치 생성과 동시에 전환
+
+git branch -m [브랜치이름] [새로운 브랜치이름]
+# 브랜치 이름변경
+
+git branch -d [브랜치이름]
+# 해당 로컬 브랜치 삭제
+
+git push -d [repo] [브랜치이름]
+# 레포지터리 브런치 삭제
+
+
+
+
+
+
+
+git merge [브랜치이름]
+# 해당 이름의 브랜치를 병합
+
+git merge --ff [브랜치이름]
+# fast-for ward 관계에 있으면 커밋을 생성하지않고 현재 브랜치의 참조만 변경(default)
+
+git merge --no-ff [브랜치이름]
+# fast-forward 관계에 있어도 머지 커밋 생성
+
+git merge --squash [브랜치이름]
+# 병합할 브랜치의 내용을 하나의 커밋에 합침 병합할 브랜치 정보는 생략
+
+git rebase [브랜치이름]
+# 현재 브랜치가 해당 브랜치(브랜치이름)부터 분기하도록 재배치
+
+git rebase --continue
+# 충돌 수정 후 재배치 진행
+
+git rebase --abort
+# rebase 취소
+
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Git/Git/git99/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="99. Git 명령어 요약정리">
-  <meta property="og:description" content="GIT 명령어 요약정리 # Git 명령어는 git &#43;명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 –옵션을 추가가 가능
+  <meta property="og:description" content=" GIT 명령어 요약정리 # Git 명령어는 git &#43;명령어 이름 형태로 구성하며, 필요에 따라 -키 또는 –옵션을 추가가 가능
 Git 작업영역: Working Directory, Staging Area, Repository
 Git 파일의상태: Modified,Staged,Commited
 브런치(branch): 독립적인 이력 관리 영역 / git init시 master 브런치가 생성됨
 master: 해당브랜치의 끝(최신커밋)을 참조하는 개체 (Refs)
 HEAD: 포인터 역할을 수행하며, 커밋을 직접 참조 할 수 있을 뿐만 아니라 Refs(다른참조 개체)도 참조가능
-git init # 저장소(repository) 생성 git config user.name &#34;［작성자 이름］&#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user.">
+git init # 저장소(repository) 생성 git config user.name &#34;［작성자 이름］&#34; # 사용자 이름 설정 --global 추가시 전역설정 git config user.email &#34;［이메일 계정]&#34; # 사용자 이메일 설정 --global 추가시 전역설정 git config --list # 저장소 설정 전체 출력 git config ［설정 항목] # 해당 항목 설정 값 출력(예 : git config user.name) git help # 도움말 git status # 저장소의 상태 정보 출력 git add ［파일 이름 &amp; 디렉터리] # 해당 파일을 Staging Area에 update git add . # Working Directory 안에 추가，수정된 모든 파일을 Staging Area에 을리기 git commit # 이력 저장，커밋 git commit -m &#34;［메시지］&#34; # vim을 사용하지 않고 인라인으로 메시지를 추가하여 커밋 git commit -am &#34;［메시지］&#34; # git add와 git commit을 한꺼번에 명령 (Untracked 파일은 제외) git status # 저장소 파일의 상태 출력 git status -s # 저장소 파일 상태를 간략하게 표시 git log # 저장소의 커밋 히스토리（로그，이력）를 출력 git log --pretty=oneline # 로그 출력 시 커밋을 한 줄로 간략하게 표시 （--pretty 옵션 사용） git log --oneline # 로그 출력 시 커밋을 한 줄로 표시 （해시도 앞자리 7글자만 출력） git log --graph # 로그를 그래프 형태로 출력 git show # 가장 최근 커밋의 상세 정보 출력 git show ［커밋 해시］ # 해당 커밋의 상세 정보 출력 git show HEAD # HEAD가 참조하는 커밋의 상세 정보 출력 git show HEAD〜n # HEAD를 기준으로 n단계 이전의 커밋 정보 출력 - git diff는 각 파일의 변경사항을 비교하는 명령어 git diff # 최근 커밋과 변경 사항이 발생한(Unstaged) 파일들의 내용 비교 git diff --staged # 현재 스테이지된 변경사항을 출력 git diff [commit hash1] [commit hash2] # commit1과 commit2를 비교 git reset # Staging Area 의파일전체 를언스테이징 상태로 되돌리기 git reset [파일이름(또는경로)] # 해당파일(또는경로)을 언스테이징 상태로 되돌리기 git checkout은 HEAD의 참조를 변경하는 명령 최신 커밋을 참조할 때 HEAD는 master를 간, 직접적으로 참조하고 있으며, HEAD는 master에서 떨어진 Detacghed 상태 또는 DetachedHEAD가 됨 gitcheckout [커밋해시] # 해당커밋으로파일상태변경 git checkout-: # HEAD가이전에참조했던커밋으로상태변경 git checkout master # HEAD가master를참조 git checkout HEAD~n # HEAD를기준으로 n단계이전커밋으로상태변경 git reset은 커밋을 취소하는 명령어이지만, 해당 커밋이 삭제되는 것이 아닌 브런치의 포인터를 바꾸는 개념 Working Dirtory Stating Area Repository –hard 변경 변경 변경 –mixed (default) 유지 변경 변경 –soft 유지 유지 변경 git reset [커밋주소] git remote # 현재 브랜치에 추가 된 원격 저장소 리스트 출력 git remote -v (--verbose) # 현재 브랜치에 추가 된 원격 저장소 리스트 출력(주소포함) git remote add [원격저장소이름] [원격저장소주소] # 해당이름으로 원격저장소의 주소등록 git remote rm [원격저장소이름] # 해당 원격 저장소를 삭제 git push -u (--set-upstream-to) [원격 저장소 이름] [로컬 저장소의 브런치] # 로컬저장소의 브랜치가 원격저장소를 추적하도록 설정하고, 파일들을 원격저장소로 저장 git push [원격 저장소 이름] [로컬 저장소 브런치] # 로컬 브런치의 변경사항을 원격 저장소 (레포지터리)에 Push (업로드) # upstream (-u) 설정 후, 원격 저장소, 로컬 저장소 브런치 생략이 가능 git pull [원격 저장소 이름] [로컬 저장소 브런치] # 원격저장소의 정보를 현재 로컬브랜치에 병합 (fetch &#43; merge) # upstream (-u) 설정 후, 원격 저장소, 로컬 저장소 브런치 생략이 가능 git tag # 로컬저장소의 모든 태그를 조회 git tag [태그이름] # 현재 커밋에 태그를 생성(Lightweight 태그) git tag [태그이름] [커밋해시] # 해당 커밋에 태그를 생성 (Lightweight 태그) git tag -a [태그이름] -m &#34;[메시지]&#34; [커밋해시] # 메시지를 추가하여 태그 생성 (Annotated tag) git tag -am [태그이름] &#34;[메시지]&#34; # 현재 커밋에 메시지를 추가하여 태그 생성 (Annotated tag) git show [태그이름] # 해당 태그가 부착된 커밋의 상세정보 확인 git push --tags # 생성된 전체태그를 원격 저장소에 푸시(=git push origin -tags) git push [태그이름] # 해당태그를 원격저장소에 푸시 (= git push origin &#34;[태그이름]&#34;) git tag -d [태그이름] # 해당 태그 삭제 git push -d [태그이름] # 원격저장소에서 해당 태그 삭제 git reset은 master의 참조를 특정 커밋으로 되돌리는 명령 git revert는 특정 커밋을 취소하는 내용의 새로운 커밋을 만드는 명령 git revert [커밋 해시] # 해당 커밋으로 되돌리기 git revert -n (--no-edit) [커밋 해시] # 커밋 메시지 수정 없이 기본메시지로 되돌리기 git revert n [커밋 해시] # 커밋 하지 않고 스테이징 상태로 되돌리기 git revert [커밋 해시1]..[커밋 해시2] # 해당 구간 만큼 커밋 되돌리기, 커밋 해시1은 되돌려지지 않음 git branch # 현재 브랜치 표시 git branch --list # 브랜치 목록 표시 git branch [브랜치이름] # 해당 브랜치이름으로 브랜치 생성 git checkout [브랜치이름] git switch [브랜치이름] # 해당브랜치로전환 git checkout -b [브랜치이름] git switch -c [브랜치이름] # 브랜치 생성과 동시에 전환 git branch -m [브랜치이름] [새로운 브랜치이름] # 브랜치 이름변경 git branch -d [브랜치이름] # 해당 로컬 브랜치 삭제 git push -d [repo] [브랜치이름] # 레포지터리 브런치 삭제 git merge [브랜치이름] # 해당 이름의 브랜치를 병합 git merge --ff [브랜치이름] # fast-for ward 관계에 있으면 커밋을 생성하지않고 현재 브랜치의 참조만 변경(default) git merge --no-ff [브랜치이름] # fast-forward 관계에 있어도 머지 커밋 생성 git merge --squash [브랜치이름] # 병합할 브랜치의 내용을 하나의 커밋에 합침 병합할 브랜치 정보는 생략 git rebase [브랜치이름] # 현재 브랜치가 해당 브랜치(브랜치이름)부터 분기하도록 재배치 git rebase --continue # 충돌 수정 후 재배치 진행 git rebase --abort # rebase 취소 ">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-05-26T16:32:01+09:00">
 <title>99. Git 명령어 요약정리 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -34,9 +355,6 @@ git init # 저장소(repository) 생성 git config user.name &#34;［작성자 �
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -67,7 +385,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -98,14 +416,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2174,34 +2484,34 @@ https://github.com/alex-shpak/hugo-book
 <li>git reset은 커밋을 취소하는 명령어이지만, 해당 커밋이 삭제되는 것이 아닌 브런치의 포인터를 바꾸는 개념</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>Working Dirtory</th>
-<th>Stating Area</th>
-<th>Repository</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&ndash;hard</td>
-<td>변경</td>
-<td>변경</td>
-<td>변경</td>
-</tr>
-<tr>
-<td>&ndash;mixed (default)</td>
-<td>유지</td>
-<td>변경</td>
-<td>변경</td>
-</tr>
-<tr>
-<td>&ndash;soft</td>
-<td>유지</td>
-<td>유지</td>
-<td>변경</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left">Working Dirtory</th>
+          <th style="text-align: left">Stating Area</th>
+          <th style="text-align: left">Repository</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">&ndash;hard</td>
+          <td style="text-align: left">변경</td>
+          <td style="text-align: left">변경</td>
+          <td style="text-align: left">변경</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;mixed (default)</td>
+          <td style="text-align: left">유지</td>
+          <td style="text-align: left">변경</td>
+          <td style="text-align: left">변경</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ndash;soft</td>
+          <td style="text-align: left">유지</td>
+          <td style="text-align: left">유지</td>
+          <td style="text-align: left">변경</td>
+      </tr>
+  </tbody>
 </table>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git reset <span style="color:#f92672">[</span>커밋주소<span style="color:#f92672">]</span>
 </span></span></code></pre></div><br>
@@ -2356,15 +2666,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/3bca90fe8ce4ca63caf2b8ab5df005060a53ed22" title='Last modified by mungOps | May 26, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 26, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

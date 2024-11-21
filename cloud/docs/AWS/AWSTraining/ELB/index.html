@@ -3,23 +3,200 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS ELB 생성 # # 이번 장에서는 생성된 인스턴스들을 로드밸런싱하는 방법에 대해 알아보도록 하겠습니다. ELB 또한 중요한 개념이니, ELB에 대한 학습을 원하는 분들은 AWS ELB를 참고해주세요. # AWS ELB 생성 # # ELB에 대한 생성 순서은 아래의 순서대로 진행합니다. 1. 인스턴스 생성
+<meta name="description" content="
+  AWS ELB 생성
+  #
+
+
+
+  
+  #
+
+
+이번 장에서는 생성된 인스턴스들을 로드밸런싱하는 방법에 대해 알아보도록 하겠습니다.
+ELB 또한 중요한 개념이니, ELB에 대한 학습을 원하는 분들은 
+  AWS ELB를 참고해주세요.
+
+
+  
+  #
+
+
+
+  AWS ELB 생성
+  #
+
+
+
+  
+  #
+
+
+ELB에 대한 생성 순서은 아래의 순서대로 진행합니다.
+
+
+1. 인스턴스 생성
 2. 대상그룹 생성
 3. 로드 밸런서 생성
-# 인스턴스 생성 # # 먼저 기본 VPC에 가용영역 a와 c에 한 대씩, 총 두 대의 인스턴스를 생성해주세요. 보안 그룹은 80은 모두에게, 8009는 서로간만 통신이 가능하게 설정해주세요.">
+
+
+  
+  #
+
+
+  인스턴스 생성
+  #
+
+
+  
+  #
+
+
+  
+
+먼저 기본 VPC에 가용영역 a와 c에 한 대씩, 총 두 대의 인스턴스를 생성해주세요.
+보안 그룹은 80은 모두에게, 8009는 서로간만 통신이 가능하게 설정해주세요.
+그 후, a,c 인스턴스에 Apach와 Tomcat을 설치 및 연동시켜주세요.
+
+
+  
+  #
+
+$ apt-get -y update
+$ apt-get -y upgrade
+
+$ apt-get install -y apache2
+# apache2 설치
+
+$ systemctl enable apache2
+$ ufw allow 80/tcp
+# apache2 자동시작 및 방화벽 허용 등록
+
+$ apt-get install -y libapache2-mod-jk
+# 연동 모듈
+
+$ vi /etc/apache2/workers.properties
+
+workers.tomcat_home=/usr/share/tomcat8
+workers.java_home=/usr/lib/jvm/java-8-openjdk-amd64
+
+worker.list=tomcat8
+worker.tomcat8.port = 8009
+worker.tomcat8.host = [ 서로 다른 인스턴스 IP ]
+worker.tomcat8.type = ajp13
+worker.tomcat8.lbfactor = 1
+# 워커 파일 생성
+
+$ vi /etc/apache2/mods-available/jk.conf
+JkWorkersFile /etc/libapache2-mod-jk/workers.properties
+--&gt; JkWorkersFile /etc/apache2/workers.properties
+
+$ vi /etc/apache2/sites-available/000-default.conf
+DocumentRoot /var/www/html
+--&gt; DocumentRoot /var/lib/tomcat8/webapps/ROOT
+SetEnvIF Request_URI &#34;/*.html&#34; no-jk
+JkMount /*.jsp tomcat8
+# jsp 파일만 tomcat에서 실행 
+
+$ vi /var/www/html/index.html
+각 인스턴스에 따라 apache1 and apache2를 입력합니다.
+
+$ systemctl restart apache2
+
+Apache 설치
+
+
+  
+  #
+
+$ apt -y update 
+$ apt -y upgrade
+
+$ apt-get install lrzsz
+# JAVA 간편 다운로드를 위한 Irzsz 설치
+
+$ apt-get install -y openjdk-8-jre
+$ apt-get install -y openjdk-8-jdk
+# JAVA 설치
+
+$ which javac
+$ readlink -f /usr/bin/javac
+# 자바 위치 확인
+
+$ vi /etc/profile
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$JAVA_HOME/bin/:$PATH
+export CLASS_PATH=$JAVA_HOME/lib/:$CLASS_PATH
+$ source /etc/profile
+# 환경변수 설정
+
+$ echo $JAVA_HOME
+$ $JAVA_HOME/bin/javac -version
+# 확인
+
+$ apt-get install tomcat8 -y
+# tomcat8 설치
+
+$ /usr/share/tomcat8/bin/version.sh
+# tomcat 설치 확인
+
+$ ufw allow 8080/tcp
+$ ufw allow 8009/tcp
+# 방화벽 포트 열기
+
+$ systemctl enable tomcat8
+# tomcat 자동시작
+
+$ apt-get install -y libapache2-mod-jk 
+# 연동 모듈 설치
+
+$ vi /etc/tomcat8/server.xml
+    &lt;Connector port=&#34;8009&#34; protocol=&#34;AJP/1.3&#34; redirectPort=&#34;8443&#34; /&gt; 주석 헤제
+
+$ systemctl restart tomcat8
+
+$ vi /var/lib/tomcat8/webapps/ROOT/index.jsp
+&lt;%@ page language=&#34;java&#34; contentType=&#34;text/html; charset=utf-8&#34;%&gt;
+
+&lt;!-- 로컬 정보 --&gt;
+Local IP : &lt;%= request.getRemoteAddr() %&gt;&lt;br&gt;
+Local Host : &lt;%= request.getRemoteHost() %&gt;&lt;br&gt;
+
+&lt;!-- 서버의 기본 경로 --&gt;
+Context : &lt;%= request.getContextPath() %&gt; &lt;br&gt;
+URL : &lt;%= request.getRequestURL() %&gt; &lt;br&gt;
+URI : &lt;%= request.getRequestURI() %&gt; &lt;br&gt;
+Path : &lt;%= request.getServletPath() %&gt;&lt;br&gt;
+Server Port : &lt;%= request.getServerPort() %&gt;&lt;br&gt;&lt;br&gt;
+서버 Root 경로 : &lt;%= application.getRealPath(&#34;/&#34;) %&gt;&lt;br&gt;
+서버 Root 경로 : &lt;%= request.getRealPath(&#34;/&#34;) %&gt;&lt;br&gt;
+
+&lt;%
+String strServerIP = request.getServerName();                                    // 서버 ip
+String strServerPort = Integer.toString(request.getServerPort());         // 서버 port
+String serverRootUrl = &#34;http://&#34;&#43; strServerIP &#43;&#34;:&#34;&#43; strServerPort &#43;&#34;/&#34;;  // Root 경로
+out.println(serverRootUrl );
+%&gt;
+
+Tomcat 설치
+
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSTraining/ELB/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="AWS ELB ( 2 Tier ) 생성">
-  <meta property="og:description" content="AWS ELB 생성 # # 이번 장에서는 생성된 인스턴스들을 로드밸런싱하는 방법에 대해 알아보도록 하겠습니다. ELB 또한 중요한 개념이니, ELB에 대한 학습을 원하는 분들은 AWS ELB를 참고해주세요. # AWS ELB 생성 # # ELB에 대한 생성 순서은 아래의 순서대로 진행합니다. 1. 인스턴스 생성
+  <meta property="og:description" content=" AWS ELB 생성 # # 이번 장에서는 생성된 인스턴스들을 로드밸런싱하는 방법에 대해 알아보도록 하겠습니다. ELB 또한 중요한 개념이니, ELB에 대한 학습을 원하는 분들은 AWS ELB를 참고해주세요. # AWS ELB 생성 # # ELB에 대한 생성 순서은 아래의 순서대로 진행합니다. 1. 인스턴스 생성
 2. 대상그룹 생성
 3. 로드 밸런서 생성
-# 인스턴스 생성 # # 먼저 기본 VPC에 가용영역 a와 c에 한 대씩, 총 두 대의 인스턴스를 생성해주세요. 보안 그룹은 80은 모두에게, 8009는 서로간만 통신이 가능하게 설정해주세요.">
+# 인스턴스 생성 # # 먼저 기본 VPC에 가용영역 a와 c에 한 대씩, 총 두 대의 인스턴스를 생성해주세요. 보안 그룹은 80은 모두에게, 8009는 서로간만 통신이 가능하게 설정해주세요. 그 후, a,c 인스턴스에 Apach와 Tomcat을 설치 및 연동시켜주세요. # $ apt-get -y update $ apt-get -y upgrade $ apt-get install -y apache2 # apache2 설치 $ systemctl enable apache2 $ ufw allow 80/tcp # apache2 자동시작 및 방화벽 허용 등록 $ apt-get install -y libapache2-mod-jk # 연동 모듈 $ vi /etc/apache2/workers.properties workers.tomcat_home=/usr/share/tomcat8 workers.java_home=/usr/lib/jvm/java-8-openjdk-amd64 worker.list=tomcat8 worker.tomcat8.port = 8009 worker.tomcat8.host = [ 서로 다른 인스턴스 IP ] worker.tomcat8.type = ajp13 worker.tomcat8.lbfactor = 1 # 워커 파일 생성 $ vi /etc/apache2/mods-available/jk.conf JkWorkersFile /etc/libapache2-mod-jk/workers.properties --&gt; JkWorkersFile /etc/apache2/workers.properties $ vi /etc/apache2/sites-available/000-default.conf DocumentRoot /var/www/html --&gt; DocumentRoot /var/lib/tomcat8/webapps/ROOT SetEnvIF Request_URI &#34;/*.html&#34; no-jk JkMount /*.jsp tomcat8 # jsp 파일만 tomcat에서 실행 $ vi /var/www/html/index.html 각 인스턴스에 따라 apache1 and apache2를 입력합니다. $ systemctl restart apache2 Apache 설치 # $ apt -y update $ apt -y upgrade $ apt-get install lrzsz # JAVA 간편 다운로드를 위한 Irzsz 설치 $ apt-get install -y openjdk-8-jre $ apt-get install -y openjdk-8-jdk # JAVA 설치 $ which javac $ readlink -f /usr/bin/javac # 자바 위치 확인 $ vi /etc/profile export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 export PATH=$JAVA_HOME/bin/:$PATH export CLASS_PATH=$JAVA_HOME/lib/:$CLASS_PATH $ source /etc/profile # 환경변수 설정 $ echo $JAVA_HOME $ $JAVA_HOME/bin/javac -version # 확인 $ apt-get install tomcat8 -y # tomcat8 설치 $ /usr/share/tomcat8/bin/version.sh # tomcat 설치 확인 $ ufw allow 8080/tcp $ ufw allow 8009/tcp # 방화벽 포트 열기 $ systemctl enable tomcat8 # tomcat 자동시작 $ apt-get install -y libapache2-mod-jk # 연동 모듈 설치 $ vi /etc/tomcat8/server.xml &lt;Connector port=&#34;8009&#34; protocol=&#34;AJP/1.3&#34; redirectPort=&#34;8443&#34; /&gt; 주석 헤제 $ systemctl restart tomcat8 $ vi /var/lib/tomcat8/webapps/ROOT/index.jsp &lt;%@ page language=&#34;java&#34; contentType=&#34;text/html; charset=utf-8&#34;%&gt; &lt;!-- 로컬 정보 --&gt; Local IP : &lt;%= request.getRemoteAddr() %&gt;&lt;br&gt; Local Host : &lt;%= request.getRemoteHost() %&gt;&lt;br&gt; &lt;!-- 서버의 기본 경로 --&gt; Context : &lt;%= request.getContextPath() %&gt; &lt;br&gt; URL : &lt;%= request.getRequestURL() %&gt; &lt;br&gt; URI : &lt;%= request.getRequestURI() %&gt; &lt;br&gt; Path : &lt;%= request.getServletPath() %&gt;&lt;br&gt; Server Port : &lt;%= request.getServerPort() %&gt;&lt;br&gt;&lt;br&gt; 서버 Root 경로 : &lt;%= application.getRealPath(&#34;/&#34;) %&gt;&lt;br&gt; 서버 Root 경로 : &lt;%= request.getRealPath(&#34;/&#34;) %&gt;&lt;br&gt; &lt;% String strServerIP = request.getServerName(); // 서버 ip String strServerPort = Integer.toString(request.getServerPort()); // 서버 port String serverRootUrl = &#34;http://&#34;&#43; strServerIP &#43;&#34;:&#34;&#43; strServerPort &#43;&#34;/&#34;; // Root 경로 out.println(serverRootUrl ); %&gt; Tomcat 설치 # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>AWS ELB ( 2 Tier ) 생성 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -28,9 +205,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -61,7 +235,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -92,14 +266,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2570,15 +2736,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

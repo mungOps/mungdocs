@@ -3,19 +3,56 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="기출문제 # # Q1 # 회사는 Amazon S3를 사용하여 기밀 감사 문서를 저장합니다.S3 버킷은 버킷 정책을 사용하여 최소 권한의 원칙에 따라 감사 팀 IAM 사용자 자격 증명에 대한 액세스를 제한합니다.회사 관리자는 S3 버킷에서 실수로 문서를 삭제하는 것에 대해 우려하고 있으며 보다 안전한 솔루션을 원합니다. 솔루션 설계자는 감사 문서를 보호하기 위해 무엇을 해야 합니까?
-A. S3 버킷에서 버전 관리 및 MFA 삭제 기능을 활성화합니다. B. 각 감사 팀 IAM 사용자 계정에 대한 IAM 사용자 자격 증명에서 멀티 팩터 인증 (MFA) 을 활성화합니다.">
+<meta name="description" content="
+  기출문제
+  #
+
+
+
+  
+  #
+
+
+  Q1
+  #
+
+회사는 Amazon S3를 사용하여 기밀 감사 문서를 저장합니다.S3 버킷은 버킷 정책을 사용하여 최소 권한의 원칙에 따라 감사 팀 IAM 사용자 자격 증명에 대한 액세스를 제한합니다.회사 관리자는 S3 버킷에서 실수로 문서를 삭제하는 것에 대해 우려하고 있으며 보다 안전한 솔루션을 원합니다.
+솔루션 설계자는 감사 문서를 보호하기 위해 무엇을 해야 합니까?
+
+A. S3 버킷에서 버전 관리 및 MFA 삭제 기능을 활성화합니다.
+B. 각 감사 팀 IAM 사용자 계정에 대한 IAM 사용자 자격 증명에서 멀티 팩터 인증 (MFA) 을 활성화합니다.
+C. 감사 팀의 IAM 사용자 계정에 S3 수명 주기 정책을 추가하여 감사 날짜 동안 S3:DeleteOB|ect 작업을 거부합니다.
+D. AWS 키 관리 서비스 (AWS KMS&gt;를 사용하여 S3 버킷을 암호화하고 감사 팀 IAM 사용자 계정이 KMS 키에 액세스하지 못하도록 제한합니다.
+
+
+  
+  #
+
+
+
+  
+    
+      Answer
+      ...
+    
+    
+    
+      Answer: A
+    
+  
+
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSSAA/SAA-17/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="SAA02-기출">
-  <meta property="og:description" content="기출문제 # # Q1 # 회사는 Amazon S3를 사용하여 기밀 감사 문서를 저장합니다.S3 버킷은 버킷 정책을 사용하여 최소 권한의 원칙에 따라 감사 팀 IAM 사용자 자격 증명에 대한 액세스를 제한합니다.회사 관리자는 S3 버킷에서 실수로 문서를 삭제하는 것에 대해 우려하고 있으며 보다 안전한 솔루션을 원합니다. 솔루션 설계자는 감사 문서를 보호하기 위해 무엇을 해야 합니까?
-A. S3 버킷에서 버전 관리 및 MFA 삭제 기능을 활성화합니다. B. 각 감사 팀 IAM 사용자 계정에 대한 IAM 사용자 자격 증명에서 멀티 팩터 인증 (MFA) 을 활성화합니다.">
+  <meta property="og:description" content=" 기출문제 # # Q1 # 회사는 Amazon S3를 사용하여 기밀 감사 문서를 저장합니다.S3 버킷은 버킷 정책을 사용하여 최소 권한의 원칙에 따라 감사 팀 IAM 사용자 자격 증명에 대한 액세스를 제한합니다.회사 관리자는 S3 버킷에서 실수로 문서를 삭제하는 것에 대해 우려하고 있으며 보다 안전한 솔루션을 원합니다. 솔루션 설계자는 감사 문서를 보호하기 위해 무엇을 해야 합니까?
+A. S3 버킷에서 버전 관리 및 MFA 삭제 기능을 활성화합니다. B. 각 감사 팀 IAM 사용자 계정에 대한 IAM 사용자 자격 증명에서 멀티 팩터 인증 (MFA) 을 활성화합니다. C. 감사 팀의 IAM 사용자 계정에 S3 수명 주기 정책을 추가하여 감사 날짜 동안 S3:DeleteOB|ect 작업을 거부합니다. D. AWS 키 관리 서비스 (AWS KMS&gt;를 사용하여 S3 버킷을 암호화하고 감사 팀 IAM 사용자 계정이 KMS 키에 액세스하지 못하도록 제한합니다. # Answer ... Answer: A ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>SAA02-기출 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -24,9 +61,6 @@ A. S3 버킷에서 버전 관리 및 MFA 삭제 기능을 활성화합니다. B.
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -57,7 +91,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -88,14 +122,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -29158,15 +29184,6 @@ Lambda 함수에 DynamoDB 테이블에 대한 액세스 권한을 부여하는 �
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

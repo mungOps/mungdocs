@@ -3,17 +3,136 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS 사용자 계정 생성 # # AWS 사용자 계정 생성 # # 이번 시간에는 AWS 계정생성에 이어 AWS 사용자 계정을 생성해보도록 하겠습니다. IAM이 무엇인지는 AWS IAM을 참고해주세요. # # 먼저 AWS에 로그인 후, IAM 서비스를 검색합니다. # # IAM 서비스에 진입하여, 메뉴에서 사용자를 클릭합니다. # # 사용자 추가를 선택합니다. # # 사용자의 이름을 기입하고, 엑세스 유형을 선택합니다. AccesskeyId와 SecreKey는 AWS CLI, API, SDK 등 기타 개발 도구의 사용되며, Login url, Password 콘솔창의 로그인시 사용됩니다.">
+<meta name="description" content="
+  AWS 사용자 계정 생성
+  #
+
+
+
+  
+  #
+
+
+
+  AWS 사용자 계정 생성
+  #
+
+
+
+  
+  #
+
+
+이번 시간에는 
+  AWS 계정생성에 이어 AWS 사용자 계정을 생성해보도록 하겠습니다.
+IAM이 무엇인지는 
+  AWS IAM을 참고해주세요.
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  
+
+먼저 
+  AWS에 로그인 후, IAM 서비스를 검색합니다.
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  
+
+IAM 서비스에 진입하여, 메뉴에서 사용자를 클릭합니다.
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  
+
+사용자 추가를 선택합니다.
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  
+
+사용자의 이름을 기입하고, 엑세스 유형을 선택합니다.
+AccesskeyId와 SecreKey는 AWS CLI, API, SDK 등 기타 개발 도구의 사용되며, Login url, Password 콘솔창의 로그인시 사용됩니다.
+
+
+  
+  #
+
+
+
+  
+      
+          유형
+          AccessKeyId
+          SecreKey
+          Login url
+          Password
+      
+  
+  
+      
+          프로그래밍 방식
+          O
+          O
+          X
+          X
+      
+      
+          AWS Management Console Access 방식
+          X
+          X
+          O
+          O
+      
+  
+
+
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSTraining/IAM/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="AWS 사용자 계정 생성">
-  <meta property="og:description" content="AWS 사용자 계정 생성 # # AWS 사용자 계정 생성 # # 이번 시간에는 AWS 계정생성에 이어 AWS 사용자 계정을 생성해보도록 하겠습니다. IAM이 무엇인지는 AWS IAM을 참고해주세요. # # 먼저 AWS에 로그인 후, IAM 서비스를 검색합니다. # # IAM 서비스에 진입하여, 메뉴에서 사용자를 클릭합니다. # # 사용자 추가를 선택합니다. # # 사용자의 이름을 기입하고, 엑세스 유형을 선택합니다. AccesskeyId와 SecreKey는 AWS CLI, API, SDK 등 기타 개발 도구의 사용되며, Login url, Password 콘솔창의 로그인시 사용됩니다.">
+  <meta property="og:description" content=" AWS 사용자 계정 생성 # # AWS 사용자 계정 생성 # # 이번 시간에는 AWS 계정생성에 이어 AWS 사용자 계정을 생성해보도록 하겠습니다. IAM이 무엇인지는 AWS IAM을 참고해주세요. # # 먼저 AWS에 로그인 후, IAM 서비스를 검색합니다. # # IAM 서비스에 진입하여, 메뉴에서 사용자를 클릭합니다. # # 사용자 추가를 선택합니다. # # 사용자의 이름을 기입하고, 엑세스 유형을 선택합니다. AccesskeyId와 SecreKey는 AWS CLI, API, SDK 등 기타 개발 도구의 사용되며, Login url, Password 콘솔창의 로그인시 사용됩니다. # 유형 AccessKeyId SecreKey Login url Password 프로그래밍 방식 O O X X AWS Management Console Access 방식 X X O O # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>AWS 사용자 계정 생성 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +141,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +171,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +202,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2037,31 +2145,31 @@ https://github.com/alex-shpak/hugo-book
 </h1>
 <blockquote>
 <table>
-<thead>
-<tr>
-<th>유형</th>
-<th>AccessKeyId</th>
-<th>SecreKey</th>
-<th>Login url</th>
-<th>Password</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>프로그래밍 방식</td>
-<td>O</td>
-<td>O</td>
-<td>X</td>
-<td>X</td>
-</tr>
-<tr>
-<td>AWS Management Console Access 방식</td>
-<td>X</td>
-<td>X</td>
-<td>O</td>
-<td>O</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">유형</th>
+          <th style="text-align: left">AccessKeyId</th>
+          <th style="text-align: left">SecreKey</th>
+          <th style="text-align: left">Login url</th>
+          <th style="text-align: left">Password</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">프로그래밍 방식</td>
+          <td style="text-align: left">O</td>
+          <td style="text-align: left">O</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">X</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">AWS Management Console Access 방식</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">O</td>
+          <td style="text-align: left">O</td>
+      </tr>
+  </tbody>
 </table>
 </blockquote>
 <h1 id="heading-11">
@@ -2198,26 +2306,26 @@ https://github.com/alex-shpak/hugo-book
 </h1>
 <blockquote>
 <table>
-<thead>
-<tr>
-<th>옵션</th>
-<th>Version</th>
-<th>Statment</th>
-<th>Effect</th>
-<th>Action</th>
-<th>Resource</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>의미</td>
-<td>파일의 버전</td>
-<td>파일 정책의 내용</td>
-<td>허가 또는 거부 ( Allow or Deny )</td>
-<td>설정 대상 서비스와 대상 조작을 작성</td>
-<td>설정 대상 리소스를 작성</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">옵션</th>
+          <th style="text-align: left">Version</th>
+          <th style="text-align: left">Statment</th>
+          <th style="text-align: left">Effect</th>
+          <th style="text-align: left">Action</th>
+          <th style="text-align: left">Resource</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">의미</td>
+          <td style="text-align: left">파일의 버전</td>
+          <td style="text-align: left">파일 정책의 내용</td>
+          <td style="text-align: left">허가 또는 거부 ( Allow or Deny )</td>
+          <td style="text-align: left">설정 대상 서비스와 대상 조작을 작성</td>
+          <td style="text-align: left">설정 대상 리소스를 작성</td>
+      </tr>
+  </tbody>
 </table>
 </blockquote>
 <ul>
@@ -2628,15 +2736,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

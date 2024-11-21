@@ -3,17 +3,39 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ContainerD # Containerd는 Docker 사에서 moby project 와 함께 발표하여 CNCF 에 기증한 오픈소스입니다.
+<meta name="description" content="
+  ContainerD
+  #
+
+
+    
+
+
+
+Containerd는 Docker 사에서 moby project 와 함께  발표하여  CNCF 에 기증한  오픈소스입니다.
+
+
 ContainerD 2022년 4월 Docker engine이 쿠버네티스에서 사용중단을 발표한 후, 높은 점유율을 이루고 있습니다.
-간단하게 기존에 사용하던 Docker engine을 사용하지 않고 ContainerD를 사용 하게된 이유를 정리하자면 쿠버네티스는 여러 컨테이너 런타임과 통신할 수 있도록 하는 CRI라는 표준 인터페이스를 설계함.
+
+
+
+
+간단하게 기존에 사용하던 Docker engine을 사용하지 않고 ContainerD를 사용 하게된 이유를 정리하자면
+
+
+쿠버네티스는 여러 컨테이너 런타임과 통신할 수 있도록 하는 CRI라는 표준 인터페이스를 설계함.
+
+
 Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인터페이스와 맞지 않았음.
+
+
 이를 해결하기 위해 dockershim이라는 어댑터 컴포넌트를 개발하였음.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content=" Concept">
-  <meta property="og:description" content="ContainerD # Containerd는 Docker 사에서 moby project 와 함께 발표하여 CNCF 에 기증한 오픈소스입니다.
+  <meta property="og:description" content=" ContainerD # Containerd는 Docker 사에서 moby project 와 함께 발표하여 CNCF 에 기증한 오픈소스입니다.
 ContainerD 2022년 4월 Docker engine이 쿠버네티스에서 사용중단을 발표한 후, 높은 점유율을 이루고 있습니다.
 간단하게 기존에 사용하던 Docker engine을 사용하지 않고 ContainerD를 사용 하게된 이유를 정리하자면 쿠버네티스는 여러 컨테이너 런타임과 통신할 수 있도록 하는 CRI라는 표준 인터페이스를 설계함.
 Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인터페이스와 맞지 않았음.
@@ -21,7 +43,6 @@ Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-09-22T11:15:33+09:00">
 <title> Concept | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -30,9 +51,6 @@ Docker engine은 CRI 인터페이스가 생기기전 존재한 기술로 CRI 인
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -63,7 +81,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -94,14 +112,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2086,58 +2096,58 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#docker-engine-vs-containerd">#</a>
 </h3>
 <table>
-<thead>
-<tr>
-<th>특성</th>
-<th>Docker Engine</th>
-<th>ContainerD</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>설명</strong></td>
-<td>Docker의 전체 컨테이너 관리 플랫폼</td>
-<td>경량화된 컨테이너 런타임</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>주요 기능</strong></td>
-<td>이미지 빌드, 배포, 컨테이너 실행</td>
-<td>컨테이너 실행, 이미지 관리</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>API</strong></td>
-<td>Docker API 제공</td>
-<td>CRI (Container Runtime Interface) 지원</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>설치 및 설정</strong></td>
-<td>복잡한 설치 및 설정</td>
-<td>비교적 간단한 설치 및 설정</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>부하</strong></td>
-<td>상대적으로 높은 리소스 소모</td>
-<td>더 경량화되어 리소스 효율성 높음</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>의존성</strong></td>
-<td>여러 추가 도구 (예: Docker Compose) 필요</td>
-<td>Kubernetes에서 직접 사용 가능</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>주요 사용 사례</strong></td>
-<td>개발 및 테스트 환경</td>
-<td>프로덕션 환경, 특히 Kubernetes에서 사용</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">특성</th>
+          <th style="text-align: left">Docker Engine</th>
+          <th style="text-align: left">ContainerD</th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>설명</strong></td>
+          <td style="text-align: left">Docker의 전체 컨테이너 관리 플랫폼</td>
+          <td style="text-align: left">경량화된 컨테이너 런타임</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>주요 기능</strong></td>
+          <td style="text-align: left">이미지 빌드, 배포, 컨테이너 실행</td>
+          <td style="text-align: left">컨테이너 실행, 이미지 관리</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>API</strong></td>
+          <td style="text-align: left">Docker API 제공</td>
+          <td style="text-align: left">CRI (Container Runtime Interface) 지원</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>설치 및 설정</strong></td>
+          <td style="text-align: left">복잡한 설치 및 설정</td>
+          <td style="text-align: left">비교적 간단한 설치 및 설정</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>부하</strong></td>
+          <td style="text-align: left">상대적으로 높은 리소스 소모</td>
+          <td style="text-align: left">더 경량화되어 리소스 효율성 높음</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>의존성</strong></td>
+          <td style="text-align: left">여러 추가 도구 (예: Docker Compose) 필요</td>
+          <td style="text-align: left">Kubernetes에서 직접 사용 가능</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>주요 사용 사례</strong></td>
+          <td style="text-align: left">개발 및 테스트 환경</td>
+          <td style="text-align: left">프로덕션 환경, 특히 Kubernetes에서 사용</td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
 </table>
 <br>
 <br>
@@ -2158,15 +2168,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/0b272ace877ed883c3996124d874f6a892fb85c2" title='Last modified by mungOps | September 22, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>September 22, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

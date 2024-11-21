@@ -3,17 +3,105 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Packstack Stein 설치 # # Packstack # # Redhat 계열 ( ex : CentOS )의 OpenStack 자동화 설치 툴 # # Packstack stain 설치 # # 기본적으로 PackStack은 올인원 or 다중노드로 구성할 수 있으며, 여기서는 올인원으로 설치를 진행하며, 다중노드에 대한 설정은 추가하도록 하겠습니다. # 설치사양 # # OS CPU RAM DISK CenOS7 4/ 2 10240 100G # 만약 다중 노드에 경우 소스를 분산시키고 각 노드에 설정을 추가합니다. hosts, hostname 등록 및 설정 다중 노드의 경우 controller node에서 다른 노드의 ssh 접속을 위한 키를 등록시킵니다.">
+<meta name="description" content="
+  Packstack Stein 설치
+  #
+
+
+  
+  #
+
+
+  Packstack
+  #
+
+
+  
+  #
+
+
+Redhat 계열 ( ex : CentOS )의 OpenStack 자동화 설치 툴
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  Packstack stain 설치
+  #
+
+
+  
+  #
+
+
+기본적으로 PackStack은 올인원 or 다중노드로 구성할 수 있으며, 여기서는 올인원으로 설치를 진행하며, 다중노드에 대한 설정은 추가하도록 하겠습니다.
+
+
+  
+  #
+
+
+  설치사양
+  #
+
+
+  
+  #
+
+
+  
+      
+          OS
+          CPU
+          RAM
+          DISK
+      
+  
+  
+      
+          CenOS7
+          4/ 2
+          10240
+          100G
+      
+  
+
+
+  
+  #
+
+
+만약 다중 노드에 경우 소스를 분산시키고 각 노드에 설정을 추가합니다.
+
+hosts, hostname 등록 및 설정
+다중 노드의 경우 controller node에서 다른 노드의 ssh 접속을 위한 키를 등록시킵니다.
+
+
+
+$ controller&gt; $ ssh-keygen
+$ controller&gt; $ ssh-copy-id network
+$ controller&gt; $ ssh-copy-id compute
+$ controller&gt; $ ssh-copy-id ... 다른 노드
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/OpenStack/OpenStackTraining/Packstack/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="Packstack">
-  <meta property="og:description" content="Packstack Stein 설치 # # Packstack # # Redhat 계열 ( ex : CentOS )의 OpenStack 자동화 설치 툴 # # Packstack stain 설치 # # 기본적으로 PackStack은 올인원 or 다중노드로 구성할 수 있으며, 여기서는 올인원으로 설치를 진행하며, 다중노드에 대한 설정은 추가하도록 하겠습니다. # 설치사양 # # OS CPU RAM DISK CenOS7 4/ 2 10240 100G # 만약 다중 노드에 경우 소스를 분산시키고 각 노드에 설정을 추가합니다. hosts, hostname 등록 및 설정 다중 노드의 경우 controller node에서 다른 노드의 ssh 접속을 위한 키를 등록시킵니다.">
+  <meta property="og:description" content=" Packstack Stein 설치 # # Packstack # # Redhat 계열 ( ex : CentOS )의 OpenStack 자동화 설치 툴 # # Packstack stain 설치 # # 기본적으로 PackStack은 올인원 or 다중노드로 구성할 수 있으며, 여기서는 올인원으로 설치를 진행하며, 다중노드에 대한 설정은 추가하도록 하겠습니다. # 설치사양 # # OS CPU RAM DISK CenOS7 4/ 2 10240 100G # 만약 다중 노드에 경우 소스를 분산시키고 각 노드에 설정을 추가합니다. hosts, hostname 등록 및 설정 다중 노드의 경우 controller node에서 다른 노드의 ssh 접속을 위한 키를 등록시킵니다. $ controller&gt; $ ssh-keygen $ controller&gt; $ ssh-copy-id network $ controller&gt; $ ssh-copy-id compute $ controller&gt; $ ssh-copy-id ... 다른 노드 # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-21T11:31:26+09:00">
 <title>Packstack | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +110,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +140,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +171,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -1958,22 +2035,22 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#heading-6">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>OS</th>
-<th>CPU</th>
-<th>RAM</th>
-<th>DISK</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CenOS7</td>
-<td>4/ 2</td>
-<td>10240</td>
-<td>100G</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OS</th>
+          <th style="text-align: left">CPU</th>
+          <th style="text-align: left">RAM</th>
+          <th style="text-align: left">DISK</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CenOS7</td>
+          <td style="text-align: left">4/ 2</td>
+          <td style="text-align: left">10240</td>
+          <td style="text-align: left">100G</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-7">
   
@@ -2107,15 +2184,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/605afe3de5159fb1bd376c0eb1ad21babbba213e" title='Last modified by mungOps | December 21, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 21, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

@@ -3,19 +3,36 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes Object # Kubernetes Object # 쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
-어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.">
+<meta name="description" content="
+  Kubernetes Object
+  #
+
+
+
+  Kubernetes Object
+  #
+
+
+
+쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
+
+어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무
+해당 어플리케이션의 사용가능 리소스
+해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책
+
+
+
+즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s01/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="1. Kubernetes Object">
-  <meta property="og:description" content="Kubernetes Object # Kubernetes Object # 쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
+  <meta property="og:description" content=" Kubernetes Object # Kubernetes Object # 쿠버네티스의 오브젝트란 시스템에서 영속성을 가지는 명세서를 의미하며, 이는 아래와 같이 기술할 수 있다.
 어떤 노드에서 어떤 파드 및 어플리케이션의 동작 유무 해당 어플리케이션의 사용가능 리소스 해당 어플레케이션의 재구동 정책, 업그레이드, 가용성 등의 대한 동작 정책 즉, 쿠버네티스 오브젝트란 하나의 의도를 담은 명세서를 의미하며, 이를 생성하게되면 쿠버네티스 상에서는 해당 오브젝트의 영속성을 보장하기 위해 지속적으로 동작할 것이고, 이를 통해 하나 혹은 몇몇의 오브젝트로 사용자의 워크로드의 관리가 보다 쉽게 가능해진다.">
   <meta property="og:locale" content="devops">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2024-02-20T11:28:05+09:00">
 <title>1. Kubernetes Object | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -24,9 +41,6 @@
   <script defer src="/devops.search.min.51d2808d5cee361f5ae3bc8cce24aecead5288a3e1f582eb1bbbc083dab9e175.js" integrity="sha256-UdKAjVzuNh9a47yMziSuzq1SiKPh9YLrG7vAg9q54XU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -57,7 +71,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -88,14 +102,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2196,38 +2202,38 @@ https://github.com/alex-shpak/hugo-book
 <li>오브젝트를 관리하는 방법으로는 아래와 같이 명령형 커맨드, 명령형 오브젝트 구성, 선언형 오브젝트 구성으로 나뉘어져 있다.</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>관리기법</th>
-<th>대상</th>
-<th>권장 환경</th>
-<th>지원하는 작업자 수</th>
-<th>학습 난이도</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>명령형 커맨드</td>
-<td>활성 오브젝트</td>
-<td>개발 환경</td>
-<td>1+</td>
-<td>낮음</td>
-</tr>
-<tr>
-<td>명령형 오브젝트 구성</td>
-<td>개별 파일</td>
-<td>프로덕션 환경</td>
-<td>1</td>
-<td>보통</td>
-</tr>
-<tr>
-<td>선언형 오브젝트 구성</td>
-<td>파일이 있는 디렉터리</td>
-<td>프로덕션 환경</td>
-<td>1+</td>
-<td>높음</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">관리기법</th>
+          <th style="text-align: left">대상</th>
+          <th style="text-align: left">권장 환경</th>
+          <th style="text-align: left">지원하는 작업자 수</th>
+          <th style="text-align: left">학습 난이도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">명령형 커맨드</td>
+          <td style="text-align: left">활성 오브젝트</td>
+          <td style="text-align: left">개발 환경</td>
+          <td style="text-align: left">1+</td>
+          <td style="text-align: left">낮음</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">명령형 오브젝트 구성</td>
+          <td style="text-align: left">개별 파일</td>
+          <td style="text-align: left">프로덕션 환경</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">보통</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">선언형 오브젝트 구성</td>
+          <td style="text-align: left">파일이 있는 디렉터리</td>
+          <td style="text-align: left">프로덕션 환경</td>
+          <td style="text-align: left">1+</td>
+          <td style="text-align: left">높음</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-5">
   
@@ -2416,15 +2422,6 @@ stateDiagram-v2
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/ef3d055e77625f16ab804f9b48168bb35090f78b" title='Last modified by mungOps | February 20, 2024' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 20, 2024</span>
-    </a>
-  </div>
-
-
 
 
 

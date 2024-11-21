@@ -3,17 +3,145 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS 끄투온라인 서버 구축 # # AWS 끄투온라인 서버 구축 # # # 끄투 온라인은 오픈소스의 끝말잇기 게임입니다. # # EC2를 생성합니다. EC2 생성은 EC2 생성을 참조해주세요. OS 유형 disk security group Ubuntu18.04 t2.mini 8 all-open # 인스턴스를 생성 후, 아래와 같이 진행합니다. $ sudo apt -y update $ sudo apt -y upgrade $ sudo apt -y install node.js $ sudo apt -y install npm $ npm install -g grunt grunt-cli $ sudo apt -y install postgresql $ sudo apt -y install git $ sudo git clone https://github.">
+<meta name="description" content="
+  AWS 끄투온라인 서버 구축
+  #
+
+
+
+  
+  #
+
+
+
+  AWS 끄투온라인 서버 구축
+  #
+
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  
+
+끄투 온라인은 오픈소스의 끝말잇기 게임입니다.
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+EC2를 생성합니다. EC2 생성은 
+  EC2 생성을 참조해주세요.
+
+
+  
+      
+          OS
+          유형
+          disk
+          security group
+      
+  
+  
+      
+          Ubuntu18.04
+          t2.mini
+          8
+          all-open
+      
+  
+
+
+  
+  #
+
+
+인스턴스를 생성 후, 아래와 같이 진행합니다.
+
+$ sudo apt -y update
+$ sudo apt -y upgrade
+$ sudo apt -y install node.js
+$ sudo apt -y install npm
+$ npm install -g grunt grunt-cli
+$ sudo apt -y install postgresql
+$ sudo apt -y install git
+$ sudo git clone https://github.com/JJoriping/KKuTu.git
+# 서버 구축에 필요한 패키지들을 설치합니다.
+
+$ sudo su - postgres
+$ psql
+postgres=# ALTER USER postgres with encrypted password &#39;qwer1234&#39;;
+postgres=# CREATE DATABASE main;
+postgres-# \l
+                              List of databases
+   Name    |  Owner   | Encoding | Collate |  Ctype  |   Access privileges
+-----------&#43;----------&#43;----------&#43;---------&#43;---------&#43;-----------------------
+ main      | postgres | UTF8     | C.UTF-8 | C.UTF-8 |
+ postgres  | postgres | UTF8     | C.UTF-8 | C.UTF-8 |
+ template0 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          &#43;
+           |          |          |         |         | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          &#43;
+           |          |          |         |         | postgres=CTc/postgres
+# 게임 데이터의 삽입을 위한 DB를 생성합니다.
+
+
+# 새로운 커널 하나를 다시 킨 후 
+$ cd KKuTu/Server/lib/sub/
+$ mv global.inc.json global.json 
+$ mv auth.inc.json auth.json
+
+$ vi global.json
+&#34;PASS&#34;:&#34;...&#34;, &gt;&#34;PASS&#34;:&#34;qwer1234&#34;,
+&#34;PG_PASSWORD&#34;: &#34;...&#34;,&gt; &#34;PG_PASSWORD&#34;: &#34;qwer1234&#34;,
+# DB에 접속하기 위한 패스워드를 수정합니다.
+
+
+$ cd ~/KKuTu
+$ sudo -u postgres psql --quiet main &lt; ./db.sql
+# DB를 삽입합니다.
+
+$ chmod &#43;x server-setup.bat
+$ ./server-setup.bat
+$ node ./Server/lib/Game/cluster.js 0 1
+$ ctrl &#43; z
+$ bg
+$ disown -h
+$ node Server/lib/Web/cluster.js 1  
+$ ctrl &#43; z
+$ bg
+$ disown -h
+
+$ netstat -anlp | grep :8496
+$ netstat -anlp | grep :80
+# 확인
+
+ IP ] 접속
+
+  
+  #
+
+ ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSTraining/Game/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="EC2 끄투온라인 서버 구축">
-  <meta property="og:description" content="AWS 끄투온라인 서버 구축 # # AWS 끄투온라인 서버 구축 # # # 끄투 온라인은 오픈소스의 끝말잇기 게임입니다. # # EC2를 생성합니다. EC2 생성은 EC2 생성을 참조해주세요. OS 유형 disk security group Ubuntu18.04 t2.mini 8 all-open # 인스턴스를 생성 후, 아래와 같이 진행합니다. $ sudo apt -y update $ sudo apt -y upgrade $ sudo apt -y install node.js $ sudo apt -y install npm $ npm install -g grunt grunt-cli $ sudo apt -y install postgresql $ sudo apt -y install git $ sudo git clone https://github.">
+  <meta property="og:description" content=" AWS 끄투온라인 서버 구축 # # AWS 끄투온라인 서버 구축 # # # 끄투 온라인은 오픈소스의 끝말잇기 게임입니다. # # EC2를 생성합니다. EC2 생성은 EC2 생성을 참조해주세요. OS 유형 disk security group Ubuntu18.04 t2.mini 8 all-open # 인스턴스를 생성 후, 아래와 같이 진행합니다. $ sudo apt -y update $ sudo apt -y upgrade $ sudo apt -y install node.js $ sudo apt -y install npm $ npm install -g grunt grunt-cli $ sudo apt -y install postgresql $ sudo apt -y install git $ sudo git clone https://github.com/JJoriping/KKuTu.git # 서버 구축에 필요한 패키지들을 설치합니다. $ sudo su - postgres $ psql postgres=# ALTER USER postgres with encrypted password &#39;qwer1234&#39;; postgres=# CREATE DATABASE main; postgres-# \l List of databases Name | Owner | Encoding | Collate | Ctype | Access privileges -----------&#43;----------&#43;----------&#43;---------&#43;---------&#43;----------------------- main | postgres | UTF8 | C.UTF-8 | C.UTF-8 | postgres | postgres | UTF8 | C.UTF-8 | C.UTF-8 | template0 | postgres | UTF8 | C.UTF-8 | C.UTF-8 | =c/postgres &#43; | | | | | postgres=CTc/postgres template1 | postgres | UTF8 | C.UTF-8 | C.UTF-8 | =c/postgres &#43; | | | | | postgres=CTc/postgres # 게임 데이터의 삽입을 위한 DB를 생성합니다. # 새로운 커널 하나를 다시 킨 후 $ cd KKuTu/Server/lib/sub/ $ mv global.inc.json global.json $ mv auth.inc.json auth.json $ vi global.json &#34;PASS&#34;:&#34;...&#34;, &gt;&#34;PASS&#34;:&#34;qwer1234&#34;, &#34;PG_PASSWORD&#34;: &#34;...&#34;,&gt; &#34;PG_PASSWORD&#34;: &#34;qwer1234&#34;, # DB에 접속하기 위한 패스워드를 수정합니다. $ cd ~/KKuTu $ sudo -u postgres psql --quiet main &lt; ./db.sql # DB를 삽입합니다. $ chmod &#43;x server-setup.bat $ ./server-setup.bat $ node ./Server/lib/Game/cluster.js 0 1 $ ctrl &#43; z $ bg $ disown -h $ node Server/lib/Web/cluster.js 1 $ ctrl &#43; z $ bg $ disown -h $ netstat -anlp | grep :8496 $ netstat -anlp | grep :80 # 확인 IP ] 접속 # ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>EC2 끄투온라인 서버 구축 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +150,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +180,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +211,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -1913,22 +2030,22 @@ https://github.com/alex-shpak/hugo-book
   <a href="/cloud/">EC2 생성</a>을 참조해주세요.</strong></li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>OS</th>
-<th>유형</th>
-<th>disk</th>
-<th>security group</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ubuntu18.04</td>
-<td>t2.mini</td>
-<td>8</td>
-<td>all-open</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">OS</th>
+          <th style="text-align: left">유형</th>
+          <th style="text-align: left">disk</th>
+          <th style="text-align: left">security group</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Ubuntu18.04</td>
+          <td style="text-align: left">t2.mini</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">all-open</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="heading-5">
   
@@ -2011,15 +2128,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

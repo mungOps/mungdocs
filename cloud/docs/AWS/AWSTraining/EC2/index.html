@@ -3,25 +3,70 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS EC2 생성 # # AWS EC2 생성 # # 이번 장에서는 저번 장에서 생성했던 사용자 정의 VPC의 대역에 EC2를 생성해 보도록 하겠습니다. EC2 또한 중요한 개념이므로, EC2에 대한 학습을 원하는 분들은 AWS EC2를 참고해주세요. # # EC2 ( Elastic Compute Cloud ) 생성 # 기본적인 EC2 생성의 순서
-1. AMI ( Amazon Machin Image ) 선택 2. Instance type 선택
+<meta name="description" content="
+  AWS EC2 생성
+  #
+
+
+
+  
+  #
+
+
+
+  AWS EC2 생성
+  #
+
+
+
+  
+  #
+
+
+이번 장에서는 저번 장에서 생성했던 사용자 정의 VPC의 대역에 EC2를 생성해 보도록 하겠습니다.
+EC2 또한 중요한 개념이므로, EC2에 대한 학습을 원하는 분들은 
+  AWS EC2를 참고해주세요.
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+ 
+
+  EC2 ( Elastic Compute Cloud ) 생성
+  #
+
+
+
+기본적인 EC2 생성의 순서
+1. AMI ( Amazon Machin Image ) 선택  
+2. Instance type 선택
 2. Instance Network 설정
 3. Storage 설정
-5. Tag 설정">
+5. Tag 설정
+6. Security Group 설정 
+여기에서는 처음에는 기본 VPC, 후에는 전장에서 생성했던 VPC에 생성해보도록 하겠습니다.. 
+
+  ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSTraining/EC2/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="AWS EC2 생성">
-  <meta property="og:description" content="AWS EC2 생성 # # AWS EC2 생성 # # 이번 장에서는 저번 장에서 생성했던 사용자 정의 VPC의 대역에 EC2를 생성해 보도록 하겠습니다. EC2 또한 중요한 개념이므로, EC2에 대한 학습을 원하는 분들은 AWS EC2를 참고해주세요. # # EC2 ( Elastic Compute Cloud ) 생성 # 기본적인 EC2 생성의 순서
+  <meta property="og:description" content=" AWS EC2 생성 # # AWS EC2 생성 # # 이번 장에서는 저번 장에서 생성했던 사용자 정의 VPC의 대역에 EC2를 생성해 보도록 하겠습니다. EC2 또한 중요한 개념이므로, EC2에 대한 학습을 원하는 분들은 AWS EC2를 참고해주세요. # # EC2 ( Elastic Compute Cloud ) 생성 # 기본적인 EC2 생성의 순서
 1. AMI ( Amazon Machin Image ) 선택 2. Instance type 선택
 2. Instance Network 설정
 3. Storage 설정
-5. Tag 설정">
+5. Tag 설정
+6. Security Group 설정 여기에서는 처음에는 기본 VPC, 후에는 전장에서 생성했던 VPC에 생성해보도록 하겠습니다.. ">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>AWS EC2 생성 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -30,9 +75,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -63,7 +105,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -94,14 +136,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2103,62 +2137,62 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <blockquote>
 <table>
-<thead>
-<tr>
-<th>설정 항목</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>인스턴스 갯수</td>
-<td>기동할 인스턴스의 수를 나타냅니다.</td>
-</tr>
-<tr>
-<td>구매 옵션</td>
-<td>구매 옵션을 선택합니다. 체크 시 스팟 인스턴스로 구입할 수 있습니다.</td>
-</tr>
-<tr>
-<td>네트워크</td>
-<td>인스턴스를 기동할 VPC를 나타냅니다.</td>
-</tr>
-<tr>
-<td>서브넷</td>
-<td>인스턴스가 소속될 서브넷을 나타냅니다.</td>
-</tr>
-<tr>
-<td>퍼블릭 IP 자동 할당</td>
-<td>자동적으로 퍼블릭 IP를 부여할지 설정합니다.</td>
-</tr>
-<tr>
-<td>배치 그룹에 인스턴스 추가</td>
-<td>배치 그룹을 선택합니다. 체크 시 배치 그룹에서 인스턴스를 생성합니다.</td>
-</tr>
-<tr>
-<td>용량 예약</td>
-<td>용량 예약은 특정 가용 영역에서 인스턴스가 시작되도록 예약합니다.</td>
-</tr>
-<tr>
-<td>IAM 역할</td>
-<td>EC2 인스턴스에 부여할 IAM권한을 설정합니다.</td>
-</tr>
-<tr>
-<td>종료 방지</td>
-<td>EC2 인스턴스의 삭제를 막습니다.</td>
-</tr>
-<tr>
-<td>모니터링</td>
-<td>CloudWatch를 통한 모니터링 서비스를 활성화합니다. 화성화하면 1분 간격으로 CloudWatch에 데이터가 전송됩니다. ( 일반적으로 5분 간격을 설정 )</td>
-</tr>
-<tr>
-<td>테넌시</td>
-<td>하드웨어 점유 옵션으로, Shred를 선택시 공유, Dedicated를 선택하면 완전 점유합니다.</td>
-</tr>
-<tr>
-<td>사용자 데이터</td>
-<td>인스턴스 실행시 셀 스크립트 또는 cloud-init 디렉티브를 작성할 수 있습니다.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">설정 항목</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">인스턴스 갯수</td>
+          <td style="text-align: left">기동할 인스턴스의 수를 나타냅니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">구매 옵션</td>
+          <td style="text-align: left">구매 옵션을 선택합니다. 체크 시 스팟 인스턴스로 구입할 수 있습니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">네트워크</td>
+          <td style="text-align: left">인스턴스를 기동할 VPC를 나타냅니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">서브넷</td>
+          <td style="text-align: left">인스턴스가 소속될 서브넷을 나타냅니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">퍼블릭 IP 자동 할당</td>
+          <td style="text-align: left">자동적으로 퍼블릭 IP를 부여할지 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">배치 그룹에 인스턴스 추가</td>
+          <td style="text-align: left">배치 그룹을 선택합니다. 체크 시 배치 그룹에서 인스턴스를 생성합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">용량 예약</td>
+          <td style="text-align: left">용량 예약은 특정 가용 영역에서 인스턴스가 시작되도록 예약합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">IAM 역할</td>
+          <td style="text-align: left">EC2 인스턴스에 부여할 IAM권한을 설정합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">종료 방지</td>
+          <td style="text-align: left">EC2 인스턴스의 삭제를 막습니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">모니터링</td>
+          <td style="text-align: left">CloudWatch를 통한 모니터링 서비스를 활성화합니다. 화성화하면 1분 간격으로 CloudWatch에 데이터가 전송됩니다. ( 일반적으로 5분 간격을 설정 )</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">테넌시</td>
+          <td style="text-align: left">하드웨어 점유 옵션으로, Shred를 선택시 공유, Dedicated를 선택하면 완전 점유합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">사용자 데이터</td>
+          <td style="text-align: left">인스턴스 실행시 셀 스크립트 또는 cloud-init 디렉티브를 작성할 수 있습니다.</td>
+      </tr>
+  </tbody>
 </table>
 </blockquote>
 <h1 id="heading-14">
@@ -2649,15 +2683,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

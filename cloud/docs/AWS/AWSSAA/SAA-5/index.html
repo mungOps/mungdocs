@@ -3,17 +3,79 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="5장 데이터베이스 # # 5장의 목표 # # 복원력을 갖춘 아키텍처 설계 안정적이고/ 복원력을 갖춘 스토리지를 선택한다.
+<meta name="description" content="
+  5장 데이터베이스
+  #
+
+
+
+  
+  #
+
+
+  5장의 목표
+  #
+
+
+  
+  #
+
+
+복원력을 갖춘 아키텍처 설계
+
+
+안정적이고/ 복원력을 갖춘 스토리지를 선택한다.
+
+
 어떻게 AWS 서비스를 사용해 결합 해제 매커니즘을 설계할지 결정한다.
+
+
 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다.
+
+
 어떻게 고 가용성 및/ 내결함성을 갖춘 아키텍처를 설계할지 결정한다.
-# 성능이 뛰어난 아키텍처 정의 성능이 뛰어난 스토리지 및 데이터베이스를 선택한다. 탄력성과 확장성을 갖춘 솔루션을 설계한다. # # 데이터베이스 # # 데이터베이스를 사용하면 어플리케이션을 데이터를 저장하고 구성하며, 신속하게 검색할 수 있다.">
+
+
+
+
+
+  
+  #
+
+
+성능이 뛰어난 아키텍처 정의
+
+성능이 뛰어난 스토리지 및 데이터베이스를 선택한다.
+탄력성과 확장성을 갖춘 솔루션을 설계한다.
+
+
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+  데이터베이스
+  #
+
+
+  
+  #
+
+
+
+데이터베이스를 사용하면 어플리케이션을 데이터를 저장하고 구성하며, 신속하게 검색할 수 있다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSSAA/SAA-5/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="5장 데이터베이스">
-  <meta property="og:description" content="5장 데이터베이스 # # 5장의 목표 # # 복원력을 갖춘 아키텍처 설계 안정적이고/ 복원력을 갖춘 스토리지를 선택한다.
+  <meta property="og:description" content=" 5장 데이터베이스 # # 5장의 목표 # # 복원력을 갖춘 아키텍처 설계 안정적이고/ 복원력을 갖춘 스토리지를 선택한다.
 어떻게 AWS 서비스를 사용해 결합 해제 매커니즘을 설계할지 결정한다.
 어떻게 멀티 티어 아키텍처 솔루션을 설계할지 결정한다.
 어떻게 고 가용성 및/ 내결함성을 갖춘 아키텍처를 설계할지 결정한다.
@@ -21,7 +83,6 @@
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>5장 데이터베이스 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -30,9 +91,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -63,7 +121,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -94,14 +152,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2269,31 +2319,31 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>사원 ID(숫자)</th>
-<th>부서(문자열)</th>
-<th>성(문자열)</th>
-<th>이름(문자열)</th>
-<th>셍일(날짜)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>101</td>
-<td>전산</td>
-<td>Smith</td>
-<td>Charlotte</td>
-<td>7-16-87</td>
-</tr>
-<tr>
-<td>102</td>
-<td>마케팅</td>
-<td>Colson</td>
-<td>Thomas</td>
-<td>7-4-00</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">사원 ID(숫자)</th>
+          <th style="text-align: left">부서(문자열)</th>
+          <th style="text-align: left">성(문자열)</th>
+          <th style="text-align: left">이름(문자열)</th>
+          <th style="text-align: left">셍일(날짜)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">101</td>
+          <td style="text-align: left">전산</td>
+          <td style="text-align: left">Smith</td>
+          <td style="text-align: left">Charlotte</td>
+          <td style="text-align: left">7-16-87</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">102</td>
+          <td style="text-align: left">마케팅</td>
+          <td style="text-align: left">Colson</td>
+          <td style="text-align: left">Thomas</td>
+          <td style="text-align: left">7-4-00</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>데이터는 각 열에서 정의된 형식에 반드시 일치해야 하며, 이와 다르게 숫자에 문자열을 입력하는 등의 작업을 진행할 경우 오류가 발생하게 된다.</strong></li>
@@ -2326,22 +2376,22 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>부서 ID(숫자)</th>
-<th>부서명(문자열)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-<td>전산</td>
-</tr>
-<tr>
-<td>20</td>
-<td>마케팅</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">부서 ID(숫자)</th>
+          <th style="text-align: left">부서명(문자열)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">10</td>
+          <td style="text-align: left">전산</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">20</td>
+          <td style="text-align: left">마케팅</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>사원 테이블의 각 사원 레코드에 부서명을 입력하는 대신 부서 테이블에 레코드를 하나를 생성한 후, 사원 테이블의 사원 ID를 통해 각 부서를 참조하는 것이 가능하다.</strong></li>
@@ -3287,35 +3337,35 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>키</th>
-<th>형식</th>
-<th>값</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>사원 ID(기본 키)</td>
-<td>숫자</td>
-<td>101</td>
-</tr>
-<tr>
-<td>부서</td>
-<td>문자</td>
-<td>전산실</td>
-</tr>
-<tr>
-<td>성</td>
-<td>문자</td>
-<td>Smith</td>
-</tr>
-<tr>
-<td>이름</td>
-<td>문자</td>
-<td>Charlotte</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">키</th>
+          <th style="text-align: left">형식</th>
+          <th style="text-align: left">값</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">사원 ID(기본 키)</td>
+          <td style="text-align: left">숫자</td>
+          <td style="text-align: left">101</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">부서</td>
+          <td style="text-align: left">문자</td>
+          <td style="text-align: left">전산실</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">성</td>
+          <td style="text-align: left">문자</td>
+          <td style="text-align: left">Smith</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">이름</td>
+          <td style="text-align: left">문자</td>
+          <td style="text-align: left">Charlotte</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><strong>비관계형 데이터베이스에서 Charlotte라는 사원이 있는 모든 부서의 목록을 조회하는 것은 어려울 수 있으며, 사원 ID로 항목이 정렬되어 있으므로, 이름의 값이 Charlotte인 항목을 찾으려면 시스템은 모든 항목을 검색해야하는 문제점이 존재한다.</strong></li>
@@ -3398,26 +3448,26 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>성(파티션 키)</th>
-<th>이름(정렬 키)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Lewis</td>
-<td>Clive</td>
-</tr>
-<tr>
-<td>Lewis</td>
-<td>Warren</td>
-</tr>
-<tr>
-<td>Williams</td>
-<td>Warren</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">성(파티션 키)</th>
+          <th style="text-align: left">이름(정렬 키)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Lewis</td>
+          <td style="text-align: left">Clive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Lewis</td>
+          <td style="text-align: left">Warren</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Williams</td>
+          <td style="text-align: left">Warren</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>
@@ -3877,15 +3927,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

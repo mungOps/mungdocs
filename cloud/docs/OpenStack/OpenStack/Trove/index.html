@@ -3,7 +3,63 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" 데이터베이스 서비스 : Trove # Trove는 관계형 데이터베이스 기능을 활용 클라우드 사용자와 데이터 베이스 관리자는 필요에 따라 Trove를 통해 데이터베이스 인스턴스를 제공, 관리 서비스 # Trove의 논리 아키텍처 # # # 구성요소 역할 python-troveclient 클라이언트에서 콘솔로 trove-api를 실행할 수 있게 지원 trove-api RESTful API 방식의 JSON을 지원, Trove인스턴스를 관리하고 프로비저닝 trove-taskmanager 인스턴스 프로비저닝을 지원, 라이프 사이클 관리 및 운영하는 작업을 수행 trove-conductor 호스트에서 실행되는 서비스로 호스트 정보를 업데이트 및 게스트 인스턴스 메시지를 수신 trove-guestagent 게스트 인스턴스 안에서 실행, 데이터 베이스 작업을 실행, 관리 ">
+<meta name="description" content="
+  데이터베이스 서비스 : Trove
+  #
+
+
+
+Trove는 관계형 데이터베이스 기능을 활용
+클라우드 사용자와 데이터 베이스 관리자는 필요에 따라 Trove를 통해 데이터베이스 인스턴스를 제공, 관리 서비스
+
+
+  
+  #
+
+
+  Trove의 논리 아키텍처
+  #
+
+
+  
+  #
+
+
+  
+
+  
+  #
+
+
+  
+      
+          구성요소
+          역할
+      
+  
+  
+      
+          python-troveclient
+          클라이언트에서 콘솔로 trove-api를 실행할 수 있게 지원
+      
+      
+          trove-api
+          RESTful API 방식의 JSON을 지원, Trove인스턴스를 관리하고 프로비저닝
+      
+      
+          trove-taskmanager
+          인스턴스 프로비저닝을 지원, 라이프 사이클 관리 및 운영하는 작업을 수행
+      
+      
+          trove-conductor
+          호스트에서 실행되는 서비스로 호스트 정보를 업데이트 및 게스트 인스턴스 메시지를 수신
+      
+      
+          trove-guestagent
+          게스트 인스턴스 안에서 실행, 데이터 베이스 작업을 실행, 관리
+      
+  
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/OpenStack/OpenStack/Trove/">
@@ -13,7 +69,6 @@
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-21T11:31:26+09:00">
 <title>Trove | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,9 +77,6 @@
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -55,7 +107,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -86,14 +138,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -1901,34 +1945,34 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#heading-2">#</a>
 </h1>
 <table>
-<thead>
-<tr>
-<th>구성요소</th>
-<th>역할</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>python-troveclient</td>
-<td>클라이언트에서 콘솔로 trove-api를 실행할 수 있게 지원</td>
-</tr>
-<tr>
-<td>trove-api</td>
-<td>RESTful API 방식의 JSON을 지원, Trove인스턴스를 관리하고 프로비저닝</td>
-</tr>
-<tr>
-<td>trove-taskmanager</td>
-<td>인스턴스 프로비저닝을 지원, 라이프 사이클 관리 및 운영하는 작업을 수행</td>
-</tr>
-<tr>
-<td>trove-conductor</td>
-<td>호스트에서 실행되는 서비스로 호스트 정보를 업데이트 및 게스트 인스턴스 메시지를 수신</td>
-</tr>
-<tr>
-<td>trove-guestagent</td>
-<td>게스트 인스턴스 안에서 실행, 데이터 베이스 작업을 실행, 관리</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">구성요소</th>
+          <th style="text-align: left">역할</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">python-troveclient</td>
+          <td style="text-align: left">클라이언트에서 콘솔로 trove-api를 실행할 수 있게 지원</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">trove-api</td>
+          <td style="text-align: left">RESTful API 방식의 JSON을 지원, Trove인스턴스를 관리하고 프로비저닝</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">trove-taskmanager</td>
+          <td style="text-align: left">인스턴스 프로비저닝을 지원, 라이프 사이클 관리 및 운영하는 작업을 수행</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">trove-conductor</td>
+          <td style="text-align: left">호스트에서 실행되는 서비스로 호스트 정보를 업데이트 및 게스트 인스턴스 메시지를 수신</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">trove-guestagent</td>
+          <td style="text-align: left">게스트 인스턴스 안에서 실행, 데이터 베이스 작업을 실행, 관리</td>
+      </tr>
+  </tbody>
 </table>
 </article>
  
@@ -1937,15 +1981,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/605afe3de5159fb1bd376c0eb1ad21babbba213e" title='Last modified by mungOps | December 21, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 21, 2023</span>
-    </a>
-  </div>
-
-
 
 
 

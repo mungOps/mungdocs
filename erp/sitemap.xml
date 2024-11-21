@@ -2,182 +2,130 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://mungdocs.kro.kr/erp/docs/ERP/ERP/erp00/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/erp/docs/ERP/ERP/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/erp/docs/ERP/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/erp/docs/SAP/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/erp/docs/SAP/ABAP/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/erp/docs/SAP/Module/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/erp/categories/</loc>
+    <loc>http://localhost:1313/erp/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"
-                href="http://mungdocs.kro.kr/categories/"
+                href="http://localhost:1313/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/categories/"
+                href="http://localhost:1313/devops/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="database"
-                href="http://mungdocs.kro.kr/database/categories/"
+                href="http://localhost:1313/database/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="cloud"
-                href="http://mungdocs.kro.kr/cloud/categories/"
+                href="http://localhost:1313/cloud/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="system"
-                href="http://mungdocs.kro.kr/system/categories/"
+                href="http://localhost:1313/system/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="network"
-                href="http://mungdocs.kro.kr/network/categories/"
+                href="http://localhost:1313/network/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/categories/"
+                href="http://localhost:1313/programing/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/categories/"
+                href="http://localhost:1313/erp/categories/"
                 />
   </url><url>
-    <loc>http://mungdocs.kro.kr/erp/docs/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
+    <loc>http://localhost:1313/erp/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"
-                href="http://mungdocs.kro.kr/docs/"
+                href="http://localhost:1313/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/docs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cloud"
-                href="http://mungdocs.kro.kr/cloud/docs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="system"
-                href="http://mungdocs.kro.kr/system/docs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/docs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/docs/"
-                />
-  </url><url>
-    <loc>http://mungdocs.kro.kr/erp/</loc>
-    <lastmod>2024-07-11T13:45:07+09:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="main"
-                href="http://mungdocs.kro.kr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/"
+                href="http://localhost:1313/devops/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="database"
-                href="http://mungdocs.kro.kr/database/"
+                href="http://localhost:1313/database/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="cloud"
-                href="http://mungdocs.kro.kr/cloud/"
+                href="http://localhost:1313/cloud/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="system"
-                href="http://mungdocs.kro.kr/system/"
+                href="http://localhost:1313/system/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="network"
-                href="http://mungdocs.kro.kr/network/"
+                href="http://localhost:1313/network/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/"
+                href="http://localhost:1313/programing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/"
+                href="http://localhost:1313/erp/"
                 />
   </url><url>
-    <loc>http://mungdocs.kro.kr/erp/tags/</loc>
+    <loc>http://localhost:1313/erp/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"
-                href="http://mungdocs.kro.kr/tags/"
+                href="http://localhost:1313/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="devops"
-                href="http://mungdocs.kro.kr/devops/tags/"
+                href="http://localhost:1313/devops/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="database"
-                href="http://mungdocs.kro.kr/database/tags/"
+                href="http://localhost:1313/database/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="cloud"
-                href="http://mungdocs.kro.kr/cloud/tags/"
+                href="http://localhost:1313/cloud/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="system"
-                href="http://mungdocs.kro.kr/system/tags/"
+                href="http://localhost:1313/system/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="network"
-                href="http://mungdocs.kro.kr/network/tags/"
+                href="http://localhost:1313/network/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="programing"
-                href="http://mungdocs.kro.kr/programing/tags/"
+                href="http://localhost:1313/programing/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="erp"
-                href="http://mungdocs.kro.kr/erp/tags/"
+                href="http://localhost:1313/erp/tags/"
                 />
   </url>
 </urlset>

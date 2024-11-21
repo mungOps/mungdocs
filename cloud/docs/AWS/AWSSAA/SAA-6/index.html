@@ -3,27 +3,66 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="6장 인증과 권한 부여 - AWS Identity and Access Management # # 6장의 목표 # # 안전한 애플리케이션 및 아키텍처 설명 어떻게 애플리케이션 티어를 보호할지 결정한다.
+<meta name="description" content="
+  6장 인증과 권한 부여 - AWS Identity and Access Management
+  #
+
+
+
+  
+  #
+
+
+  6장의 목표
+  #
+
+
+  
+  #
+
+
+안전한 애플리케이션 및 아키텍처 설명
+
+
+어떻게 애플리케이션 티어를 보호할지 결정한다.
+
+
 어떻게 데이터르 보호하맂 결정한다.
-# # AWS 리소스는 기업의 소중한 자산이므로 엄격하게 보호돼야 한다.
+
+
+
+
+
+  
+  #
+
+ 
+
+  
+  #
+
+
+
+AWS 리소스는 기업의 소중한 자산이므로 엄격하게 보호돼야 한다.
+
+
 그렇다고 관리자와 고객조차 액세스 할 수 없을 정도로 보안 수준을 높일 수도 없다.
-높은 보안 수준을 유지하면서 관리자와 고객의 액세스는 허용할 수 있는 완벽한 절충점이 IAM이다.
-IAM은 사용자의 요청을 인증 (Authentification),해서 정당하게 사용하는 것을 확인하고 권한 부여 (Authorization)로 필요한 만큼 정확하게 액세스 할 수 있게 할 수 있다.">
+
+
+높은 보안 수준을 유지하면서 관리자와 고객의 액세스는 허용할 수 있는 완벽한 절충점이 IAM이다.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/cloud/docs/AWS/AWSSAA/SAA-6/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="6장 인증과 권한">
-  <meta property="og:description" content="6장 인증과 권한 부여 - AWS Identity and Access Management # # 6장의 목표 # # 안전한 애플리케이션 및 아키텍처 설명 어떻게 애플리케이션 티어를 보호할지 결정한다.
+  <meta property="og:description" content=" 6장 인증과 권한 부여 - AWS Identity and Access Management # # 6장의 목표 # # 안전한 애플리케이션 및 아키텍처 설명 어떻게 애플리케이션 티어를 보호할지 결정한다.
 어떻게 데이터르 보호하맂 결정한다.
 # # AWS 리소스는 기업의 소중한 자산이므로 엄격하게 보호돼야 한다.
 그렇다고 관리자와 고객조차 액세스 할 수 없을 정도로 보안 수준을 높일 수도 없다.
-높은 보안 수준을 유지하면서 관리자와 고객의 액세스는 허용할 수 있는 완벽한 절충점이 IAM이다.
-IAM은 사용자의 요청을 인증 (Authentification),해서 정당하게 사용하는 것을 확인하고 권한 부여 (Authorization)로 필요한 만큼 정확하게 액세스 할 수 있게 할 수 있다.">
+높은 보안 수준을 유지하면서 관리자와 고객의 액세스는 허용할 수 있는 완벽한 절충점이 IAM이다.">
   <meta property="og:locale" content="cloud">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:modified_time" content="2023-12-17T19:51:40+09:00">
 <title>6장 인증과 권한 | Mungs Book</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -32,9 +71,6 @@ IAM은 사용자의 요청을 인증 (Authentification),해서 정당하게 사�
   <script defer src="/cloud.search.min.b5c1ea4a44f5ed0f2df7d19a0d6b772afd66b77ceabe85e11a717a6ce84c12a3.js" integrity="sha256-tcHqSkT17Q8t99GaDWt3Kv1mt3zqvoXhGnF6bOhMEqM=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -65,7 +101,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-                   
+               
 
 <ul class="book-languages">
   <li>
@@ -96,14 +132,6 @@ https://github.com/alex-shpak/hugo-book
       
       <li>
         <a href="http://mungdocs.kro.kr/network/"> Network </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/programing/"> Programing </a>
-      </li>
-      
-      <li>
-        <a href="http://mungdocs.kro.kr/erp/"> ERP </a>
       </li>
       
     </ul>
@@ -2021,15 +2049,6 @@ https://github.com/alex-shpak/hugo-book
       <footer class="book-footer">
         
   <div class="flex flex-wrap justify-between">
-
-
-  <div><a class="flex align-center" href="https://github.com/mungOps/mung/commit/723ff521e0b439266cd43b271882995f9ff30358" title='Last modified by mung | December 17, 2023' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 17, 2023</span>
-    </a>
-  </div>
-
-
 
 
 
