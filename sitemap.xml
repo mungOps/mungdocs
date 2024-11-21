@@ -4,10 +4,14 @@
   <sitemap>
     <loc>http://mungdocs.kro.kr/main/sitemap.xml</loc>
     
+      <lastmod>2024-05-22T19:13:46+09:00</lastmod>
+    
   </sitemap>
   
   <sitemap>
     <loc>http://mungdocs.kro.kr/devops/sitemap.xml</loc>
+    
+      <lastmod>2024-09-24T15:11:21+09:00</lastmod>
     
   </sitemap>
   
@@ -19,10 +23,14 @@
   <sitemap>
     <loc>http://mungdocs.kro.kr/cloud/sitemap.xml</loc>
     
+      <lastmod>2023-12-21T11:31:26+09:00</lastmod>
+    
   </sitemap>
   
   <sitemap>
     <loc>http://mungdocs.kro.kr/system/sitemap.xml</loc>
+    
+      <lastmod>2023-12-26T15:46:06+09:00</lastmod>
     
   </sitemap>
   
