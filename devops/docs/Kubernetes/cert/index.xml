@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cert on Mungs Book</title>
+    <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/</link>
+    <description>Recent content in Cert on Mungs Book</description>
+    <generator>Hugo</generator>
+    <language>devops</language>
+    <atom:link href="http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>0. CKA</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/cka/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/cka/</guid>
+      <description>&lt;h2 id=&#34;cka&#34;&gt;&#xA;  CKA&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#cka&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;cka-1&#34;&gt;&#xA;  CKA&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#cka-1&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;h1 id=&#34;heading&#34;&gt;&#xA;  &#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#heading&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;&#xA;  &lt;img src=&#34;https://training.linuxfoundation.org/wp-content/uploads/2019/03/logo_cka_whitetext-300x293.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;heading-1&#34;&gt;&#xA;  &#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#heading-1&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;CKA 자격증은 &lt;strong&gt;Certified Kubernetes Administrator&lt;/strong&gt;를 의미하며, Kubernetes 플랫폼에 대한 숙련도를 &lt;strong&gt;Linux Foundation에서 검증해주는 자격증&lt;/strong&gt;을 의미&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;CKA 자격시험은 &lt;strong&gt;실기형 시험&lt;/strong&gt;으로 Kubernetes 환경에서 명령어를 활용해 리소스를 다루는 형태로 문제가 출제되며. &lt;strong&gt;2시간의 시험 시간 동안 66/100점 이상이면 시험에 통과&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;heading-2&#34;&gt;&#xA;  &#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#heading-2&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Section Table&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;분야&lt;/th&gt;&#xA;          &lt;th&gt;비중&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Cluster Architecture, Installation &amp;amp; Configuration&lt;/td&gt;&#xA;          &lt;td&gt;25%&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Workloads &amp;amp; Scheduling&lt;/td&gt;&#xA;          &lt;td&gt;15%&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Service &amp;amp; Networking&lt;/td&gt;&#xA;          &lt;td&gt;20%&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Storage&lt;/td&gt;&#xA;          &lt;td&gt;10%&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;TroubleShooting&lt;/td&gt;&#xA;          &lt;td&gt;30%&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;br&gt;&#xA;&lt;br&gt;&#xA;&lt;h4 id=&#34;cka-관련-사이트&#34;&gt;&#xA;  CKA 관련 사이트&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#cka-%ea%b4%80%eb%a0%a8-%ec%82%ac%ec%9d%b4%ed%8a%b8&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;  &lt;a href=&#34;https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/&#34;&gt;CKA 시험등록&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;  &lt;a href=&#34;https://killer.sh/&#34;&gt;Killer&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;details &gt;&lt;summary&gt;Answer&lt;/summary&gt;&#xA;  &lt;div class=&#34;markdown-inner&#34;&gt;&#xA;    &#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;</description>
+    </item>
+    <item>
+      <title>1. CKAD</title>
+      <link>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/cka-copy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/cka-copy/</guid>
+      <description>&lt;h2 id=&#34;ckad&#34;&gt;&#xA;  CKAD&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ckad&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;ckad-1&#34;&gt;&#xA;  CKAD&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ckad-1&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;h1 id=&#34;heading&#34;&gt;&#xA;  &#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#heading&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -5,11 +5,14 @@
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/</loc>
     <lastmod>2024-09-24T15:11:21+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA/</loc>
-    <lastmod>2024-02-20T11:28:05+09:00</lastmod>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/cka/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker00/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/fastapi/fastapi/fastapi00/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/git00/</loc>
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
@@ -38,6 +41,9 @@
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/12.CI/CD/ArgoCD/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/book/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
+  </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
@@ -55,6 +61,9 @@
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Elasticsearch/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/fastapi/fastapi/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Git/</loc>
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
@@ -93,7 +102,7 @@
     <lastmod>2024-09-24T15:11:21+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/0.-Resource/</loc>
-    <lastmod>2024-09-24T15:11:21+09:00</lastmod>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/5.-CNS/Rook/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
@@ -167,14 +176,17 @@
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/99.-ETC/0/file1/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA00/</loc>
-    <lastmod>2024-02-17T22:44:11+09:00</lastmod>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/cka-copy/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/</loc>
     <lastmod>2024-01-22T16:31:30+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/</loc>
-    <lastmod>2024-02-17T22:44:11+09:00</lastmod>
+    <loc>http://mungdocs.kro.kr/devops/docs/fastapi/fastapi/fastapi01/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
@@ -197,14 +209,14 @@
     <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker02/</loc>
     <lastmod>2024-01-22T12:19:07+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA01/</loc>
-    <lastmod>2024-02-17T22:44:11+09:00</lastmod>
-  </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s03/</loc>
     <lastmod>2024-02-22T18:05:40+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/fastapi/fastapi/fastapi02/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/11.-ML/Kibana/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
@@ -218,9 +230,6 @@
     <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker03/</loc>
     <lastmod>2024-01-22T13:50:06+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA02/</loc>
-    <lastmod>2024-02-17T22:44:11+09:00</lastmod>
-  </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s04/</loc>
     <lastmod>2024-02-27T15:35:48+09:00</lastmod>
   </url><url>
@@ -230,26 +239,17 @@
     <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker04/</loc>
     <lastmod>2024-01-22T12:19:07+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA03/</loc>
-    <lastmod>2024-02-17T22:44:11+09:00</lastmod>
-  </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s05/</loc>
     <lastmod>2024-02-20T16:59:22+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/4.-Tools/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA04/</loc>
-    <lastmod>2024-02-17T22:44:11+09:00</lastmod>
-  </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s06/</loc>
     <lastmod>2024-07-22T19:15:42+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/5.-CNS/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
-  </url><url>
-    <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA05/</loc>
-    <lastmod>2024-02-17T22:44:11+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/6.-BR/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
@@ -259,6 +259,9 @@
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/8.-AMS/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/fastapi/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/table-of-contents/</loc>
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
@@ -289,6 +292,9 @@
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/k8s/k8s99/</loc>
     <lastmod>2024-02-20T11:28:05+09:00</lastmod>
+  </url><url>
+    <loc>http://mungdocs.kro.kr/devops/docs/fastapi/fastapi/fastapi99/</loc>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/10.-CIMS/Harbor/file0/</loc>
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
@@ -377,7 +383,7 @@
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/</loc>
-    <lastmod>2024-09-24T15:11:21+09:00</lastmod>
+    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"

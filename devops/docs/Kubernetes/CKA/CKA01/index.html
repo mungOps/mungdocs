@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="devops" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -203,7 +203,7 @@ Answer
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/CKA/CKA01/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/devops/docs/Kubernetes/CKA/CKA01/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="2. Installation & Configuration 문제풀이">
   <meta property="og:description" content=" 2. Installation &amp; Configuration 문제풀이 # CKA # # 1. Deploy a pod named nginx-pod using the nginx:alpine image # Answer $ k run nginx-pod --image=nginx:alpine -o yaml &gt; 1-1.yaml $ k apply -f 1-1.yaml $ k get pods NAME READY STATUS RESTARTS AGE pod/nginx-pod 1/1 Running 0 59s 2. Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg # Answer $ k run messaging --image=redis:alpine --labl=tier=msg -o yaml &gt; 1-2.yaml $ k apply -f 1-2.yaml $ k get pods -L tier NAME READY STATUS RESTARTS AGE TIER messaging 1/1 Running 0 2m46s msg 3. Create a namespace named apx-x9984574 # Answer $ k create namespace apx-x9984574 $ k get ns NAME STATUS AGE apx-x9984574 Active 1s 4. Get th list of nodes in JSON formaget and store it in a file at /opt/outputs/nodes-z3444kd9.json # Answer $ k get nodes -o json &gt; /opt/outputs/nodes-z3444kd9.json # Answer $ create a service messaging-service to expose the messaging application within the cluster on port 6379 # Answer # Answer # Answer # Answer # Answer # Answer # Answer # Answer ">
@@ -263,23 +263,23 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://mungdocs.kro.kr/"> Main </a>
+        <a href="http://localhost:1313/"> Main </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+        <a href="http://localhost:1313/database/"> Database </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/cloud/"> Cloud </a>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/system/"> System </a>
+        <a href="http://localhost:1313/system/"> System </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+        <a href="http://localhost:1313/network/"> Network </a>
       </li>
       
     </ul>
