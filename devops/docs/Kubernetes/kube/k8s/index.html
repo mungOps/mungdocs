@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="devops" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -202,7 +202,7 @@ apt -y install kubeadm kubelet kubectl
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/k8s/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/devops/docs/Kubernetes/kube/k8s/">
   <meta property="og:site_name" content="Mungs Book">
   <meta property="og:title" content="1. Kubernetes_환경구성">
   <meta property="og:description" content="Kubernetes # Kubernetes # ctrl # timedatectl set-timezone Asia/Seoul apt -y install nginx libnginx-mod-stream echo &#39; stream { upstream k8s-api { server 1.0.0.200:6443; } server { listen 6443; proxy_pass k8s-api; } } &#39; &gt;&gt; /etc/nginx/nginx.conf unlink /etc/nginx/sites-enabled/default systemctl enable --now nginx curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo &#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34; | tee /etc/apt/sources.list.d/kubernetes.list apt update apt -y install kubectl mkdir -p $HOME/.kube wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml # install kubectl bash apt -y install bash-completion source /usr/share/bash-completion/bash_completion kubectl completion bash | tee /etc/bash_completion.d/kubectl &gt; /dev/null echo &#39;alias k=kubectl&#39; &gt;&gt;~/.bashrc echo &#39;complete -o default -F __start_kubectl k&#39; &gt;&gt;~/.bashrc exec bash controlplan # timedatectl set-timezone Asia/Seoul apt -y install haproxy keepalived containerd echo &#39; # Frontend for Kubernetes API frontend kubernetes-api bind 1.0.0.200:6443 # CP VIP와 포트를 바인딩 default_backend kube_apiserver # Backend for Kubernetes API backend kube_apiserver balance roundrobin # 또는 preferred server 방식 server cp0 1.0.0.201:6443 check &#39; &gt;&gt; /etc/haproxy/haproxy.cfg echo &#39; global_defs { router_id LVS_MASTER / LVS_SLAVE } vrrp_instance VI_1 { state MASTER interface ens19 # Network interface to bind the VIP virtual_router_id 51 priority 101 # Higher priority for Master advert_int 1 authentication { auth_type PASS auth_pass 1234 } virtual_ipaddress { 1.0.0.200 # Virtual IP to be shared } } &#39; &gt;&gt; /etc/keepalived/keepalived.conf systemctl enable --now haproxy keepalived timedatectl set-timezone Asia/Seoul apt -y install containerd mkdir /etc/containerd containerd config default | tee /etc/containerd/config.toml sed -i &#34;s|^\( *sandbox_image *= *\).*|\1\&#34;registry.k8s.io/pause:3.9\&#34;|&#34; /etc/containerd/config.toml sed -i &#34;s|^\( *SystemdCgroup *= *\).*|\1true|&#34; /etc/containerd/config.toml systemctl enable --now containerd.service cat &gt; /etc/sysctl.d/99-k8s-cri.conf &lt;&lt;EOF net.bridge.bridge-nf-call-iptables=1 net.bridge.bridge-nf-call-ip6tables=1 net.ipv4.ip_forward=1 EOF modprobe overlay; modprobe br_netfilter echo -e overlay\\nbr_netfilter &gt; /etc/modules-load.d/k8s.conf echo 1 &gt; /proc/sys/net/ipv4/ip_forward sysctl -p swapoff -a sed -i &#39;/\/swap.img/s/^/#/&#39; /etc/fstab # disable apparmor profiles below apparmor_parser -R /etc/apparmor.d/runc apparmor_parser -R /etc/apparmor.d/crun ln -s /etc/apparmor.d/runc /etc/apparmor.d/disable/ ln -s /etc/apparmor.d/crun /etc/apparmor.d/disable curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo &#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34; | tee /etc/apt/sources.list.d/kubernetes.list apt update apt -y install kubeadm kubelet kubectl kubeadm init --control-plane-endpoint=ctrl-main --apiserver-advertise-address=9.9.9.201 --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///run/containerd/containerd.sock scp /etc/kubernetes/admin.conf ohc@ctrl:/tmp kubeadm init --control-plane-endpoint=ctrl --apiserver-advertise-address=10.1.61.170 --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///run/containerd/containerd.sock dataplan # timedatectl set-timezone Asia/Seoul apt -y install containerd mkdir /etc/containerd containerd config default | tee /etc/containerd/config.toml sed -i &#34;s|^\( *sandbox_image *= *\).*|\1\&#34;registry.k8s.io/pause:3.9\&#34;|&#34; /etc/containerd/config.toml sed -i &#34;s|^\( *SystemdCgroup *= *\).*|\1true|&#34; /etc/containerd/config.toml systemctl enable --now containerd.service cat &gt; /etc/sysctl.d/99-k8s-cri.conf &lt;&lt;EOF net.bridge.bridge-nf-call-iptables=1 net.bridge.bridge-nf-call-ip6tables=1 net.ipv4.ip_forward=1 EOF echo 1 &gt; /proc/sys/net/ipv4/ip_forward sysctl -p modprobe overlay; modprobe br_netfilter echo -e overlay\\nbr_netfilter &gt; /etc/modules-load.d/k8s.conf swapoff -a sed -i &#39;/\/swap.img/s/^/#/&#39; /etc/fstab # disable apparmor profiles below apparmor_parser -R /etc/apparmor.d/runc apparmor_parser -R /etc/apparmor.d/crun ln -s /etc/apparmor.d/runc /etc/apparmor.d/disable/ ln -s /etc/apparmor.d/crun /etc/apparmor.d/disable curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo &#34;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /&#34; | tee /etc/apt/sources.list.d/kubernetes.list apt update apt -y install kubeadm kubelet kubectl">
@@ -215,7 +215,7 @@ apt -y install kubeadm kubelet kubectl
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/devops.search.min.13ebb1c87d3278e179fb653e28299efd9f6a25b6cd13c4cc30189598c4e442cc.js" integrity="sha256-E&#43;uxyH0yeOF5&#43;2U&#43;KCme/Z9qJbbNE8TMMBiVmMTkQsw=" crossorigin="anonymous"></script>
+  <script defer src="/devops.search.min.560375455ce103f8716c476ded25636b39b074cbf64588b0bf671bdd515ccc92.js" integrity="sha256-VgN1RVzhA/hxbEdt7SVjazmwdMv2RYiwv2cb3VFczJI=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -262,23 +262,23 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://mungdocs.kro.kr/"> Main </a>
+        <a href="http://localhost:1313/"> Main </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/database/"> Database </a>
+        <a href="http://localhost:1313/database/"> Database </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/cloud/"> Cloud </a>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/system/"> System </a>
+        <a href="http://localhost:1313/system/"> System </a>
       </li>
       
       <li>
-        <a href="http://mungdocs.kro.kr/network/"> Network </a>
+        <a href="http://localhost:1313/network/"> Network </a>
       </li>
       
     </ul>
@@ -2014,7 +2014,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/devops/docs/Kubernetes/cert/cka-copy/" class="">1. CKAD</a>
+    <a href="/devops/docs/Kubernetes/cert/ckad/" class="">1. CKAD</a>
   
 
         </li>
