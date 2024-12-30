@@ -30,8 +30,10 @@
     <lastmod>2024-02-20T11:28:05+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/book/k8s/</loc>
+    <lastmod>2024-12-30T17:57:08+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/patten/k8s/</loc>
+    <lastmod>2024-12-30T17:57:08+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/CICD/CICD/with-toc/</loc>
     <lastmod>2024-01-19T12:07:14+09:00</lastmod>
@@ -124,6 +126,7 @@
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/kube/patten/</loc>
+    <lastmod>2024-12-30T17:57:08+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/</loc>
     <lastmod>2024-09-24T15:11:21+09:00</lastmod>
@@ -180,6 +183,7 @@
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Kubernetes/cert/ckad/</loc>
+    <lastmod>2024-12-30T17:57:08+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/Docker/Docker/Docker01/</loc>
     <lastmod>2024-01-22T16:31:30+09:00</lastmod>
@@ -385,7 +389,7 @@
     <lastmod>2024-09-22T11:15:33+09:00</lastmod>
   </url><url>
     <loc>http://mungdocs.kro.kr/devops/docs/</loc>
-    <lastmod>2024-12-30T14:27:57+09:00</lastmod>
+    <lastmod>2024-12-30T17:57:08+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="main"
