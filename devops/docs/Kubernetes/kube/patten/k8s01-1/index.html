@@ -1,0 +1,2554 @@
+<!DOCTYPE html>
+<html lang="devops" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="클라우드 네이티브 애플리케이션 설계와 구현을 위한 24가지 디자인 패턴">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/devops/docs/Kubernetes/kube/patten/k8s01-1/">
+  <meta property="og:site_name" content="Mungs Book">
+  <meta property="og:title" content="2. 예측 범위 내의 요구사항">
+  <meta property="og:description" content="클라우드 네이티브 애플리케이션 설계와 구현을 위한 24가지 디자인 패턴">
+  <meta property="og:locale" content="devops">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>2. 예측 범위 내의 요구사항 | Mungs Book</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.aea6768613e0e26eeea790725523cd6a2a8cdfc97995017b2baa46ecdbbef5bd.css" integrity="sha256-rqZ2hhPg4m7up5ByVSPNaiqM38l5lQF7K6pG7Nu&#43;9b0=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/devops.search.min.3f85130146ba989545a2f3c0ce43c458909c3852c5b2331ce1c0d431809d71f8.js" integrity="sha256-P4UTAUa6mJVFovPAzkPEWJCcOFLFsjMc4cDUMYCdcfg=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="http://mungdocs.kro.kr"><img src="/svg/book.svg"
+    class="book-icon" /><span>Mungs Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+               
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/links-fill.svg" class="book-icon" /> DevOps
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/"> Main </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/database/"> Database </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/cloud/"> Cloud </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/system/"> System </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/network/"> Network </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CI/CD</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1976808e6fabeaaf3f2596b7cdedf00a" class="toggle"  />
+    <label for="section-1976808e6fabeaaf3f2596b7cdedf00a" class="flex justify-between">
+      <a role="button" class="">CI/CD 배포 입문</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/with-toc/" class="">1. 학습목표</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/key/" class="">암호화</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/" class="">Table of Contents</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/CICD/CICD/table-of-contents/with-toc/" class="">With ToC</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Docker</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e069a4b98969c93832e34b55f8164154" class="toggle"  />
+    <label for="section-e069a4b98969c93832e34b55f8164154" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker00/" class="">0. Docker&amp; Container</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker01/" class="">1. Docker 기본 명령어</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker02/" class="">2. Docker Registry</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker03/" class="">3. Dockerfile&amp; Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Docker/Docker/Docker04/" class="">4. Docker 실습</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Git</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c53995e3c77c53c144d886277ffb618b" class="toggle"  />
+    <label for="section-c53995e3c77c53c144d886277ffb618b" class="flex justify-between">
+      <a role="button" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git00/" class="">0. Git이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git03/" class="">3. Git Branch</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Git/Git/git99/" class="">99. Git 명령어 요약정리</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Kubernetes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a67237c84369064573cea1a9e8cb723a" class="toggle"  />
+    <label for="section-a67237c84369064573cea1a9e8cb723a" class="flex justify-between">
+      <a role="button" class="">Kubernetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s00/" class="">0. Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s01/" class="">1. Kubernetes Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s03/" class="">3. Workload&amp; Scheduling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s04/" class="">4. Node Mangament</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s05/" class="">5. ConfigMap&amp; Secret</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s06/" class="">6. Service</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/k8s/k8s99/" class="">Kubernetes_Object_Table</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d9fd2dc08b26f00abdd35e3b1797e96" class="toggle"  />
+    <label for="section-7d9fd2dc08b26f00abdd35e3b1797e96" class="flex justify-between">
+      <a href="/devops/docs/Kubernetes/Kubernetes/" class="">Kubernetes Training</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/0.-Resource/" class="">Requirements source</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/0.-Resource/file0/" class="">Manger Node</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ba252a9329aac7d22c524d18f963071" class="toggle"  />
+    <label for="section-7ba252a9329aac7d22c524d18f963071" class="flex justify-between">
+      <a role="button" class="">Container Runtime</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-76cb5bff0df900bd36b4006e76af8b4b" class="toggle"  />
+    <label for="section-76cb5bff0df900bd36b4006e76af8b4b" class="flex justify-between">
+      <a role="button" class="">ContainerD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/1.-Runtime/ContainerD/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f557dbe5e50e1dd6c1b563ee5e4c0b35" class="toggle"  />
+    <label for="section-f557dbe5e50e1dd6c1b563ee5e4c0b35" class="flex justify-between">
+      <a role="button" class="">Cluster Provisioning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-25926ec69f28b767ca509abab062bc95" class="toggle"  />
+    <label for="section-25926ec69f28b767ca509abab062bc95" class="flex justify-between">
+      <a role="button" class="">Kubeadm</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file0/" class="">Kubeadm Concept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file1/" class="">Kubeadm install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/2.-Provisioning/Kubeadm/file2/" class="">Kubeadm update</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fce4f55c7a5b7796107085f5b2ab19df" class="toggle"  />
+    <label for="section-fce4f55c7a5b7796107085f5b2ab19df" class="flex justify-between">
+      <a role="button" class="">Container Network Interface</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b359b84f77e007fd271f6290b624e7f9" class="toggle"  />
+    <label for="section-b359b84f77e007fd271f6290b624e7f9" class="flex justify-between">
+      <a role="button" class="">Calico</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/3.-CNI/Calico/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-339f3081eaa318b86a71697346add33a" class="toggle"  />
+    <label for="section-339f3081eaa318b86a71697346add33a" class="flex justify-between">
+      <a role="button" class="">MetaLB</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/3.-CNI/MetalLB/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/3.-CNI/MetalLB/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1451a5955b64d10698a080f748ffa760" class="toggle"  />
+    <label for="section-1451a5955b64d10698a080f748ffa760" class="flex justify-between">
+      <a role="button" class="">Nginx</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/3.-CNI/Nginx/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/3.-CNI/Nginx/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5714fd2d73245d764c72cbb75bd646c" class="toggle"  />
+    <label for="section-c5714fd2d73245d764c72cbb75bd646c" class="flex justify-between">
+      <a role="button" class="">Usability Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-98ae6619cbfb7dd81b65820829fa18a3" class="toggle"  />
+    <label for="section-98ae6619cbfb7dd81b65820829fa18a3" class="flex justify-between">
+      <a role="button" class="">Helm</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/4.-Tools/Helm/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/4.-Tools/Helm/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-29fc06bed5e0b6dcc5a6449bd8792890" class="toggle"  />
+    <label for="section-29fc06bed5e0b6dcc5a6449bd8792890" class="flex justify-between">
+      <a role="button" class="">OpenLens</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/4.-Tools/OpenLens/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/4.-Tools/OpenLens/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9ea80fa917d8693bce5652dc88a44b5d" class="toggle"  />
+    <label for="section-9ea80fa917d8693bce5652dc88a44b5d" class="flex justify-between">
+      <a role="button" class="">Container Natvie Storage</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5143553db6ad01ab46b34bdb5ae47793" class="toggle"  />
+    <label for="section-5143553db6ad01ab46b34bdb5ae47793" class="flex justify-between">
+      <a role="button" class="">Rook Ceph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/5.-CNS/Rook/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/5.-CNS/Rook/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-520451398a1978cb387e8f41311a315d" class="toggle"  />
+    <label for="section-520451398a1978cb387e8f41311a315d" class="flex justify-between">
+      <a role="button" class="">Backup and Restore Service</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2aaf360e86ece7b82124615e9be1bc30" class="toggle"  />
+    <label for="section-2aaf360e86ece7b82124615e9be1bc30" class="flex justify-between">
+      <a role="button" class="">Velero</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/6.-BR/Velero/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/6.-BR/Velero/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-420afe0c2baa095a7d7d3853fe4a6aa5" class="toggle"  />
+    <label for="section-420afe0c2baa095a7d7d3853fe4a6aa5" class="flex justify-between">
+      <a role="button" class="">Mesh Service</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-20992aa657b3c593fa097c007ec83432" class="toggle"  />
+    <label for="section-20992aa657b3c593fa097c007ec83432" class="flex justify-between">
+      <a role="button" class="">Istio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/7.-Mesh/Istio/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/7.-Mesh/Istio/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f53521ae946be0f6c4cc70c35103c1f7" class="toggle"  />
+    <label for="section-f53521ae946be0f6c4cc70c35103c1f7" class="flex justify-between">
+      <a role="button" class="">Access Management Service</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd32941c6624e7ff73cbf61e4c029066" class="toggle"  />
+    <label for="section-fd32941c6624e7ff73cbf61e4c029066" class="flex justify-between">
+      <a role="button" class="">Keycloak</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/8.-AMS/Keycloak/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/8.-AMS/Keycloak/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5cca75314b0d29b5827d18d644a1b1b7" class="toggle"  />
+    <label for="section-5cca75314b0d29b5827d18d644a1b1b7" class="flex justify-between">
+      <a role="button" class="">Key Management Service</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-da37603a4fb1d84f6c767de29fd182ac" class="toggle"  />
+    <label for="section-da37603a4fb1d84f6c767de29fd182ac" class="flex justify-between">
+      <a role="button" class="">Vault</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/9.-KMS/Vault/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/9.-KMS/Vault/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b145d07bbe561861bc29142224623f1" class="toggle"  />
+    <label for="section-8b145d07bbe561861bc29142224623f1" class="flex justify-between">
+      <a role="button" class="">Container Images Managemet Service</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3c737a0a04640f930e3fdd4b32015b0d" class="toggle"  />
+    <label for="section-3c737a0a04640f930e3fdd4b32015b0d" class="flex justify-between">
+      <a role="button" class="">Harbor</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/10.-CIMS/Harbor/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/10.-CIMS/Harbor/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-158973f6f6a90ab85786cd946c4ba7e9" class="toggle"  />
+    <label for="section-158973f6f6a90ab85786cd946c4ba7e9" class="flex justify-between">
+      <a role="button" class="">Monitoring and Logging</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-be6877d344c243f0c5161e3efb99e361" class="toggle"  />
+    <label for="section-be6877d344c243f0c5161e3efb99e361" class="flex justify-between">
+      <a role="button" class="">Elasticsearch</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/11.-ML/Elasticsearch/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/11.-ML/Elasticsearch/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2bd994cb04ad2ee9c308224ddb7b4b6a" class="toggle"  />
+    <label for="section-2bd994cb04ad2ee9c308224ddb7b4b6a" class="flex justify-between">
+      <a role="button" class="">Fluentd</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/11.-ML/Fluentd/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/11.-ML/Fluentd/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2b55596e97e06d7f8d8e02c88ad726a8" class="toggle"  />
+    <label for="section-2b55596e97e06d7f8d8e02c88ad726a8" class="flex justify-between">
+      <a role="button" class="">Kibana</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/11.-ML/Kibana/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/11.-ML/Kibana/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4b773d825030c714b4e0ed275f0fde48" class="toggle"  />
+    <label for="section-4b773d825030c714b4e0ed275f0fde48" class="flex justify-between">
+      <a role="button" class="">CI/CD Pipeline</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4788f48aa887b1067b7ceaf152230ec0" class="toggle"  />
+    <label for="section-4788f48aa887b1067b7ceaf152230ec0" class="flex justify-between">
+      <a role="button" class="">ArgoCD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/12.CI/CD/ArgoCD/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/12.CI/CD/ArgoCD/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f26ae1ccd2d8e6c775427f52c371aab6" class="toggle"  />
+    <label for="section-f26ae1ccd2d8e6c775427f52c371aab6" class="flex justify-between">
+      <a role="button" class="">Multi Cluster Management</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ad5a0a6e408d89320669e41fc5d412ad" class="toggle"  />
+    <label for="section-ad5a0a6e408d89320669e41fc5d412ad" class="flex justify-between">
+      <a role="button" class="">Karmada</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/13.-MCM/Karmada/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/13.-MCM/Karmada/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5a6e57feaa9bf9eb7ef4ec241f6efed9" class="toggle"  />
+    <label for="section-5a6e57feaa9bf9eb7ef4ec241f6efed9" class="flex justify-between">
+      <a role="button" class="">ETC</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b14c3d8579b7138947b83fcd695d4d9c" class="toggle"  />
+    <label for="section-b14c3d8579b7138947b83fcd695d4d9c" class="flex justify-between">
+      <a role="button" class="">임시폴더</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/99.-ETC/0/file1/" class=""> install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/Kubernetes/99.-ETC/0/file0/" class=""> Concept</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca0379bbe3e2c5efff1bfc99a98b2f63" class="toggle"  />
+    <label for="section-ca0379bbe3e2c5efff1bfc99a98b2f63" class="flex justify-between">
+      <a role="button" class="">Cert</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/cert/cka/" class="">0. CKA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/cert/ckad/" class="">1. CKAD</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d330600537e6c15d9d11713c82e2f760" class="toggle" checked />
+    <label for="section-d330600537e6c15d9d11713c82e2f760" class="flex justify-between">
+      <a role="button" class="">Kubernetes_Study</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Book Study</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/kube/book/k8s/" class="">1. Kubernetes_환경구성</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>쿠버네티스 패턴</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/kube/patten/k8s00/" class="">1. 분산 기본 요소</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/kube/patten/k8s01-1/" class="active">2. 예측 범위 내의 요구사항</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/Kubernetes/kube/patten/k8s01/" class="">2. 예측 범위 내의 요구사항</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>FastAPI</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-138162738b8dda8fa57d9b62c5993d3f" class="toggle"  />
+    <label for="section-138162738b8dda8fa57d9b62c5993d3f" class="flex justify-between">
+      <a role="button" class="">FastAPI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/fastapi/fastapi/fastapi00/" class="">0. FastAPI이란?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/fastapi/fastapi/fastapi01/" class="">1. FastAPI 기초 다지기</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/fastapi/fastapi/fastapi02/" class="">FastAPI Model</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/devops/docs/fastapi/fastapi/fastapi99/" class="">Fastapi99</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>2. 예측 범위 내의 요구사항</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#책의-주요구성"><strong>책의 주요구성</strong></a></li>
+        <li><a href="#예측-범위-내의-요구사항"><strong>예측 범위 내의 요구사항</strong></a></li>
+        <li><a href="#예측-필요한-이유"><strong>예측 필요한 이유</strong></a>
+          <ul>
+            <li><a href="#런타임-의존성"><strong>런타임 의존성</strong></a></li>
+            <li><a href="#쿠버네티스-주요-컴포넌트"><strong>쿠버네티스 주요 컴포넌트</strong></a></li>
+            <li><a href="#관련-데이터플로우"><strong>관련 데이터플로우</strong></a></li>
+            <li><a href="#의존성-설정"><strong>의존성 설정</strong></a></li>
+            <li><a href="#자원-프로파일"><strong>자원 프로파일</strong></a></li>
+            <li><a href="#전략별-주요-특징"><strong>전략별 주요 특징</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><br>
+<h2 id="책의-주요구성">
+  <strong>책의 주요구성</strong>
+  <a class="anchor" href="#%ec%b1%85%ec%9d%98-%ec%a3%bc%ec%9a%94%ea%b5%ac%ec%84%b1">#</a>
+</h2>
+<hr>
+<ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> <strong>패턴명</strong></p>
+<ul>
+<li>각 패턴에는 이름이 붙어 있는데, 이 패턴명은 각 장의 제목이기도 하다. 패턴명은 패턴 언어의 핵심이다.</li>
+</ul>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> <strong>문제</strong></p>
+<ul>
+<li>더 넓은 맥락을 제공하고 패턴 영역을 자세하게 설명한다.</li>
+</ul>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> <strong>해결책</strong></p>
+<ul>
+<li>패턴이 쿠버네티스 고유의 방식으로 어떻게 문제를 해결하는지에 관한 내용을 다룬다. 또한, 주어진 패턴의 일부분이거나 관련성 있는 다른 패턴들에 대한 상호 참조도 포함한다.</li>
+</ul>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> <strong>정리</strong></p>
+<ul>
+<li>주어진 맥락에 대한 해결책의 장단점에 대해 정리한다.</li>
+</ul>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> <strong>참고자료</strong></p>
+<ul>
+<li>마지막 절로서, 패턴과 관련된 부가 정보 출처를 제공한다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<br>
+<br>
+<h2 id="예측-범위-내의-요구사항">
+  <strong>예측 범위 내의 요구사항</strong>
+  <a class="anchor" href="#%ec%98%88%ec%b8%a1-%eb%b2%94%ec%9c%84-%eb%82%b4%ec%9d%98-%ec%9a%94%ea%b5%ac%ec%82%ac%ed%95%ad">#</a>
+</h2>
+<hr>
+<ul>
+<li>
+<p>클라우드 환경에서 애플리케이션 배포, 관리 및 공용을 성공적으로 수행하려면 <strong>애플리케이션 자원 요구사항과 런타임 의존성을 명확히 식별하고 정의</strong>해야한다.</p>
+</li>
+<li>
+<p>예측 범위 내의 요구사항 <strong>Predictable Demands 패턴이란 하드 런타임 hard runtime 의존성이나 자원 요구사항과는 상관 없이, 애플리케이션 요구사항을 선언하는 방법에 관한 것</strong>이다.</p>
+</li>
+<li>
+<p>컨테이너가 최적의 기능을 수행하는 데 필요한 자원량을 예측하기란 어려워서, 개발자가 테스트를 수행한 후에야 비로소 서비스 구현을 위한 자원 필요량을 알 수 있다.</p>
+</li>
+<li>
+<p><strong>특정 포트 번호를 사용해야 제대로 작동하는 레거시 서비스</strong> 등</p>
+</li>
+<li>
+<p><strong>애플리케이션 설정 같은 플랫폼 관리 기능이 필요</strong>하다.</p>
+</li>
+</ul>
+<br>
+<br>
+<h2 id="예측-필요한-이유">
+  <strong>예측 필요한 이유</strong>
+  <a class="anchor" href="#%ec%98%88%ec%b8%a1-%ed%95%84%ec%9a%94%ed%95%9c-%ec%9d%b4%ec%9c%a0">#</a>
+</h2>
+<hr>
+<ol>
+<li>
+<p>모든 런타임 의존성이 정의되고 자원 요구사항이 계산되면, <strong>쿠버네티스는 가장 효율적인 하드웨어 사용을 위해 클러스터 내에 컨테이너 실행 위치를 지능적으로 결정이 가능</strong></p>
+</li>
+<li>
+<p>특별한 서비스 요구사항과 총 서비스 수에 근거해 다양한 환경에 대한 용량 계획을 세우고, 전체 클러스터에 대한 요구사항을 충족하는 비용 효율이 높은 최적의 호스트 프로파일을 만들 수 있다. <strong>성공적인 클러스터 관리를 위해 서비스 자원 프로파일과 용량 계획은 장기적으로 함께 진행</strong></p>
+</li>
+</ol>
+<br>
+<br>
+<h3 id="런타임-의존성">
+  <strong>런타임 의존성</strong>
+  <a class="anchor" href="#%eb%9f%b0%ed%83%80%ec%9e%84-%ec%9d%98%ec%a1%b4%ec%84%b1">#</a>
+</h3>
+<hr>
+<ul>
+<li>가장 <strong>일반적인 런타임 의존성은 애플리케이션 상태를 저장하는 데 쓰이는 파일 스토리지</strong></li>
+<li><strong>컨테이너 파일 시스템은 일시적이며 컨테이너가 종료되면 삭제</strong></li>
+<li>쿠버네티스는 컨테이너 재시작에도 삭제되지 않고 유지되는 다용도의 파드 레벨 스토리지로서 볼륨을 제공</li>
+</ul>
+<br>
+<br>
+<h3 id="쿠버네티스-주요-컴포넌트">
+  <strong>쿠버네티스 주요 컴포넌트</strong>
+  <a class="anchor" href="#%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4-%ec%a3%bc%ec%9a%94-%ec%bb%b4%ed%8f%ac%eb%84%8c%ed%8a%b8">#</a>
+</h3>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th>컴포넌트</th>
+          <th>역할</th>
+          <th>설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>API 서버 (kube-apiserver)</strong></td>
+          <td>중앙 허브</td>
+          <td>- 쿠버네티스 클러스터와 통신하는 중앙 허브  <br>- 클라이언트 요청을 처리하고 인증 및 권한 확인  <br>- etcd에 상태 저장</td>
+      </tr>
+      <tr>
+          <td><strong>스케줄러 (kube-scheduler)</strong></td>
+          <td>워크로드 할당</td>
+          <td>- 새로 생성된 Pod를 클러스터의 적절한 노드에 할당  <br>- CPU, 메모리 등 리소스 요구 사항 및 정책 고려</td>
+      </tr>
+      <tr>
+          <td><strong>컨트롤러 관리자 (kube-controller-manager)</strong></td>
+          <td>상태 관리</td>
+          <td>- 클러스터 상태를 원하는 상태(desired state)로 유지  <br>- 복제, 노드 상태 감시, Job 관리 등을 담당</td>
+      </tr>
+      <tr>
+          <td><strong>etcd</strong></td>
+          <td>상태 저장소</td>
+          <td>- 쿠버네티스 상태 정보를 저장하는 분산 키-값 저장소  <br>- 모든 상태 변경 사항 기록</td>
+      </tr>
+      <tr>
+          <td><strong>CoreDNS</strong></td>
+          <td>네트워크 이름 해석</td>
+          <td>- 클러스터 내 서비스 및 Pod에 대한 DNS 조회 처리  <br>- 클러스터 서비스 간 통신을 원활하게 만듦</td>
+      </tr>
+      <tr>
+          <td><strong>Kubelet</strong></td>
+          <td>노드 에이전트</td>
+          <td>- 각 워커 노드에서 실행되며, API 서버로부터 명령을 받아 Pod를 실행 및 관리</td>
+      </tr>
+      <tr>
+          <td><strong>Kube-Proxy</strong></td>
+          <td>네트워크 프록시</td>
+          <td>- 각 노드에서 실행되며, Pod 간 및 외부 트래픽을 라우팅  <br>- 클러스터 네트워킹 규칙 관리</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<h3 id="관련-데이터플로우">
+  <strong>관련 데이터플로우</strong>
+  <a class="anchor" href="#%ea%b4%80%eb%a0%a8-%eb%8d%b0%ec%9d%b4%ed%84%b0%ed%94%8c%eb%a1%9c%ec%9a%b0">#</a>
+</h3>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th><strong>케이스</strong></th>
+          <th><strong>데이터 요청</strong></th>
+          <th><strong>데이터 플로우</strong></th>
+          <th><strong>설명</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>HostPath</strong></td>
+          <td><code>kubectl apply -f</code>로 HostPath 볼륨을 사용하는 Pod 생성 요청</td>
+          <td>사용자 요청 → API 서버 → etcd → 스케줄러 → 노드 → Kubelet → 로컬 디스크</td>
+          <td>HostPath 볼륨은 Pod이 노드의 파일 시스템을 직접 마운트하여 사용. 로컬 디스크를 리소스로 활용함.</td>
+      </tr>
+      <tr>
+          <td><strong>NodePort</strong></td>
+          <td><code>kubectl expose</code>로 NodePort 서비스 생성 요청</td>
+          <td>외부 요청 → NodePort (노드 포트) → kube-proxy → Pod</td>
+          <td>클러스터 외부에서 특정 노드 포트를 통해 서비스를 노출. kube-proxy가 트래픽을 적절한 Pod으로 라우팅.</td>
+      </tr>
+      <tr>
+          <td><strong>ConfigMap</strong></td>
+          <td><code>kubectl create configmap</code>으로 ConfigMap 생성 및 Pod에 마운트</td>
+          <td>사용자 요청 → API 서버 → etcd → 컨트롤러 → 노드 → Kubelet</td>
+          <td>ConfigMap은 애플리케이션의 환경 변수를 외부에서 설정하기 위한 구성 데이터. Pod에 마운트되어 실행 중에 활용됨.</td>
+      </tr>
+      <tr>
+          <td><strong>Ingress</strong></td>
+          <td><code>kubectl apply -f</code>로 Ingress 리소스 생성</td>
+          <td>외부 요청 → Ingress Controller → API 서버 → kube-proxy → Pod</td>
+          <td>Ingress는 HTTP 및 HTTPS 라우팅 규칙을 정의. 외부 트래픽을 URL 기반으로 클러스터 내부의 서비스에 전달.</td>
+      </tr>
+      <tr>
+          <td><strong>PersistentVolumeClaim (PVC)</strong></td>
+          <td><code>kubectl apply -f</code>로 PVC 생성 요청</td>
+          <td>사용자 요청 → API 서버 → etcd → 컨트롤러 → 노드 → Kubelet → 스토리지 프로비저너</td>
+          <td>PVC는 스토리지 요청을 추상화. 프로비저너가 스토리지 클래스에 따라 스토리지를 동적으로 할당하며, Pod에 마운트 가능.</td>
+      </tr>
+      <tr>
+          <td><strong>ClusterIP</strong></td>
+          <td><code>kubectl expose</code>로 ClusterIP 서비스 생성 요청</td>
+          <td>클러스터 내부 요청 → ClusterIP → kube-proxy → Pod</td>
+          <td>ClusterIP는 클러스터 내부에서만 접근 가능한 서비스. kube-proxy가 IP 기반으로 트래픽을 라우팅.</td>
+      </tr>
+      <tr>
+          <td><strong>Job</strong></td>
+          <td><code>kubectl apply -f</code>로 Job 생성 요청</td>
+          <td>사용자 요청 → API 서버 → etcd → 스케줄러 → 노드 → Kubelet → 컨테이너 실행 완료 후 상태 보고</td>
+          <td>Job은 특정 작업(예: 데이터 처리)을 한 번 실행한 후 종료되는 워크로드. 스케줄러가 작업을 노드에 배치하고 Kubelet이 실행.</td>
+      </tr>
+      <tr>
+          <td><strong>DaemonSet</strong></td>
+          <td><code>kubectl apply -f</code>로 DaemonSet 생성 요청</td>
+          <td>사용자 요청 → API 서버 → etcd → 스케줄러 → 모든 노드 → Kubelet → Pod 실행</td>
+          <td>DaemonSet은 클러스터의 모든 노드에 동일한 Pod을 실행. 로그 수집, 모니터링 에이전트 등 노드 단위 기능 구현에 활용.</td>
+      </tr>
+      <tr>
+          <td><strong>Deployment</strong></td>
+          <td><code>kubectl apply -f</code>로 Deployment 생성 요청</td>
+          <td>사용자 요청 → API 서버 → etcd → 컨트롤러 → 스케줄러 → 노드 → Kubelet → Pod 실행</td>
+          <td>Deployment는 원하는 상태의 Pod 및 ReplicaSet을 관리. 업데이트 전략을 통해 무중단 배포 지원.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<br>
+<br>
+<h3 id="의존성-설정">
+  <strong>의존성 설정</strong>
+  <a class="anchor" href="#%ec%9d%98%ec%a1%b4%ec%84%b1-%ec%84%a4%ec%a0%95">#</a>
+</h3>
+<hr>
+<ul>
+<li>쿠버네티스의 권장 솔루션은 Confimap</li>
+<li>어플리케이션단에서의 설정방법은 환경 변수를 통한 설정과 파일 시스템을 통한 설정 , 2 가지 방법이 았다.</li>
+</ul>
+<br>
+<br>
+<h3 id="자원-프로파일">
+  <strong>자원 프로파일</strong>
+  <a class="anchor" href="#%ec%9e%90%ec%9b%90-%ed%94%84%eb%a1%9c%ed%8c%8c%ec%9d%bc">#</a>
+</h3>
+<hr>
+<ul>
+<li>쿠버네티스 컨텍스트 내에서의 컴퓨팅 자원 <strong>compute resources 이라 함은 컨테이너에 의해 요청</strong>되고 , 컨테이너에 할당(스케쥴러)되고 , 컨테이너가 소비할 수 있는 무언가로 정의된다.</li>
+<li>이들 자원은 압축 가능 자원 compressible resource ( 예를 들면 CPU 나 네트워크 대역폭처럼 제어 가능한 ) 과 압축 불가능 자원 icompressiale resource ( 예를 들면 메모리처럼 제어 불가능한 ) 으로 분류</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th><strong>파드 유형</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>요청(Requests)</strong></th>
+          <th><strong>제한(Limits)</strong></th>
+          <th><strong>우선순위</strong></th>
+          <th><strong>비유</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>최선적 (Best-Effort)</strong></td>
+          <td>요청과 제한이 모두 없는 파드. 자원 보장이 없으며, 노드가 리소스 부족 상태에 빠지면 가장 먼저 종료.</td>
+          <td>없음</td>
+          <td>없음</td>
+          <td>가장 낮음</td>
+          <td>&ldquo;내가 필요한 책상을 요구하지 않고, 어디 빈자리가 있으면 앉는 사람&rdquo; → 자리가 부족하면 가장 먼저 나가야 함.</td>
+      </tr>
+      <tr>
+          <td><strong>확장 가능 (Burstable)</strong></td>
+          <td>요청과 제한이 설정되어 있지만, 제한이 요청보다 더 큼. 최소한의 자원은 보장되지만, 노드가 자원 부족 상태에 빠지면 <strong>최선적</strong> 파드가 없을 경우 종료될 가능성이 있음.</td>
+          <td>있음</td>
+          <td>있음 (요청보다 큼)</td>
+          <td>중간</td>
+          <td>&ldquo;작은 책상을 요구하지만, 상황이 괜찮으면 큰 책상을 쓰기도 하는 사람&rdquo; → 최소한 자리는 보장되지만, 자리가 부족하면 나갈 가능성이 있음.</td>
+      </tr>
+      <tr>
+          <td><strong>보장 (Guaranteed)</strong></td>
+          <td>요청과 제한이 동일하게 설정된 파드. 요청한 리소스를 <strong>완전히 보장</strong>받으며, 자원이 부족한 상황에서도 가장 마지막에 종료됨.</td>
+          <td>있음</td>
+          <td>있음 (요청과 동일)</td>
+          <td>가장 높음</td>
+          <td>&ldquo;내가 필요한 책상을 정확히 요청하고 그 크기를 보장받는 사람&rdquo; → 언제나 자리가 확보되고, 자리가 부족해도 가장 나중까지 남아 있음.</td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3 id="전략별-주요-특징">
+  <strong>전략별 주요 특징</strong>
+  <a class="anchor" href="#%ec%a0%84%eb%9e%b5%eb%b3%84-%ec%a3%bc%ec%9a%94-%ed%8a%b9%ec%a7%95">#</a>
+</h3>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th><strong>배포 전략</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>장점</strong></th>
+          <th><strong>단점</strong></th>
+          <th><strong>예시</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>롤링 업데이트</strong></td>
+          <td>새 버전을 점진적으로 배포하며, 기존 버전을 점차적으로 대체.</td>
+          <td>- 다운타임 없이 배포 가능  <br>- 트래픽 자동 분배</td>
+          <td>- 배포 도중 문제 발생 시 롤백이 어려울 수 있음  <br>- 모든 사용자에게 변경이 동시에 반영됨</td>
+          <td>기존 v1 애플리케이션에서 v2로 배포하며, 한 번에 1개의 Pod씩 교체. 예: <code>kubectl apply -f deployment.yaml</code></td>
+      </tr>
+      <tr>
+          <td><strong>고정 배포</strong></td>
+          <td>기존 버전을 완전히 중단한 후, 새로운 버전을 배포.</td>
+          <td>- 단순한 배포 프로세스  <br>- 리소스 소모 적음</td>
+          <td>- 배포 시 다운타임 발생  <br>- 실패 시 복구가 어려움</td>
+          <td>v1 애플리케이션 종료 후, v2 애플리케이션 배포. 예: 기존 Pod 종료 후 새로운 Pod 배포.</td>
+      </tr>
+      <tr>
+          <td><strong>블루-그린 배포</strong></td>
+          <td>&ldquo;블루&rdquo; 환경(현재 버전)과 &ldquo;그린&rdquo; 환경(새 버전)을 분리하여 배포 후, 트래픽을 그린 환경으로 전환.</td>
+          <td>- 다운타임 없이 배포 가능  <br>- 빠른 롤백 가능  <br>- 테스트 환경과 프로덕션 환경 분리 가능</td>
+          <td>- 두 배포 환경(블루와 그린)을 유지하기 위해 리소스 소모가 큼</td>
+          <td>v1(블루 환경) 사용 중, v2(그린 환경) 배포 후 트래픽 전환. 문제가 발생하면 블루 환경으로 트래픽 재전환.</td>
+      </tr>
+      <tr>
+          <td><strong>카나리아 릴리스</strong></td>
+          <td>새 버전을 소수의 사용자에게 배포 후 점진적으로 확장. 문제 발생 시 배포 중단 및 롤백 가능.</td>
+          <td>- 문제를 조기에 발견 가능  <br>- 점진적 배포로 위험 감소  <br>- 사용자 그룹별 테스트 가능</td>
+          <td>- 점진적 배포로 시간이 오래 걸릴 수 있음  <br>- 복잡한 트래픽 관리 필요</td>
+          <td>v1 애플리케이션 사용 중, 5%의 트래픽만 v2로 전환. 안정성이 확인되면 점진적으로 트래픽 증가.</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li><strong>롤링 업데이트</strong>: &ldquo;한꺼번에 다 바꾸지 않고, 하나씩 교체하면서 점검하는 방법.&rdquo;</li>
+<li><strong>고정 배포</strong>: &ldquo;낡은 건물을 부수고 새 건물을 짓는 방법.&rdquo;</li>
+<li><strong>블루-그린 배포</strong>: &ldquo;현재 건물(블루)과 새 건물(그린)을 동시에 유지하다가, 새 건물로 입주자를 옮기는 방법.&rdquo;</li>
+<li><strong>카나리아 릴리스</strong>: &ldquo;새로운 약품을 소수의 사람들에게 먼저 투여해 안전성을 확인한 뒤, 대규모로 투여하는 방법.&rdquo;</li>
+</ul>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div><a class="flex align-center" href="https://github.com/mungOps/mung/blob/main/content/Devops/docs/Kubernetes/kube/patten/k8s01%201.md" target="_blank" rel="noopener">
+          <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mungdocs" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#책의-주요구성"><strong>책의 주요구성</strong></a></li>
+        <li><a href="#예측-범위-내의-요구사항"><strong>예측 범위 내의 요구사항</strong></a></li>
+        <li><a href="#예측-필요한-이유"><strong>예측 필요한 이유</strong></a>
+          <ul>
+            <li><a href="#런타임-의존성"><strong>런타임 의존성</strong></a></li>
+            <li><a href="#쿠버네티스-주요-컴포넌트"><strong>쿠버네티스 주요 컴포넌트</strong></a></li>
+            <li><a href="#관련-데이터플로우"><strong>관련 데이터플로우</strong></a></li>
+            <li><a href="#의존성-설정"><strong>의존성 설정</strong></a></li>
+            <li><a href="#자원-프로파일"><strong>자원 프로파일</strong></a></li>
+            <li><a href="#전략별-주요-특징"><strong>전략별 주요 특징</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  <script id="dsq-count-scr" src="//mungdocs-1.disqus.com/count.js" async></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
